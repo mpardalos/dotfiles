@@ -1,0 +1,47 @@
+#!/bin/bash
+
+####################################################
+# I3block's blocklet which:
+# - Display volume
+# - Increase/decrease volume with the mouse wheel
+# - Mute with a middle click
+####################################################
+
+case $BLOCK_BUTTON in
+	3) pavucontrol;;                    # left click
+	2) pactl set-sink-mute 1 toggle;;   # middle click
+    4) pactl set-sink-volume 1 '+5%';;  # wheel up
+    5) pactl set-sink-volume 1 '-5%';;  # wheel down
+esac
+
+# Use `let` to get an integer
+let vol=$(pactl list sinks | awk -F '/' '/Volume/{print $2}' | tr -d '% ' | tail -n 2)
+mute=$(pactl list sinks | awk '/Mute/{print $2}' | tail -n 1 | tr -d ' ')
+
+if [ "$vol" -eq 0 ] || [ "$mute" == "yes" ]; then
+	text=" $vol%"
+	background="#e74c3c"
+	border="#d3dae3"
+elif [ $vol -le 60 ]; then
+	text=" $vol%"
+	background=""
+	border=""
+else
+	text=" $vol%"
+	background=""
+	border=""
+fi
+
+# Output in json
+cat <<EOF
+{
+	"full_text": " ${text} ",
+	"color": "",
+	"background": "${background}",
+	"border": "${border}",
+	"border_left": 0,
+	"border_right": 0,
+	"border_up": 0,
+	"border_bottom": 2
+}
+EOF

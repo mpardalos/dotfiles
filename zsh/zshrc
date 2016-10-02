@@ -1,0 +1,43 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle :compinstall filename '$HOME/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=500
+SAVEHIST=500
+setopt notify
+# End of lines configured by zsh-newuser-install
+
+# oh-my-zsh options
+source ~/.ohmyzshrc
+
+# Change default editor to neovim
+export EDITOR=nvim
+
+# Enable virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+# PATH
+export PATH=$PATH:$HOME/bin:/usr/local/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools
+
+# Execute lines with !! immediately
+setopt no_hist_verify
+
+# Project dir for virtualenvwrapper
+export PROJECT_HOME=~/Documents
+
+#aliases
+function wc-tex {
+    detex $1 | wc | awk '{print $2}'
+}
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
