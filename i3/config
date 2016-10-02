@@ -64,7 +64,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #---------------Status bar---------------
 bar {
     i3bar_command i3bar -t
-  	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+  	status_command i3pystatus -c $HOME/.config/i3/i3pystatus_conf.py 
     output $monitor1
     tray_output $monitor1
     position top

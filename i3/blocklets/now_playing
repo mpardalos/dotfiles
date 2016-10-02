@@ -1,5 +1,0 @@
-#!/bin/bash
-
-artist_song=$($HOME/.config/i3/scripts/playing.py --layout A-t)
-
-echo $artist_song
