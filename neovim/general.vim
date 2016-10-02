@@ -16,7 +16,9 @@ set autochdir
 " Open 2 levels of folds by default
 set foldlevelstart=2
 
-" Automatically reload init.vim when it is changed
+" Automatically reload init.vim when it is changed. Either in the dotfiles
+" directory or in the nvim config directory
 autocmd! bufwritepost $HOME/.config/nvim/* source $HOME/.config/nvim/init.vim
+autocmd! bufwritepost $HOME/.config/dotfiles/neovim/* source $HOME/.config/nvim/init.vim
 
 au BufNewFile,BufRead *.es6 set filetype=javascript
