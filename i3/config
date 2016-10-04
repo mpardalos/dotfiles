@@ -181,7 +181,7 @@ bindsym $mod+space focus mode_toggle
 #exit mode
 set $exit_mode "[s]hutdown | [r]eboot | [e]xit i3"
 mode $exit_mode {
-    bindsym s exec "systemctl shutdown"
+    bindsym s exec "systemctl poweroff"
     bindsym r exec "systemctl reboot"
     bindsym e exec "i3-msg exit"
 
