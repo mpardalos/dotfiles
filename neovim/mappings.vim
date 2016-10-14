@@ -31,12 +31,6 @@ tnoremap <Esc> <C-\><C-n>
 " Stop highlighting search findings
 nnoremap <leader><space> :nohlsearch<CR>
 
-" B and E instead of ^ and $
-onoremap B ^
-onoremap E $
-nnoremap ^ <nop>
-nnoremap $ <nop>
-
 " FZF.vim
 noremap <leader>f :Files<CR>
 nnoremap <leader>gf :GFiles<CR>

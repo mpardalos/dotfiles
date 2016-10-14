@@ -2,6 +2,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 "-------------------git-----------------------
 Plug 'tpope/vim-fugitive'
@@ -17,6 +19,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'tmhedberg/SimpylFold'
 let g:SimpylFold_fold_docstring = 0 " Do not fold docstrings
+
+Plug 'zchee/deoplete-jedi'
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
+
 "--------------------Python--------------------
 
 "--------------------LaTeX--------------------
@@ -29,6 +36,7 @@ let g:vimtex_fold_enabled='1'
 
 "--------------------Themes---------------------
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 "--------------------Themes---------------------
 
 "--------------------airline--------------------
