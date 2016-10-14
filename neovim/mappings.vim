@@ -35,4 +35,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 noremap <leader>f :Files<CR>
 nnoremap <leader>gf :GFiles<CR>
 
+" Toggle background
+map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
 

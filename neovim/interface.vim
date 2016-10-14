@@ -4,13 +4,11 @@ set number
 set relativenumber
  
 " Theme...
-colorscheme solarized
-let g:solarized_termtrans=1
-set background=dark
-" let g:solarized_contrast="high"    "default value is normal
-let g:solarized_visibility="high"    "default value is normal
+colorscheme gruvbox
+let g:gruvbox_contrast_light='hard'
+let g:gruvbox_contrast_dark='light'
 " ...And font
-set guifont=Fira\ Mono\ Medium\ 10
+set guifont=Fira\ Mono\ Medium\ 15
 
 " 92 character column
 set colorcolumn=110
