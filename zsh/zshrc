@@ -20,6 +20,9 @@ source ~/.ohmyzshrc
 
 # Change default editor to neovim
 export EDITOR=nvim
+function gnvim {
+    konsole -e nvim $1 &>/dev/null &
+}
 
 # Enable virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
