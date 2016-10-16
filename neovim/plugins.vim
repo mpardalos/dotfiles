@@ -5,6 +5,7 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 
+Plug 'Yggdroot/indentLine'
 "-------------------git-----------------------
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
