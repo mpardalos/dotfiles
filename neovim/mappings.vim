@@ -21,10 +21,11 @@ nnoremap <A-L> <C-w>L
 nnoremap <A-n> gT
 nnoremap <A-m> gt
 
-"Space to toggle folds
-nnoremap <Space> za
+" <leader>f to toggle folds and <leader>F to close all folds
+nnoremap <leader>f za
+nnoremap <leader>F zM
 
-"For the terminal
+" For the terminal
 nnoremap <C-t> :split term://zsh<Return>
 tnoremap <Esc> <C-\><C-n>
 
