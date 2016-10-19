@@ -10,8 +10,8 @@ let g:gruvbox_contrast_dark='light'
 " ...And font
 set guifont=Fira\ Mono\ Medium\ 15
 
-" 92 character column
-set colorcolumn=110
+" 80 character column
+set colorcolumn=80
 
 " Saner splits
 set splitright
