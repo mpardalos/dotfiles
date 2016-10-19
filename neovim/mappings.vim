@@ -38,6 +38,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <C-f> :Files<CR>
 nnoremap <C-g><C-f> :GFiles<CR>
 
+" Edit config files quickly with F2
+nnoremap <F2> :FZF ~/.config/dotfiles<CR>
+
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
