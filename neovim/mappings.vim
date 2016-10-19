@@ -20,16 +20,27 @@ nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
 
 " And for moving between tabs
-nnoremap <A-n> gT
-nnoremap <A-m> gt
+" u and i are right above hjkl
+nnoremap <A-u> gT
+nnoremap <A-i> gt
 
 " <leader>f to toggle folds and <leader>F to close all folds
 nnoremap <leader>f za
 nnoremap <leader>F zM
 
 " For the terminal
-nnoremap <C-t> :split term://zsh<Return>
+" These 2 allow for toggling the terminal with <A-t>
+nnoremap <A-t> :split term://zsh<Return>
+tnoremap <A-t> <C-\><C-n>:q<CR> 
 tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+tnoremap <A-H> <C-\><C-n><C-w>H
+tnoremap <A-J> <C-\><C-n><C-w>J
+tnoremap <A-K> <C-\><C-n><C-w>K
+tnoremap <A-L> <C-\><C-n><C-w>L
 
 " Stop highlighting search findings
 nnoremap <leader><space> :nohlsearch<CR>

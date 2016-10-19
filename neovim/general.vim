@@ -25,3 +25,7 @@ autocmd! bufwritepost $HOME/.config/nvim/* source $HOME/.config/nvim/init.vim
 autocmd! bufwritepost $HOME/.config/dotfiles/neovim/* source $HOME/.config/nvim/init.vim
 
 au BufNewFile,BufRead *.es6 set filetype=javascript
+
+" Auto insert mode in the terminal
+autocmd BufEnter * if &buftype == "terminal" | startinsert | endif
+
