@@ -9,6 +9,7 @@ Plug 'Yggdroot/indentLine'
 "-------------------git-----------------------
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
+Plug 'airblade/vim-gitgutter'
 "-------------------git-----------------------
 
 "-------------------FZF-----------------------
