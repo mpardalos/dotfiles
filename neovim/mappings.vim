@@ -1,5 +1,7 @@
 let mapleader = ","
 
+" Prevents me from having to press Shift when entering a command
+nmap ; :
 
 nnoremap <leader>t :NERDTreeToggle<Return>
 
