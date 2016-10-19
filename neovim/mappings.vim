@@ -35,8 +35,8 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <leader><space> :nohlsearch<CR>
 
 " FZF.vim
-noremap <leader>f :Files<CR>
-nnoremap <leader>gf :GFiles<CR>
+nnoremap <C-f> :Files<CR>
+nnoremap <C-g><C-f> :GFiles<CR>
 
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
