@@ -4,6 +4,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'peterhoeg/vim-qml'
+
 
 Plug 'Yggdroot/indentLine'
 "-------------------git-----------------------
