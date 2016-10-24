@@ -24,14 +24,32 @@ nnoremap <A-L> <C-w>L
 nnoremap <A-u> gT
 nnoremap <A-i> gt
 
-" <leader>f to toggle folds and <leader>F to close all folds
-nnoremap <leader>f za
+" folding
+nnoremap <space> za
 nnoremap <leader>F zM
 
 " For the terminal
 " These 2 allow for toggling the terminal with <A-t>
-nnoremap <A-t> :split term://zsh<Return>
-tnoremap <A-t> <C-\><C-n>:q<CR> 
+let g:term_buf = 0
+function! Term_toggle()
+  1wincmd w
+  if g:term_buf == bufnr("")
+    setlocal bufhidden=hide
+    close
+  else
+    topleft vnew
+    try
+      exec "buffer ".g:term_buf
+    catch
+      call termopen("zsh", {"detach": 0})
+      let g:term_buf = bufnr("")
+    endtry
+    startinsert!
+  endif
+endfunction
+nnoremap <A-t> :call Term_toggle()<cr>
+tnoremap <A-t> <C-\><C-n>:call Term_toggle()<cr>
+
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
