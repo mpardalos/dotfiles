@@ -5,6 +5,11 @@ set ignorecase
 " ...Except when using capital letters
 set smartcase
 
+" Line numbers
+set number
+" relative to the current line
+set relativenumber
+
 "4 spaces for indentation
 set expandtab
 set tabstop=4
@@ -18,6 +23,18 @@ set foldlevelstart=2
 
 " Disable conceal on current line
 set concealcursor=""
+
+" 80 character column
+set colorcolumn=80
+set textwidth=80
+
+" Saner splits
+set splitright
+set splitbelow
+
+" highligh cursor line & column
+set cursorline
+set cursorcolumn
 
 " Automatically reload init.vim when it is changed. Either in the dotfiles
 " directory or in the nvim config directory
