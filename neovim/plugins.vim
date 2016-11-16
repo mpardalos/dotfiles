@@ -33,9 +33,10 @@ let g:python_host_prog = '/usr/bin/python2'
 "--------------------LaTeX--------------------
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
-Plug 'lervag/vimtex'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 let g:tex_flavor='latex'
-let g:vimtex_fold_enabled='1'
+let g:LatexBox_Folding='1'
+let g:LatexBox_quickfix=3
 
 " deoplete LaTeX completion
 if !exists('g:deoplete#omni#input_patterns')
