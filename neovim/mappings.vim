@@ -64,13 +64,11 @@ tnoremap <A-L> <C-\><C-n><C-w>L
 nnoremap <leader><space> :nohlsearch<CR>
 
 " FZF.vim
-nnoremap <C-f> :Files<CR>
-nnoremap <C-g><C-f> :GFiles<CR>
-
-" Edit config files quickly with F2
-nnoremap <F2> :FZF ~/.config/dotfiles<CR>
+nnoremap <C-g><F1> :GFiles<CR>
+nnoremap <F1> :Files<CR>
+nnoremap <F2> :FZF ~/Documents<CR>
+nnoremap <F3> :FZF ~/.config/dotfiles<CR>
 
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
 
