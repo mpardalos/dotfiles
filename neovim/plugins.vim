@@ -5,9 +5,10 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'peterhoeg/vim-qml'
-
-
 Plug 'Yggdroot/indentLine'
+Plug 'easymotion/vim-easymotion'
+
+
 "-------------------git-----------------------
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
@@ -70,7 +71,5 @@ let g:airline_theme='wombat'
 Plug 'mattn/emmet-vim'
 "--------------------webdev---------------------
 call plug#end()
-
-
 
 
