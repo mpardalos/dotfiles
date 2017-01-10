@@ -3,8 +3,6 @@ let mapleader = ","
 " Prevents me from having to press Shift when entering a command
 nmap ; :
 
-nnoremap <leader>t :NERDTreeToggle<Return>
-
 " Alt-hjkl to move. 
 " Alt seems more convenient than Ctrl (which most people use) since I can hit
 " it with my thumb instead of my pinky
@@ -24,9 +22,17 @@ nnoremap <A-L> <C-w>L
 nnoremap <A-u> gT
 nnoremap <A-i> gt
 
+" And, for changing buffers, n and m which are below hjkl
+nnoremap <A-n> :bprevious<CR>
+nnoremap <A-m> :bnext<CR>
+
 " folding
 nnoremap <space> za
 nnoremap <leader>F zM
+
+" NERDTree
+nnoremap <leader>t :NERDTreeToggle<Return>
+let NERDTreeMapActivateNode='<space>'
 
 " For the terminal
 " These 2 allow for toggling the terminal with <A-t>
@@ -37,7 +43,7 @@ function! Term_toggle()
     setlocal bufhidden=hide
     close
   else
-    topleft vnew
+    belowright
     try
       exec "buffer ".g:term_buf
     catch
@@ -67,8 +73,20 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <C-g><F1> :GFiles<CR>
 nnoremap <F1> :Files<CR>
 nnoremap <F2> :FZF ~/Documents<CR>
-nnoremap <F3> :FZF ~/.config/dotfiles<CR>
+nnoremap <F3> :Files ~/.config/dotfiles<CR>
 
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Mappings for ditto, a plugin to highlight overused words
+au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+
+nmap <leader>di <Plug>ToggleDitto      " Turn it on and off
+
+nmap ]d <Plug>DittoNext                
+nmap [d <Plug>DittoPrev                
+nmap dg <Plug>DittoGood                
+nmap db <Plug>DittoBad                 
+nmap {d <Plug>DittoMore                
+nmap }d <Plug>DittoLess                
 

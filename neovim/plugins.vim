@@ -31,12 +31,17 @@ let g:python_host_prog = '/usr/bin/python2'
 
 "--------------------Python--------------------
 
+"--------------------Prose---------------------
+Plug 'dbmrq/vim-ditto'
+"--------------------Prose---------------------
+
 "--------------------LaTeX--------------------
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 let g:tex_flavor='latex'
 let g:LatexBox_Folding='1'
+let g:LatexBox_custom_indent='0'
 let g:LatexBox_quickfix=3
 
 " deoplete LaTeX completion
