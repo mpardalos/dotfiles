@@ -1,3 +1,10 @@
-nmap <localleader>wc :VimtexCountWords<CR>
-setlocal textwidth=110
+imap <buffer> [[     \begin{
+imap <buffer> ]]     <Plug>LatexCloseCurEnv
+nmap <buffer> <F5>   <Plug>LatexChangeEnv
+vmap <buffer> <F7>   <Plug>LatexWrapSelection
+vmap <buffer> <S-F7> <Plug>LatexEnvWrapSelection
+imap <buffer> ((     \eqref{
 
+nnoremap <buffer> <localleader>wc :!texcount %<CR>
+
+autocmd bufwritepost *.tex :Latexmk
