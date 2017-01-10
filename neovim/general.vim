@@ -38,8 +38,11 @@ set cursorcolumn
 
 " Automatically reload init.vim when it is changed. Either in the dotfiles
 " directory or in the nvim config directory
-autocmd! bufwritepost $HOME/.config/nvim/* source $HOME/.config/nvim/init.vim
-autocmd! bufwritepost $HOME/.config/dotfiles/neovim/* source $HOME/.config/nvim/init.vim
+if !exists("autocommands_loaded")
+    let autocommands_loaded = 1
+    autocmd bufwritepost $HOME/.config/nvim/* source $HOME/.config/nvim/init.vim
+    autocmd bufwritepost $HOME/.config/dotfiles/neovim/* source $HOME/.config/nvim/init.vim
+endif
 
 au BufNewFile,BufRead *.es6 set filetype=javascript
 
