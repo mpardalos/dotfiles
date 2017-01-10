@@ -79,8 +79,6 @@ nnoremap <F3> :Files ~/.config/dotfiles<CR>
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Mappings for ditto, a plugin to highlight overused words
-au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
-
 nmap <leader>di <Plug>ToggleDitto      " Turn it on and off
 
 nmap ]d <Plug>DittoNext                
