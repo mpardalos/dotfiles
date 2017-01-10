@@ -87,6 +87,6 @@ nmap ]d <Plug>DittoNext
 nmap [d <Plug>DittoPrev                
 nmap dg <Plug>DittoGood                
 nmap db <Plug>DittoBad                 
-nmap {d <Plug>DittoMore                
-nmap }d <Plug>DittoLess                
+nmap =d <Plug>DittoMore                
+nmap -d <Plug>DittoLess                
 
