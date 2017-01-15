@@ -7,7 +7,7 @@ visualizer.spectrum.top.margin=0.3
 visualizer.spectrum.character=#
 
 # Falloff
-visualizer.spectrum.falloff.weight=9.9
+# visualizer.spectrum.falloff.weight=9.9
 
 # Smoothing
 visualizer.spectrum.smoothing=monstercat
