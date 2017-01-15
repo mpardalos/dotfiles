@@ -63,6 +63,7 @@ if !exists('g:deoplete#omni#input_patterns')
 "--------------------Themes---------------------
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'jnurmine/Zenburn'
 "--------------------Themes---------------------
 
 "--------------------airline--------------------
