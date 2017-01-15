@@ -1,0 +1,15 @@
+audio.stereo.enabled=false
+
+# Bar shape and positioning
+visualizer.spectrum.bar.spacing=0
+visualizer.spectrum.bar.width=1
+visualizer.spectrum.top.margin=0.3
+visualizer.spectrum.character=#
+
+# Falloff
+visualizer.spectrum.falloff.weight=9.9
+
+# Smoothing
+visualizer.spectrum.smoothing=monstercat
+visualizer.sgs.smoothing.points=5
+
