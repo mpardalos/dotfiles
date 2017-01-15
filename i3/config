@@ -244,7 +244,7 @@ for_window [class="(?i)yad"] floating enable
 
 
 #--------------------Wallpaper--------------------
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/arc_dark_default.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/alien_mountain.jpg
 #--------------------/Wallpaper--------------------
 
 
