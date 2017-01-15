@@ -6,8 +6,12 @@ visualizer.spectrum.bar.width=1
 visualizer.spectrum.top.margin=0.3
 visualizer.spectrum.character=#
 
+# Colors
+colors.scheme=plain_blue
+
 # Falloff
-# visualizer.spectrum.falloff.weight=9.9
+visualizer.spectrum.falloff.weight=1
+visualizer.spectrum.falloff.mode=fill
 
 # Smoothing
 visualizer.spectrum.smoothing=monstercat
