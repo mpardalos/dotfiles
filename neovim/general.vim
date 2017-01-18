@@ -24,9 +24,9 @@ set foldlevelstart=2
 " Disable conceal on current line
 set concealcursor=""
 
-" 80 character column
-set colorcolumn=80
-set textwidth=80
+" 92 character column
+set colorcolumn=92
+set textwidth=92
 
 " Saner splits
 set splitright
