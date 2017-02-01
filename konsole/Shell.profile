@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=Breeze
-Font=Fira Code,11,-1,5,50,0,0,0,0,0
+Font=Fira Mono,11,-1,5,75,0,0,0,0,0
 
 [Cursor Options]
 CursorShape=2
