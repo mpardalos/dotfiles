@@ -35,7 +35,12 @@ let g:python_host_prog = '/usr/bin/python2'
 Plug 'dbmrq/vim-ditto'
 "--------------------Prose---------------------
 
-"--------------------LaTeX--------------------
+"--------------------Markdown------------------
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"--------------------Markdown------------------
+
+"--------------------LaTeX---------------------
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
