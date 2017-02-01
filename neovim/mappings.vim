@@ -3,6 +3,9 @@ let mapleader = ","
 " Prevents me from having to press Shift when entering a command
 nmap ; :
 
+" Save with zz
+nnoremap zz :w<CR>
+
 " Alt-hjkl to move. 
 " Alt seems more convenient than Ctrl (which most people use) since I can hit
 " it with my thumb instead of my pinky
