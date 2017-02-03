@@ -21,7 +21,7 @@ source ~/.ohmyzshrc
 # Change default editor to neovim
 export EDITOR=nvim
 function gnvim {
-    konsole -e nvim $1 &>/dev/null &
+    konsole --profile neovim -e nvim $1 &>/dev/null &
 }
 
 # Enable virtualenvwrapper
@@ -41,7 +41,7 @@ export PROJECT_HOME=~/Documents
 function wc-tex {
     detex $1 | wc | awk '{print $2}'
 }
-alias pacupdate="sudo pacman -Syu"
+alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder -Su"
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
