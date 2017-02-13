@@ -47,5 +47,6 @@ function explore {
 }
 alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder -Su"
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
+alias g="git"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
