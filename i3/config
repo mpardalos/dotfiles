@@ -270,7 +270,7 @@ exec --no-startup-id "setxkbmap -model pc105 -layout gb,gr"
 
 #---------------Startup Programs---------------
 exec konsole
-exec google-chrome-stable
+exec vivaldi-stable
 exec gpmdp
 #exec messengerfordesktop
 #exec skype
