@@ -7,6 +7,7 @@ let g:deoplete#enable_at_startup = 1
 Plug 'peterhoeg/vim-qml'
 Plug 'Yggdroot/indentLine'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
 
 
 "-------------------git-----------------------
