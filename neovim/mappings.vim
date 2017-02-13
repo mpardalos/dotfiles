@@ -78,13 +78,8 @@ nnoremap <F3> :Files ~/.config/dotfiles<CR>
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" Mappings for ditto, a plugin to highlight overused words
-nmap <leader>di <Plug>ToggleDitto      " Turn it on and off
-
-nmap ]d <Plug>DittoNext                
-nmap [d <Plug>DittoPrev                
-nmap dg <Plug>DittoGood                
-nmap db <Plug>DittoBad                 
-nmap =d <Plug>DittoMore                
-nmap -d <Plug>DittoLess                
-
+" Moving around with (<>) as guides (Used by other mappings)
+inoremap <leader>m <Esc>/(<>)<Enter>"_c4l
+inoremap <leader>n (<>)<Esc>/(<>)<Enter>"_c4l
+vnoremap <leader>m <Esc>/(<>)<Enter>"_c4l
+map <leader><Space> <Esc>/(<>)<Enter>"_c4l
