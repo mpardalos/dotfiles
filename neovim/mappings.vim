@@ -69,9 +69,6 @@ tnoremap <A-J> <C-\><C-n><C-w>J
 tnoremap <A-K> <C-\><C-n><C-w>K
 tnoremap <A-L> <C-\><C-n><C-w>L
 
-" Stop highlighting search findings
-nnoremap <leader><space> :nohlsearch<CR>
-
 " FZF.vim
 nnoremap <C-g><F1> :GFiles<CR>
 nnoremap <F1> :Files<CR>

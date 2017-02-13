@@ -1,5 +1,3 @@
-" Highlight search findings
-set hlsearch
 " Case insensitive search...
 set ignorecase
 " ...Except when using capital letters
