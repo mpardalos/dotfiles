@@ -37,28 +37,6 @@ nnoremap <leader>F zM
 nnoremap <leader>t :NERDTreeToggle<Return>
 let NERDTreeMapActivateNode='<space>'
 
-" For the terminal
-" These 2 allow for toggling the terminal with <A-t>
-let g:term_buf = 0
-function! Term_toggle()
-  1wincmd w
-  if g:term_buf == bufnr("")
-    setlocal bufhidden=hide
-    close
-  else
-    belowright
-    try
-      exec "buffer ".g:term_buf
-    catch
-      call termopen("zsh", {"detach": 0})
-      let g:term_buf = bufnr("")
-    endtry
-    startinsert!
-  endif
-endfunction
-nnoremap <A-t> :call Term_toggle()<cr>
-tnoremap <A-t> <C-\><C-n>:call Term_toggle()<cr>
-
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
