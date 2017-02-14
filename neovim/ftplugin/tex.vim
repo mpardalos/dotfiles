@@ -16,23 +16,24 @@ inoremap ;la \Leftarrow
 inoremap ;pi \pi
 
 " Commands
-inoremap ;sec \section{}(<>)<Esc>T{i
-inoremap ;ssec \subsection{}(<>)<Esc>T{i
-inoremap ;sssec \subsubsection{}(<>)<Esc>T{i
-inoremap ;pm \pmod{}(<>)<Esc>T{i
-inoremap ;em \emph{}(<>)<Esc>T{i
-inoremap ;bf \textbf{}(<>)<Esc>T{i
-inoremap ;ref \autoref{}(<>)<Esc>T{i
-inoremap ;cit \autocite{}(<>)<Esc>T{i
+inoremap ;sec \section{}<CR><++><Esc>T{i
+inoremap ;ssec \subsection{}<CR><++><Esc>T{i
+inoremap ;sssec \subsubsection{}<CR><++><Esc>T{i
+inoremap ;pm \pmod{}<++><Esc>T{i
+inoremap ;em \emph{}<++><Esc>T{i
+inoremap ;bf \textbf{}<++><Esc>T{i
+inoremap ;fr \frac{}{<++>}<++><Esc>2T{i
+inoremap ;ref \autoref{}<++><Esc>T{i
+inoremap ;cit \autocite{}<++><Esc>T{i
 
 
 " Environments
-inoremap ;ea <Enter>\begin{align*}<Enter><Enter>\end{align*}<Enter>(<>)<Esc>kki<Tab>
-inoremap ;ega <Enter>\begin{gather*}<Enter><Enter>\end{gather*}<Enter>(<>)<Esc>kki<Tab>
-inoremap ;e <Enter>\begin{gather*}<Enter><Enter>\end{gather*}<Enter>(<>)<Esc>kki<Tab>
-inoremap ;m $$(<>)<Esc>F$i
-inoremap ;ol <Enter>\begin{enumerate}<Enter><Enter>\end{enumerate}<Enter>(<>)<Esc>2kA\item<Space>
-inoremap ;ul <Enter>\begin{itemize}<Enter><Enter>\end{itemize}<Enter>(<>)<Esc>2kA\item<Space>
+inoremap ;ea <CR>\begin{align*}<CR><CR>\end{align*}<CR><++><Esc>kki<Tab>
+inoremap ;ega <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
+inoremap ;e <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
+inoremap ;m $$<++><Esc>F$i
+inoremap ;ol <CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><++><Esc>2kA\item<Space>
+inoremap ;ul <CR>\begin{itemize}<CR><CR>\end{itemize}<CR><++><Esc>2kA\item<Space>
 
 
 autocmd bufwritepost *.tex :Latexmk

@@ -57,7 +57,6 @@ nnoremap <F3> :Files ~/.config/dotfiles<CR>
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Moving around with (<>) as guides (Used by other mappings)
-inoremap <leader>m <Esc>/(<>)<Enter>"_c4l
-inoremap <leader>n (<>)<Esc>/(<>)<Enter>"_c4l
-vnoremap <leader>m <Esc>/(<>)<Enter>"_c4l
-map <leader><Space> <Esc>/(<>)<Enter>"_c4l
+inoremap <leader>m <Esc>/<++><Enter>"_c4l
+vnoremap <leader>m <Esc>/<++><Enter>"_c4l
+nnoremap <leader>m /<++><Enter>"_c4l
