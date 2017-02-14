@@ -14,6 +14,9 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" F4 to toggle highlighting of search results
+:noremap <F4> :set hlsearch! hlsearch?<CR>
+
 " Similar as above, but for rearranging splits
 nnoremap <A-H> <C-w>H
 nnoremap <A-J> <C-w>J
