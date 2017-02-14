@@ -56,10 +56,18 @@ nnoremap <F1> :Files<CR>
 nnoremap <F2> :FZF ~/Documents<CR>
 nnoremap <F3> :Files ~/.config/dotfiles<CR>
 
+" Git 
+nnoremap ,ga :GitGutterStageHunk<CR>
+nnoremap ,gu :GitGutterUndoHunk<CR>
+nnoremap ,g] :GitGutterNextHunk<CR>
+nnoremap ,g[ :GitGutterPrevHunk<CR>
+nnoremap ,gs :Gstatus<CR>
+nnoremap ,gc :Gcommit<CR>
+
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" Moving around with (<>) as guides (Used by other mappings)
+" Moving around with <++> as guides (Used by other mappings)
 inoremap <leader>m <Esc>/<++><Enter>"_c4l
 vnoremap <leader>m <Esc>/<++><Enter>"_c4l
 nnoremap <leader>m /<++><Enter>"_c4l
