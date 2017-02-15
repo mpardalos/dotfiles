@@ -8,32 +8,31 @@ imap <buffer> ((     \eqref{
 nnoremap <buffer> <localleader>wc :!texcount %<CR>
 
 " Symbols
-inoremap ;eq \equiv
-inoremap ;ex \exists
-inoremap ;fa \forall
-inoremap ;ra \Rightarrow
-inoremap ;la \Leftarrow
-inoremap ;pi \pi
+inoremap <buffer> ;eq \equiv
+inoremap <buffer> ;ex \exists
+inoremap <buffer> ;fa \forall
+inoremap <buffer> ;ra \Rightarrow
+inoremap <buffer> ;la \Leftarrow
+inoremap <buffer> ;pi \pi
 
 " Commands
-inoremap ;sec \section{}<CR><++><Esc>T{i
-inoremap ;ssec \subsection{}<CR><++><Esc>T{i
-inoremap ;sssec \subsubsection{}<CR><++><Esc>T{i
-inoremap ;pm \pmod{}<++><Esc>T{i
-inoremap ;em \emph{}<++><Esc>T{i
-inoremap ;bf \textbf{}<++><Esc>T{i
-inoremap ;fr \frac{}{<++>}<++><Esc>2T{i
-inoremap ;ref \autoref{}<++><Esc>T{i
-inoremap ;cit \autocite{}<++><Esc>T{i
-
+inoremap <buffer> ;sec \section{}<CR><++><Esc>T{i
+inoremap <buffer> ;ssec \subsection{}<CR><++><Esc>T{i
+inoremap <buffer> ;sssec \subsubsection{}<CR><++><Esc>T{i
+inoremap <buffer> ;pm \pmod{}<++><Esc>T{i
+inoremap <buffer> ;em \emph{}<++><Esc>T{i
+inoremap <buffer> ;bf \textbf{}<++><Esc>T{i
+inoremap <buffer> ;fr \frac{}{<++>}<++><Esc>2T{i
+inoremap <buffer> ;ref \autoref{}<++><Esc>T{i
+inoremap <buffer> ;cit \autocite{}<++><Esc>T{i
 
 " Environments
-inoremap ;ea <CR>\begin{align*}<CR><CR>\end{align*}<CR><++><Esc>kki<Tab>
-inoremap ;ega <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
-inoremap ;e <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
-inoremap ;m $$<++><Esc>F$i
-inoremap ;ol <CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><++><Esc>2kA\item<Space>
-inoremap ;ul <CR>\begin{itemize}<CR><CR>\end{itemize}<CR><++><Esc>2kA\item<Space>
+inoremap <buffer> ;ea <CR>\begin{align*}<CR><CR>\end{align*}<CR><++><Esc>kki<Tab>
+inoremap <buffer> ;ega <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
+inoremap <buffer> ;e <CR>\begin{gather*}<CR><CR>\end{gather*}<CR><++><Esc>kki<Tab>
+inoremap <buffer> ;m $$<++><Esc>F$i
+inoremap <buffer> ;ol <CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><++><Esc>2kA\item<Space>
+inoremap <buffer> ;ul <CR>\begin{itemize}<CR><CR>\end{itemize}<CR><++><Esc>2kA\item<Space>
 
 
 autocmd bufwritepost *.tex :Latexmk
