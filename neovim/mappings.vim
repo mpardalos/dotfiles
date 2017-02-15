@@ -23,8 +23,7 @@ nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
 
-" And for moving between tabs
-" u and i are right above hjkl
+" And for moving between tabs u and i are right above hjkl
 nnoremap <A-u> gT
 nnoremap <A-i> gt
 

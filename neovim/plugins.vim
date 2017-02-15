@@ -82,6 +82,9 @@ let g:airline_theme='wombat'
 "--------------------webdev---------------------
 Plug 'mattn/emmet-vim'
 "--------------------webdev---------------------
+
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
