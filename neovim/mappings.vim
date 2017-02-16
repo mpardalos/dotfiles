@@ -15,7 +15,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " F4 to toggle highlighting of search results
-:noremap <F4> :set hlsearch! hlsearch?<CR>
+nnoremap <F5> :set hlsearch! hlsearch?<CR>
 
 " Similar as above, but for rearranging splits
 nnoremap <A-H> <C-w>H
@@ -50,9 +50,9 @@ tnoremap <A-K> <C-\><C-n><C-w>K
 tnoremap <A-L> <C-\><C-n><C-w>L
 
 " FZF.vim
-nnoremap <C-g><F1> :GFiles<CR>
-nnoremap <F2> :FZF ~/Documents<CR>
+nnoremap <F2> :Files ~/Documents<CR>
 nnoremap <F3> :Files ~/.config/dotfiles<CR>
+nnoremap <F4> :GFiles<CR>
 
 " Git 
 nnoremap ,ga :GitGutterStageHunk<CR>
