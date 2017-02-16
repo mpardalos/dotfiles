@@ -36,7 +36,7 @@ nnoremap <space> za
 nnoremap <leader>F zM
 
 " NERDTree
-nnoremap <leader>t :NERDTreeToggle<Return>
+nnoremap <F1> :NERDTreeToggle<Return>
 let NERDTreeMapActivateNode='<space>'
 
 tnoremap <Esc> <C-\><C-n>
@@ -51,7 +51,6 @@ tnoremap <A-L> <C-\><C-n><C-w>L
 
 " FZF.vim
 nnoremap <C-g><F1> :GFiles<CR>
-nnoremap <F1> :Files<CR>
 nnoremap <F2> :FZF ~/Documents<CR>
 nnoremap <F3> :Files ~/.config/dotfiles<CR>
 
