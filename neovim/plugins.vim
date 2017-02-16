@@ -8,6 +8,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'Yggdroot/indentLine'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
+Plug 'mhinz/vim-startify'
 
 
 "-------------------git-----------------------
