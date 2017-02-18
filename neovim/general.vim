@@ -1,3 +1,5 @@
+" Options {{{
+"
 " Case insensitive search...
 set ignorecase
 " ...Except when using capital letters
@@ -30,17 +32,17 @@ set splitbelow
 " highligh cursor line & column
 set cursorline
 set cursorcolumn
+" }}}
 
+" Autocmds {{{
 " Automatically reload init.vim when it is changed. Either in the dotfiles
 " directory or in the nvim config directory
 if !exists("autocommands_loaded")
     let autocommands_loaded = 1
     autocmd bufwritepost $HOME/.config/nvim/* source $HOME/.config/nvim/init.vim
     autocmd bufwritepost $HOME/.config/dotfiles/neovim/* source $HOME/.config/nvim/init.vim
+    au BufNewFile,BufRead *.es6 set filetype=javascript
+    " Auto insert mode in the terminal
+    autocmd BufEnter * if &buftype == "terminal" | startinsert | endif
 endif
-
-au BufNewFile,BufRead *.es6 set filetype=javascript
-
-" Auto insert mode in the terminal
-autocmd BufEnter * if &buftype == "terminal" | startinsert | endif
-
+" }}}
