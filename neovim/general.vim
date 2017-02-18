@@ -16,9 +16,6 @@ set shiftwidth=4
 "Automatically change working directory to that of current file
 set autochdir
 
-" Open 2 levels of folds by default
-set foldlevelstart=2
-
 " Disable conceal on current line
 set concealcursor=""
 
