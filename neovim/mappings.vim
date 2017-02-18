@@ -3,8 +3,8 @@ let mapleader = ","
 " Prevents me from having to press Shift when entering a command
 nmap ; :
 
-" Save with zz
-nnoremap zz :w<CR>
+" Save with <C-s>
+nnoremap <C-s> :w<CR>
 
 " Moving around buffers {{{
 " Alt-hjkl to move between splits
