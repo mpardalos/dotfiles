@@ -6,6 +6,9 @@ nmap ; :
 " Save with <C-s>
 nnoremap <C-s> :w<CR>
 
+" Use the macro in the q register with @@
+nnoremap @@ @q
+
 " Moving around buffers {{{
 " Alt-hjkl to move between splits
 " Alt seems more convenient than Ctrl (which most people use) since I can hit
