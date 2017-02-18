@@ -7,7 +7,9 @@
 	default = simple
 [alias]
 	c = commit
+    ca = commit --amend
 	a = add
 	co = checkout
 	re = reset
 	s = status
+    
