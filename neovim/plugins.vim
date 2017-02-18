@@ -1,48 +1,46 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'scrooloose/nerdtree'
+"General {{{
 Plug 'ervandew/supertab'
+Plug 'easymotion/vim-easymotion'
+Plug 'Yggdroot/indentLine'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
-Plug 'peterhoeg/vim-qml'
-Plug 'Yggdroot/indentLine'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'mhinz/vim-startify'
+" }}}
 
-
-"-------------------git-----------------------
+" Git {{{
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
-"-------------------git-----------------------
+" }}}
 
-"-------------------FZF-----------------------
+" FZF {{{
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-"-------------------FZF-----------------------
+" }}}
 
-"--------------------Python--------------------
+"Python {{{
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'tmhedberg/SimpylFold'
 let g:SimpylFold_fold_docstring = 0 " Do not fold docstrings
-
 Plug 'zchee/deoplete-jedi'
 let g:python3_host_prog = '/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python2'
+" }}}
 
-"--------------------Python--------------------
-
-"--------------------Prose---------------------
+"Prose {{{
 Plug 'dbmrq/vim-ditto'
-"--------------------Prose---------------------
+" }}}
 
-"--------------------Markdown------------------
+"Markdown {{{
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-"--------------------Markdown------------------
+" }}}
 
-"--------------------LaTeX---------------------
+"LaTeX {{{
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -65,26 +63,25 @@ if !exists('g:deoplete#omni#input_patterns')
         \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
         \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
         \ .')'
-"--------------------LaTeX--------------------
+" }}}
 
-"--------------------Themes---------------------
+"Visuals {{{
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'jnurmine/Zenburn'
-"--------------------Themes---------------------
+Plug 'ryanoasis/vim-devicons'
+" }}}
 
-"--------------------airline--------------------
+"Airline {{{
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='wombat'
-"--------------------airline--------------------
+" }}}
 
-"--------------------webdev---------------------
+"Webdev {{{
 Plug 'mattn/emmet-vim'
-"--------------------webdev---------------------
-
-Plug 'ryanoasis/vim-devicons'
+" }}}
 
 call plug#end()
 
