@@ -1,0 +1,13 @@
+[user]
+	name = Michalis Pardalos
+	email = mpardalos@gmail.com
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[alias]
+	c = commit
+	a = add
+	co = checkout
+	re = reset
+	s = status

@@ -7,7 +7,7 @@ visualizer.spectrum.top.margin=0.3
 visualizer.spectrum.character=#
 
 # Colors
-colors.scheme=plain_blue
+colors.scheme=plain_orange
 
 # Falloff
 visualizer.spectrum.falloff.weight=1
