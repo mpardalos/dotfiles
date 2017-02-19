@@ -97,7 +97,8 @@ def autostart():
 
 @hook.subscribe.startup
 def autostart_always():
-    sh.setxkbmap(model='pc105', layout='gb,gr', option='grp:alt_space_toggle', _bg=True)
+    subprocess.run(['setxkbmap', '-model', 'pc105', '-layout', 'gb,gr', '-option',
+        'grp:alt_space_toggle,caps:escape'])
 
 
 
