@@ -39,6 +39,12 @@ Plug 'dbmrq/vim-ditto'
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+
+let g:pandoc#formatting#mode = "h"
+let g:pandoc#folding#fold_yaml = "1"
+let g:pandoc#folding#fold_fenced_codeblocks = "1"
+let g:pandoc#spell#default_langs = ["en", "de"]
+let g:pandoc#formatting#textwidth = "92"
 " }}}
 
 "LaTeX {{{
