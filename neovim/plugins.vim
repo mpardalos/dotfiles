@@ -37,7 +37,8 @@ Plug 'dbmrq/vim-ditto'
 
 "Markdown {{{
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 " }}}
 
 "LaTeX {{{
