@@ -6,6 +6,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
