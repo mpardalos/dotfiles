@@ -77,6 +77,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'jnurmine/Zenburn'
 Plug 'ryanoasis/vim-devicons'
+Plug 'miyakogi/seiya.vim'
 " }}}
 
 "Airline {{{
