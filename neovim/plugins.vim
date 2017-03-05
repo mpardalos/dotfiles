@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 "General {{{
+Plug 'vimlab/split-term.vim'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
