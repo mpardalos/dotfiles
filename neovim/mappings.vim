@@ -1,4 +1,5 @@
 let mapleader = ","
+let maplocalleader = "\\"
 
 " Prevents me from having to press Shift when entering a command
 nmap ; :
