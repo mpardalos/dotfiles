@@ -18,9 +18,9 @@ inoremap <buffer> ;pi \pi
 " }}}
 
 " Commands {{{
-inoremap <buffer> ;sec \section{}<CR><++><Esc>T{i
-inoremap <buffer> ;ssec \subsection{}<CR><++><Esc>T{i
-inoremap <buffer> ;sssec \subsubsection{}<CR><++><Esc>T{i
+inoremap <buffer> ;sec \section{}<CR><++><Esc>kf}i
+inoremap <buffer> ;ssec \subsection{}<CR><++><Esc>kf}i
+inoremap <buffer> ;sssec \subsubsection{}<CR><++><Esc>kf}i
 inoremap <buffer> ;pm \pmod{}<++><Esc>T{i
 inoremap <buffer> ;em \emph{}<++><Esc>T{i
 inoremap <buffer> ;bf \textbf{}<++><Esc>T{i
@@ -39,7 +39,7 @@ inoremap <buffer> ;ul <CR>\begin{itemize}<CR><CR>\end{itemize}<CR><++><Esc>2kA\i
 " }}}
 " }}}
 
-autocmd bufwritepost *.tex :Latexmk
+let g:LatexBox_latexmk_preview_continuously = 1
 
 nnoremap <buffer> <localleader>wc :!texcount %<CR>
 
