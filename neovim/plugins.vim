@@ -35,6 +35,8 @@ let g:python_host_prog = '/usr/bin/python2'
 
 "Prose {{{
 Plug 'dbmrq/vim-ditto'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
 " }}}
 
 "Markdown {{{
@@ -50,9 +52,8 @@ let g:pandoc#formatting#textwidth = "92"
 " }}}
 
 "LaTeX {{{
-Plug 'reedes/vim-pencil'
-Plug 'junegunn/goyo.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+
 let g:tex_flavor='latex'
 let g:LatexBox_Folding='1'
 let g:LatexBox_custom_indent='0'
