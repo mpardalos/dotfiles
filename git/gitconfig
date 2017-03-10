@@ -13,3 +13,5 @@
 	re = reset
 	s = status
     
+[pull]
+	rebase = true
