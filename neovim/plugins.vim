@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vimlab/split-term.vim'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
-Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
