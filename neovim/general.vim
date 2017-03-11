@@ -18,9 +18,8 @@ set shiftwidth=4
 "Automatically change working directory to that of current file
 set autochdir
 
-" Disable conceal on current line
-set concealcursor=""
-
+" Disable the conceal feature
+set conceallevel=0
 " 92 character column
 set colorcolumn=92
 set textwidth=92
