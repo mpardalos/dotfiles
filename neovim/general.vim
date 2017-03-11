@@ -7,8 +7,6 @@ set smartcase
 
 " Line numbers
 set number
-" relative to the current line
-set relativenumber
 
 "4 spaces for indentation
 set expandtab
