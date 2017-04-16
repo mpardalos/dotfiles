@@ -36,6 +36,7 @@ let g:python_host_prog = '/usr/bin/python2'
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
+Plug 'freitass/todo.txt-vim'
 " }}}
 
 "Markdown {{{
