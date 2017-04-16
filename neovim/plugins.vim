@@ -19,7 +19,7 @@ Plug 'airblade/vim-gitgutter'
 " }}}
 
 " FZF {{{
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " }}}
 
