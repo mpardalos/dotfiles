@@ -45,7 +45,7 @@ function wc-tex {
 function explore {
     dolphin $1 &>/dev/null &
 }
-alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder -Su"
+alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder --ignore intellij-idea-ultimate-edition -Su"
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
 alias g="git"
 
