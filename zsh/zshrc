@@ -51,3 +51,6 @@ alias g="git"
 alias todo="nvim ~/Dropbox/todo/todo.txt"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Print motd
+~/.motd
