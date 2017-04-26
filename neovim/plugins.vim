@@ -32,11 +32,16 @@ let g:python3_host_prog = '/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python2'
 " }}}
 
+" Organisation {{{
+Plug 'freitass/todo.txt-vim'
+Plug 'vitalk/vim-simple-todo', {'for': 'list'}
+let g:simple_todo_map_keys = 0
+" }}}
+
 "Prose {{{
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
-Plug 'freitass/todo.txt-vim'
 " }}}
 
 "Markdown {{{

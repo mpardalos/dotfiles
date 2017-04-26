@@ -1,0 +1,5 @@
+nmap <buffer> <localleader>i <Plug>(simple-todo-new)
+nmap <buffer> <localleader>I <Plug>(simple-todo-new-start-of-line)
+nmap <buffer> <localleader>o <Plug>(simple-todo-below)
+nmap <buffer> <localleader>O <Plug>(simple-todo-above)
+nmap <buffer> <localleader>x <Plug>(simple-todo-mark-switch)
