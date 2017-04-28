@@ -61,3 +61,5 @@ alias todo="nvim ~/Dropbox/todo/todo.txt"
 
 wait
 
+# Re-enable job messages
+set -m
