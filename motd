@@ -84,8 +84,9 @@ if __name__ == '__main__':
     uname = sh.uname('-snr').rstrip()
 
     # Find the line for the filesystem in the output of df -h, and split the columns
-    fs_name         = 'sda2'
-    df_data         = next(line for line in sh.df('-h') if fs_name in line).split()
+    mount_location  = r'/'
+    df_data         = next(line for line in sh.df('-h') if line.split()[5] == mount_location) .split()
+    fs_name         = df_data[0]
     total_space     = df_data[1][:-1] # The [:-1] removes the unit (G/M/K, etc.)
     available_space = df_data[2][:-1]
 
