@@ -108,3 +108,4 @@ if __name__ == '__main__':
     ]
 
     simulate_typing('\n'.join(get_motd(fortune, image_path, messages, image_color)))
+    print()
