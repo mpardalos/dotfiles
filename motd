@@ -83,14 +83,14 @@ def uptime():
 def free_space():
     # Find the line for the filesystem in the output of df -h, and split the columns
     mount_location  = r'/'
-    df_data         = next(
-            line for line in sh.df('-h') if line.split()[5] == mount_location
-        ).split()
+    df_data         = \
+        next( line for line in sh.df('-h') if line.split()[5] == mount_location)\
+        .split()
     fs_name         = df_data[0]
     total_space     = df_data[1][:-1] # The [:-1] removes the unit (G/M/K, etc.)
-    available_space = df_data[2][:-1]
+    available_space = int(total_space) - int(df_data[2][:-1])
     # Color for the available space count if more than 90 is full
-    space_critical  = (float(available_space) / float(total_space)) > .9 
+    space_critical  = (float(available_space) / float(total_space)) < .1 
     space_color     = 'red' if space_critical else None
 
     return f'{fs_name}: {colored(f"{available_space}/{total_space}GB", space_color)} available'
