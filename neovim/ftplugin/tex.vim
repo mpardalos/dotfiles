@@ -40,6 +40,10 @@ inoremap <buffer> ;ul <CR>\begin{itemize}<CR><CR>\end{itemize}<CR><++><Esc>2kA\i
 " }}}
 
 let g:LatexBox_latexmk_preview_continuously = 1
+let g:tex_flavor='latex'
+let g:LatexBox_Folding='1'
+let g:LatexBox_custom_indent='0'
+let g:LatexBox_quickfix=3
 
 nnoremap <buffer> <localleader>wc :!texcount %<CR>
 

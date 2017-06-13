@@ -60,11 +60,6 @@ let g:pandoc#formatting#textwidth = "92"
 "LaTeX {{{
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 
-let g:tex_flavor='latex'
-let g:LatexBox_Folding='1'
-let g:LatexBox_custom_indent='0'
-let g:LatexBox_quickfix=3
-
 " deoplete LaTeX completion
 if !exists('g:deoplete#omni#input_patterns')
       let g:deoplete#omni#input_patterns = {}
