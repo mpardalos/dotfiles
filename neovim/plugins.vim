@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 "General {{{
 Plug 'vimlab/split-term.vim'
+Plug 'pseewald/vim-anyfold'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
