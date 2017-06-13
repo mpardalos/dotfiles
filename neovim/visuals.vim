@@ -7,4 +7,3 @@ let &background="dark"
 set guifont=Hasklug\ Nerd\ Font\ Complete\ Mono\ 11
 
 let g:seiya_target_groups=['guibg']
-let g:seiya_auto_enable=1
