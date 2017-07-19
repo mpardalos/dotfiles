@@ -11,7 +11,8 @@
 	a = add
 	co = checkout
 	re = reset
-	s = status
+	s = status --short
+    ls = status --long
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [pull]
 	rebase = true
