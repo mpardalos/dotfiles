@@ -93,6 +93,11 @@ let g:airline_theme='wombat'
 
 "Webdev {{{
 Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+" }}}
+
+" .NET {{{
+Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete'}
 " }}}
 
 call plug#end()
