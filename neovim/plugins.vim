@@ -7,7 +7,7 @@ Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
@@ -89,6 +89,7 @@ Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='wombat'
+Plug 'edkolev/tmuxline.vim'
 " }}}
 
 "Webdev {{{
