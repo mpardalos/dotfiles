@@ -101,6 +101,9 @@ Plug 'posva/vim-vue'
 Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete'}
 " }}}
 
+" Haskell {{{
+Plug 'neovimhaskell/haskell-vim'
+" }}}
 call plug#end()
 
 
