@@ -36,7 +36,7 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 # PATH
-export PATH=$PATH:$HOME/.bin:/usr/local/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools
+export PATH=$PATH:$HOME/.bin:/usr/local/bin:$HOME/.android/sdk/tools
 
 # Execute lines with !! immediately
 setopt no_hist_verify
@@ -56,6 +56,9 @@ alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && 
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
 alias g="git"
 alias todo="nvim ~/Dropbox/todo/todo.txt"
+function cd {
+    builtin cd $1 && ls
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
