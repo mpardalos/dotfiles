@@ -5,3 +5,7 @@ let g:seiya_target_groups=['guibg'] " Fix for neovim
 set termguicolors
 colorscheme gruvbox
 let &background="dark"
+
+" Proper box drawing characters for splits
+" and no foldline
+set fillchars=vert:│,fold:\ 
