@@ -8,10 +8,14 @@ import os
 from collections import defaultdict
 from time import sleep
 import sys
+import argparse
 
 from colorama import init, Fore, Style
 from termcolor import colored
 import sh
+
+IMAGE_COLOR = Fore.BLUE
+IMAGE_PATH  = '~/.motd_image'
 
 
 def get_motd(pre_message, image_path, messages, image_color=None):
@@ -96,16 +100,20 @@ def free_space():
     return f'{fs_name}: {colored(f"{available_space}/{total_space}GB", space_color)} available'
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', type=float, 
+            help='Simulate typing, specify an amount of time between each '
+                 '"button press"')
+    args = parser.parse_args()
+
     fortune = sh.fortune('-s').rstrip()
     
-    image_path  = '~/.motd_image'
-    image_color = Fore.BLUE
-
     messages = [
         sh.uname('-snr').rstrip(),
         free_space(),
         uptime()
     ]
 
-    simulate_typing('\n'.join(get_motd(fortune, image_path, messages, image_color)))
+    simulate_typing('\n'.join(get_motd(fortune, IMAGE_PATH, messages, IMAGE_COLOR)),
+                    args.t or 0)
     print()

@@ -1,39 +1,11 @@
+# vim: foldmethod=marker
+
 # Silence verbose messages
 set +m
 
 # Print motd in a thread, this covers the time taken for the rest of the script with
 # animated printing
-~/.motd &
-
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _complete _ignored _correct _approximate
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle :compinstall filename '$HOME/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=500
-SAVEHIST=500
-setopt notify
-# End of lines configured by zsh-newuser-install
-
-# oh-my-zsh options
-source ~/.ohmyzshrc
-
-# Change default editor to neovim
-export EDITOR=nvim
-function gnvim {
-    konsole --profile neovim -e nvim $1 &>/dev/null &
-}
-
-# Enable virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+~/.motd -t .001 &
 
 # PATH
 export PATH=$PATH:$HOME/.bin:/usr/local/bin:$HOME/.android/sdk/tools
@@ -41,26 +13,38 @@ export PATH=$PATH:$HOME/.bin:/usr/local/bin:$HOME/.android/sdk/tools
 # Execute lines with !! immediately
 setopt no_hist_verify
 
-# Project dir for virtualenvwrapper
-export PROJECT_HOME=~/Documents
+export EDITOR=nvim
 
-#aliases
-function wc-tex {
-    detex $1 | wc | awk '{print $2}'
-}
-# open a directory in dolphin
-function explore {
-    dolphin $1 &>/dev/null &
-}
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Aliases {{{
 alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder -Su"
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
 alias g="git"
 alias todo="nvim ~/Dropbox/todo/todo.txt"
+
 function cd {
-    builtin cd $1 && ls
+    builtin cd $1 && ls --color=auto
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# open a directory in dolphin
+function explore {
+    dolphin $1 &>/dev/null &
+}
+
+function gnvim {
+    konsole --profile neovim -e nvim $1 &>/dev/null &
+}
+
+function wc-tex {
+    detex $1 | wc | awk '{print $2}'
+}
+# }}}
+
+# Prompt {{{
+autoload -U promptinit; promptinit
+prompt pure
+# }}}
 
 wait
 
