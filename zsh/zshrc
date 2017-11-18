@@ -7,6 +7,19 @@ set +m
 # animated printing
 ~/.motd -t .001 &
 
+# Antigen {{{
+source ~/.antigen/init.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle arch
+antigen bundle pip
+antigen antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme pure
+antigen apply
+# }}}
+
 # PATH
 export PATH=$PATH:$HOME/.bin:/usr/local/bin:$HOME/.android/sdk/tools
 
@@ -18,6 +31,8 @@ export EDITOR=nvim
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Aliases {{{
+alias ls="ls --color=auto"
+alias ll="ls -l"
 alias pacupdate="sudo pacman -Syu && echo '\nrepos \n--------------\naur \n' && pkgbuilder -Su"
 alias dotfiles-update="git -C ~/.config/dotfiles pull"
 alias g="git"
@@ -41,9 +56,13 @@ function wc-tex {
 }
 # }}}
 
-# Prompt {{{
-autoload -U promptinit; promptinit
-prompt pure
+# History {{{
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory 
 # }}}
 
 wait
