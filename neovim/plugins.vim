@@ -57,6 +57,10 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'neovimhaskell/haskell-vim'
     " }}}
     
+    " Idris {{{
+        Plug 'idris-hackers/idris-vim'
+    " }}}
+    
     "Python {{{
         Plug 'jmcantrell/vim-virtualenv'
         Plug 'tmhedberg/SimpylFold'
