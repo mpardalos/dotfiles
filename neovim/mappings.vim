@@ -10,6 +10,22 @@ nnoremap <C-s> :w<CR>
 " Use the macro in the q register with @@
 nnoremap @@ @q
 
+" Text manipulation {{{
+
+" Moving lines up and down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" {un}indenting visual blocks
+nnoremap <C-h> <<
+nnoremap <C-l> >>
+vnoremap <C-h> <gv
+vnoremap <C-l> >gv
+
+" }}}
+
 " Moving around buffers {{{
 " Alt-hjkl to move between splits
 " Alt seems more convenient than Ctrl (which most people use) since I can hit
@@ -36,11 +52,10 @@ nnoremap <A-m> :bnext<CR>
 
 " Folding {{{
 nnoremap <space> za
-nnoremap <leader>F zM
 " }}}
 
 " NERDTree {{{
-nnoremap <F1> :NERDTreeToggle<Return>
+nnoremap <leader>/ :NERDTreeToggle<Return>
 let NERDTreeMapActivateNode='<space>'
 " }}}
 
@@ -57,9 +72,9 @@ tnoremap <A-L> <C-\><C-n><C-w>L
 " }}}
 
 " FZF.vim {{{
-nnoremap <F2> :Files ~/Documents<CR>
-nnoremap <F3> :Files ~/.config/dotfiles<CR>
-nnoremap <F4> :GFiles<CR>
+nnoremap <leader>fd :Files ~/Documents<CR>
+nnoremap <leader>fc :Files ~/.config/dotfiles<CR>
+nnoremap <leader>fg :GFiles<CR>
 " }}}
 
 " Git {{{
@@ -74,8 +89,8 @@ nnoremap ,gc :Gcommit<CR>
 " Toggles  {{{
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" F4 to toggle highlighting of search results
-nnoremap <F5> :set hlsearch! hlsearch?<CR>
+" // to toggle highlighting of search results
+nnoremap // :set hlsearch! hlsearch?<CR>
 " }}}
 
 " Guides  {{{
