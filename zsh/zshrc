@@ -69,3 +69,6 @@ wait
 
 # Re-enable job messages
 set -m
+
+# jump
+eval "$(jump shell zsh)"
