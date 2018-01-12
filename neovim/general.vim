@@ -6,7 +6,7 @@ set ignorecase
 set smartcase
 
 " Line numbers
-set number
+set relativenumber
 
 "4 spaces for indentation
 set expandtab
@@ -29,6 +29,9 @@ set splitbelow
 " highligh cursor line & column
 set cursorline
 set cursorcolumn
+
+"no visual wrap
+set nowrap
 " }}}
 
 " Autocmds {{{

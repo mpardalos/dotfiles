@@ -9,3 +9,5 @@ let &background="dark"
 " Proper box drawing characters for splits
 " and no foldline
 set fillchars=vert:│,fold:\ 
+
+set nowrap
