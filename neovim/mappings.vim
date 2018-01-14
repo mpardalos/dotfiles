@@ -19,10 +19,8 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " {un}indenting visual blocks
-nnoremap <C-h> <<
-nnoremap <C-l> >>
-vnoremap <C-h> <gv
-vnoremap <C-l> >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " }}}
 
