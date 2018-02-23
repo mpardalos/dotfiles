@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Language-specific {{{
     " Haskell {{{
         Plug 'neovimhaskell/haskell-vim'
+        Plug 'eagletmt/ghcmod-vim'
     " }}}
     
     " Idris {{{

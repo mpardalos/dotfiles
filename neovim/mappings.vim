@@ -13,10 +13,10 @@ nnoremap @@ @q
 " Text manipulation {{{
 
 " Moving lines up and down
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
+" vnoremap <C-j> :m '>+1<CR>gv=gv
+" vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " {un}indenting visual blocks
 vnoremap < <gv
@@ -24,14 +24,25 @@ vnoremap > >gv
 
 " }}}
 
-" Moving around buffers {{{
+" Moving around {{{
+
+" Tmux-navigator {{{
+
 " Alt-hjkl to move between splits
 " Alt seems more convenient than Ctrl (which most people use) since I can hit
 " it with my thumb instead of my pinky
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
+
+let g:tmux_navigator_no_mappings = 1
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 1
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+" }}}
 
 " Similar as above, but for rearranging splits
 nnoremap <A-H> <C-w>H
@@ -73,6 +84,7 @@ tnoremap <A-L> <C-\><C-n><C-w>L
 nnoremap <leader>fd :Files ~/Documents<CR>
 nnoremap <leader>fc :Files ~/.config/dotfiles<CR>
 nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fb :Buffers<CR>
 " }}}
 
 " Git {{{
@@ -91,12 +103,6 @@ map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap // :set hlsearch! hlsearch?<CR>
 " }}}
 
-" Guides  {{{
-" Moving around with <++> as guides (Used by other mappings)
-inoremap <leader>m <Esc>/<++><Enter>"_c4l
-vnoremap <leader>m <Esc>/<++><Enter>"_c4l
-nnoremap <leader>m /<++><Enter>"_c4l
-" }}}
 
 " Easy align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
