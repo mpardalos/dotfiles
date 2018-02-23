@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
-"General {{{
-    Plug 'vimlab/split-term.vim'
+" General {{{
     Plug 'pseewald/vim-anyfold'
     Plug 'ervandew/supertab'
     Plug 'easymotion/vim-easymotion'
@@ -11,6 +10,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
+    Plug 'neomake/neomake'
+    autocmd! BufWritePost,BufEnter * Neomake
+" }}}
+
+" Tmux {{{
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
 " Git {{{
@@ -30,52 +36,59 @@ call plug#begin('~/.config/nvim/plugged')
     let g:simple_todo_map_keys = 0
 " }}}
 
-"Prose {{{
+" Prose {{{
     Plug 'dbmrq/vim-ditto'
     Plug 'reedes/vim-pencil'
     Plug 'junegunn/goyo.vim'
 " }}}
 
-"Visuals {{{
+" Visuals {{{
     Plug 'altercation/vim-colors-solarized'
     Plug 'morhetz/gruvbox'
     Plug 'jnurmine/Zenburn'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'miyakogi/seiya.vim'
-" }}}
+    Plug 'miyakogi/seiya.vim' " {{{
+    let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+    " }}}
+    Plug 'dbarsam/vim-rainbow-parentheses' " {{{
+    " }}}
+    " }}}
 
-"Airline {{{
+" Airline {{{
     Plug 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
     Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme='wombat'
-    Plug 'edkolev/tmuxline.vim'
+    " Plug 'edkolev/tmuxline.vim'
 " }}}
 
 " Language-specific {{{
     " Haskell {{{
         Plug 'neovimhaskell/haskell-vim'
+        Plug 'Shougo/vimproc', {'do': 'make'} " ^  requires
         Plug 'eagletmt/ghcmod-vim'
+        Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     " }}}
     
     " Idris {{{
         Plug 'idris-hackers/idris-vim'
     " }}}
     
-    "Python {{{
+    " Python {{{
         Plug 'jmcantrell/vim-virtualenv'
         Plug 'tmhedberg/SimpylFold'
         let g:SimpylFold_fold_docstring = 0 " Do not fold docstrings
-        Plug 'zchee/deoplete-jedi'
+        Plug 'zchee/deoplete-jedi' " {{{
         let g:python3_host_prog = '/usr/bin/python3'
         let g:python_host_prog = '/usr/bin/python2'
+        " }}}
     " }}}
 
     " .NET {{{
         Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete'}
     " }}}
 
-    "LaTeX {{{
+    " LaTeX {{{
         Plug 'LaTeX-Box-Team/LaTeX-Box'
         " deoplete LaTeX completion
         if !exists('g:deoplete#omni#input_patterns')
@@ -93,7 +106,7 @@ call plug#begin('~/.config/nvim/plugged')
             \ .')'
     " }}}
 
-    "Markdown {{{
+    " Markdown {{{
         Plug 'godlygeek/tabular'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -105,9 +118,10 @@ call plug#begin('~/.config/nvim/plugged')
         let g:pandoc#formatting#textwidth = "92"
     " }}}
 
-    "Webdev {{{
+    " Webdev {{{
         Plug 'mattn/emmet-vim'
         Plug 'posva/vim-vue'
+        Plug 'lepture/vim-jinja'
     " }}}
 " }}}
 call plug#end()
