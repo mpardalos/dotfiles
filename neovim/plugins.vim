@@ -123,6 +123,10 @@ Plug 'christoomey/vim-tmux-navigator'
         Plug 'posva/vim-vue'
         Plug 'lepture/vim-jinja'
     " }}}
+    
+    " Fish shell {{{
+    Plug 'dag/vim-fish'
+    " }}}
 " }}}
 call plug#end()
 
