@@ -8,15 +8,18 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'junegunn/vim-easy-align'
     Plug 'scrooloose/nerdtree'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " {{{
     let g:deoplete#enable_at_startup = 1
-    Plug 'neomake/neomake'
+    "}}}
+    Plug 'neomake/neomake' " {{{
     autocmd! BufWritePost,BufEnter * Neomake
+    " }}}
+    Plug 'tpope/vim-commentary'
 " }}}
 
 " Tmux {{{
-Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
+    Plug 'benmills/vimux'
+    Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
 " Git {{{
