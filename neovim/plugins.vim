@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
     autocmd! BufWritePost,BufEnter * Neomake
     " }}}
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-repeat'
 " }}}
 
 " Tmux {{{
