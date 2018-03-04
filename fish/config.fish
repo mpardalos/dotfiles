@@ -6,5 +6,5 @@ bind -e \ek
 bind -e \el
 
 # Add . to PATH
-set -gx PATH . $PATH
+set -gx PATH . ~/.gem/ruby/2.5.0/gems/tmuxinator-0.10.1/bin/ $PATH
 
