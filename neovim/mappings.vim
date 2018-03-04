@@ -8,7 +8,8 @@ nmap ; :
 nnoremap <C-s> :w<CR>
 
 " Use the macro in the q register with @@
-nnoremap @@ @q
+nnoremap Q @q
+vnoremap Q :norm @q<CR>
 
 " Text manipulation {{{
 
