@@ -47,9 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
 " }}}
 
 " Visuals {{{
-    Plug 'altercation/vim-colors-solarized'
-    Plug 'morhetz/gruvbox'
-    Plug 'jnurmine/Zenburn'
+    Plug 'chriskempson/base16-vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'miyakogi/seiya.vim' " {{{
     let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
@@ -126,6 +124,7 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'mattn/emmet-vim'
         Plug 'posva/vim-vue'
         Plug 'lepture/vim-jinja'
+        Plug 'mhartington/nvim-typescript'
     " }}}
     
     " Fish shell {{{

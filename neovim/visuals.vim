@@ -1,8 +1,6 @@
-" Theme...
+" Theme..solarized
 set termguicolors
-colorscheme gruvbox
-let &background="dark"
-let g:seiya_auto_enable=1
+colorscheme base16-gruvbox-dark-medium
 
 " Proper box drawing characters for splits
 " and no foldline
