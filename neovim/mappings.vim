@@ -104,11 +104,18 @@ map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap // :set hlsearch! hlsearch?<CR>
 " }}}
 
-
 " Easy align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" }}}
+
+" Marks {{{
+function! GoToMark()
+    execute "normal! /<++>/\<CR>ca<"
+endfunction
+nnoremap <leader>m :call GoToMark()<CR>a
+inoremap <leader>m <Esc>:call GoToMark()<CR>a
 " }}}
