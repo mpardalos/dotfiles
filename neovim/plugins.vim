@@ -11,9 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " {{{
     let g:deoplete#enable_at_startup = 1
     "}}}
-    Plug 'neomake/neomake' " {{{
-    autocmd! BufWritePost,BufEnter * Neomake
-    " }}}
+    Plug 'neomake/neomake' 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-repeat'
 " }}}
@@ -49,6 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Visuals {{{
     Plug 'chriskempson/base16-vim'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'dylanaraps/wal.vim'
     Plug 'miyakogi/seiya.vim' " {{{
     let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
     " }}}
@@ -65,30 +64,16 @@ call plug#begin('~/.config/nvim/plugged')
 " }}}
 
 " Language-specific {{{
-    " Haskell {{{
-        Plug 'neovimhaskell/haskell-vim'
-        Plug 'Shougo/vimproc', {'do': 'make'} " ^  requires
-        Plug 'eagletmt/ghcmod-vim'
-        Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-    " }}}
-    
-    " Idris {{{
-        Plug 'idris-hackers/idris-vim'
-    " }}}
-    
-    " Python {{{
-        Plug 'jmcantrell/vim-virtualenv'
-        Plug 'tmhedberg/SimpylFold'
-        let g:SimpylFold_fold_docstring = 0 " Do not fold docstrings
-        Plug 'zchee/deoplete-jedi' " {{{
-        let g:python3_host_prog = '/usr/bin/python3'
-        let g:python_host_prog = '/usr/bin/python2'
-        " }}}
-    " }}}
+    Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-    " .NET {{{
-        Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete'}
-    " }}}
+    let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls']
+    \ }
+
 
     " LaTeX {{{
         Plug 'LaTeX-Box-Team/LaTeX-Box'
@@ -110,7 +95,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Markdown {{{
         Plug 'godlygeek/tabular'
-        Plug 'vim-pandoc/vim-pandoc'
+        " Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
 
         let g:pandoc#formatting#mode = "h"
@@ -124,7 +109,6 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'mattn/emmet-vim'
         Plug 'posva/vim-vue'
         Plug 'lepture/vim-jinja'
-        Plug 'mhartington/nvim-typescript'
     " }}}
     
     " Fish shell {{{

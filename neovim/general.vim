@@ -7,6 +7,7 @@ set smartcase
 
 " Line numbers
 set relativenumber
+set number
 
 "4 spaces for indentation
 set expandtab
@@ -32,6 +33,8 @@ set cursorcolumn
 
 "no visual wrap
 set nowrap
+
+set mouse=a
 " }}}
 
 " Autocmds {{{
