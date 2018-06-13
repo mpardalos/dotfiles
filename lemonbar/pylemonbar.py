@@ -87,7 +87,8 @@ class Bar:
             fg_color='#FFFFFF',
             u_color='#FF0000',
             geometry=None, 
-            padding=(0, 0)):
+            padding=(0, 0), 
+            spacing=0):
         """
         :param font: The default font of the bar, as would be passed to fc-match
         
@@ -106,6 +107,8 @@ class Bar:
 
         :parameter padding: The spacing before and after the first and last elements of the
         bar respectively.
+
+        :parameter spacing: The spacing around each element
         """
 
         self.update_interval = update_interval
@@ -115,6 +118,7 @@ class Bar:
         self.font = font
         self.geometry = geometry
         self.padding = padding
+        self.spacing = spacing
 
         self.left_modules = []
         self.center_modules = []
@@ -177,13 +181,15 @@ class Bar:
         
         now = time()
         log.debug('updating')
+
+        spacing = f'%{{O{self.spacing}}}'
         output = (
               f'%{{l}}%{{O{self.padding[0]}}}' 
-            + ''.join(module._update(now) for module in self.left_modules)
+            + spacing.join(module._update(now) for module in self.left_modules)
             + '%{c}' 
-            + ''.join(module._update(now) for module in self.center_modules)
+            + spacing.join(module._update(now) for module in self.center_modules)
             + '%{r}'
-            + ''.join(module._update(now) for module in self.right_modules)
+            + spacing.join(module._update(now) for module in self.right_modules)
             + f'%{{O{self.padding[1]}}}'
             )
 
