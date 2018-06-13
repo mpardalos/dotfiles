@@ -88,7 +88,8 @@ class Bar:
             u_color='#FF0000',
             geometry=None, 
             padding=(0, 0), 
-            spacing=0):
+            spacing=0,
+            separator=''):
         """
         :param font: The default font of the bar, as would be passed to fc-match
         
@@ -105,10 +106,12 @@ class Bar:
         (width, height, x-offset, y-offset). This is passed directly to lemonbar's -g
         parameter
 
-        :parameter padding: The spacing before and after the first and last elements of the
+        :param padding: The spacing before and after the first and last elements of the
         bar respectively.
 
-        :parameter spacing: The spacing around each element
+        :param spacing: The spacing around each element
+        :param separator: The character separating each element. It is inserted in the
+        middle of the spacing
         """
 
         self.update_interval = update_interval
@@ -119,6 +122,7 @@ class Bar:
         self.geometry = geometry
         self.padding = padding
         self.spacing = spacing
+        self.separator = separator
 
         self.left_modules = []
         self.center_modules = []
@@ -182,7 +186,7 @@ class Bar:
         now = time()
         log.debug('updating')
 
-        spacing = f'%{{O{self.spacing}}}'
+        spacing = f'%{{O{self.spacing/2}}}{self.separator}%{{O{self.spacing/2}}}'
         output = (
               f'%{{l}}%{{O{self.padding[0]}}}' 
             + spacing.join(module._update(now) for module in self.left_modules)
