@@ -81,7 +81,7 @@ class Bar:
     >>> bar.run()
     """
     def __init__(self,
-            font=None,
+            fonts=None,
             update_interval=0.5,
             bg_color='#000000',
             fg_color='#FFFFFF',
@@ -115,7 +115,7 @@ class Bar:
         self.bg_color = bg_color
         self.fg_color = fg_color
         self.u_color = u_color
-        self.font = font
+        self.fonts = fonts or []
         self.geometry = geometry
         self.padding = padding
         self.spacing = spacing
@@ -206,13 +206,14 @@ class Bar:
                     '-B', self.bg_color,
                     '-F', self.fg_color, 
                     '-U', self.u_color]
-        if self.font:
-            args += ['-f', self.font]
 
         if self.geometry:
             w, h, x, y = self.geometry
             args += ['-g', f'{w}x{h}+{x}+{y}']
         
+        for font in self.fonts:
+            args += ['-f', font]
+
         self._bar = subprocess.Popen(
                 args,
                 stdin=PIPE, 
@@ -304,7 +305,6 @@ class BSPWMDesktops(BarModule):
         for event_type, args in current_state_events.items():
             if event_type == b'desktop_focus':
                 self.current_desktop_id = str(args[1], 'utf-8') 
-
         
         formatted_desktops = [
             colored(name, "#FF0000") if id == self.current_desktop_id else name
