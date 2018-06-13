@@ -1,11 +1,28 @@
-from subprocess import Popen, PIPE
-from functools import wraps
+import subprocess
+from subprocess import PIPE
 from time import sleep, time
 import logging 
+import fcntl
+import os
+import uuid
+
+import sh
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.FATAL)
 log.addHandler(logging.StreamHandler())
+
+def non_block_read(output):
+    """
+    No clue how this works. hulp.
+    """
+    fd = output.fileno()
+    fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+    fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+    try:
+        return output.read() or ""
+    except:
+        return ""
 
 def colored(text, color=None, reset_color=None):
     reset_color = reset_color or '-'
@@ -22,10 +39,11 @@ def underlined(text, color=None, reset_color=None):
     color = color or '-'
     return f'%{{U{color}}}%{{+u}}{text}%{{-u}}%{{U{reset_color}}}'
 
+
 class Bar:
     def __init__(self,
             font=None,
-            update_interval=2,
+            update_interval=0.5,
             bg_color='#000000',
             fg_color='#FFFFFF',
             u_color='#FF0000',
@@ -43,6 +61,15 @@ class Bar:
         self.left_modules = []
         self.center_modules = []
         self.right_modules = []
+
+        self.button_callbacks = {}
+
+        self._start_bar()
+
+    def button(self, text, button, callback):
+        id = uuid.uuid4().hex
+        self.button_callbacks[id] = callback
+        return f'%{{A{button}:{id}:}}{text}%{{A}}'
 
     def module(self, *args, **kwargs):
         """
@@ -69,6 +96,9 @@ class Bar:
 
 
     def _update(self):
+        for callback in non_block_read(self._bar.stdout).splitlines():
+            self.button_callbacks[callback]()
+        
         now = time()
         log.debug('updating')
         output = (
@@ -101,16 +131,16 @@ class Bar:
             w, h, x, y = self.geometry
             args += ['-g', f'{w}x{h}+{x}+{y}']
         
-        self._bar = Popen(
+        self._bar = subprocess.Popen(
                 args,
                 stdin=PIPE, 
+                stdout=PIPE,
                 universal_newlines=True)
 
     def run(self):
         """
         Run the bar until an exception (such as Ctrl-c) is raised
         """
-        self._start_bar()
         try: 
             while True:
                 self._update()
@@ -170,11 +200,6 @@ class BSPWMDesktops(BarModule):
 
         self.events = subprocess.Popen(['bspc', 'subscribe', 'desktop'], stdout=PIPE)
 
-        # make stdout non-blocking
-        fd = self.events.stdout.fileno()
-        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
-
         desktop_ids = sh.bspc.query('-D').splitlines()
         desktop_names = sh.bspc.query('-D', '--names').splitlines()
         # map desktop ids to desktop names
@@ -183,7 +208,7 @@ class BSPWMDesktops(BarModule):
         self.current_desktop_id = sh.bspc.query('-D', '-d').strip()
 
     def output(self):
-        event_strings = (self.events.stdout.read() or '').splitlines()
+        event_strings = (non_block_read(self.events.stdout)).splitlines()
 
         # Find the last events of each type and put them in current_state_events
         current_state_events = {}
