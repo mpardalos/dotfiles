@@ -1,22 +1,49 @@
-import subprocess
-from subprocess import PIPE
-import fcntl
-import os
 from logging import DEBUG, WARN, INFO
 
 import sh
 
-from pylemonbar import Bar, Align, BarModule, colored, BSPWMDesktops
+from pylemonbar import Bar, Align, BSPWMDesktops, BarModule
 import pylemonbar
 
-pylemonbar.log.setLevel(INFO)
 
-bar = Bar(font="UbuntuMono Nerd Font Mono:size=18", 
+pylemonbar.log.setLevel(WARN)
+
+bar = Bar(update_interval=0.1,
+        fonts=["Font Awesome 5 Free:style=Solid", "UbuntuMono Nerd Font Mono:size=12"], 
         geometry=(1896, 30, 12, 10),
-        bg_color="#D7D787", 
-        fg_color="#121212", padding=(20, 20))
+        bg_color="#DD6a1931", 
+        fg_color="#FFFFFF", 
+        padding=(20, 20), 
+        spacing=10,
+        separator='│')
 
 bar.register_module(BSPWMDesktops(1))
+
+@bar.module(10, align=Align.RIGHT)
+def battery():
+    try:
+        battery_level = int(sh.acpi('-b').split()[-1][:-1])
+        if battery_level < 20:
+            icon = '' 
+        elif battery_level < 40:
+            icon = '' 
+        elif battery_level < 60:
+            icon = '' 
+        elif battery_level < 80:
+            icon = '' 
+        else:
+            icon = '' 
+
+        return icon + ' ' + str(battery_level) + '%'
+    except ValueError:
+        return ''
+
+
+@bar.module(60, align=Align.RIGHT)
+def fa():
+    return ' ' + str(sh.nmcli(
+        '--terse', '--fields', 'name', '--colors=no', 'connection', 'show', '--active')
+        ).strip()
 
 @bar.module(20, align=Align.RIGHT)
 def clock():
