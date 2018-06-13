@@ -25,22 +25,61 @@ def non_block_read(output):
         return ""
 
 def colored(text, color=None, reset_color=None):
+    """
+    Colorize text for showing on the bar
+
+    :param text: The text to colorize
+    :param color: The color in "#RGB", "#RRGGBB" or "#AARRGGBB" format. Defaults to the
+    default color of the bar
+    :param reset_color: The color to reset to after this text. Defaults to the default color
+    of the bar
+    """
     reset_color = reset_color or '-'
     color = color or '-'
     return f'%{{F{color}}}{text}%{{F{reset_color}}}'
 
 def backgrounded(text, color=None, reset_color=None):
+    """
+    Set background color of text for showing on the bar
+
+    :param text: The text to colorize
+    :param color: The background color in "#RGB", "#RRGGBB" or "#AARRGGBB" format. Defaults
+    to the default background color of the bar
+    :param reset_color: The background color to reset to after this text. Defaults to the
+    default background color of the bar
+    """
     reset_color = reset_color or '-'
     color = color or '-'
     return f'%{{B{color}}}{text}%{{B{reset_color}}}'
 
 def underlined(text, color=None, reset_color=None):
+    """
+    Set background color of text for showing on the bar
+
+    :param text: The text to colorize
+    :param color: The underline color in "#RGB", "#RRGGBB" or "#AARRGGBB" format. Defaults
+    to the default underline color of the bar
+    :param reset_color: The underline color to reset to after this text. Defaults to the
+    default underline color of the bar
+    """
     reset_color = reset_color or '-'
     color = color or '-'
     return f'%{{U{color}}}%{{+u}}{text}%{{-u}}%{{U{reset_color}}}'
 
 
 class Bar:
+    """
+    Class representing an instance of lemonbar. The output on the lemonbar is defined by
+    registering modules (instances of `BarModule`) on an instance of this class. See also
+    the `Bar.module` helper method. 
+
+    Usage:
+    >>> bar = Bar(font="NotoSans", update_interval=1, bg_color="#FDFDFD")
+    >>> @bar.module(1)
+    >>> def const_text():
+    >>>     return "This will appear on the bar"
+    >>> bar.run()
+    """
     def __init__(self,
             font=None,
             update_interval=0.5,
@@ -49,6 +88,25 @@ class Bar:
             u_color='#FF0000',
             geometry=None, 
             padding=(0, 0)):
+        """
+        :param font: The default font of the bar, as would be passed to fc-match
+        
+        :param update_interval: How often to update the bar. Note that each module also has
+        its own update interval. This only controls how often the bar checks if a module
+        should be updated. It should be at least equal to the minimum update interval of a
+        module in this bar.
+
+        :param bg_color: Default background color for the bar
+        :param fg_color: Default foreground color for the bar
+        :param u_color: Default underline color for the bar
+
+        :param geometry: Determines the size and positioning of the bar. 4-tuple containing
+        (width, height, x-offset, y-offset). This is passed directly to lemonbar's -g
+        parameter
+
+        :parameter padding: The spacing before and after the first and last elements of the
+        bar respectively.
+        """
 
         self.update_interval = update_interval
         self.bg_color = bg_color
@@ -67,6 +125,17 @@ class Bar:
         self._start_bar()
 
     def button(self, text, button, callback):
+        """
+        A button on the lemonbar. To create a button which responds to different mouse
+        buttons, nest calls to these method as follows:
+
+        >>> bar = Bar(interval=1)
+        >>> bar.button(bar.button("Click me", 1, lmb_callback), 2, rmb_callback)
+
+        :param text: The text on the button
+        :param button: Which mouse button to respond to
+        :param callback: A callback which will be called when this button is activated
+        """
         id = uuid.uuid4().hex
         self.button_callbacks[id] = callback
         return f'%{{A{button}:{id}:}}{text}%{{A}}'
@@ -78,13 +147,16 @@ class Bar:
         """
         def decorator(func):
             module_obj = BarModule(*args, **kwargs)
-            module_obj.output = func
+            module_obj.get_output = func
             self.register_module(module_obj)
             return func
             
         return decorator
 
     def register_module(self, module):
+        """
+        Register an instance of `BarModule` on this bar
+        """
         if module.align == Align.LEFT:
             self.left_modules.append(module)
         elif module.align == Align.CENTER:
@@ -96,6 +168,10 @@ class Bar:
 
 
     def _update(self):
+        """
+        Update the bar as needed. Updates any modules which should be updated and calls the
+        callbacks of any buttons that have been clicked
+        """
         for callback in non_block_read(self._bar.stdout).splitlines():
             self.button_callbacks[callback]()
         
@@ -103,15 +179,15 @@ class Bar:
         log.debug('updating')
         output = (
               f'%{{l}}%{{O{self.padding[0]}}}' 
-            + ''.join(module.update(now) for module in self.left_modules)
+            + ''.join(module._update(now) for module in self.left_modules)
             + '%{c}' 
-            + ''.join(module.update(now) for module in self.center_modules)
+            + ''.join(module._update(now) for module in self.center_modules)
             + '%{r}'
-            + ''.join(module.update(now) for module in self.right_modules)
+            + ''.join(module._update(now) for module in self.right_modules)
             + f'%{{O{self.padding[1]}}}'
             )
 
-        log.info(f'TEXT: {output}')
+        log.debug(f'TEXT: {output}')
 
         self._bar.stdin.write(output + '\n')
         self._bar.stdin.flush()
@@ -150,6 +226,9 @@ class Bar:
             self._bar.terminate()
 
 class Align:
+    """
+    Represents the different alignments a module can have
+    """
     LEFT = 'l'
     CENTER = 'c'
     RIGHT = 'r'
@@ -174,27 +253,27 @@ class BarModule:
         self._last_update_time = -1
         self._last_output = ''
 
-    def output(self):
+    def get_output(self):
         """override this"""
         return ''
 
-    def _formatted_output(self):
-        plain_output = self.output()
-        formatted_output = f'%{{F{self.fg_color}}}%{{B{self.bg_color}}}{plain_output}%{{B-}}%{{F-}}'
-
-        return formatted_output
-
-    def update(self, now):
+    def _update(self, now):
         time_since_last_update = now - self._last_update_time
 
         if time_since_last_update >= self.interval:
             self._last_update_time = now
-            self._last_output = self._formatted_output()
+            plain_output = self.get_output()
+            formatted_output = f'%{{F{self.fg_color}}}%{{B{self.bg_color}}}{plain_output}%{{B-}}%{{F-}}'
+            self._last_output = formatted_output
 
         return self._last_output
         
 
 class BSPWMDesktops(BarModule):
+    """
+    A module for showing desktops for bspwm. Shows every desktop by name and highlights the
+    current one.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -207,7 +286,7 @@ class BSPWMDesktops(BarModule):
         
         self.current_desktop_id = sh.bspc.query('-D', '-d').strip()
 
-    def output(self):
+    def get_output(self):
         event_strings = (non_block_read(self.events.stdout)).splitlines()
 
         # Find the last events of each type and put them in current_state_events
@@ -225,5 +304,6 @@ class BSPWMDesktops(BarModule):
             colored(name, "#FF0000") if id == self.current_desktop_id else name
             for id, name in self.desktops.items()
         ]
+
         return ' | '.join(formatted_desktops)
 
