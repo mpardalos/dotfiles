@@ -171,6 +171,12 @@ class Bar:
             self.center.append(module)
         elif module.align == Align.RIGHT:
             self.right_modules.append(module)
+        
+        # Add the modules callbacks to these callbacks
+        self.button_callbacks = {
+            **self.button_callbacks,
+            **module.button_callbacks
+        }
 
         log.info("module registered")
 
@@ -264,6 +270,8 @@ class BarModule:
         self._last_update_time = -1
         self._last_output = ''
 
+        self.button_callbacks = {}
+
     def get_output(self):
         """override this"""
         return ''
@@ -278,6 +286,20 @@ class BarModule:
             self._last_output = formatted_output
 
         return self._last_output
+
+    def button(self, text, button, callback):
+        """
+        Create a button and register and its callback. When this modules is attached to a
+        bar, all its callbacks are registered on the bar. See `Bar.button` for more details
+
+        :param text: The text on the button
+        :param button: Which mouse button to respond to
+        :param callback: A callback which will be called when this button is activated
+        """
+        id = uuid.uuid4().hex
+        self.button_callbacks[id] = callback
+        return f'%{{A{button}:{id}:}}{text}%{{A}}'
+
         
 
 class BSPWMDesktops(BarModule):
@@ -292,8 +314,14 @@ class BSPWMDesktops(BarModule):
 
         desktop_ids = sh.bspc.query('-D').splitlines()
         desktop_names = sh.bspc.query('-D', '--names').splitlines()
-        # map desktop ids to desktop names
-        self.desktops = dict(zip(desktop_ids, desktop_names))
+        desktop_buttons = [
+            self.button(name, 1, sh.bspc.desktop.bake('-f', name))
+            for name in desktop_names
+        ]
+        # map desktop ids to desktop names and buttons
+        self.desktops = dict(
+            zip(desktop_ids, zip(desktop_names, desktop_buttons))
+        )
         
         self.current_desktop_id = sh.bspc.query('-D', '-d').strip()
 
@@ -311,8 +339,8 @@ class BSPWMDesktops(BarModule):
                 self.current_desktop_id = str(args[1], 'utf-8') 
         
         formatted_desktops = [
-            colored(name, "#FF0000") if id == self.current_desktop_id else name
-            for id, name in self.desktops.items()
+            colored(button, "#FF0000") if id == self.current_desktop_id else button
+            for id, (name, button) in self.desktops.items()
         ]
 
         return ' | '.join(formatted_desktops)
