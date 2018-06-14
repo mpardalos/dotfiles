@@ -1,3 +1,5 @@
+#!/bin/env python
+
 from logging import DEBUG, WARN, INFO
 
 import sh
@@ -17,26 +19,25 @@ bar = Bar(update_interval=0.1,
         spacing=10,
         separator='│')
 
-bar.register_module(BSPWMDesktops(1))
+bar.register_module(BSPWMDesktops(0.5))
 
 @bar.module(10, align=Align.RIGHT)
 def battery():
-    try:
-        battery_level = int(sh.acpi('-b').split()[-1][:-1])
-        if battery_level < 20:
-            icon = '' 
-        elif battery_level < 40:
-            icon = '' 
-        elif battery_level < 60:
-            icon = '' 
-        elif battery_level < 80:
-            icon = '' 
-        else:
-            icon = '' 
+    status = list(map(lambda s: s.strip(), sh.acpi('-b').split(',')))
+    print(status)
+    battery_level = int(status[1][:-1])
+    if battery_level < 20:
+        icon = '' 
+    elif battery_level < 40:
+        icon = '' 
+    elif battery_level < 60:
+        icon = '' 
+    elif battery_level < 80:
+        icon = '' 
+    else:
+        icon = '' 
 
-        return icon + ' ' + str(battery_level) + '%'
-    except ValueError:
-        return ''
+    return icon + ' ' + str(battery_level) + '%'
 
 
 @bar.module(60, align=Align.RIGHT)
@@ -47,7 +48,7 @@ def fa():
 
 @bar.module(20, align=Align.RIGHT)
 def clock():
-    return sh.date("+%a %d %b - %H:%M").strip()
+    return ' ' + sh.date("+%a %d %b - %H:%M").strip()
 
 bar.run()
 
