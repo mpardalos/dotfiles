@@ -1,9 +1,10 @@
-import subprocess
 from subprocess import PIPE
 from time import sleep, time
-import logging 
+from typing import Callable
 import fcntl
+import logging 
 import os
+import subprocess
 import uuid
 
 import sh
@@ -36,7 +37,7 @@ def colored(text, color=None, reset_color=None):
     """
     reset_color = reset_color or '-'
     color = color or '-'
-    return f'%{{F{color}}}{text}%{{F{reset_color}}}'
+    return f'%{{F{color}}}{text!s}%{{F{reset_color}}}'
 
 def backgrounded(text, color=None, reset_color=None):
     """
@@ -50,7 +51,7 @@ def backgrounded(text, color=None, reset_color=None):
     """
     reset_color = reset_color or '-'
     color = color or '-'
-    return f'%{{B{color}}}{text}%{{B{reset_color}}}'
+    return f'%{{B{color}}}{text!s}%{{B{reset_color}}}'
 
 def underlined(text, color=None, reset_color=None):
     """
@@ -64,7 +65,7 @@ def underlined(text, color=None, reset_color=None):
     """
     reset_color = reset_color or '-'
     color = color or '-'
-    return f'%{{U{color}}}%{{+u}}{text}%{{-u}}%{{U{reset_color}}}'
+    return f'%{{U{color}}}%{{+u}}{text!s}%{{-u}}%{{U{reset_color}}}'
 
 
 class Bar:
@@ -132,6 +133,9 @@ class Bar:
 
         self._start_bar()
 
+    def register_button(self, button, callback):
+        self.button_callbacks[button.id] = callback
+
     def button(self, text, button, callback):
         """
         A button on the lemonbar. To create a button which responds to different mouse
@@ -144,9 +148,9 @@ class Bar:
         :param button: Which mouse button to respond to
         :param callback: A callback which will be called when this button is activated
         """
-        id = uuid.uuid4().hex
-        self.button_callbacks[id] = callback
-        return f'%{{A{button}:{id}:}}{text}%{{A}}'
+        button_obj = Button(text, button)
+        self.register_button(button_obj, callback)
+        return button_obj
 
     def module(self, *args, **kwargs):
         """
@@ -168,15 +172,11 @@ class Bar:
         if module.align == Align.LEFT:
             self.left_modules.append(module)
         elif module.align == Align.CENTER:
-            self.center.append(module)
+            self.center_modules.append(module)
         elif module.align == Align.RIGHT:
             self.right_modules.append(module)
         
-        # Add the modules callbacks to these callbacks
-        self.button_callbacks = {
-            **self.button_callbacks,
-            **module.button_callbacks
-        }
+        module.on_attach(self)
 
         log.info("module registered")
 
@@ -242,6 +242,30 @@ class Bar:
             log.error('terminating bar')
             self._bar.terminate()
 
+
+class Button:
+    """
+    Represents a lemonbar button. Must be attached to a bar (directly or through a module)
+    for its action to be available
+
+    :param button: Which mouse button this button responds to (see lemonbar docs)
+    :param text: The text on the button
+    :param id: The id of the button. If None, uses a random uuid.
+    """
+    def __init__(self, text, button, id=None):
+        self._id = id or uuid.uuid4().hex
+        self.button = button
+        self.text = text
+
+    # No setter
+    @property
+    def id(self):
+        return self._id
+
+    def __str__(self):
+        return f'%{{A{self.button}:{self.id}:}}{self.text}%{{A}}'
+
+
 class Align:
     """
     Represents the different alignments a module can have
@@ -276,6 +300,13 @@ class BarModule:
         """override this"""
         return ''
 
+    def on_attach(self, bar):
+        """
+        Called when attached to a `Bar` instance. 
+        The default implementation attaches the modules buttons to the bar
+        """
+        bar.button_callbacks = {**bar.button_callbacks, **self.button_callbacks}
+
     def _update(self, now):
         time_since_last_update = now - self._last_update_time
 
@@ -287,6 +318,10 @@ class BarModule:
 
         return self._last_output
 
+    
+    def register_button(self, button, callback):
+        self.button_callbacks[button.id] = callback
+
     def button(self, text, button, callback):
         """
         Create a button and register and its callback. When this modules is attached to a
@@ -296,11 +331,10 @@ class BarModule:
         :param button: Which mouse button to respond to
         :param callback: A callback which will be called when this button is activated
         """
-        id = uuid.uuid4().hex
-        self.button_callbacks[id] = callback
-        return f'%{{A{button}:{id}:}}{text}%{{A}}'
+        button_obj = Button(text, button)
+        self.register_button(button_obj, callback)
+        return button_obj
 
-        
 
 class BSPWMDesktops(BarModule):
     """
@@ -339,7 +373,7 @@ class BSPWMDesktops(BarModule):
                 self.current_desktop_id = str(args[1], 'utf-8') 
         
         formatted_desktops = [
-            colored(button, "#FF0000") if id == self.current_desktop_id else button
+            colored(button, "#FF0000") if id == self.current_desktop_id else str(button)
             for id, (name, button) in self.desktops.items()
         ]
 
