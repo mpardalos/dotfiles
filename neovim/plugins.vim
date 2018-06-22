@@ -14,6 +14,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neomake/neomake' 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-unimpaired'
 " }}}
 
 " Tmux {{{
