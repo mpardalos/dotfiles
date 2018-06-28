@@ -14,6 +14,3 @@ alias mv  "mv -vi"
 alias rm  "rm -v"
 alias ll  "exa -l --color=always --git --group-directories-first"
 alias l   "exa --color=always"
-
-wal -Rq
-

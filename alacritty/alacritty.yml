@@ -225,6 +225,7 @@ live_config_reload: true
 #
 shell:
     program: /bin/fish
+    args: ['-C', 'cat ~/.cache/wal/sequences']
  
 # Key bindings
 #
