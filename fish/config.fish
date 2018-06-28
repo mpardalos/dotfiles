@@ -6,7 +6,7 @@ bind -e \ek
 bind -e \el
 
 # Add . to PATH
-set -gx PATH . ~/.local/bin $PATH
+set -gx PATH . ~/.bin ~/.local/bin $PATH
 
 alias mux tmuxinator
 alias r   ranger

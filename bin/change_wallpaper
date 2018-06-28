@@ -1,0 +1,33 @@
+#!/bin/env python
+
+from pathlib import Path
+from subprocess import run
+
+from rofi import Rofi
+
+wallpapersdir = Path.home()/'Pictures'/'Wallpapers'
+
+options = [f.name for f in wallpapersdir.iterdir()]
+options += [f.name + ' (light)' for f in wallpapersdir.iterdir()]
+options.sort()
+
+r = Rofi()
+idx, key = r.select('Choose a Wallpaper', options)
+
+if key == -1:
+    raise SystemExit(0)
+
+choice = options[idx]
+
+args = ['wal', '-o', Path.home()/'.bin/post_wal.sh', '-i']
+
+light = choice[-len('(light)'):] == '(light)'
+
+if light:
+    args += [wallpapersdir/choice[:-len(' (light)')], '-l']
+else:
+    args += [wallpapersdir/choice]
+
+print(args)
+
+run(args)

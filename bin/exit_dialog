@@ -1,0 +1,21 @@
+#!/bin/env python
+
+from rofi import Rofi
+import sh
+
+r = Rofi()
+
+options = {
+    'Log out': sh.Command('bspc').bake('quit'),
+    'Shutdown': sh.Command('shutdown').bake('-h', 'now'),
+    'Reboot': sh.Command('reboot').bake('-r', 'now'),
+    'Lock': sh.Command('~/.bin/lock')
+}
+
+idx, key = r.select('Exit', options.keys())
+
+if key == -1:
+    raise SystemExit(0)
+
+list(options.values())[idx]()
+

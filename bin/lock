@@ -1,0 +1,10 @@
+#!/bin/bash
+IMG="/tmp/lockscreen.png"
+
+import -window root -resize 96x54 "$IMG"
+imgp --nn --mute --overwrite --enlarge --res=1920x1080 "$IMG"
+i3lock -i "$IMG" -e -f 
+
+
+
+

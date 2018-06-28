@@ -1,0 +1,23 @@
+#!/bin/env python
+from pathlib import Path
+from subprocess import run
+
+from rofi import Rofi
+
+dot_bin = Path.home()/'.bin'
+
+options = list(({
+    'Launcher': lambda: run([dot_bin/'launcher']),
+    'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
+    'Change Wallpaper':
+        lambda: run([dot_bin/'change_wallpaper']),
+    'Exit': lambda: run([dot_bin / 'exit_dialog'])
+}).items())
+
+r = Rofi(rofi_args=['-i'])
+
+index, key = r.select('Search', [op[0] for op in options])
+if key == -1:
+    raise SystemExit(0)
+
+options[index][1]()
