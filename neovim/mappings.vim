@@ -11,6 +11,9 @@ nnoremap <C-s> :w<CR>
 nnoremap Q @q
 vnoremap Q :norm @q<CR>
 
+" <C-Space> omni completes
+imap <C-space> <C-x><C-o>
+
 " Text manipulation {{{
 
 " Moving lines up and down
@@ -118,4 +121,11 @@ function! GoToMark()
 endfunction
 nnoremap <leader>m :call GoToMark()<CR>a
 inoremap <leader>m <Esc>:call GoToMark()<CR>a
+" }}}
+
+" Language Client {{{
+nnoremap <leader><space> :call LanguageClient_contextMenu()<CR>
+nnoremap gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap gr :call LanguageClient_textDocument_references()<CR>
+nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
 " }}}

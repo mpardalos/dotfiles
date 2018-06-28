@@ -35,6 +35,9 @@ set cursorcolumn
 set nowrap
 
 set mouse=a
+
+" Number of completion suggestions at once
+set pumheight=5
 " }}}
 
 " Autocmds {{{

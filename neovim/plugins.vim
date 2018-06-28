@@ -75,6 +75,9 @@ call plug#begin('~/.config/nvim/plugged')
     \ 'python': ['pyls']
     \ }
 
+    " Python {{{
+    Plug 'tmhedberg/SimpylFold'
+    " }}}
 
     " LaTeX {{{
         Plug 'LaTeX-Box-Team/LaTeX-Box'
