@@ -1,0 +1,4 @@
+{{
+    "background": "#DD{background.strip}",
+    "foreground": "{color1}"
+}}
