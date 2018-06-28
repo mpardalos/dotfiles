@@ -1,0 +1,2 @@
+nnoremap <leader>r "ly_:!<C-r>l<CR>
+" vim: ft=vim
