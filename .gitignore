@@ -1,4 +1,5 @@
 *.log
+*.vimlocal
 __pycache__
 neovim/plugged/
 neovim/spell

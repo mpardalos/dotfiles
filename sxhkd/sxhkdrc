@@ -1,0 +1,95 @@
+#
+# wm independent hotkeys
+#
+
+super + Return
+	alacritty
+
+super + d
+    ~/.bin/application_launcher
+
+super + space
+    ~/.bin/rofi_menu_search
+
+super + shift + t 
+    ~/.bin/choose_wallpaper
+
+super + shift + q
+    ~/.bin/exit_dialogue
+
+super + shift + l
+    ~/.bin/lock
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Media keys {{{
+XF86AudioMute
+    pamixer -t
+XF86AudioRaiseVolume
+    pamixer -i 2
+XF86AudioLowerVolume
+    pamixer -d 2
+
+XF86AudioPrev
+    playerctl previous
+XF86AudioNext
+    playerctl next
+XF86AudioPlay
+    playerctl play-pause
+
+XF86MonBrightnessUp
+    xbacklight +10
+XF86MonBrightnessDown
+    xbacklight -10
+# }}}
+
+# Windows {{{
+
+super + {h,j,k,l}
+    bspc node --focus {west,south,north,east}
+
+super + shift + {h,j,k,l}
+    bspc node --swap {west,south,north,east}
+
+# Moving/Resizing {{{
+super + {Up, Right, Down, Left}
+    bspc node --move {0 -50,50 0,0 50,-50 0}
+
+super + ctrl + {Up, Right, Down, Left}
+    bspc node --move {0 -10,10 0,0 10,-10 0}
+    
+super + shift + {Up, Right, Down, Left}
+    bspc node --resize bottom_right {0 -50,50 0,0 50,-50 0}
+
+super + ctrl + shift + {Up, Right, Down, Left}
+    bspc node --resize bottom_right {0 -10,10 0,0 10,-10 0}
+# }}}
+
+super + q
+    bspc node -f --close
+
+super + f 
+    bspc node --state ~floating
+
+super + u
+    bspc desktop -f prev
+
+super + i
+    bspc desktop -f next
+
+super + shift + {u,i}
+    bspc node -d {prev, next} --follow
+
+# }}}
+
+# Gaps {{{
+super + bracketleft
+    bspc config window_gap $(echo "$(bspc config window_gap) - 10" | bc)
+
+super + bracketright
+    bspc config window_gap $(echo "$(bspc config window_gap) + 10" | bc)
+# }}}
+
+# vim: fdm=marker
+#
