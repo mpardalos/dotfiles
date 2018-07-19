@@ -11,6 +11,8 @@ options = list(({
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
     'Change Wallpaper':
         lambda: run([dot_bin/'change_wallpaper']),
+    'Add a workspace': 
+        lambda: run([dot_bin/'new_desktop']),
     'Exit': lambda: run([dot_bin / 'exit_dialog'])
 }).items())
 

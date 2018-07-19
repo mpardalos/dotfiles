@@ -1,0 +1,8 @@
+#!/bin/env python
+
+from rofi import Rofi
+import sh
+
+sh.bspc.monitor(
+    '--add-desktops', 
+    Rofi().text_entry('Name for the new workspace'))
