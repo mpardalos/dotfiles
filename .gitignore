@@ -11,3 +11,6 @@ rofi/*.rasi
 lemonbar/colors.json
 bin/colors.sh
 bspwm/colors.sh
+
+.vscode/
+*.code-workspace
