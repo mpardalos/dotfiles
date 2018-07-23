@@ -1,7 +1,8 @@
 * {{
     background: {background};
     foreground: {foreground};
-    color1:     {color1};
+    color1: {color1};
+    color1-trans: #{color1.strip}AA;
     color2: {color2};
     color3: {color3};
     color4: {color4};
@@ -11,11 +12,11 @@
 
     transparent: #00000000;
 
-    font: "Ubuntu Mono Nerd Font Mono 18";
+    font: "Noto Sans Display 14";
 }}
 
 window {{
-    background-color: @color1;
+    background-color: @color1-trans;
     fullscreen: true;
     padding: 30% 30%;
 }}
@@ -111,6 +112,7 @@ inputbar {{
 
 prompt {{
     padding:6px 9px;
+    width: 30%;
     background-color: @color2;
 }}
 

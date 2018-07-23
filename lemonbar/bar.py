@@ -11,9 +11,11 @@ pid_file = Path('/tmp/lemonsqueezer_pid')
 pid_file.write_text(str(os.getpid()))
 
 bar = lsq.Bar(
-        config_file= str(Path.home()/'.config/lemonbar/colors.json'),
-        fonts=["Font Awesome 5 Free:style=Solid", "UbuntuMono Nerd Font Mono:size=12"], 
-        geometry=(1896, 30, 12, 10),
+    config_file=str(Path.home() / '.config/lemonbar/colors.json'),
+    fonts=[
+        "Font Awesome 5 Free:style=Solid", "Noto Sans Display"
+    ],
+    geometry=(1900, 30, 10, 10),
         bg_color="#DD6a1931", 
         fg_color="#FFFFFF", 
         padding=(20, 20), 

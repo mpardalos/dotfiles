@@ -10,7 +10,7 @@
    blackselect:      {color2};
    darkgray:         {color6};
    scrollbarcolor:   {color1};
-   font: "Ubuntu Mono Nerd Font Mono 18";
+   font: "Noto Sans Display 18";
    background-color: @blackdarkest;
 }}
 
