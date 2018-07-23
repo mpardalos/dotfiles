@@ -1,5 +1,6 @@
 #! /bin/sh
 
+export SXHKD_SHELL='/usr/bin/sh'
 sxhkd &
 compton -b
 wal -R &
