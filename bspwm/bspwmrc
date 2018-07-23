@@ -6,10 +6,14 @@ compton -b
 wal -R &
 ~/.config/dotfiles/lemonbar/bar.py &
 
+# Keep lemonbar below
+xdo above -t $(xdo id -n root) $(xdo id -n lemonbar)
+
 bspc monitor primary -d    
 
 bspc config border_width               5
-bspc config window_gap                 12
+bspc config window_gap                 10
+bspc config top_padding                50
 
 bspc config split_ratio                0.5
 bspc config initial_polarity           second_child
