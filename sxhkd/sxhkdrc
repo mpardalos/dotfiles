@@ -85,7 +85,7 @@ super + shift + {u,i}
 
 # Gaps {{{
 super + bracketleft
-    bspc config window_gap $(echo "$(bspc config window_gap) - 10" | bc)
+    bspc config window_gap $(~/.bin/max $(echo "$(bspc config window_gap) - 10" | bc) 0)
 
 super + bracketright
     bspc config window_gap $(echo "$(bspc config window_gap) + 10" | bc)
