@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+import sys
+from subprocess import run
+
+args = sys.argv[1:]
+
+command = ['fish']
+if '-e' in args:
+    command = args[args.index('-e')+1:]
+
+run(['alacritty', '-e', 'sh', '-c', f'cat ~/.cache/wal/sequences && {" ".join(command)}'])
