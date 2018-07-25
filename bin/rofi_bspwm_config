@@ -74,7 +74,9 @@ bspwm_options = dict(
     pointer_follows_monitor=bool(),
     mapping_events_count=num(),
     ignore_ewmh_focus=bool(),
-    ignore_ewmh_fullscreen=bool(),
+    ignore_ewmh_fullscreen=options(
+        'all', 'none', 'enter', 'exit', 'enter,exit'
+    ),
     center_pseudo_tiled=bool(),
     honor_size_hints=bool(),
     remove_disabled_monitors=bool(),
