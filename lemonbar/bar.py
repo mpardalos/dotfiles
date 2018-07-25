@@ -36,7 +36,7 @@ bar = lsq.Bar(
     separator='│')
 
 bar.register_module(
-    BSPWMDesktops(monitor_sel='focused', highlight_color='#4788ef'))
+    BSPWMDesktops(monitor_sel='eDP1', highlight_color='#4788ef'))
 bar.register_module(
     MediaControls(
         '{artist} - {title}', ('', '', '', ''),
