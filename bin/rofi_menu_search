@@ -3,10 +3,12 @@ from pathlib import Path
 from subprocess import run
 
 from rofi import Rofi
+from rofi_menu import menu
 
 dot_bin = Path.home()/'.bin'
+r = Rofi(rofi_args=['-i'])
 
-options = list(({
+menu(r, 'Search', {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
     'Change Wallpaper':
@@ -15,13 +17,7 @@ options = list(({
         lambda: run([dot_bin/'new_desktop']),
     'BSPWM Settings':
         lambda: run([dot_bin/'rofi_bspwm_config']),
+    'Screenshot':
+        lambda: run([dot_bin/'screenshot_menu']),
     'Exit': lambda: run([dot_bin / 'exit_dialog'])
-}).items())
-
-r = Rofi(rofi_args=['-i'])
-
-index, key = r.select('Search', [op[0] for op in options])
-if key == -1:
-    raise SystemExit(0)
-
-options[index][1]()
+})

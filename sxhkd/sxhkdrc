@@ -20,6 +20,9 @@ super + shift + q
 super + shift + l
     ~/.bin/lock
 
+Print
+    ~/.bin/screenshot_menu
+
 super + Escape
 	pkill -USR1 -x sxhkd
 

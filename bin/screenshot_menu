@@ -1,0 +1,20 @@
+#!/usr/bin/fish
+
+set choices "Selection (clipboard)\nFullscreen (clipboard)\nWindow (clipboard)\nSelection (file)\nFullscreen (file)\nWindow (file)"
+set filename (date +'%Y%m%d_%H%M%S')
+
+switch (echo -e $choices | rofi -dmenu -p Screenshot) 
+    case "Selection (clipboard)" 
+        maim -s | xclip -selection clip -t image/png
+    case "Fullscreen (clipboard)" 
+        maim -i root | xclip -selection clip -t image/png
+    case "Window (clipboard)" 
+        maim -i (xdotool selectwindow) | xclip -selection clip -t image/png
+    case "Selection (file)" 
+        maim -s > ~/Pictures/screenshots/$filename.png
+    case "Fullscreen (file)" 
+        sleep 1 # wait for rofi to close
+        maim -i root > ~/Pictures/screenshots/$filename.png
+    case "Window (file)" 
+        maim -i (xdotool selectwindow) > ~/Pictures/screenshots/$filename.png
+end
