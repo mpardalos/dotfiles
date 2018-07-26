@@ -2,32 +2,24 @@
 
 from pathlib import Path
 from subprocess import run
+from collections import OrderedDict
 
 from rofi import Rofi
+from rofi_menu import menu
 
 wallpapersdir = Path.home()/'Pictures'/'Wallpapers'
-
-options = [f.name for f in wallpapersdir.iterdir()]
-options += [f.name + ' (light)' for f in wallpapersdir.iterdir()]
-options.sort()
-
-r = Rofi()
-idx, key = r.select('Choose a Wallpaper', options)
-
-if key == -1:
-    raise SystemExit(0)
-
-choice = options[idx]
-
 args = ['wal', '-o', Path.home()/'.bin/post_wal.sh', '-i']
 
-light = choice[-len('(light)'):] == '(light)'
+def runner(args):
+    return lambda: run(args)
 
-if light:
-    args += [wallpapersdir/choice[:-len(' (light)')], '-l']
-else:
-    args += [wallpapersdir/choice]
+options = {
+    f.name: runner([*args, wallpapersdir/f.name])
+    for f in wallpapersdir.iterdir()
+}
+options = {**options, **{
+    f'{f.name} (light)': runner([*args, wallpapersdir/f.name, '-l'])
+    for f in wallpapersdir.iterdir()
+}}
 
-print(args)
-
-run(args)
+menu(Rofi(), 'Choose a Wallpaper', OrderedDict(sorted(options.items(), key=lambda it: it[0])))
