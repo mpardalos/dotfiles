@@ -19,5 +19,7 @@ menu(r, 'Search', {
         lambda: run([dot_bin/'rofi_bspwm_config']),
     'Screenshot':
         lambda: run([dot_bin/'screenshot_menu']),
+    'Edit dotfiles':
+        lambda: run(['code', Path.home()/'.config/dotfiles']),
     'Exit': lambda: run([dot_bin / 'exit_dialog'])
 })
