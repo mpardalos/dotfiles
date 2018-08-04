@@ -5,8 +5,8 @@ from rofi_menu import menu
 import sh
 
 menu(Rofi(), 'Exit', {
-    'Log out': sh.Command('bspc').bake('quit'),
-    'Shutdown': sh.Command('shutdown').bake('-h', 'now'),
-    'Reboot': sh.Command('reboot').bake('-r', 'now'),
+    'Log out': sh.bspc.quit,
+    'Shutdown': sh.systemctl.poweroff,
+    'Reboot': sh.systemctl.reboot,
     'Lock': sh.Command('~/.bin/lock')
 })
