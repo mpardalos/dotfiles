@@ -1,7 +1,7 @@
 #!/bin/fish
 
-set fname (mktemp "sxivimg.XXXX")
+set fname (mktemp -t "sxivimg.XXXX")
 
-curl $argv -o /tmp/$fname
-sxiv /tmp/$fname
-rm /tmp/$fname
+curl $argv -o $fname
+sxiv $fname
+rm $fname
