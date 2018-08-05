@@ -26,6 +26,18 @@ Print
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# Launcher
+
+super + a ; b
+    firefox
+super + a ; f
+   rofi-sensible-terminal -e ranger 
+super + a ; r 
+    rofi-sensible-terminal -e rtv
+super + a ; e 
+    code
+
+
 # Media keys {{{
 XF86AudioMute
     pamixer -t
