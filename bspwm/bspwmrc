@@ -31,7 +31,6 @@ bspc config remove_disabled_monitors   true
 bspc config remove_unplugged_monitors  true
 bspc config merge_overlapping_monitors true
 
-bspc rule -a Firefox desktop=''
 bspc rule -a Spotify desktop=''
 bspc rule -a Alacritty state=floating
 
