@@ -8,7 +8,7 @@ super + Return
 super + d
     ~/.bin/launcher
 
-super + space
+super + a
     ~/.bin/rofi_menu_search
 
 super + shift + t 
@@ -28,14 +28,16 @@ super + Escape
 
 # Launcher
 
-super + a ; b
+super + w ; b
     firefox
-super + a ; f
+super + w ; f
    rofi-sensible-terminal -e ranger 
-super + a ; r 
+super + w ; r 
     rofi-sensible-terminal -e rtv
-super + a ; e 
+super + w ; e 
     code
+super + w ; m 
+    spotify
 
 
 # Media keys {{{
@@ -90,14 +92,14 @@ super + q
 super + f 
     bspc node --state ~floating
 
-super + u
-    bspc desktop -f prev
-
-super + i
-    bspc desktop -f next
+super + {u,i}
+    bspc desktop -f {prev, next}
 
 super + shift + {u,i}
     bspc node -d {prev, next} --follow
+
+super + {parenleft,0,parenright}
+    bspc node -l {below,normal,above}
 
 # }}}
 
