@@ -10,7 +10,9 @@ ptpython/history
 rofi/*.rasi 
 lemonbar/colors.json
 bin/colors.sh
+bin/colors-rgba.sh
 bspwm/colors.sh
 
 .vscode/
 *.code-workspace
+qutebrowser/autoconfig.yml
