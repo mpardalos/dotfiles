@@ -1,10 +1,36 @@
 #!/bin/bash
 IMG="/tmp/lockscreen.png"
 
-import -window root -resize 96x54 "$IMG"
+import -window root -resize 48x27 "$IMG"
 imgp --nn --mute --overwrite --enlarge --res=1920x1080 "$IMG"
-i3lock -i "$IMG" -e -f 
 
+source ~/.bin/colors-rgba.sh
 
-
+i3lock \
+    -i "$IMG" \
+    --indicator \
+    --insidecolor="$background" \
+    --timecolor="$foreground" \
+    --ringcolor="$color2" \
+    --separatorcolor="$color2" \
+    --keyhlcolor="$color1" \
+    --radius=250 \
+    --ring-width=15 \
+    --line-uses-inside \
+    --veriftext="" \
+    --wrongtext="" \
+    --noinputtext="" \
+    --time-font="Noto Sans Display" \
+    --date-font="Noto Sans Display" \
+    --layout-font="Noto Sans Display" \
+    --verif-font="Noto Sans Display" \
+    --wrong-font="Noto Sans Display" \
+    --force-clock \
+    --timepos="ix:iy" \
+    --timestr="%H:%m" \
+    --refresh-rate=30.0 \
+    --datepos="tx:ty+20" \
+    --datestr="%A, %d %B %Y" \
+    --datecolor="$foreground" \
+    --ignore-empty-password \
 
