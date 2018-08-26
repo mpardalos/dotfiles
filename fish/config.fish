@@ -11,6 +11,6 @@ set -gx PATH . ~/.bin ~/.local/bin $PATH
 alias mux tmuxinator
 alias r   ranger
 alias mv  "mv -vi"
-alias rm  "rm -v"
+alias rm  "rm -vI"
 alias ll  "exa -l --color=always --git --group-directories-first"
 alias l   "exa --color=always"
