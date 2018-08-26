@@ -1,6 +1,6 @@
 [user]
 	name = Michalis Pardalos
-	email = mpardalos@gmail.com
+	email = m.pardalos@gmail.com
 [core]
 	autocrlf = input
 [push]
