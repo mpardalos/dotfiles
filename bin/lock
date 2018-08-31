@@ -13,7 +13,6 @@ i3lock \
     --timecolor="$foreground" \
     --ringcolor="$color2" \
     --separatorcolor="$color2" \
-    --keyhlcolor="$color1" \
     --radius=250 \
     --ring-width=15 \
     --line-uses-inside \
