@@ -17,9 +17,6 @@ super + shift + t
 super + shift + q
     ~/.bin/exit_dialog
 
-super + shift + l
-    ~/.bin/lock
-
 Print
     ~/.bin/screenshot_menu
 
