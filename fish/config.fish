@@ -8,6 +8,9 @@ bind -e \el
 # Add . to PATH
 set -gx PATH . ~/.bin ~/.local/bin $PATH
 
+# Disable default virtualenv indicator
+set -gx VIRTUAL_ENV_DISABLE_PROMPT true
+
 alias mux tmuxinator
 alias r   ranger
 alias mv  "mv -vi"
