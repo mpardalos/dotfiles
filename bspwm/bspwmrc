@@ -1,8 +1,10 @@
 #! /bin/sh
 
 export TERMINAL='/home/mpardalos/.bin/colored_alacritty'
-
 export SXHKD_SHELL='/usr/bin/sh'
+
+xsetroot -cursor_name left_ptr # Set default cursor
+
 sxhkd &
 compton -b
 wal -R &
@@ -34,4 +36,3 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Spotify desktop=''
 bspc rule -a Alacritty state=floating
 
-~/.bin/set_bspwm_colors
