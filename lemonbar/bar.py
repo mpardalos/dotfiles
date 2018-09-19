@@ -27,7 +27,7 @@ bar = lsq.Bar(
     fonts=[
         "Font Awesome 5 Free:style=Solid", "Noto Sans Display"
     ],
-    geometry=(1900, 30, 10, 10),
+    geometry=(1920, 30, 0, 0),
     bg_color="#DD6a1931",
     fg_color="#FFFFFF",
     padding=(20, 20),
