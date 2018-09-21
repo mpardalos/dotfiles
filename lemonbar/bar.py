@@ -25,14 +25,14 @@ class LayoutIndicator(CommandMonitorModule):
 bar = lsq.Bar(
     config_file=str(Path.home() / '.config/lemonbar/colors.json'),
     fonts=[
-        "Font Awesome 5 Free:style=Solid", "Noto Sans Display"
+        "FontAwesome:style=Regular", "Noto Sans Display", "Sans"
     ],
     geometry=(1920, 30, 0, 0),
     bg_color="#DD6a1931",
     fg_color="#FFFFFF",
     padding=(20, 20),
     spacing=10,
-    offset=-2,
+    offset=-5,
     separator='│')
 
 bar.register_module(
