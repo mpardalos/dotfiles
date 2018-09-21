@@ -28,7 +28,7 @@ super + Escape
 super + w ; b
     firefox
 super + w ; f
-   rofi-sensible-terminal -e ranger 
+   thunar
 super + w ; r 
     rofi-sensible-terminal -e rtv
 super + w ; e 
