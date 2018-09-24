@@ -39,11 +39,11 @@ super + w ; m
 
 # Media keys {{{
 XF86AudioMute
-    pamixer -t
+    ~/.bin/volume_control mute
 XF86AudioRaiseVolume
-    pamixer -i 2
+    ~/.bin/volume_control up
 XF86AudioLowerVolume
-    pamixer -d 2
+    ~/.bin/volume_control down
 
 XF86AudioPrev
     playerctl previous
@@ -53,9 +53,9 @@ XF86AudioPlay
     playerctl play-pause
 
 XF86MonBrightnessUp
-    xbacklight +10
+    ~/.bin/brightness_control up
 XF86MonBrightnessDown
-    xbacklight -10
+    ~/.bin/brightness_control down
 # }}}
 
 super + shift + f
