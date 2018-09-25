@@ -39,7 +39,7 @@ bar.register_module(
     BSPWMDesktops(monitor_sel='eDP1', highlight_color='#4788ef'))
 bar.register_module(
     MediaControls(
-        '{artist} - {title}', ('', '', '', ''),
+        '{artist} - {title}', ('  ', '  ', '', ''),
         icon='',
         align=Align.CENTER))
 bar.register_module(LayoutIndicator(align=Align.RIGHT))
