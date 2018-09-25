@@ -247,7 +247,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
     foreground = "#888888"
-    timeout = 1
+    timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
@@ -322,5 +322,7 @@
 #    appname = Pidgin
 #    summary = *twitter.com*
 #    urgency = normal
-#
+[level_notification]
+appname = level_notification
+timeout = 1
 # vim: ft=cfg

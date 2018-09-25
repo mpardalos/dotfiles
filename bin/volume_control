@@ -22,7 +22,7 @@ function send_notification {
     # https://en.wikipedia.org/wiki/Box-drawing_character
     bar=$(~/.bin/draw_bar 20 --percentage $volume)
     # Send the notification
-    dunstify -i $iconSound -r 2593 -u low "$bar"
+    dunstify --appname=level_notification --icon=$iconSound --replace=2500 --urgency=low "$bar"
   fi
 }
 
