@@ -69,6 +69,10 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node --swap {west,south,north,east}
 
+# Rotate desktop
+super + {_,shift + }r
+    bspc node @/ --rotate {90,-90}
+
 # Moving/Resizing {{{
 super + {Up, Right, Down, Left}
     bspc node --move {0 -50,50 0,0 50,-50 0}
