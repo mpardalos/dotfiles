@@ -1,0 +1,23 @@
+#!/bin/env python
+
+import sys
+import argparse
+
+parser = argparse.ArgumentParser(description="Draw a bar using unicode box drawing characters")
+parser.add_argument('length'            , type=int, help='The full length of the bar')
+parser.add_argument('-p', '--percentage', type=int, help='What percentage of the bar is completed')
+parser.add_argument('-f', '--filled'    , type=int, help='How many segments of the bar are full higher precedence over --percentage')
+args = parser.parse_args()
+
+if args.percentage is None and args.filled is None:
+    print('You must provide either --percentage or --filled')
+    sys.exit(1)
+
+# Use --filled if it is provided, otherwise --percentage
+filled = args.filled
+if filled is None:
+    filled = round(args.percentage/100 * args.length)
+
+length = args.length
+
+print('━'*(filled-1) + '╋' + '═'*(length-filled))
