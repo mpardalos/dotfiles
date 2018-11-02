@@ -118,6 +118,11 @@ call plug#begin('~/.config/nvim/plugged')
     " Fish shell {{{
     Plug 'dag/vim-fish'
     " }}}
+   
+    " MIPS Assembly {{{
+    Plug 'harenome/vim-mipssyntax'
+    " }}}
+
 " }}}
 call plug#end()
 
