@@ -1,0 +1,20 @@
+#/bin/env python3.4
+from pathlib import Path
+
+home = Path.home()
+here = Path('.')
+
+in_config=['alacritty', 'bspwm', 'dunst', 'fish', 'ranger', 'sxhkd', 'tmux',
+    'compton.conf']
+
+links = {
+    **{Path(f'./{name}'):home/f'.config/{name}' for name in in_config  },
+    here/'bin/': home/'.bin',
+    here/'git/gitconfig': home/'.gitconfig'
+}
+
+for src, dest in links.items():
+    print(f'{dest.resolve()}, -> ({src.resolve()})')
+    dest.resolve().symlink_to(src.resolve())
+    # os.symlink(src, dest) 
+
