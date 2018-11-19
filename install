@@ -1,5 +1,7 @@
-#/bin/env python3.4
+#/usr/bin/env python3
+
 from pathlib import Path
+import sys
 
 home = Path.home()
 here = Path('.')
@@ -8,13 +10,17 @@ in_config=['alacritty', 'bspwm', 'dunst', 'fish', 'ranger', 'sxhkd', 'tmux',
     'compton.conf']
 
 links = {
-    **{Path(f'./{name}'):home/f'.config/{name}' for name in in_config  },
+    **{Path('./{}'.format(name)):home/'.config/{}'.format(name) for name in in_config  },
     here/'bin/': home/'.bin',
     here/'git/gitconfig': home/'.gitconfig'
 }
 
 for src, dest in links.items():
-    print(f'{dest.resolve()}, -> ({src.resolve()})')
-    dest.resolve().symlink_to(src.resolve())
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        dest.symlink_to(src.resolve())
+    except FileExistsError:
+        print('{} already exists'.format(dest))
+
     # os.symlink(src, dest) 
 
