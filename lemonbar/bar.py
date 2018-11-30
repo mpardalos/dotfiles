@@ -36,11 +36,14 @@ bar = lsq.Bar(
     separator='│')
 
 bar.register_module(
-    BSPWMDesktops(monitor_sel='eDP1', highlight_color='#4788ef'))
-bar.register_module(
     MediaControls(
         '{artist} - {title}', ('  ', '  ', '', ''),
         icon='',
+        align=Align.LEFT))
+bar.register_module(
+    BSPWMDesktops(
+        monitor_sel='primary',
+        highlight_color='#4788ef',
         align=Align.CENTER))
 bar.register_module(LayoutIndicator(align=Align.RIGHT))
 bar.register_module(Battery(['', '', '', '', ''], align=Align.RIGHT))
