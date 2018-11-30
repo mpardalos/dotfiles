@@ -12,7 +12,7 @@ set -gx PATH . ~/.bin ~/.local/bin $PATH
 set -gx VIRTUAL_ENV_DISABLE_PROMPT true
 
 # Makefile options
-set -gx MAKEFLAGS '--jobs 8 --silent'
+set -gx MAKEFLAGS '--jobs 8'
 
 alias mux tmuxinator
 alias r   ranger
