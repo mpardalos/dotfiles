@@ -8,6 +8,19 @@ from rofi_menu import menu
 dot_bin = Path.home()/'.bin'
 r = Rofi(rofi_args=['-i'])
 
+
+def compton_prompt():
+    if run(['pgrep', 'compton']).returncode == 0:
+        return 'Toggle compton ❌'
+    else:
+        return 'Toggle compton ✅'
+
+def compton_toggle():
+    if run(['pgrep', 'compton']).returncode == 0:
+        run(['pkill', 'compton'])
+    else:
+        run(['compton', '-b'])
+
 menu(r, 'Search', {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
@@ -15,11 +28,14 @@ menu(r, 'Search', {
         lambda: run([dot_bin/'change_wallpaper']),
     'Add a workspace': 
         lambda: run([dot_bin/'new_desktop']),
+    'Reset workspaces':
+        lambda: run([dot_bin/'set_bspwm_desktops']),
     'BSPWM Settings':
         lambda: run([dot_bin/'rofi_bspwm_config']),
     'Screenshot':
         lambda: run([dot_bin/'screenshot_menu']),
     'Edit dotfiles':
         lambda: run(['code', Path.home()/'.config/dotfiles']),
+    compton_prompt: compton_toggle,
     'Exit': lambda: run([dot_bin / 'exit_dialog'])
 })
