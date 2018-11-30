@@ -1,4 +1,5 @@
 #! /bin/sh
+~/.screenlayout/DP1Only.sh
 
 export TERMINAL='/home/mpardalos/.bin/colored_alacritty'
 export SXHKD_SHELL='/usr/bin/sh'
@@ -6,14 +7,13 @@ export SXHKD_SHELL='/usr/bin/sh'
 xsetroot -cursor_name left_ptr # Set default cursor
 
 sxhkd &
-compton -b
 wal -R &
 ~/.config/dotfiles/lemonbar/bar.py &
 
 # Keep lemonbar below
 xdo above -t $(xdo id -n root) $(xdo id -n lemonbar)
 
-bspc monitor primary -d    
+bspc monitor primary -d 1 2 3 4 5
 
 bspc config border_width               5
 bspc config window_gap                 10

@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+DESKTOPS=$(rofi -dmenu -p "Desktop names (Space separated)")
+bspc monitor focused -d $DESKTOPS
