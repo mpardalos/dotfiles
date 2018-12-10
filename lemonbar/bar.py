@@ -2,24 +2,13 @@
 from pathlib import Path
 import os
 
-from lemonsqueezer.modules import BSPWMDesktops, Battery, CurrentWifi, Clock,\
-        CommandMonitorModule, MediaControls
+from lemonsqueezer.modules import Clock
+from modules import BSPWMDesktops, Battery, CurrentWifi, MediaControls, LayoutIndicator
 from lemonsqueezer import Align
 import lemonsqueezer as lsq
 
 pid_file = Path('/tmp/lemonsqueezer_pid')
 pid_file.write_text(str(os.getpid()))
-
-
-class LayoutIndicator(CommandMonitorModule):
-    def __init__(self, *args, **kwargs):
-        super().__init__(['skb'], *args, **kwargs)
-
-    def first_output(self, bar):
-        return
-
-    def on_line_received(self, process_output):
-        return process_output
 
 
 bar = lsq.Bar(
