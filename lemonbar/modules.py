@@ -213,26 +213,29 @@ class Battery(PeriodicModule):
     """
     Show current battery percentage using the `acpi` command
     """
-    def __init__(self, icons, interval=20, *args, **kwargs):
+    def __init__(self, battery_icon, plugged_in_icon, interval=20, *args, **kwargs):
         """
-        :param icons: A list of string to show before the percentage depending
-            on it. E.g. `["...", "..", "."]` would show ... between 100% and
-            66%, .. between 66% and 33%, and . below 33%.
+        :param battery_icon: The icon to show when the system is on battery
+        :param plugged_in_icon: The icon to show when the system is plugged in
         :param interval: How often to update the battery level
         """
         super().__init__(interval, *args, **kwargs)
-        self.icons = icons
-
-    def _get_icon(self, battery_level):
-        idx = min(len(self.icons)-1, battery_level // (100 // len(self.icons)))
-        return self.icons[idx]
+        self.battery_icon = battery_icon
+        self.plugged_in_icon = plugged_in_icon
+        self.battery_re = re.compile(r'Battery 0: (Charging|Discharging), (\d+)%')
 
     def on_update(self):
         out = _get_cmd_output('acpi', '-b').strip()
-        battery_level = int(out.split(', ')[1][:-1])
-        icon = self._get_icon(battery_level)
+        try:
+            (charging, level) = self.battery_re.match(out).groups()
+            charging_icon = (
+                self.plugged_in_icon if charging.lower() == 'charging' 
+                else self.battery_icon)
+            return f'{charging_icon} {level}%'
+        except ValueError:
+            lsq.log(f"Couldn't match line: {out}")
+            return None
 
-        return f'{icon} {battery_level}%'
 
 
 class MediaControls(CommandMonitorModule):

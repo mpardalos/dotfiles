@@ -21,6 +21,7 @@ bar = lsq.Bar(
     fg_color="#FFFFFF",
     padding=(20, 20),
     spacing=10,
+    screen_bottom=True,
     offset=-5,
     separator='│')
 
@@ -35,7 +36,10 @@ bar.register_module(
         highlight_color='#4788ef',
         align=Align.CENTER))
 bar.register_module(LayoutIndicator(align=Align.RIGHT))
-bar.register_module(Battery(['', '', '', '', ''], align=Align.RIGHT))
+bar.register_module(Battery(
+    plugged_in_icon='',
+    battery_icon='',
+    align=Align.RIGHT))
 bar.register_module(CurrentWifi('wlp58s0', icon='', align=Align.RIGHT))
 bar.register_module(
     Clock("+%a %d %b - %H:%M", 20, icon='', align=Align.RIGHT))
