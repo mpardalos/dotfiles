@@ -4,7 +4,7 @@ from rofi import Rofi
 from rofi_menu import menu
 import sh
 
-menu(Rofi(), 'Exit', {
+menu(Rofi(rofi_args=['-i']), 'Exit', {
     'Log out': sh.bspc.quit,
     'Shutdown': sh.systemctl.poweroff,
     'Reboot': sh.systemctl.reboot,
