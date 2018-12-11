@@ -15,7 +15,7 @@ function send_notification {
   iconMuted="notification-audio-volume-muted"
   is_mute=$(pamixer --get-mute | grep false)
   if $is_mute ; then
-    dunstify -i $iconMuted -r 2593 -u low "mute"
+    dunstify -i $iconMuted -r 2500 -u low "mute"
   else
     volume=$(pamixer --get-volume)
     # Make the bar with the special character ─ (it's not dash -)
