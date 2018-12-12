@@ -1,0 +1,139 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "alt+a",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+left",
+        "command": "-workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+right",
+        "command": "-workbench.action.focusRightGroup"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+up",
+        "command": "-workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+down",
+        "command": "-workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "alt+u",
+        "command": "extension.vim_ctrl+pageup",
+        "when": "editorTextFocus && vim.active && vim.use<C-pageup> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-extension.vim_ctrl+pageup",
+        "when": "editorTextFocus && vim.active && vim.use<C-pageup> && !inDebugRepl"
+    },
+    {
+        "key": "alt+i",
+        "command": "extension.vim_ctrl+pagedown",
+        "when": "editorTextFocus && vim.active && vim.use<C-pagedown> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-extension.vim_ctrl+pagedown",
+        "when": "editorTextFocus && vim.active && vim.use<C-pagedown> && !inDebugRepl"
+    },
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+alt+s",
+        "command": "idris.proof-search"
+    },
+    {
+        "key": "ctrl+alt+t",
+        "command": "idris.type-of"
+    },
+    {
+        "key": "alt+space",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "alt+c",
+        "command": "hie.commands.caseSplit",
+        "when": "editorTextFocus, editorLangId == 'haskell'"
+    },
+    {
+        "key": "alt+c",
+        "command": "idris.case-split",
+        "when": "editorTextFocus, editorLangId == 'idris'"
+    },
+    {
+        "key": "alt+c",
+        "command": "-toggleFindCaseSensitive",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+r",
+        "command": "-workbench.action.terminal.toggleFindRegex",
+        "when": "terminalFindWidgetFocused"
+    },
+    {
+        "key": "alt+r",
+        "command": "-workbench.action.terminal.toggleFindRegexTerminalFocus",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleFindRegex",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleSearchRegex",
+        "when": "searchViewletFocus && searchViewletVisible"
+    },
+    {
+        "key": "alt+r",
+        "command": "workbench.action.tasks.runTask"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    }
+]
