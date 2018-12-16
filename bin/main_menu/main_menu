@@ -5,7 +5,8 @@ from subprocess import run
 from rofi import Rofi
 from rofi_menu import menu
 
-dot_bin = Path.home()/'.bin'
+menu_dir = Path.home()/'.bin/main_menu'
+dot_bin  = Path.home()/'.bin'
 r = Rofi(rofi_args=['-i'])
 
 
@@ -25,17 +26,17 @@ menu(r, 'Search', {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
     'Change Wallpaper':
-        lambda: run([dot_bin/'change_wallpaper']),
+        lambda: run([menu_dir/'change_wallpaper']),
     'Add a workspace': 
-        lambda: run([dot_bin/'new_desktop']),
+        lambda: run([menu_dir/'new_workspace']),
     'Reset workspaces':
-        lambda: run([dot_bin/'set_bspwm_desktops']),
+        lambda: run([menu_dir/'set_bspwm_desktops']),
     'BSPWM Settings':
-        lambda: run([dot_bin/'rofi_bspwm_config']),
+        lambda: run([menu_dir/'bspwm_config']),
     'Screenshot':
-        lambda: run([dot_bin/'screenshot_menu']),
+        lambda: run([menu_dir/'screenshot_menu']),
     'Edit dotfiles':
         lambda: run(['code', Path.home()/'.config/dotfiles']),
     compton_prompt: compton_toggle,
-    'Exit': lambda: run([dot_bin / 'exit_dialog'])
+    'Exit': lambda: run([menu_dir / 'exit_dialog'])
 })
