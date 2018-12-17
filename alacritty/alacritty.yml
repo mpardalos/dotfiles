@@ -11,7 +11,7 @@ env:
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
-  TERM: xterm-256color
+  TERM: alacritty
 
 window:
   # Window dimensions in character columns and lines
@@ -28,9 +28,8 @@ window:
     x: 0
     y: 0
 
-  # Window decorations
-  # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  # Window decorations. none|full
+  decorations: full
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
@@ -100,40 +99,75 @@ font:
 # Should display the render timer
 render_timer: false
 
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
+# # Colors (Gruvbox light)
+# colors:
+#   # Default colors
+#   primary:
+#     # hard contrast: background = '0xf9f5d7'
+#     background: '0xfbf1c7'
+#     # soft contrast: background = '0xf2e5bc'
+#     foreground: '0x3c3836'
 
-# Colors (Gruvbox light)
+#   # Normal colors
+#   normal:
+#     black:   '0xfbf1c7'
+#     red:     '0xcc241d'
+#     green:   '0x98971a'
+#     yellow:  '0xd79921'
+#     blue:    '0x458588'
+#     magenta: '0xb16286'
+#     cyan:    '0x689d6a'
+#     white:   '0x7c6f64'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x928374'
+#     red:     '0x9d0006'
+#     green:   '0x79740e'
+#     yellow:  '0xb57614'
+#     blue:    '0x076678'
+#     magenta: '0x8f3f71'
+#     cyan:    '0x427b58'
+#     white:   '0x3c3836'
+# Colors (Solarized Light)
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '0xf9f5d7'
-    background: '0xfbf1c7'
-    # soft contrast: background = '0xf2e5bc'
-    foreground: '0x3c3836'
+    background: '0xfdf6e3' # base3
+    foreground: '0x586e75' # base01
 
   # Normal colors
   normal:
-    black:   '0xfbf1c7'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0x7c6f64'
+    black:   '0x073642' # base02
+    red:     '0xdc322f' # red
+    green:   '0x859900' # green
+    yellow:  '0xb58900' # yellow
+    blue:    '0x268bd2' # blue
+    magenta: '0xd33682' # magenta
+    cyan:    '0x2aa198' # cyan
+    white:   '0xeee8d5' # base2
 
   # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0x9d0006'
-    green:   '0x79740e'
-    yellow:  '0xb57614'
-    blue:    '0x076678'
-    magenta: '0x8f3f71'
-    cyan:    '0x427b58'
-    white:   '0x3c3836'
+    black:   '0x002b36' # base03
+    red:     '0xcb4b16' # orange
+    green:   '0x586e75' # base01
+    yellow:  '0x657b83' # base00
+    blue:    '0x839496' # base0
+    magenta: '0x6c71c4' # violet
+    cyan:    '0x93a1a1' # base1
+    white:   '0xfdf6e3' # base3
+
+cursor:
+    # Style of the cursor
+    #
+    # Values for 'style':
+    # - Block
+    # - Underline
+    # - Beam
+    cursor_style: Block
+
+
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -192,28 +226,20 @@ mouse:
 
   # Faux Scrollback
   #
-  # The `faux_scrollback_lines` setting controls the number
+  # The `faux_scrolling_lines` setting controls the number
   # of lines the terminal should scroll when the alternate
   # screen buffer is active. This is used to allow mouse
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
+
+  hide_when_typing: true
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
-
-hide_cursor_when_typing: false
-
-# Style of the cursor
-#
-# Values for 'cursor_style':
-# - Block
-# - Underline
-# - Beam
-cursor_style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
