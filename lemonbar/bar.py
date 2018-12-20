@@ -21,7 +21,6 @@ bar = lsq.Bar(
     fg_color="#FFFFFF",
     padding=(20, 20),
     spacing=10,
-    screen_bottom=True,
     offset=-5,
     separator='│')
 
