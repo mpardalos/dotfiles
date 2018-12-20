@@ -9,22 +9,10 @@ menu_dir = Path.home()/'.bin/main_menu'
 dot_bin  = Path.home()/'.bin'
 r = Rofi(rofi_args=['-i'])
 
-
-def compton_prompt():
-    if run(['pgrep', 'compton']).returncode == 0:
-        return 'Toggle compton ❌'
-    else:
-        return 'Toggle compton ✅'
-
-def compton_toggle():
-    if run(['pgrep', 'compton']).returncode == 0:
-        run(['pkill', 'compton'])
-    else:
-        run(['compton', '-b'])
-
 menu(r, 'Search', {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
+    'Feature toggles': lambda: run([menu_dir/'feature_toggles']),
     'Change Wallpaper':
         lambda: run([menu_dir/'change_wallpaper']),
     'Add a workspace': 
@@ -37,6 +25,5 @@ menu(r, 'Search', {
         lambda: run([menu_dir/'screenshot_menu']),
     'Edit dotfiles':
         lambda: run(['code', Path.home()/'.config/dotfiles']),
-    compton_prompt: compton_toggle,
     'Exit': lambda: run([menu_dir / 'exit_dialog'])
 })

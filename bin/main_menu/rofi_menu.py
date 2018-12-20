@@ -21,7 +21,7 @@ def menu(r: Rofi, prompt: str, options: Dict[Union[str, Callable[[], str]], Call
     if key == -1: return None
 
     name, action = list(options.items())[index]
-    action()
-    return name, action
+    name = name() if callable(name) else name
+    return name, action()
 
     

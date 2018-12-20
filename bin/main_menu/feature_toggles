@@ -1,0 +1,41 @@
+#!/bin/env python
+
+from pathlib import Path
+from subprocess import run, Popen
+
+from rofi import Rofi
+from rofi_menu import menu
+
+lemonsqueezer_pid_file = Path('/tmp/lemonsqueezer_pid')
+
+def compton_prompt():
+    if run(['pgrep', 'compton']).returncode == 1:
+        return '❌ Compton'
+    else:
+        return '✅ Compton'
+
+def compton_toggle():
+    if run(['pgrep', 'compton']).returncode == 0:
+        run(['pkill', 'compton'])
+    else:
+        run(['compton', '-b'])
+
+def bar_prompt():
+    if lemonsqueezer_pid_file.exists():
+        return '✅ Lemonbar'
+    else:
+        return '❌ Lemonbar'
+
+def bar_toggle():
+    try:
+        with open(lemonsqueezer_pid_file) as pid:
+            run(['pkill', '-P', pid.read()])
+            run(['bspc', 'config', 'top_padding', '0'])
+    except FileNotFoundError:
+        Popen(['/home/mpardalos/.config/lemonbar/bar.py'])
+
+menu(Rofi(rofi_args=['-i']), 'Search', {
+    compton_prompt: compton_toggle,
+    bar_prompt: bar_toggle
+})
+
