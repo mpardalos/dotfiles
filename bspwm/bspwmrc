@@ -31,5 +31,4 @@ bspc config remove_unplugged_monitors  true
 bspc config merge_overlapping_monitors true
 
 bspc rule -a Spotify desktop=''
-bspc rule -a Alacritty state=floating
-
+bspc rule -a Alacritty state=floating rectangle=1000x600+460+240
