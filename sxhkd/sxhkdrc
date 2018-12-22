@@ -2,9 +2,6 @@
 # wm independent hotkeys
 #
 
-super + Return
-	alacritty
-
 super + d
     ~/.bin/launcher
 
@@ -35,6 +32,8 @@ super + w ; e
     code
 super + w ; m 
     spotify
+super + w ; t
+    alacritty
 
 
 # Media keys {{{
