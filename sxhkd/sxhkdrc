@@ -9,7 +9,7 @@ super + d
     ~/.bin/launcher
 
 super + a
-    ~/.bin/rofi_menu_search
+    ~/.bin/main_menu/main_menu
 
 super + shift + t 
     ~/.bin/change_wallpaper
