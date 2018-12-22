@@ -6,18 +6,15 @@ export SXHKD_SHELL='/usr/bin/sh'
 
 xsetroot -cursor_name left_ptr # Set default cursor
 
-sxhkd &
+! ( pgrep "sxhkd" ) && sxhkd &
+! [ -f /tmp/lemonsqueezer.lock ] && ~/.config/dotfiles/lemonbar/bar.py &
+xdo above -t $(xdo id -n root) $(xdo id -n lemonbar) # Keep lemonbar below
 wal -R &
-~/.config/dotfiles/lemonbar/bar.py &
-
-# Keep lemonbar below
-xdo above -t $(xdo id -n root) $(xdo id -n lemonbar)
 
 bspc monitor primary -d 1 2 3 4 5
 
 bspc config border_width               5
 bspc config window_gap                 10
-# bspc config top_padding                50
 
 bspc config split_ratio                0.5
 bspc config initial_polarity           second_child

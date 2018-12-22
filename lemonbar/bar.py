@@ -7,8 +7,8 @@ from modules import BSPWMDesktops, Battery, CurrentWifi, MediaControls, LayoutIn
 from lemonsqueezer import Align
 import lemonsqueezer as lsq
 
-pid_file = Path('/tmp/lemonsqueezer_pid')
-pid_file.write_text(str(os.getpid()))
+lockfile = Path('/tmp/lemonsqueezer.lock')
+lockfile.write_text(str(os.getpid()))
 
 
 bar = lsq.Bar(
@@ -46,4 +46,4 @@ bar.register_module(
 try:
     bar.run()
 finally:
-    os.remove(pid_file)
+    os.remove(lockfile)

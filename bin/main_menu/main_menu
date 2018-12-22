@@ -25,5 +25,7 @@ menu(r, 'Search', {
         lambda: run([menu_dir/'screenshot_menu']),
     'Edit dotfiles':
         lambda: run(['code', Path.home()/'.config/dotfiles']),
+    'Reload config':
+        lambda: run([Path.home()/'.config/bspwm/bspwmrc']),
     'Exit': lambda: run([menu_dir / 'exit_dialog'])
 })
