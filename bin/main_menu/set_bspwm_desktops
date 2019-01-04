@@ -1,7 +1,0 @@
-#!/bin/env bash
-
-DESKTOPS=$(
-    echo "Docs Main Extra1 Extra2 Music | Lecture NotLecture | 1 2 3 4 5" \
-    | rofi -sep "|" -dmenu -p "Desktop names (Space separated)")
-
-bspc monitor focused -d $DESKTOPS

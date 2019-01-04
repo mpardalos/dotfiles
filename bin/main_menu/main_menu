@@ -1,6 +1,7 @@
 #!/bin/env python
 from pathlib import Path
 from subprocess import run
+import re
 
 from rofi import Rofi
 from rofi_menu import menu
@@ -9,23 +10,19 @@ menu_dir = Path.home()/'.bin/main_menu'
 dot_bin  = Path.home()/'.bin'
 r = Rofi(rofi_args=['-i'])
 
-menu(r, 'Search', {
+menu_items = {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
-    'Feature toggles': lambda: run([menu_dir/'feature_toggles']),
-    'Change Wallpaper':
-        lambda: run([menu_dir/'change_wallpaper']),
-    'Add a workspace': 
-        lambda: run([menu_dir/'new_workspace']),
-    'Reset workspaces':
-        lambda: run([menu_dir/'set_bspwm_desktops']),
-    'BSPWM Settings':
-        lambda: run([menu_dir/'bspwm_config']),
-    'Screenshot':
-        lambda: run([menu_dir/'screenshot_menu']),
     'Edit dotfiles':
         lambda: run(['code', Path.home()/'.config/dotfiles']),
     'Reload config':
         lambda: run([Path.home()/'.config/bspwm/bspwmrc']),
-    'Exit': lambda: run([menu_dir / 'exit_dialog'])
-})
+}
+namematcher = re.compile(r'(.+)\.menu')
+for menu_file in menu_dir.iterdir():
+    name_match = namematcher.match(menu_file.name)
+    if name_match is not None:
+        menu_items[name_match[1]] = lambda target=menu_file: run([target])
+
+
+menu(r, 'Search', menu_items)

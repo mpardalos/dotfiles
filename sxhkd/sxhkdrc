@@ -15,7 +15,7 @@ super + shift + q
     ~/.bin/exit_dialog
 
 Print
-    ~/.bin/screenshot_menu
+    ~/.bin/main_menu/Screenshot.menu
 
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -91,6 +91,9 @@ super + q
 
 super + f 
     bspc node --state ~floating
+
+super + s
+    bspc node --flag sticky
 
 super + {u,i}
     bspc desktop -f {prev, next}

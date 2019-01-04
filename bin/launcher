@@ -1,2 +1,2 @@
 #!/bin/sh
-rofi -modi drun -show drun -show-icons -columns 2
+rofi -combi-modi window,drun -show combi -show-icons -columns 2
