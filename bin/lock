@@ -26,7 +26,7 @@ i3lock \
     --wrong-font="Noto Sans Display" \
     --force-clock \
     --timepos="ix:iy" \
-    --timestr="%H:%m" \
+    --timestr="%H:%M" \
     --refresh-rate=30.0 \
     --datepos="tx:ty+20" \
     --datestr="%A, %d %B %Y" \
