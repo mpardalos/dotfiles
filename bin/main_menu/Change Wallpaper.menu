@@ -8,18 +8,14 @@ from rofi import Rofi
 from rofi_menu import menu
 
 wallpapersdir = Path.home()/'Pictures'/'Wallpapers'
-args = ['wal', '-o', Path.home()/'.bin/post_wal.sh', '-i']
+args = ['wal', '-st', '-i']
 
 def runner(args):
     return lambda: run(args)
 
 options = {
-    f.name: runner([*args, wallpapersdir/f.name])
+    f.stem: runner([*args, wallpapersdir/f.name])
     for f in wallpapersdir.iterdir()
 }
-options = {**options, **{
-    f'{f.name} (light)': runner([*args, wallpapersdir/f.name, '-l'])
-    for f in wallpapersdir.iterdir()
-}}
 
 menu(Rofi(), 'Choose a Wallpaper', OrderedDict(sorted(options.items(), key=lambda it: it[0])))
