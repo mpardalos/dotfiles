@@ -28,6 +28,7 @@ def bar_toggle():
         with open(lemonsqueezer_pid_file) as pid:
             run(['pkill', '-P', pid.read()])
             run(['bspc', 'config', 'top_padding', '0'])
+            run(['bspc', 'config', 'bottom_padding', '0'])
     except FileNotFoundError:
         Popen(['/home/mpardalos/.config/lemonbar/bar.py'])
 

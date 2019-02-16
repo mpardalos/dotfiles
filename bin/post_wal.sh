@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cp ~/.cache/wal/rofi_flat.rasi       ~/.config/rofi/flat.rasi
-cp ~/.cache/wal/rofi_fullscreen.rasi ~/.config/rofi/fullscreen.rasi
+cp ~/.cache/wal/*.rasi ~/.config/rofi
 
 cp ~/.cache/wal/colors.sh ~/.bin/colors.sh
 cp ~/.cache/wal/colors-rgba.sh ~/.bin/colors-rgba.sh
