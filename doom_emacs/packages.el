@@ -7,7 +7,7 @@
 ;; (package! builtin-package :disable t)
 
 (package! gruvbox-theme)
-
+(package! base16-theme)
 
 (package! eglot)
 ;; (package! lsp-mode)
