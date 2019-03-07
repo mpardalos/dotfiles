@@ -18,12 +18,6 @@
     (write-file "~/.emacs-theme")))
 
 ;;;###autoload
-(defun search-dotfiles ()
-  "Search in my dotfiles with counsel"
-  (interactive)
-  (counsel-file-jump "" "~/.config/dotfiles"))
-
-;;;###autoload
 (defun my/org-export-choose ()
   (interactive)
   (counsel-M-x "org-pandoc-export-as"))

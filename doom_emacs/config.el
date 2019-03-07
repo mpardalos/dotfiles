@@ -41,6 +41,9 @@
  ;; (un)fold
  :n "C-SPC"    #'+evil/fold-toggle
 
+ ;; completion
+ :i "C-SPC"   #'company-complete
+
  ;; don't leave visual mode after shifting
  :v  "<"     #'+evil/visual-dedent
  :v  ">"     #'+evil/visual-indent
@@ -70,6 +73,7 @@
 
  (:leader
   :prefix ("o" . "Org mode")
+  :desc "Search in ~/org" "f" (lambda! () (counsel-file-jump "" "~/org"))
   :desc "Agenda" "a" #'org-agenda-list)
 
  (:mode org-mode
@@ -82,7 +86,9 @@
  :desc "TODO"         "o" #'org-todo
  :desc "Make table"   "t" #'org-table-create
  :desc "Export"       "e" #'my/org-export-choose
- :desc "Add deadline" "d" #'org-deadline))
+ :desc "Schedule"     "s" #'org-schedule
+ :desc "Add deadline" "d" #'org-deadline
+ :desc "Archive"      "a" #'org-archive-subtree))
 
 ;; Searching
 (map!
@@ -94,7 +100,7 @@
  :desc "Project files" "g" #'counsel-git
  :desc "Themes"        "t" #'load-theme
  :desc "Shells"        "s" #'counsel-switch-to-shell-buffer
- :desc "Dotfiles"      "d" #'search-dotfiles)
+ :desc "Dotfiles"      "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles")))
 
  ;; evil-easymotion
 (map!
@@ -189,6 +195,19 @@
  :desc "Big mode"                     "b" #'doom-big-font-mode
  :desc "Evil goggles"                 "g" #'evil-goggles-mode
  :desc "Whitespace visualisation"     "w" #'whitespace-mode)
+
+;; Make
+(map!
+ :leader
+ :prefix ("m" . "Make")
+ :desc "Execute last recipe" "m" #'+make/run-last
+ :desc "Execute recipe"      "r" #'+make/run)
+
+;; LSP
+(map!
+ :mode lsp-mode
+ :localleader
+ :desc "Rename symbol" "r" #'lsp-rename)
 
 ;; Intero
 (map!
