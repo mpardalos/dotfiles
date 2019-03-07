@@ -7,17 +7,15 @@
  file-templates
  (lookup +docsets)
  snippets
- spellcheck
- syntax-checker
  workspaces
 
  :completion
  (ivy +childframe)
- company
+ (company +auto)
 
  :ui
  doom
- doom-modeline
+ modeline
  evil-goggles
  hl-todo
  nav-flash
@@ -45,6 +43,9 @@
  magit
  lsp
  editorconfig
+ ein
+ flyspell
+ flycheck
 
  :lang
  (sh +fish)
@@ -58,6 +59,7 @@
   +capture
   +export
   +present)
+ (cc +lsp)
 
  :app
  ;;(email +gmail)    ; emacs as an email client
