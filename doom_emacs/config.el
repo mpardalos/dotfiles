@@ -244,6 +244,12 @@
 (after! treemacs
   (setq treemacs-position 'right))
 
+(def-package! cc-mode
+  :config
+  (set-pretty-symbols! '(c-mode c++-mode)
+    :return "return"))
+
+
 ;;;;  Hooks ;;;;
 ;; Save theme
 (add-hook 'kill-emacs-hook #'my/remember-theme-save)
