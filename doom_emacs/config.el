@@ -220,6 +220,12 @@
  :prefix ("l" . "Language commands")
  :n "f" #'intero-apply-suggestions)
 
+;; C(++)
+(map!
+ :mode cpp-mode
+ :localleader
+ :desc "Toggle header/source" "t" #'ff-find-other-file)
+
 ;;;; Options ;;;;
 (setq doom-leader-key "SPC")
 (setq doom-localleader-key "SPC SPC")
