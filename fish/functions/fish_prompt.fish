@@ -1,1 +1,1 @@
-/home/mpardalos/.local/share/omf/themes/fishbone/fish_prompt.fish
+/home/mpardalos/.local/share/omf/themes/agnoster/fish_prompt.fish
