@@ -207,18 +207,8 @@
 (map!
  :mode lsp-mode
  :localleader
- :desc "Rename symbol" "r" #'lsp-rename)
-
-;; Intero
-(map!
- :after intero
- :map intero-mode-map
- :n "gh" #'intero-type-at
- :n "gd" #'intero-goto-definition
-
- :leader
- :prefix ("l" . "Language commands")
- :n "f" #'intero-apply-suggestions)
+ :desc "Rename symbol" "r" #'lsp-rename
+ :desc "Code action"   "a" #'lsp-execute-code-action)
 
 ;; C(++)
 (map!
