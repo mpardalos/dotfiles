@@ -10,7 +10,7 @@
  workspaces
 
  :completion
- (ivy +childframe)
+ ivy
  (company +auto)
 
  :ui
