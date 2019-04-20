@@ -33,15 +33,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf.vim'
 " }}}
 
-" Organisation {{{
-    Plug 'freitass/todo.txt-vim'
-    Plug 'vitalk/vim-simple-todo', {'for': 'list'}
-    let g:simple_todo_map_keys = 0
-" }}}
-
 " Prose {{{
     Plug 'dbmrq/vim-ditto'
-    Plug 'reedes/vim-pencil'
     Plug 'junegunn/goyo.vim'
 " }}}
 
@@ -75,53 +68,8 @@ call plug#begin('~/.config/nvim/plugged')
     \ 'python': ['pyls']
     \ }
 
-    " Python {{{
-    Plug 'tmhedberg/SimpylFold'
-    " }}}
-
-    " LaTeX {{{
-        Plug 'LaTeX-Box-Team/LaTeX-Box'
-        " deoplete LaTeX completion
-        if !exists('g:deoplete#omni#input_patterns')
-              let g:deoplete#omni#input_patterns = {}
-          endif
-          let g:deoplete#omni#input_patterns.tex = '\\(?:'
-                \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-                \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-            \ . '|hyperref\s*\[[^]]*'
-            \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-            \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ .')'
-    " }}}
-
-    " Markdown {{{
-        Plug 'godlygeek/tabular'
-        " Plug 'vim-pandoc/vim-pandoc'
-        Plug 'vim-pandoc/vim-pandoc-syntax'
-
-        let g:pandoc#formatting#mode = "h"
-        let g:pandoc#folding#fold_yaml = "1"
-        let g:pandoc#folding#fold_fenced_codeblocks = "1"
-        let g:pandoc#spell#default_langs = ["en", "de"]
-        let g:pandoc#formatting#textwidth = "92"
-    " }}}
-
-    " Webdev {{{
-        Plug 'mattn/emmet-vim'
-        Plug 'posva/vim-vue'
-        Plug 'lepture/vim-jinja'
-    " }}}
-    
-    " Fish shell {{{
     Plug 'dag/vim-fish'
-    " }}}
-   
-    " MIPS Assembly {{{
     Plug 'harenome/vim-mipssyntax'
-    " }}}
 
 " }}}
 call plug#end()
