@@ -25,11 +25,11 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
 
   # Window decorations. none|full
-  decorations: full
+  decorations: none
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
@@ -195,7 +195,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.95
+background_opacity: 0.9
 
 # Mouse bindings
 #
