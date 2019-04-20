@@ -3,6 +3,7 @@
 
 export TERMINAL='/home/mpardalos/.bin/colored_alacritty'
 export SXHKD_SHELL='/usr/bin/sh'
+export _JAVA_AWT_WM_NONREPARENTING=1 # For AWT to play nice
 
 xsetroot -cursor_name left_ptr # Set default cursor
 
@@ -21,7 +22,7 @@ bspc config initial_polarity           second_child
 
 bspc config borderless_monocle         true
 bspc config gapless_monocle            true
-bspc config paddingless_monocle        true
+bspc config paddingless_monocle        false
 
 bspc config focus_follows_pointer      true
 bspc config pointer_follows_monitor    true
@@ -30,5 +31,6 @@ bspc config remove_disabled_monitors   true
 bspc config remove_unplugged_monitors  true
 bspc config merge_overlapping_monitors true
 
-bspc rule -a Spotify desktop=''
-bspc rule -a Alacritty state=floating rectangle=1000x600+460+240
+# bspc rule -a Alacritty state=floating rectangle=1000x600+460+240
+bspc rule -a Emacs state=tiled
+bspc rule -a sun-awt-X11-XFramePeer state=floating
