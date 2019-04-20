@@ -16,6 +16,7 @@ bar = lsq.Bar(
     fonts=[
         "FontAwesome:style=Regular", "Noto Sans Display", "Sans"
     ],
+    screen_bottom=True,
     geometry=(1920, 30, 0, 0),
     bg_color="#DD6a1931",
     fg_color="#FFFFFF",
