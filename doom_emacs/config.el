@@ -74,7 +74,6 @@
 
  (:leader
   :prefix ("o" . "Org mode")
-  :desc "Search in ~/org" "f" (lambda! () (counsel-file-jump "" "~/org"))
   :desc "Agenda" "a" #'org-agenda-list)
 
  (:mode org-mode
@@ -96,6 +95,7 @@
  :leader
  :prefix ("f" . "Search")
 
+ :desc "Org files"     "o" (lambda! () (counsel-file-jump "" "~/org"))
  :desc "Buffers"       "b" #'ivy-switch-buffer
  :desc "Projects"      "p" #'projectile-switch-project
  :desc "Project files" "g" #'counsel-git
