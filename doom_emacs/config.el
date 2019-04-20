@@ -237,8 +237,9 @@
         '((sequence "[?](m)" "[ ](t)" "[+](p)" "|" "[~](w)" "[X](d)"))))
 (after! magit
   (setq magit-blame-echo-style 'margin))
-(after! lsp-mode
-  (setq lsp-enable-xref t))
+(after! lsp-ui
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-code-actions nil))
 (after! treemacs
   (setq treemacs-position 'right))
 
