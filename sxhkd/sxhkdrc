@@ -85,6 +85,11 @@ super + ctrl + shift + {Up, Right, Down, Left}
     bspc node --resize bottom_right {0 -10,10 0,0 10,-10 0}
 # }}}
 
+# Preselection {{{
+super + ctrl + {h,j,k,l,space}
+      bspc node --presel-dir {west,south,north,east,cancel}
+# }}}
+
 super + q
     bspc node -f --close
 
