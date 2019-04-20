@@ -18,7 +18,7 @@ Print
     ~/.bin/main_menu/Screenshot.menu
 
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 # Launcher
 
@@ -29,12 +29,11 @@ super + w ; f
 super + w ; r 
     rofi-sensible-terminal -e rtv
 super + w ; e 
-    code
+    emacs
 super + w ; m 
     spotify
 super + w ; t
     alacritty
-
 
 # Media keys {{{
 XF86AudioMute
