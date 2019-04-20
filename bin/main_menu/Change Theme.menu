@@ -19,7 +19,7 @@ def runner(args):
 
 options = {
     **{
-        "(light) " + name: runner([*args, name])
+        "(light) " + name: runner([*args, name, '-l'])
         for name in light_schemes
     },
     **{
