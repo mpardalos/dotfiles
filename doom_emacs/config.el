@@ -6,7 +6,8 @@
 (set-popup-rule! dedicated-name
   :side 'right
   :width 0.45
-  :height 0.3)
+  :height 0.3
+  :ttl nil)
 
 ;;;; Maps ;;;;
 ;; Commands without C-
