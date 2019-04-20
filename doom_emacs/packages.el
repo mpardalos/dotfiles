@@ -9,6 +9,7 @@
 (package! gruvbox-theme)
 (package! base16-theme)
 
+(package! bison-mode)
 (package! eglot)
 ;; (package! lsp-mode)
 ;; (package! lsp-ui)
