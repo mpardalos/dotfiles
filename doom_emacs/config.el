@@ -228,7 +228,6 @@
 (setq doom-leader-key "SPC")
 (setq doom-localleader-key "SPC SPC")
 (setq multi-term-program "/bin/fish")
-(add-hook 'after-init-hook 'org-agenda-list)
 (setq doom-theme (my/remember-theme-read 'doom-one))
 (setq doom-font (font-spec :family "Fira Code Retina" :size 14))
 (after! org
