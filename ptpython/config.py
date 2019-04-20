@@ -1,8 +1,6 @@
 __all__ = ('configure')
 
 def configure(repl):    
-    repl.vi_mode = True
-
     repl.show_signature = True
     repl.show_meta_enter_message = True
     repl.show_line_numbers = True
