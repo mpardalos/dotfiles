@@ -164,7 +164,14 @@
 
 ;; Treemacs
 (map!
- (:leader :desc "Treemacs" "/" 'treemacs))
+ (:leader :desc "Treemacs" "/" 'treemacs)
+
+ :mode treemacs-mode
+ (:prefix ("o" . "Open")
+   :desc "In buffer"        "o" #'treemacs-visit-node-ace
+   :desc "Horizontal split" "h" #'treemacs-visit-node-ace-horizontal-split
+   :desc "Vertical split"   "v" #'treemacs-visit-node-ace-vertical-split
+   :desc "External"         "x" #'treemacs-visit-node-in-external-application))
 
 ;; VCS
 (map!
