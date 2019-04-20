@@ -10,7 +10,6 @@ import lemonsqueezer as lsq
 lockfile = Path('/tmp/lemonsqueezer.lock')
 lockfile.write_text(str(os.getpid()))
 
-
 bar = lsq.Bar(
     config_file=str(Path.home() / '.config/lemonbar/colors.json'),
     fonts=[
@@ -18,8 +17,6 @@ bar = lsq.Bar(
     ],
     screen_bottom=True,
     geometry=(1920, 30, 0, 0),
-    bg_color="#DD6a1931",
-    fg_color="#FFFFFF",
     padding=(20, 20),
     spacing=10,
     offset=-5,

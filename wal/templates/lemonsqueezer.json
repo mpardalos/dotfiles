@@ -1,4 +1,4 @@
 {{
-    "background": "#DD{background.strip}",
-    "foreground": "{color1}"
+    "background": "{color7}",
+    "foreground": "{color0}"
 }}
