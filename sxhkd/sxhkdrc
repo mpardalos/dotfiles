@@ -1,41 +1,45 @@
+####
 #
-# wm independent hotkeys
+# sxhkdrc
+# A lot of hotkeys depend on bspwm as well as my scripts in .bin
 #
+####
 
-super + d
-    ~/.bin/launcher
-
+## Main menu
 super + a
     ~/.bin/main_menu/main_menu
 
-super + shift + t 
-    ~/.bin/change_wallpaper
-
-super + shift + q
-    ~/.bin/exit_dialog
-
-Print
-    ~/.bin/main_menu/Screenshot.menu
-
+## Reload sxhkd
 super + Escape
     pkill -USR1 -x sxhkd
 
+###########
 # Launcher
+
+super + d
+    ~/.bin/launcher
 
 super + w ; b
     firefox
 super + w ; f
    thunar
-super + w ; r 
-    rofi-sensible-terminal -e rtv
-super + w ; e 
+super + w ; e
     emacs
-super + w ; m 
+super + w ; m
     spotify
 super + w ; t
     alacritty
 
-# Media keys {{{
+# Launcher
+###########
+
+##############
+# Special Keys
+
+Print
+    ~/.bin/main_menu/Screenshot.menu
+
+## Audio
 XF86AudioMute
     ~/.bin/volume_control mute
 XF86AudioRaiseVolume
@@ -43,6 +47,7 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
     ~/.bin/volume_control down
 
+## Media
 XF86AudioPrev
     playerctl previous
 XF86AudioNext
@@ -50,85 +55,95 @@ XF86AudioNext
 XF86AudioPlay
     playerctl play-pause
 
+## Brightness
 XF86MonBrightnessUp
     ~/.bin/brightness_control up
 XF86MonBrightnessDown
     ~/.bin/brightness_control down
-# }}}
 
+# Special Keys
+##############
+
+###################
+# Window Management
+
+## Monocle/Tiled
 super + shift + f
     bspc desktop -f -l next
 
-# Windows {{{
-
+## Moving around
 super + {h,j,k,l}
     bspc node --focus {west,south,north,east}
 
+## Swapping
 super + shift + {h,j,k,l}
     bspc node --swap {west,south,north,east}
 
-# Rotate current parent node
+## Rotate current parent node
 super + r
     bspc node @parent --rotate 90
 
-# Rotate whole desktop
+## Rotate whole desktop
 super + shift + r
     bspc node @/ --rotate 90
 
-# Balance the current parent node
+## Balance the current parent node
 super + b
     bspc node @parent --balance
 
-# Balance the whole desktop
+## Balance the whole desktop
 super + shift + b
     bspc node @/ --balance
 
-# Moving/Resizing {{{
-super + {Up, Right, Down, Left}
-    bspc node --move {0 -50,50 0,0 50,-50 0}
-
-super + ctrl + {Up, Right, Down, Left}
-    bspc node --move {0 -10,10 0,0 10,-10 0}
-    
-super + shift + {Up, Right, Down, Left}
-    bspc node --resize bottom_right {0 -50,50 0,0 50,-50 0}
-
-super + ctrl + shift + {Up, Right, Down, Left}
-    bspc node --resize bottom_right {0 -10,10 0,0 10,-10 0}
-# }}}
-
-# Preselection {{{
+## Preselection
 super + ctrl + {h,j,k,l,space}
       bspc node --presel-dir {west,south,north,east,cancel}
-# }}}
 
-super + q
-    bspc node -f --close
+## Kill/Close
+super + {_, ctrl+shift} + q
+    bspc node --focus {--kill, --close}
 
+## Toggle floating
 super + f 
     bspc node --state ~floating
 
+## Moving floating windows
+super        + {Up, Right, Down, Left}
+    bspc node --move {0 -50,50 0,0 50,-50 0}
+super + ctrl + {Up, Right, Down, Left}
+    bspc node --move {0 -10,10 0,0 10,-10 0}
+
+## Resizing floating windows
+super        + shift + {Up, Right, Down, Left}
+    bspc node --resize bottom_right {0 -50,50 0,0 50,-50 0}
+super + ctrl + shift + {Up, Right, Down, Left}
+    bspc node --resize bottom_right {0 -10,10 0,0 10,-10 0}
+
+## Sticky windows
 super + s
     bspc node --flag sticky
 
-super + {u,i}
-    bspc desktop -f {prev, next}
-
+## Desktop management
+super         + {u,i}
+    bspc desktop --focus {prev, next}
 super + shift + {u,i}
-    bspc node -d {prev, next} --follow
+    bspc node --to-desktop {prev, next} --follow
 
+## Raise/Lower window
 super + {parenleft,0,parenright}
-    bspc node -l {below,normal,above}
+    bspc node --layer {below,normal,above}
 
-# }}}
+# Window Management
+###################
 
-# Gaps {{{
+######
+# Gaps
+
 super + bracketleft
-    bspc config window_gap $(~/.bin/max $(echo "$(bspc config window_gap) - 10" | bc) 0)
+    bspc config window_gap $(~/.bin/max $(( $(bspc config window_gap) - 10 )) 0)
 
 super + bracketright
-    bspc config window_gap $(echo "$(bspc config window_gap) + 10" | bc)
-# }}}
+    bspc config window_gap $(( $(bspc config window_gap) + 10 ))
 
-# vim: fdm=marker
-#
+# Gaps
+######
