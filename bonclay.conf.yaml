@@ -22,11 +22,11 @@ spec:
   ~/.config/tmux: tmux
   ~/.config/wal: wal
 
-  ~/.config/compton.conf: compton.conf
+  ~/.config/compton.conf: compton/compton.conf
 
   ~/.bin: bin
-  ~/.motd: motd
-  ~/.motd_image: motd_image
+  ~/.motd: motd/motd
+  ~/.motd_image: motd/motd_image
 
   ~/.doom.d: doom_emacs
   ~/.gitconfig: git/gitconfig
