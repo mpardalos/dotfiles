@@ -1,11 +1,8 @@
-let mapleader = ","
-let maplocalleader = "\\"
+let mapleader = "\<space>"
+let maplocalleader = "\<space><space>"
 
 " Prevents me from having to press Shift when entering a command
 nmap ; :
-
-" Save with <C-s>
-nnoremap <C-s> :w<CR>
 
 " Use the macro in the q register with @@
 nnoremap Q @q
@@ -63,10 +60,6 @@ nnoremap <A-n> :bprevious<CR>
 nnoremap <A-m> :bnext<CR>
 " }}}
 
-" Folding {{{
-nnoremap <space> za
-" }}}
-
 " NERDTree {{{
 nnoremap <leader>/ :NERDTreeToggle<Return>
 let NERDTreeMapActivateNode='<space>'
@@ -91,15 +84,6 @@ nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 " }}}
 
-" Git {{{
-nnoremap ,ga :GitGutterStageHunk<CR>
-nnoremap ,gu :GitGutterUndoHunk<CR>
-nnoremap ,g] :GitGutterNextHunk<CR>
-nnoremap ,g[ :GitGutterPrevHunk<CR>
-nnoremap ,gs :Gstatus<CR>
-nnoremap ,gc :Gcommit<CR>
-" }}}
-
 " Toggles  {{{
 " Toggle background
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -121,11 +105,4 @@ function! GoToMark()
 endfunction
 nnoremap <leader>m :call GoToMark()<CR>a
 inoremap <leader>m <Esc>:call GoToMark()<CR>a
-" }}}
-
-" Language Client {{{
-nnoremap <leader><space> :call LanguageClient_contextMenu()<CR>
-nnoremap gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap gr :call LanguageClient_textDocument_references()<CR>
-nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
 " }}}
