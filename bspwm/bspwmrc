@@ -8,9 +8,10 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # For AWT to play nice
 xsetroot -cursor_name left_ptr # Set default cursor
 
 ! ( pgrep "sxhkd" ) && sxhkd &
+[ -f ~/.fehbg ] && ~/.fehbg
+wal -R &
 ! [ -f /tmp/lemonsqueezer.lock ] && ~/.config/dotfiles/lemonbar/bar.py &
 xdo above -t $(xdo id -n root) $(xdo id -n lemonbar) # Keep lemonbar below
-wal -R &
 
 bspc monitor primary -d 1 2 3 4 5
 

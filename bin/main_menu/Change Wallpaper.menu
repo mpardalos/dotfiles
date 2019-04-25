@@ -8,7 +8,7 @@ from rofi import Rofi
 from rofi_menu import menu
 
 wallpapersdir = Path.home()/'Pictures'/'Wallpapers'
-args = ['wal', '-st', '-i']
+args = ['feh', '--bg-fill']
 
 def runner(args):
     return lambda: run(args)
