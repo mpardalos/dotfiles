@@ -16,3 +16,5 @@ bspwm/colors.sh
 .vscode/
 *.code-workspace
 qutebrowser/autoconfig.yml
+
+bonclay

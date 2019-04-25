@@ -1,0 +1,34 @@
+backup:
+  overwrite: false
+
+restore:
+  overwrite: false
+
+sync:
+  clean: true
+  overwrite: true
+
+spec:
+  ~/.config/alacritty: alacritty
+  ~/.config/bspwm: bspwm
+  ~/.config/dunst: dunst
+  ~/.config/fish: fish
+  ~/.config/lemonbar: lemonbar
+  ~/.config/mimi: mimi
+  ~/.config/nvim: neovim
+  ~/.config/ptpython: ptpython
+  ~/.config/rofi: rofi
+  ~/.config/sxhkd: sxhkd
+  ~/.config/tmux: tmux
+  ~/.config/wal: wal
+
+  ~/.config/compton.conf: compton.conf
+
+  ~/.bin: bin
+  ~/.motd: motd
+  ~/.motd_image: motd_image
+
+  ~/.doom.d: doom_emacs
+  ~/.gitconfig: git/gitconfig
+  ~/.ptpython: ptpython
+  ~/.tmux.conf: tmux/tmux.conf
