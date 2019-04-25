@@ -67,9 +67,21 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node --swap {west,south,north,east}
 
-# Rotate desktop
-super + {_,shift + }r
-    bspc node @/ --rotate {90,-90}
+# Rotate current parent node
+super + r
+    bspc node @parent --rotate 90
+
+# Rotate whole desktop
+super + shift + r
+    bspc node @/ --rotate 90
+
+# Balance the current parent node
+super + b
+    bspc node @parent --balance
+
+# Balance the whole desktop
+super + shift + b
+    bspc node @/ --balance
 
 # Moving/Resizing {{{
 super + {Up, Right, Down, Left}
