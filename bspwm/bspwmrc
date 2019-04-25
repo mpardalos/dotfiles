@@ -8,6 +8,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # For AWT to play nice
 xsetroot -cursor_name left_ptr # Set default cursor
 
 ! ( pgrep "sxhkd" ) && sxhkd &
+! ( pgrep "compton" ) && compton &
 [ -f ~/.fehbg ] && ~/.fehbg
 wal -R &
 ! [ -f /tmp/lemonsqueezer.lock ] && ~/.config/dotfiles/lemonbar/bar.py &
