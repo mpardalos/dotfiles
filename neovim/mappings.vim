@@ -11,6 +11,9 @@ vnoremap Q :norm @q<CR>
 " <C-Space> omni completes
 imap <C-space> <C-x><C-o>
 
+"  <tab> toggles folds
+nnoremap <tab> za
+
 " Text manipulation {{{
 
 " Moving lines up and down
