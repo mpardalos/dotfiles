@@ -1,14 +1,6 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
 (doom!
- :feature
- eval
- (evil +everywhere +commands)
- file-templates
- (lookup +docsets)
- snippets
- workspaces
-
  :completion
  ivy
  (company +auto)
@@ -16,7 +8,7 @@
  :ui
  doom
  modeline
- evil-goggles
+ ophints
  hl-todo
  nav-flash
  treemacs
@@ -25,8 +17,12 @@
  vc-gutter
  vi-tilde-fringe
  window-select
+ workspaces
 
  :editor
+ (evil +everywhere +commands)
+ snippets
+ file-templates
  multiple-cursors
  rotate-text
  fold
@@ -39,6 +35,8 @@
  vc
 
  :tools
+ (lookup +docsets)
+ eval
  make
  magit
  lsp
