@@ -12,6 +12,7 @@ lemonbar/colors.json
 bin/colors.sh
 bin/colors-rgba.sh
 bspwm/colors.sh
+zathura/zathuracolors
 
 .vscode/
 *.code-workspace

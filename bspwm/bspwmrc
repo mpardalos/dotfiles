@@ -35,4 +35,5 @@ bspc config merge_overlapping_monitors true
 
 # bspc rule -a Alacritty state=floating rectangle=1000x600+460+240
 bspc rule -a Emacs state=tiled
+bspc rule -a Zathura state=tiled
 bspc rule -a sun-awt-X11-XFramePeer state=floating

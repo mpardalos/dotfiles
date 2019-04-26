@@ -1,0 +1,27 @@
+map u scroll half-up
+map d scroll half-down
+map <S-Space> navigate previous
+map <Space>   navigate next
+
+map r reload
+map R rotate
+map = zoom in
+map - zoom out
+
+# Page fit
+map D toggle_page_mode
+map f adjust_window best-fit
+map F adjust_window width
+
+# Padding
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+
+# Options
+set smooth-scroll true
+set statusbar-basename true
+set selection-clipboard clipboard
+
+# Colors
+include zathuracolors
