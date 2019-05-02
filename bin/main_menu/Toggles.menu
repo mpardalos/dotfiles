@@ -34,6 +34,5 @@ def bar_toggle():
 
 
 menu(Rofi(rofi_args=['-i']), 'Search', {
-    compton_prompt: compton_toggle,
-    bar_prompt: bar_toggle
+    compton_prompt: compton_toggle
 })

@@ -11,8 +11,7 @@ xsetroot -cursor_name left_ptr # Set default cursor
 ! ( pgrep "compton" ) && compton &
 [ -f ~/.fehbg ] && ~/.fehbg
 wal -R &
-! [ -f /tmp/lemonsqueezer.lock ] && ~/.config/dotfiles/lemonbar/bar.py &
-xdo above -t $(xdo id -n root) $(xdo id -n lemonbar) # Keep lemonbar below
+polybar top &
 
 bspc monitor primary -d 1 2 3 4 5
 

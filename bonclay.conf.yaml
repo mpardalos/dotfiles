@@ -22,6 +22,7 @@ spec:
   ~/.config/tmux: tmux
   ~/.config/wal: wal
   ~/.config/zathura: zathura
+  ~/.config/polybar: polybar
 
   ~/.config/compton.conf: compton/compton.conf
 

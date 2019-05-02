@@ -1,0 +1,124 @@
+[bar/top]
+monitor = eDP1
+width = 100%
+height = 30
+
+line-size = 3
+
+tray-position = right
+tray-padding = 0
+tray-maxsize = 40
+
+wm-restack = bspwm
+override-redirect = false
+
+background=${colors.background}
+foreground=${colors.foreground}
+
+spacing = 1
+padding = 2
+module-margin = 2
+
+separator = │
+
+font-0 = SourceCodePro:size=12;-1
+font-1 = SourceCodePro:size=12;0
+font-2 = MaterialIcons:size=12:antialias=false;0
+font-3 = FontAwesome:size=12;0
+; font-4 = SourceCodePro:size=7;0
+
+modules-left = alsa
+modules-center = bspwm
+modules-right = battery date time
+
+[section/base]
+include-file = $HOME/.config/polybar/colors
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state>
+
+label-focused  = " %name% "
+label-empty    = " %name% "
+label-occupied = " %name% "
+
+label-focused-foreground = ${colors.color1}
+label-focused-underline = ${colors.color2}
+
+[module/date]
+type = internal/date
+date =  %a %d/%m/%g
+
+[module/time]
+type = internal/date
+date =  %H:%M
+
+[module/battery]
+type = internal/battery
+full-at = 100
+
+adapter=AC
+battery=BAT0
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = #f53c3c
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = #ffa900
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/alsa]
+type = internal/alsa
+format-volume = <bar-volume> <label-volume>
+
+bar-volume-width = 10
+bar-volume-empty = ═
+bar-volume-fill = ━
+bar-volume-indicator = ╋
+
+label-muted =  mute
+
+[module/wireless-network]
+type = internal/network
+interface = wlp58s0
+interval = 3.0
+ping-interval = 10
+
+; format-connected = WLAN: <ramp-signal> <label-connected>
+; label-connected = "%essid% ↑%upspeed% ↓%downspeed%"
+; upspeed = %upspeed%
+; label-disconnected =    not connected
+; label-disconnected-foreground = #66
+
+; ramp-signal-0 = 
+; ramp-signal-1 = 
+; ramp-signal-2 = 
+; ramp-signal-3 = 
+; ramp-signal-4 = 
+
+; animation-packetloss-0 = 
+; animation-packetloss-0-foreground = #ffa64c
+; animation-packetloss-1 = 
+; animation-packetloss-1-foreground = ${bar/top.foreground}
+; animation-packetloss-framerate = 500
+
+; [module/wired-network]
+; type = internal/network
+; interface = net0
+; interval = 3.0
+
+; label-connected =    %{T3}%local_ip%%{T-}
+; label-disconnected-foreground = #66
