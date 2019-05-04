@@ -13,6 +13,8 @@ bin/colors.sh
 bin/colors-rgba.sh
 bspwm/colors.sh
 zathura/zathuracolors
+polybar/colors
+dunst/dunstrc
 
 .vscode/
 *.code-workspace
