@@ -101,7 +101,7 @@ super + ctrl + {h,j,k,l,space}
 
 ## Kill/Close
 super + {_, ctrl+shift} + q
-    bspc node --focus {--kill, --close}
+    bspc node --focus {--close, --kill}
 
 ## Toggle floating
 super + f 
