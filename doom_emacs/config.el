@@ -29,8 +29,7 @@
  :n "M-u" 'evil-prev-buffer
  :n "M-i" 'evil-next-buffer
 
- ;; Terminal
- :n "gt" #'my/pop-to-dedicated-term
+ (:desc "Console" :leader "c" #'my/pop-to-dedicated-term)
 
  ;; Commentary
  :n "gc" 'evil-commentary
