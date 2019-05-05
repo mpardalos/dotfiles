@@ -30,16 +30,16 @@ case $1 in
   up)
     pamixer --unmute
     pamixer --increase 5
-    send_notification
+    # send_notification
     ;;
   down)
     pamixer --unmute
     pamixer --decrease 5
-    send_notification
+    # send_notification
     ;;
   mute)
     # toggle mute
     pamixer --toggle-mute
-    send_notification
+    # send_notification
     ;;
 esac
