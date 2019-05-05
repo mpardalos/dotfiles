@@ -1,6 +1,5 @@
-let g:seiya_auto_enable=1
-set termguicolors
-colorscheme base16-gruvbox-dark-pale
+set notermguicolors
+colorscheme wal
 
 " Proper box drawing characters for splits
 " and no foldline

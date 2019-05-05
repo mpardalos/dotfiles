@@ -27,10 +27,6 @@ set textwidth=92
 set splitright
 set splitbelow
 
-" highligh cursor line & column
-set cursorline
-set cursorcolumn
-
 "no visual wrap
 set nowrap
 

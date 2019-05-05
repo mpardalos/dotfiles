@@ -33,8 +33,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Airline {{{
     Plug 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
-    Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='wombat'
+    " Plug 'vim-airline/vim-airline-themes'
+    " let g:airline_theme='wombat'
     " Plug 'edkolev/tmuxline.vim'
 " }}}
 
