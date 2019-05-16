@@ -41,6 +41,8 @@ configuration {{
 	hide-scrollbar:              "true";
 	margin:                      0;
 	padding:                     0;
+
+    font: "Noto Sans Display 12";
 }}
 
 window {{
@@ -53,7 +55,7 @@ window {{
 }}
 
 mainbox {{
-	spacing:  0.8em;
+	spacing:  0.1em;
 	children: [ inputbar,listview,sidebar ];
 }}
 
@@ -74,7 +76,7 @@ inputbar {{
 prompt {{ 
     index: 1;
 
-    padding: 0.5em 0px;
+    padding: 0.1em 0px;
 }}
 
 entry {{
@@ -82,11 +84,11 @@ entry {{
 	expand:         true;
 
 	text-color:     @normal-foreground;
-    padding:        0.5em 5px;
+    padding:        0.1em 5px;
 }}
 
 listview {{
-	spacing: 0.5em;
+	spacing: 0.1em;
 	dynamic: false;
 	cycle:   true;
     columns: 1;
