@@ -6,8 +6,17 @@
 ####
 
 ## Main menu
-super + a
+super + a ; super + a
     ~/.bin/main_menu/main_menu
+super + a ; a
+    ~/.bin/main_menu/main_menu
+
+super + a ; t
+    ~/.bin/main_menu/Change\ Theme.menu
+super + a ; b
+    ~/.bin/main_menu/Change\ Wallpaper.menu
+super + a ; x
+    ~/.bin/main_menu/Exit.menu
 
 ## Reload sxhkd
 super + Escape
