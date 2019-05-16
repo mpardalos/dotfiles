@@ -1,6 +1,8 @@
 #!/bin/env python
 from pathlib import Path
 from subprocess import run
+from collections import OrderedDict
+import os
 import re
 
 from rofi import Rofi
@@ -14,15 +16,17 @@ menu_items = {
     'Launcher': lambda: run([dot_bin/'launcher']),
     'Run': lambda: run(['rofi', '-modi', 'run', '-show', 'run']),
     'Edit dotfiles':
-        lambda: run(['code', Path.home()/'.config/dotfiles']),
+        lambda: run([os.environ.get('EDITOR'), Path.home()/'.config/dotfiles']),
     'Reload config':
         lambda: run([Path.home()/'.config/bspwm/bspwmrc']),
 }
+
+# We will only consider files ending in .menu
 namematcher = re.compile(r'(.+)\.menu')
 for menu_file in menu_dir.iterdir():
     name_match = namematcher.match(menu_file.name)
     if name_match is not None:
         menu_items[name_match[1]] = lambda target=menu_file: run([target])
 
-
-menu(r, 'Search', menu_items)
+# Sort by name before displaying
+menu(r, 'Search', OrderedDict(sorted(menu_items.items())))
