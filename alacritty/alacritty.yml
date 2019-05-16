@@ -12,8 +12,8 @@ window:
   # Blank pixels of padding around the window
   # (Needs restart)
   padding:
-    x: 10
-    y: 10
+    x: 0
+    y: 0
 
   # Window decorations. none|full
   decorations: none
