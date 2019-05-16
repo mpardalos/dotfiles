@@ -4,9 +4,10 @@
  */
 
 configuration {{
-	display-drun:    "Activate";
-	display-run:     "Execute";
-	display-window:  "Window";
+	display-drun:     "New";
+	display-run:      "Execute";
+	display-window:   "Activate";
+	display-windowcd: "Activate";
 	show-icons:      true;
 	sidebar-mode:    true;
 }}
@@ -53,10 +54,10 @@ window {{
 
 mainbox {{
 	spacing:  0.8em;
-	children: [ entry,listview,sidebar ];
+	children: [ inputbar,listview,sidebar ];
 }}
 
-button {{ padding: 5px 2px; }}
+button {{ padding: 6px 2px; }}
 
 button selected {{
 	background-color: @active-background;
@@ -66,6 +67,22 @@ button selected {{
 inputbar {{
 	padding: 5px;
 	spacing: 5px;
+
+    children: [ prompt, entry ];
+}}
+
+prompt {{ 
+    index: 1;
+
+    padding: 0.5em 0px;
+}}
+
+entry {{
+    index:          2;
+	expand:         true;
+
+	text-color:     @normal-foreground;
+    padding:        0.5em 5px;
 }}
 
 listview {{
@@ -76,13 +93,6 @@ listview {{
 }}
 
 element {{ padding: 10px; }}
-
-entry {{
-	expand:         false;
-	text-color:     @normal-foreground;
-	vertical-align: 1;
-	padding:        5px;
-}}
 
 element normal.normal {{
 	background-color: @normal-background;
