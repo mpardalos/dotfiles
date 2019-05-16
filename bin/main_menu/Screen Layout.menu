@@ -1,0 +1,3 @@
+#!/bin/sh
+ 
+ls .screenlayout | xargs -I'{}' basename "{}" .sh | rofi -dmenu | xargs -I' {}' bash -c ".screenlayout/{}.sh"
