@@ -11,7 +11,7 @@ xsetroot -cursor_name left_ptr # Set default cursor
 ! ( pgrep "compton" ) && compton &
 [ -f ~/.fehbg ] && ~/.fehbg
 wal -R &
-polybar top &
+~/.bin/start_polybar &
 
 bspc monitor primary -d 1 2 3 4 5
 
