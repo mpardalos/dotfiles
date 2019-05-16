@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export POLYBAR_MONITOR=$(polybar -m | tail -n 1 | cut --delimiter=: --fields=1)
+
+polybar main &
