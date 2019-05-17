@@ -1,5 +1,5 @@
 #! /bin/sh
-~/.screenlayout/DP1Only.sh
+~/.screenlayout/Desk.sh
 
 export TERMINAL='/home/mpardalos/.bin/colored_alacritty'
 export SXHKD_SHELL='/usr/bin/sh'
