@@ -28,12 +28,25 @@ cursor-scroll =
 font-0 = Noto Sans Display:size=12
 font-1 = SauceCodePro Nerd Font
 
-modules-left = volume
+modules-left = menu player-mpris-tail volume
 modules-center = bspwm
 modules-right = wifi keyboard battery date time
 
 [section/base]
 include-file = $HOME/.config/polybar/colors
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py --icon-playing  --icon-paused  --icon-stopped   -f "$MPRIS_FORMAT" 
+tail = true
+label = %output%
+
+[module/menu]
+type = custom/text
+content = "  "
+content-background = ${colors.color1}
+
+click-left = ~/.bin/main_menu/main_menu &
 
 [module/bspwm]
 type = internal/bspwm
