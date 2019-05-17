@@ -25,11 +25,8 @@ separator = │
 cursor-click = pointer
 cursor-scroll =
 
-font-0 = Noto Sans Display:size=12;-1
-font-1 = SourceCodePro:size=12;0
-font-2 = MaterialIcons:size=12:antialias=false;0
-font-3 = FontAwesome:size=12;0
-; font-4 = SourceCodePro:size=7;0
+font-0 = Noto Sans Display:size=12
+font-1 = SauceCodePro Nerd Font
 
 modules-left = volume
 modules-center = bspwm
