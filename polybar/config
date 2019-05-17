@@ -106,16 +106,15 @@ animation-charging-framerate = 750
 
 [module/volume]
 type = internal/pulseaudio
-format-volume = %{A3:pavucontrol &:}<bar-volume><label-volume>%{A}
+format-volume = %{A3:pavucontrol &:}<ramp-volume><label-volume>%{A}
 
-bar-volume-width = 11
-bar-volume-empty = ═
-bar-volume-fill = ━
-bar-volume-fill-foreground = ${colors.color1}
-bar-volume-indicator = ╋
-bar-volume-indicator-foreground = ${colors.color1}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.color1}
 
-label-muted = mute%
+label-muted = 
+label-muted-foreground = ${colors.color1}
 
 [module/wifi]
 type = internal/network
