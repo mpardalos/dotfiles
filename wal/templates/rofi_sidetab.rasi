@@ -59,7 +59,9 @@ mainbox {{
 	children: [ inputbar,listview,sidebar ];
 }}
 
-button {{ padding: 6px 2px; }}
+button {{
+    padding: 4px 2px;
+}}
 
 button selected {{
 	background-color: @active-background;
