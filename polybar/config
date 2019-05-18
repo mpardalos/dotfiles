@@ -41,6 +41,10 @@ exec = ~/.config/polybar/player-mpris-tail.py --icon-playing  --icon-paused �
 tail = true
 label = %output%
 
+click-left = playerctl play-pause
+click-middle = playerctl previous
+click-right = playerctl next
+
 [module/menu]
 type = custom/text
 content = "  "
