@@ -42,6 +42,20 @@ super + w ; t
 # Launcher
 ###########
 
+###########
+# Toggles
+
+super + t; {_, super +} t
+    ~/.bin/main_menu/Toggles.menu
+
+super + t; b
+    ~/.bin/toggle bar
+super + t; c
+    ~/.bin/toggle compton
+
+# Toggles
+###########
+
 ##############
 # Special Keys
 
