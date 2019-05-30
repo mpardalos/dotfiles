@@ -30,8 +30,6 @@
  :emacs
  (dired +icons)
  electric
- imenu
- term
  vc
 
  :tools
@@ -50,6 +48,7 @@
  data
  emacs-lisp
  markdown
+ csharp
  (haskell +lsp)
  (org
   +attach
@@ -58,6 +57,9 @@
   +export
   +present)
  (cc +lsp)
+
+ :term
+ term
 
  :app
  ;;(email +gmail)    ; emacs as an email client
