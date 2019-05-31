@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DEPENDS="fish" 
+DEPENDS="fish exa" 
 MAKEDEPENDS="curl"
 
 module_install() {
