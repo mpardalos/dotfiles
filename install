@@ -45,7 +45,7 @@ for installer in $(find -name install.sh); do
         echo "==> Installing required packages"
 
         # Try to install with pacman and if that fails then detect the error
-        sudo pacmans -S --needed $MAKEDEPENDS $DEPENDS || {
+        sudo pacman -S --needed $MAKEDEPENDS $DEPENDS || {
             echo "==> Error: Couldn't install required packages"
             if [ "$DISTRO_NAME" != "Arch Linux" ]; then
                 echo "==> Required packages were found but current distro is not Arch Linux. "
