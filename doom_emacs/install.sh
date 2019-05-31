@@ -1,4 +1,4 @@
-DEPENDS="emacs"
+DEPENDS="emacs fd aspell pandoc editorconfig-core-c"
 
 module_install() {
     printf "\n==> Cloning doom-emacs\n"
