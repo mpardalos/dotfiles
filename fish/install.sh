@@ -4,12 +4,10 @@ DEPENDS="fish exa"
 MAKEDEPENDS="curl"
 
 module_install() {
-    fish <<-HERE
-    if ! type omf 2>&1 >/dev/null
+    if fish -c "! type omf 2>&1 >/dev/null"; then
         curl -L https://get.oh-my.fish | fish
-    end
+    fi
 
-    omf install agnoster
-    omf theme agnoster
-HERE
+    fish -c "omf install agnoster"
+    fish -c "omf theme agnoster"
 }
