@@ -4,11 +4,13 @@
 (defun my/remember-theme-read (default)
   "Return the theme specified in ~/.emacs-theme, or `default' if that fails"
   (with-temp-buffer
-    (insert-file-contents "~/.emacs-theme")
+
+    (condition-case nil
+      (insert-file-contents "~/.emacs-theme")
+      (error (insert (symbol-name default))))
+
     (let ((theme-symbol (intern (car (split-string (buffer-string) "\n" t)))))
-      (if (member theme-symbol (custom-available-themes))
-        theme-symbol
-        default))))
+      (if (member theme-symbol (custom-available-themes)) theme-symbol default))))
 
 ;;;###autoload
 (defun my/remember-theme-save ()
