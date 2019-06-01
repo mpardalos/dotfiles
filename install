@@ -117,6 +117,14 @@ fi
 # Run the appropriate command
 case $COMMAND in
     deps) install_all_deps;;
-    help) echo "Coming soon";;
+    help)
+      printf "Usage: $0 <COMMAND> [MODULES...]\n"
+      printf "\n"
+      printf "Install the dotfiles (or part of them)\n"
+      printf "\n"
+      printf "Commands:\n"
+      printf "  deps\t\t Only install the required packages\n"
+      printf "  help\t\t Show this help message\n"
+      ;;
     *) main;;
 esac
