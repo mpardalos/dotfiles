@@ -4,6 +4,12 @@ BONCLAY_VER="1.1.0"
 DISTRO_NAME=$(lsb_release -ds 2>/dev/null \
     || cat /etc/*release 2>/dev/null | head -n1 | sed -n 's/^NAME="\(.*\)"/\1/p' \
     || uname -om)
+MODULE_PATTERNS=$@
+if [ "$MODULE_PATTERNS" = "" ]; then
+    INSTALLERS=$(find -name install.sh)
+else
+    INSTALLERS=$(find -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
+fi
 
 get_bonclay() {
     echo "Downloading bonclay... "
@@ -19,7 +25,7 @@ get_bonclay() {
 
 yes_no_prompt() {
     # Defaults to yes
-    printf "$1 [Y/n] " 
+    printf "$1 [Y/n] "
     read choice
     case "$choice" in
         N|n ) return 1;;
@@ -27,16 +33,16 @@ yes_no_prompt() {
     esac
 }
 
-! [ -f ./bonclay ] && get_bonclay 
+! [ -f ./bonclay ] && get_bonclay
 ./bonclay sync ./bonclay.conf.yaml
 
-for installer in $(find -name install.sh); do
+for installer in $INSTALLERS; do
     NAME=$(dirname $installer | xargs basename)
     echo "===== Installing $NAME ====="
     # Source the installer to get $MAKEDEPENDS, $DEPENDS, and install()
     # Do it in a subshell (the ()) so that they are lost on following iterations
     # (i.e. so that different installers don't interfere with eachother)
-    ( . $installer 
+    ( . $installer
 
     RUN_INSTALLER=true
 
@@ -76,4 +82,3 @@ for installer in $(find -name install.sh); do
     echo "===== $NAME Done ====="
     echo
 done
-
