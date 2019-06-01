@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo -e "Compton\nBar" \
+printf "Compton\nBar" \
     | rofi -dmenu \
     | tr '[:upper:]' '[:lower:]' \
     | xargs ~/.bin/toggle

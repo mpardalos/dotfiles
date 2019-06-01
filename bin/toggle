@@ -1,12 +1,12 @@
 #!/bin/sh
 
-function toggle_compton {
+toggle_compton() {
     pgrep compton >/dev/null \
         && pkill compton \
         || compton -b
 }
 
-function toggle_polybar {
+toggle_polybar() {
     if pgrep polybar >/dev/null; then
         pkill polybar
         bspc config bottom_padding 0
