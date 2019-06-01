@@ -8,6 +8,7 @@ DISTRO_NAME=$(lsb_release -ds 2>/dev/null \
 get_bonclay() {
     echo "Downloading bonclay... "
     curl \
+        --silent \
         --location\
         --output bonclay.tar.gz\
         https://github.com/talal/bonclay/releases/download/v$BONCLAY_VER/bonclay-$BONCLAY_VER-linux_amd64.tar.gz

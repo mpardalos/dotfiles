@@ -4,8 +4,8 @@ MAKEDEPENDS="curl"
 DEPENDS="neovim python-neovim"
 
 module_install() {
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+    curl --silent -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     nvim +PlugInstall +qa!
 }
