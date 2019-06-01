@@ -104,9 +104,9 @@ esac
 # Find the installers matching the patterns provided
 MODULE_PATTERNS=$@
 if [ "$MODULE_PATTERNS" = "" ]; then
-    INSTALLERS=$(find -name install.sh)
+    INSTALLERS=$(find -maxdepth 2 -name install.sh)
 else
-    INSTALLERS=$(find -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
+    INSTALLERS=$(find -maxdepth 2 -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
 fi
 if [ "$INSTALLERS" = "" ]; then
     echo "==> No modules match $MODULE_PATTERNS"
