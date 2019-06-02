@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   config.vm.provision "shell", inline: <<-SHELL
-    pacman -Sy --noconfirm git
+    pacman -Sy --noconfirm git alacritty-terminfo
 
     sudo -u vagrant mkdir -p /home/vagrant/.config
     cd /home/vagrant/.config
