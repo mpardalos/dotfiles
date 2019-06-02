@@ -1,5 +1,5 @@
-let mapleader = "\<space>"
-let maplocalleader = "\<space><space>"
+nmap <space> <leader>
+vmap <space> <leader>
 
 " Prevents me from having to press Shift when entering a command
 nmap ; :
@@ -65,7 +65,7 @@ nnoremap <A-m> :bnext<CR>
 
 " NERDTree {{{
 nnoremap <leader>/ :NERDTreeToggle<Return>
-let NERDTreeMapActivateNode='<space>'
+let NERDTreeMapActivateNode='<tab>'
 " }}}
 
 " Terminal mode {{{
