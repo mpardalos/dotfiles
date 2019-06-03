@@ -246,6 +246,8 @@
   (set-pretty-symbols! '(c-mode c++-mode)
     :return "return"))
 
+(def-package! vimrc-mode
+  :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
 ;;;;  Hooks ;;;;
 ;; Save theme
