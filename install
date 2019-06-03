@@ -48,7 +48,7 @@ install_junest() {
     if ! [ -d ~/.local/share/junest ]; then
         echo "==> Cloning junest "
         git clone git://github.com/fsquillace/junest ~/.local/share/junest
-        junest exit
+        ~/.local/share/junest/bin/junest pacman -Syyu
         grep junest ~/.profile \
             || echo 'export PATH=~/.local/share/junest/bin:$PATH' >> ~/.profile
     fi
