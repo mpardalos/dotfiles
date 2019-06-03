@@ -39,13 +39,11 @@
  magit
  lsp
  editorconfig
- ein
  flyspell
  flycheck
 
  :lang
  (sh +fish)
- data
  emacs-lisp
  markdown
  csharp
@@ -53,7 +51,6 @@
  (org
   +attach
   +babel
-  +capture
   +export
   +present)
  (cc +lsp)
