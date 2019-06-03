@@ -144,12 +144,12 @@ main() {
     done
 }
 
-if ! which pacman >/dev/null 2>&1; then
+if ! command -v pacman >/dev/null 2>&1; then
     if yes_no_prompt "Not in Arch Linux. Do you want to install in junest?"; then
         # Install and re-run script inside junest
         install_junest
         echo "==> Installing dotfiles inside junest"
-        exec ~/.local/share/junest/bin/junest -f $0 $ORIGINAL_ARGS
+        exec ~/.local/share/junest/bin/junest -f "$0" "$@"
     else
         exit 1
     fi
