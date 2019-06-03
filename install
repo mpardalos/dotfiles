@@ -25,22 +25,17 @@ parse_options() {
         deps|help) COMMAND=$1; shift;;
     esac
 
-    while [ "$1" != "--" ] && [ "$1" != "" ]; do
-        case $1 in
-            --junest) JUNEST=1;;
-            *) echo "Unknown option: $1"
-        esac
-        shift
-    done
-    [ "$1" = "--" ] && shift
-
     # Find the installers matching the patterns provided
-    MODULE_PATTERNS=$@
+    MODULE_PATTERNS="$@"
     if [ "$MODULE_PATTERNS" = "" ]; then
         INSTALLERS=$(find -maxdepth 2 -name install.sh)
     else
-        INSTALLERS=$(find -maxdepth 2 -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
+        INSTALLERS=$( \
+            find -maxdepth 2 -name install.sh \
+            | grep -e "$(echo $MODULE_PATTERNS | sed 's/^| / -e /g')" \
+            )
     fi
+
     if [ "$INSTALLERS" = "" ]; then
         echo "==> No modules match $MODULE_PATTERNS"
         echo "==> Stopping"
@@ -48,18 +43,15 @@ parse_options() {
     fi
 }
 
-switch_to_junest() {
+install_junest() {
     # Only install if it's not already installed
     if ! [ -d ~/.local/share/junest ]; then
         echo "==> Cloning junest "
         git clone git://github.com/fsquillace/junest ~/.local/share/junest
-        export PATH=~/.local/share/junest/bin:$PATH
+        junest exit
         grep junest ~/.profile \
-            || echo "export PATH=~/.local/share/junest/bin:$PATH" >> ~/.profile
+            || echo 'export PATH=~/.local/share/junest/bin:$PATH' >> ~/.profile
     fi
-
-    echo "==> Entering junest with fakeroot"
-    junest -f
 }
 
 get_bonclay() {
@@ -152,9 +144,18 @@ main() {
     done
 }
 
-parse_options $@
-[ $JUNEST = 1 ] && switch_to_junest
+if ! which pacman >/dev/null 2>&1; then
+    if yes_no_prompt "Not in Arch Linux. Do you want to install in junest?"; then
+        # Install and re-run script inside junest
+        install_junest
+        echo "==> Installing dotfiles inside junest"
+        exec ~/.local/share/junest/bin/junest -f $0 $ORIGINAL_ARGS
+    else
+        exit 1
+    fi
+fi
 
+parse_options $@
 case $COMMAND in
     deps) install_all_deps;;
     help) usage_exit;;
