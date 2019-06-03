@@ -48,6 +48,20 @@ parse_options() {
     fi
 }
 
+switch_to_junest() {
+    # Only install if it's not already installed
+    if ! [ -d ~/.local/share/junest ]; then
+        echo "==> Cloning junest "
+        git clone git://github.com/fsquillace/junest ~/.local/share/junest
+        export PATH=~/.local/share/junest/bin:$PATH
+        grep junest ~/.profile \
+            || echo "export PATH=~/.local/share/junest/bin:$PATH" >> ~/.profile
+    fi
+
+    echo "==> Entering junest with fakeroot"
+    junest -f
+}
+
 get_bonclay() {
     echo "Downloading bonclay... "
     curl \
@@ -139,6 +153,8 @@ main() {
 }
 
 parse_options $@
+[ $JUNEST = 1 ] && switch_to_junest
+
 case $COMMAND in
     deps) install_all_deps;;
     help) usage_exit;;
