@@ -1,9 +1,52 @@
 #!/bin/sh
+usage_exit() {
+    printf "Usage: $0 <COMMAND> [OPTIONS...] [-- MODULES...]\n"
+    printf "\n"
+    printf "Install the dotfiles (or part of them)\n"
+    printf "\n"
+    printf "Commands:\n"
+    printf "  deps\t\t Only install the required packages\n"
+    printf "  help\t\t Show this help message\n"
+    printf "\n"
+    printf "Options:\n"
+    printf "  --junest\t Install the dotfile inside a junest environment\n"
+}
 
 BONCLAY_VER="1.1.0"
 DISTRO_NAME=$(lsb_release -ds 2>/dev/null \
     || cat /etc/*release 2>/dev/null | head -n1 | sed -n 's/^NAME="\(.*\)"/\1/p' \
     || uname -om)
+
+COMMAND=main
+JUNEST=0
+parse_options() {
+    # Find the command and shift it out of the parameters
+    case $1 in
+        deps|help) COMMAND=$1; shift;;
+    esac
+
+    while [ "$1" != "--" ] && [ "$1" != "" ]; do
+        case $1 in
+            --junest) JUNEST=1;;
+            *) echo "Unknown option: $1"
+        esac
+        shift
+    done
+    [ "$1" = "--" ] && shift
+
+    # Find the installers matching the patterns provided
+    MODULE_PATTERNS=$@
+    if [ "$MODULE_PATTERNS" = "" ]; then
+        INSTALLERS=$(find -maxdepth 2 -name install.sh)
+    else
+        INSTALLERS=$(find -maxdepth 2 -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
+    fi
+    if [ "$INSTALLERS" = "" ]; then
+        echo "==> No modules match $MODULE_PATTERNS"
+        echo "==> Stopping"
+        exit 1
+    fi
+}
 
 get_bonclay() {
     echo "Downloading bonclay... "
@@ -95,36 +138,10 @@ main() {
     done
 }
 
-# Find the command and shift it out of the parameters
-case $1 in
-    deps|help) COMMAND=$1; shift;;
-    *) COMMAND=main;;
-esac
-
-# Find the installers matching the patterns provided
-MODULE_PATTERNS=$@
-if [ "$MODULE_PATTERNS" = "" ]; then
-    INSTALLERS=$(find -maxdepth 2 -name install.sh)
-else
-    INSTALLERS=$(find -maxdepth 2 -name install.sh | grep $(echo $MODULE_PATTERNS | sed 's/^| / -e /g'))
-fi
-if [ "$INSTALLERS" = "" ]; then
-    echo "==> No modules match $MODULE_PATTERNS"
-    echo "==> Stopping"
-    exit 1
-fi
-
-# Run the appropriate command
+parse_options $@
 case $COMMAND in
     deps) install_all_deps;;
-    help)
-      printf "Usage: $0 <COMMAND> [MODULES...]\n"
-      printf "\n"
-      printf "Install the dotfiles (or part of them)\n"
-      printf "\n"
-      printf "Commands:\n"
-      printf "  deps\t\t Only install the required packages\n"
-      printf "  help\t\t Show this help message\n"
-      ;;
-    *) main;;
+    help) usage_exit;;
+    main) main;;
+    *) echo "Unknown command $COMMAND"; usage_exit;;
 esac
