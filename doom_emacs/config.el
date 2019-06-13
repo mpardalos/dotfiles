@@ -223,6 +223,11 @@
  :localleader
  :desc "Toggle header/source" "t" #'ff-find-other-file)
 
+(map!
+ :mode haskell-mode
+ :localleader
+ :desc "Hoogle query" "h" #'haskell-hoogle)
+
 ;;;; Options ;;;;
 (setq doom-leader-key "SPC")
 (setq doom-localleader-key "SPC SPC")
