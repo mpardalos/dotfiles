@@ -1,45 +1,53 @@
-#!/usr/bin/env bash
-
-# You can call this script like this:
-# $ ./volumeControl.sh up
-# $ ./volumeControl.sh down
-# $ ./volumeControl.sh mute
+#!/bin/sh
 
 # Script modified from these wonderful people:
 # https://github.com/dastorm/volume-notification-dunst/blob/master/volume.sh
 # https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
 
+notification_id=2500
 
-function send_notification {
-  iconSound="notification-audio-volume-high"
-  iconMuted="notification-audio-volume-muted"
-  is_mute=$(pamixer --get-mute | grep false)
-  if $is_mute ; then
-    dunstify -i $iconMuted -r 2500 -u low "mute"
-  else
-    volume=$(pamixer --get-volume)
-    # Make the bar with the special character ─ (it's not dash -)
-    # https://en.wikipedia.org/wiki/Box-drawing_character
-    bar=$(~/.bin/draw_bar 20 --percentage $volume)
-    # Send the notification
-    dunstify --appname=level_notification --icon=$iconSound --replace=2500 --urgency=low "$bar"
-  fi
+usage() {
+    echo "Usage: $(basename $0) [up|down|mute]"
+}
+
+send_notification() {
+    iconSound="audio-volume-high-symbolic.symbolic"
+    iconMuted="audio-volume-muted-symbolic.symbolic"
+    is_mute=$(pamixer --get-mute | grep false)
+    if $is_mute ; then
+        dunstify \
+            --icon $iconMuted \
+            --replace $notification_id \
+            --urgency low \
+            "mute"
+    else
+        volume=$(pamixer --get-volume)
+        bar=$(~/.bin/draw_bar 20 --percentage $volume)
+
+        dunstify \
+            --icon=$iconSound \
+            --replace=$notification_id \
+            --urgency=low \
+            "$bar"
+    fi
 }
 
 case $1 in
-  up)
-    pamixer --unmute
-    pamixer --increase 5
-    send_notification
-    ;;
-  down)
-    pamixer --unmute
-    pamixer --decrease 5
-    send_notification
-    ;;
-  mute)
-    # toggle mute
-    pamixer --toggle-mute
-    send_notification
-    ;;
+    up)
+        pamixer --unmute
+        pamixer --increase 5
+        ;;
+    down)
+        pamixer --unmute
+        pamixer --decrease 5
+        ;;
+    mute)
+        pamixer --toggle-mute
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
 esac
+
+send_notification
