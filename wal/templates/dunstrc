@@ -36,7 +36,7 @@
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
-    shrink = no
+    shrink = yes
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
@@ -162,10 +162,10 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 64
+    max_icon_size = 48
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Numix/48/notifications:/usr/share/icons/Numix/48/notifications
+    icon_path = /usr/share/icons/Adwaita/64x64/status
 
     ### History ###
 
