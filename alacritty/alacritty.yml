@@ -72,9 +72,6 @@ font:
   # OS X only. For retina displays
   use_thin_strokes: false
 
-# Display the render timer
-render_timer: false
-
 cursor:
     cursor_style: Block
 
