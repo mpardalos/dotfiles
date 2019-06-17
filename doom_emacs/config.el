@@ -184,8 +184,8 @@
  :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
 
  (:prefix ("c" . "Commit")
-   :desc "Commit" "c" #'git-gutter:revert-hunk
-   :desc "Amend commit" "a" #'git-gutter:revert-hunk))
+   :desc "Commit" "c" #'magit-commit
+   :desc "Amend commit" "a" #'magit-commit-amend))
 
 ;; Toggles
 (map!
