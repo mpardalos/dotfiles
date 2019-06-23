@@ -161,16 +161,9 @@
  :desc "Describe variable"             "v"   #'describe-variable
  :desc "Man pages"                     "w"   #'+default/man-or-woman)
 
-;; Treemacs
+;; File management
 (map!
- (:leader :desc "Treemacs" "/" 'treemacs)
-
- :mode treemacs-mode
- (:prefix ("o" . "Open")
-   :desc "In buffer"        "o" #'treemacs-visit-node-ace
-   :desc "Horizontal split" "h" #'treemacs-visit-node-ace-horizontal-split
-   :desc "Vertical split"   "v" #'treemacs-visit-node-ace-vertical-split
-   :desc "External"         "x" #'treemacs-visit-node-in-external-application))
+ (:leader :desc "File drawer" "/" 'neotree-toggle))
 
 ;; VCS
 (map!
@@ -243,8 +236,8 @@
 (after! lsp-ui
   (setq lsp-ui-sideline-show-hover nil)
   (setq lsp-ui-sideline-show-code-actions nil))
-(after! treemacs
-  (setq treemacs-position 'right))
+(after! neotree
+  (setq neo-window-position 'right))
 
 (def-package! cc-mode
   :config

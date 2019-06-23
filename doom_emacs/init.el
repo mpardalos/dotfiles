@@ -11,7 +11,7 @@
  ophints
  hl-todo
  nav-flash
- treemacs
+ neotree
  (popup +all +defaults)
  (pretty-code +fira)
  vc-gutter
@@ -46,8 +46,8 @@
  (sh +fish)
  emacs-lisp
  markdown
- csharp
- (haskell +lsp)
+ (csharp +unity)
+ (haskell +dante)
  (org
   +attach
   +babel
