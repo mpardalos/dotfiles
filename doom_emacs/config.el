@@ -19,6 +19,8 @@
 
 ;; General
 (map!
+ (:desc "Universal Argument" :leader "u" #'universal-argument)
+
  ;; Moving around windows
  :n "M-h" 'evil-window-left
  :n "M-j" 'evil-window-down
