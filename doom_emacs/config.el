@@ -172,15 +172,12 @@
  :leader
  :prefix ("g" . "VCS")
 
- :desc "Blame annotations" "b" #'magit-blame-echo
+ :desc "Blame annotations" "b" #'magit-blame
+ :desc "Commit"            "c" #'magit-commit
  :desc "HEAD log"          "l" #'magit-log-head
  :desc "Magit status"      "g" #'magit-status
- :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
  :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
-
- (:prefix ("c" . "Commit")
-   :desc "Commit" "c" #'magit-commit
-   :desc "Amend commit" "a" #'magit-commit-amend))
+ :desc "Stage hunk"        "s" #'git-gutter:stage-hunk)
 
 ;; Toggles
 (map!
