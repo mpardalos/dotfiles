@@ -102,7 +102,8 @@
  :desc "Project files" "g" #'counsel-git
  :desc "Themes"        "t" #'load-theme
  :desc "Shells"        "s" #'counsel-switch-to-shell-buffer
- :desc "Dotfiles"      "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles")))
+ :desc "Dotfiles"      "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles"))
+ :desc "Online"        "s" #'+lookup/online)
 
  ;; evil-easymotion
 (map!
