@@ -57,10 +57,21 @@
  :leader
  :desc "Search in file" :n "j"   #'swiper)
 
+ ;; Windows
+(map!
+ :leader
+ :prefix-map ("w" . "Windows")
+
+ (:prefix ("s" . "Split")
+   :desc "Horizontally" "h" #'split-window-right
+   :desc "Vertically"   "v" #'split-window-below)
+ :desc "Other window" "o" #'other-window
+ :desc "Kill window"  "x" #'ace-delete-window)
+
  ;; Workspaces
 (map!
  :leader
- :prefix ("w" . "Workspaces")
+ :prefix ("C-w" . "Workspaces")
 
  :desc "New workspace"       "n" (lambda! () (+workspace/new (read-string "Name> ")))
  :desc "Previous workspace"  "u" #'+workspace/switch-left
