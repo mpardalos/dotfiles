@@ -23,7 +23,14 @@ send_notification() {
 
 case $1 in
     up) xbacklight -time 0 -inc 5 ;;
-    down) xbacklight -time 0 -dec 5 ;;
+    down) 
+        # Check if it would go to 0 and if so, only let it go to 1
+        # Going to 0 turns the screen off
+        if [ $(xbacklight -get | cut -d'.' -f 1) -le 5 ]; then
+            xbacklight -time 0 -set 1
+        else
+            xbacklight -time 0 -dec 5
+        fi ;;
     *) usage; exit 1 ;;
 esac
 
