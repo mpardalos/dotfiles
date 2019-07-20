@@ -241,7 +241,7 @@
 (after! org
   (setq org-agenda-files (list "~/org/"))
   (setq org-todo-keywords
-        '((sequence "[?](m)" "[ ](t)" "[+](p)" "|" "[~](w)" "[X](d)"))))
+        '((sequence "[ ](t)" "[?](m)" "[+](p)" "|" "[X](d)" "[~](w)" ))))
 (after! magit
   (setq magit-blame-echo-style 'margin))
 (after! lsp-ui
