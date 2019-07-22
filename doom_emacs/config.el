@@ -177,7 +177,15 @@
 
 ;; File management
 (map!
- (:leader :desc "File drawer" "/" 'neotree-toggle))
+ (:leader :desc "File drawer" "/" #'neotree-toggle)
+
+ :mode neotree-mode
+ :desc "Go to project root"   "P" #'my/neotree-project-root
+ :desc "Go to parent"         "U" #'neotree-select-up-node
+ :desc "Set as current node"  "l" #'neotree-change-root
+ :desc "Open next to current" "h" #'neotree-enter-vertical-split
+ :desc "Open below current"   "v" #'neotree-enter-horizontal-split
+ :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application)
 
 ;; VCS
 (map!
