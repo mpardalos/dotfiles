@@ -19,5 +19,8 @@ if filled is None:
     filled = round(args.percentage/100 * args.length)
 
 length = args.length
+# If we have more than the max, we fill the bar and show it in another way
+overfilled_marker = " ++" if filled > length else ""
+filled=min(filled, length)
 
-print('━'*(filled-1) + '╋' + '═'*(length-filled))
+print('━'*(filled-1) + '╋' + '═'*(length-filled) + overfilled_marker)

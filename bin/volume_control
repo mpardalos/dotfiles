@@ -10,18 +10,27 @@ usage() {
     echo "Usage: $(basename $0) [up|down|mute]"
 }
 
+is_mute() {
+    return pamixer --get-mute | grep false
+}
+unmute()      pamixer --unmute
+toggle_mute() pamixer --toggle-mute
+
+get_volume()  pamixer --get-volume
+volume_up()   pamixer --allow-boost --increase $1
+volume_down() pamixer --allow-boost --decrease $1
+
 send_notification() {
     iconSound="audio-volume-high-symbolic.symbolic"
     iconMuted="audio-volume-muted-symbolic.symbolic"
-    is_mute=$(pamixer --get-mute | grep false)
-    if $is_mute ; then
+    if is_mute; then
         dunstify \
             --icon $iconMuted \
             --replace $notification_id \
             --urgency low \
             "mute"
     else
-        volume=$(pamixer --get-volume)
+        volume=$(get_volume)
         bar=$(~/.bin/draw_bar 20 --percentage $volume)
 
         dunstify \
@@ -33,17 +42,9 @@ send_notification() {
 }
 
 case $1 in
-    up)
-        pamixer --unmute
-        pamixer --increase 5
-        ;;
-    down)
-        pamixer --unmute
-        pamixer --decrease 5
-        ;;
-    mute)
-        pamixer --toggle-mute
-        ;;
+    up) volume_up 5 ;;
+    down) volume_down 5 ;;
+    mute) toggle_mute ;;
     *)
         usage
         exit 1
