@@ -4,7 +4,7 @@
   "The name of the dedicated terminal buffer")
 
 (set-popup-rule! dedicated-name
-  :side 'right
+  :side 'bottom
   :width 0.45
   :height 0.3
   :ttl nil)
