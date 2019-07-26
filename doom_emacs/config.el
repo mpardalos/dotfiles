@@ -34,7 +34,10 @@
  :n "M-u" 'evil-prev-buffer
  :n "M-i" 'evil-next-buffer
 
- (:desc "Console" :leader "c" #'my/pop-to-dedicated-term)
+ (:leader
+   :prefix ("c" . "Consoles")
+  :desc "Internal" :leader "c" #'my/pop-to-dedicated-term
+  :desc "External" :leader "e" #'my/open-external-term)
 
  ;; Commentary
  :n "gc" 'evil-commentary
