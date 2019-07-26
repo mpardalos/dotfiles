@@ -1,5 +1,8 @@
  ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+;; Additional files
+(load! "+alloy")
+
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")
 
