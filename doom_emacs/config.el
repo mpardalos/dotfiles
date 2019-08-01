@@ -214,15 +214,21 @@
 
 ;; VCS
 (map!
- :leader
- :prefix ("g" . "VCS")
+ (:leader :prefix ("g" . "VCS")
+   :desc "Blame annotations" "b" #'magit-blame
+   :desc "Commit"            "c" #'magit-commit
+   :desc "HEAD log"          "l" #'magit-log-head
+   :desc "Magit status"      "g" #'magit-status
+   :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
+   :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
+   :desc "Git Timemachine"   "t" #'git-timemachine)
 
- :desc "Blame annotations" "b" #'magit-blame
- :desc "Commit"            "c" #'magit-commit
- :desc "HEAD log"          "l" #'magit-log-head
- :desc "Magit status"      "g" #'magit-status
- :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
- :desc "Stage hunk"        "s" #'git-gutter:stage-hunk)
+ (:map git-timemachine-mode-map
+   :after git-timemachine
+   :n "[["  #'git-timemachine-show-previous-revision
+   :n "]]"  #'git-timemachine-show-next-revision
+   :n "q"   #'git-timemachine-quit
+   :n "gb"  #'git-timemachine-blame))
 
 ;; Toggles
 (map!
