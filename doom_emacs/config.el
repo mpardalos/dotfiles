@@ -87,7 +87,7 @@
  :i "C-j"           #'+default/newline
 
  ;; (un)fold
- :n "C-SPC"    #'+evil/fold-toggle
+ :n "TAB"    #'+fold/toggle
 
  ;; completion
  :i "C-SPC"   #'company-complete
