@@ -60,7 +60,7 @@
   :ttl nil)
 
 ;; Save theme
-(add-hook 'kill-emacs-hook #'my/remember-theme-save)
+(advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))
 
 ;;;; Maps ;;;;
 ;; General
