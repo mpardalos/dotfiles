@@ -5,5 +5,6 @@
 
 (package! bison-mode)
 (package! vimrc-mode)
+(package! ripgrep)
 
 (package! evil-snipe :disable t)
