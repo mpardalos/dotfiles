@@ -1,8 +1,5 @@
  ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-;; Additional files
-(load! "+alloy")
-
 ;; Doom settings
 (setq
  doom-leader-key "SPC"
@@ -49,6 +46,15 @@
 
 (def-package! vimrc-mode
   :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+
+(def-package! alloy-mode
+  :custom
+  (alloy-basic-offset 2)
+
+  :config
+  (add-hook 'alloy-mode-hook
+            (lambda () (setq indent-tabs-mode nil)))
+  (setq alloy-mode-map (make-sparse-keymap)))
 
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")

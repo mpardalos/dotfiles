@@ -6,5 +6,7 @@
 (package! bison-mode)
 (package! vimrc-mode)
 (package! ripgrep)
+(package! alloy-mode
+  :recipe (:fetcher github :repo "dwwmmn/alloy-mode"))
 
 (package! evil-snipe :disable t)
