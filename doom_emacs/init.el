@@ -55,6 +55,7 @@
   +present)
  (cc +lsp)
  ocaml
+ idris
 
  :term
  term
