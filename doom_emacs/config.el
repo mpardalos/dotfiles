@@ -6,6 +6,46 @@
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")
 
+(def-package! org
+  :custom
+  (org-agenda-files (list "~/org/"))
+  (org-todo-keywords
+        '((sequence "[ ](t)" "[?](m)" "[+](p)" "|" "[X](d)" "[~](w)" ))))
+
+(def-package! magit
+  :custom
+  (magit-blame-echo-style 'margin))
+
+(def-package! lsp-ui
+  :custom
+  (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-sideline-show-code-actions nil))
+
+(def-package! neotree
+  :custom
+  (neo-window-position 'right)
+  (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
+  (neo-show-hidden-files nil "Don't show hidden files by default")
+  (neo-window-width 40 "Increase window width")
+  (neo-window-fixed-size nil "Allow resizing")
+
+  :config
+  ;; Reset the popup rule as well, since it's set to follow the original
+  ;; neo-window-position
+  (set-popup-rule! "^ ?\\*NeoTree"
+    :side neo-window-position :size neo-window-width
+    :quit 'current :select t)
+  ;; Only hide actually hidden files
+  (custom-reevaluate-setting 'neo-hidden-regexp-list))
+
+(def-package! cc-mode
+  :config
+  (set-pretty-symbols! '(c-mode c++-mode)
+    :return "return"))
+
+(def-package! vimrc-mode
+  :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+
 (set-popup-rule! dedicated-name
   :side 'bottom
   :width 0.45
@@ -245,32 +285,6 @@
  :mode haskell-mode
  :localleader
  :desc "Hoogle query" "h" #'haskell-hoogle)
-
-;;;; Options ;;;;
-(setq doom-leader-key "SPC")
-(setq doom-localleader-key "SPC SPC")
-(setq multi-term-program "/bin/fish")
-(setq doom-theme (my/remember-theme-read 'doom-one))
-(setq doom-font (font-spec :family "Fira Code Retina" :size 14))
-(after! org
-  (setq org-agenda-files (list "~/org/"))
-  (setq org-todo-keywords
-        '((sequence "[ ](t)" "[?](m)" "[+](p)" "|" "[X](d)" "[~](w)" ))))
-(after! magit
-  (setq magit-blame-echo-style 'margin))
-(after! lsp-ui
-  (setq lsp-ui-sideline-show-hover nil)
-  (setq lsp-ui-sideline-show-code-actions nil))
-(after! neotree
-  (setq neo-window-position 'right))
-
-(def-package! cc-mode
-  :config
-  (set-pretty-symbols! '(c-mode c++-mode)
-    :return "return"))
-
-(def-package! vimrc-mode
-  :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
 ;;;;  Hooks ;;;;
 ;; Save theme
