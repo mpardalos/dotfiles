@@ -32,7 +32,7 @@
     (make-process
      :name "Doom refresh"
      :buffer "*Doom refresh*"
-     :command (list "/home/mpardalos/.emacs.d/bin/doom" "--yes" "refresh")
+     :command '("/home/mpardalos/.emacs.d/bin/doom" "--yes" "refresh")
      :sentinel (lambda (p s) (when (string= s "finished\n") (doom/reload))))))
 
 ;;;###autoload
@@ -43,3 +43,8 @@
         (term "/bin/fish")
         (rename-buffer dedicated-name)))
   (pop-to-buffer dedicated-name))
+
+;;;###autoload
+(defun my/open-external-term ()
+  (interactive)
+  (start-process "external-term" nil "alacritty"))
