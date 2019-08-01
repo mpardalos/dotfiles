@@ -54,6 +54,7 @@
   +export
   +present)
  (cc +lsp)
+ ocaml
 
  :term
  term
