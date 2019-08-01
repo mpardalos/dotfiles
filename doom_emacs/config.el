@@ -194,32 +194,21 @@
  :leader
  :prefix ("h" . "help")
 
- :desc "What face"                     "'"   #'doom/what-face
- :desc "Describe at point"             "."   #'helpful-at-point
- :desc "Describe active minor modes"   ";"   #'doom/describe-active-minor-mode
- :desc "Open Doom manual"              "D"   #'doom/open-manual
- :desc "Open vanilla sandbox"          "E"   #'doom/open-vanilla-sandbox
- :desc "Describe face"                 "F"   #'describe-face
- :desc "Find documentation"            "K"   #'+lookup/documentation
- :desc "Command log"                   "L"   #'global-command-log-mode
- :desc "Describe mode"                 "M"   #'describe-mode
- :desc "Reload private config"         "R"   #'doom/reload
- :desc "Print Doom version"            "V"   #'doom/version
  :desc "Apropos"                       "a"   #'apropos
- :desc "Open Bug Report"               "b"   #'doom/open-bug-report
- :desc "Describe char"                 "c"   #'describe-char
+ :desc "Command log"                   "L"   #'global-command-log-mode
  :desc "Describe DOOM module"          "d"   #'doom/describe-module
+ :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
+ :desc "Describe at point"             "."   #'helpful-at-point
+ :desc "Describe face"                 "F"   #'describe-face
  :desc "Describe function"             "f"   #'describe-function
- :desc "Emacs help map"                "h"   help-map
- :desc "Info"                          "i"   #'info-lookup-symbol
  :desc "Describe key"                  "k"   #'describe-key
- :desc "Find library"                  "l"   #'find-library
- :desc "View *Messages*"               "m"   #'view-echo-area-messages
- :desc "Toggle profiler"               "p"   #'doom/toggle-profiler
- :desc "Reload theme"                  "r"   #'doom/reload-theme
- :desc "Describe DOOM setting"         "s"   #'doom/describe-setters
+ :desc "Describe mode"                 "M"   #'describe-mode
  :desc "Describe variable"             "v"   #'describe-variable
- :desc "Man pages"                     "w"   #'+default/man-or-woman)
+ :desc "Emacs help map"                "H"   help-map
+ :desc "Show shortcuts"                "h"   #'which-key-show-top-level
+ :desc "Man pages"                     "w"   #'+default/man-or-woman
+ :desc "Print Doom version"            "V"   #'doom/version
+ :desc "View *Messages*"               ";"   #'view-echo-area-messages)
 
 ;; File management
 (map!
