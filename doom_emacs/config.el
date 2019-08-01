@@ -3,8 +3,12 @@
 ;; Additional files
 (load! "+alloy")
 
-(defvar dedicated-name "*dedicated-term*"
-  "The name of the dedicated terminal buffer")
+;; Doom settings
+(setq
+ doom-leader-key "SPC"
+ doom-localleader-key "SPC SPC"
+ doom-theme (my/remember-theme-read 'doom-one)
+ doom-font (font-spec :family "Source Code Pro" :size 14))
 
 (def-package! org
   :custom
@@ -46,23 +50,27 @@
 (def-package! vimrc-mode
   :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
+(defvar dedicated-name "*dedicated-term*"
+  "The name of the dedicated terminal buffer")
+
 (set-popup-rule! dedicated-name
   :side 'bottom
   :width 0.45
   :height 0.3
   :ttl nil)
 
-;;;; Maps ;;;;
-;; Commands without C-
-(map!
- :map override
- :n ";" 'evil-ex
- :n ":" 'execute-extended-command
- :nv "s" 'evil-substitute)
+;; Save theme
+(add-hook 'kill-emacs-hook #'my/remember-theme-save)
 
+;;;; Maps ;;;;
 ;; General
 (map!
  (:desc "Universal Argument" :leader "u" #'universal-argument)
+
+ (:map override
+   :n ";" 'evil-ex
+   :n ":" 'execute-extended-command
+   :nv "s" 'evil-substitute)
 
  ;; Moving around windows
  :n "M-h" 'evil-window-left
@@ -74,11 +82,17 @@
  :n "M-u" 'evil-prev-buffer
  :n "M-i" 'evil-next-buffer
 
- (:leader
-   :prefix ("c" . "Consoles")
-  :desc "Internal" :leader "c" #'my/pop-to-dedicated-term
-  :desc "External" :leader "e" #'my/open-external-term)
+ ;; (un)fold
+ :n "TAB"    #'+fold/toggle
 
+ ;; completion
+ :i "C-SPC"   #'company-complete
+
+ :leader
+ :desc "Search in file" :n "j" #'swiper)
+
+;; Text editing
+(map!
  ;; Commentary
  :n "gc" 'evil-commentary
 
@@ -86,24 +100,21 @@
  :i [remap newline] #'newline-and-indent
  :i "C-j"           #'+default/newline
 
- ;; (un)fold
- :n "TAB"    #'+fold/toggle
-
- ;; completion
- :i "C-SPC"   #'company-complete
-
  ;; don't leave visual mode after shifting
  :v  "<"     #'+evil/visual-dedent
  :v  ">"     #'+evil/visual-indent
 
  ;; evil-surround
  :v  "S"     #'evil-surround-region
- :o  "s"     #'evil-surround-edit
+ :o  "s"     #'evil-surround-edit)
 
- :leader
- :desc "Search in file" :n "j"   #'swiper)
+;; Consoles
+(map!
+ :leader :prefix ("c" . "Consoles")
+ :desc "Internal" :leader "c" #'my/pop-to-dedicated-term
+ :desc "External" :leader "e" #'my/open-external-term)
 
- ;; Windows
+;; Windows
 (map!
  :leader
  :prefix-map ("w" . "Windows")
@@ -119,8 +130,7 @@
  :after org
  :when (featurep! :lang org)
 
- (:leader
-  :prefix ("o" . "Org mode")
+ (:leader :prefix ("o" . "Org mode")
   :desc "Agenda" "a" #'org-agenda-list)
 
  (:mode org-mode
@@ -152,7 +162,7 @@
  :desc "Dotfiles"          "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles"))
  :desc "Online"            "s" #'+lookup/online)
 
- ;; evil-easymotion
+;; Evil easymotion
 (map!
  :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
  :after evil-easymotion
@@ -180,6 +190,7 @@
  :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
  :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
 
+;; Help
 (map!
  :leader
  :prefix ("h" . "help")
@@ -266,11 +277,8 @@
  :localleader
  :desc "Toggle header/source" "t" #'ff-find-other-file)
 
+;; Haskell
 (map!
  :mode haskell-mode
  :localleader
  :desc "Hoogle query" "h" #'haskell-hoogle)
-
-;;;;  Hooks ;;;;
-;; Save theme
-(add-hook 'kill-emacs-hook #'my/remember-theme-save)
