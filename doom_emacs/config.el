@@ -153,14 +153,15 @@
  :leader
  :prefix ("f" . "Search")
 
- :desc "Org files"     "o" (lambda! () (counsel-file-jump "" "~/org"))
- :desc "Buffers"       "b" #'ivy-switch-buffer
- :desc "Projects"      "p" #'projectile-switch-project
- :desc "Project files" "g" #'counsel-git
- :desc "Themes"        "t" #'load-theme
- :desc "Shells"        "s" #'counsel-switch-to-shell-buffer
- :desc "Dotfiles"      "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles"))
- :desc "Online"        "s" #'+lookup/online)
+ :desc "Org files"         "o" (lambda! () (counsel-file-jump "" "~/org"))
+ :desc "Buffers"           "b" #'ivy-switch-buffer
+ :desc "Projects"          "p" #'projectile-switch-project
+ :desc "Project files"     "G" #'projectile-find-file
+ :desc "Project git files" "g" #'counsel-git
+ :desc "Themes"            "t" #'load-theme
+ :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
+ :desc "Dotfiles"          "d" (lambda! () (counsel-file-jump "" "~/.config/dotfiles"))
+ :desc "Online"            "s" #'+lookup/online)
 
  ;; evil-easymotion
 (map!
