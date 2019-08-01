@@ -17,7 +17,6 @@
  vc-gutter
  vi-tilde-fringe
  window-select
- workspaces
 
  :editor
  (evil +everywhere +commands)

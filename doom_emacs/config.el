@@ -114,17 +114,6 @@
  :desc "Other window" "o" #'other-window
  :desc "Kill window"  "x" #'ace-delete-window)
 
- ;; Workspaces
-(map!
- :leader
- :prefix ("C-w" . "Workspaces")
-
- :desc "New workspace"       "n" (lambda! () (+workspace/new (read-string "Name> ")))
- :desc "Previous workspace"  "u" #'+workspace/switch-left
- :desc "Next workspace"      "i" #'+workspace/switch-right
- :desc "Show workspaces"     "w" #'+workspace/display
- :desc "Switch to"           "s" #'+workspace/switch-to)
-
 ;; Org mode
 (map!
  :after org
