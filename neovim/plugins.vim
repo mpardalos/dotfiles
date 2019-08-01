@@ -41,6 +41,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Language-specific {{{
     Plug 'dag/vim-fish'
     Plug 'harenome/vim-mipssyntax'
+    Plug 'runoshun/vim-alloy'
 " }}}
 call plug#end()
 
