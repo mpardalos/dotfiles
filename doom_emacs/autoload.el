@@ -20,11 +20,6 @@
     (write-file "~/.emacs-theme")))
 
 ;;;###autoload
-(defun my/org-export-choose ()
-  (interactive)
-  (counsel-M-x "org-pandoc-export-as"))
-
-;;;###autoload
 (defun my/doom-refresh-reload ()
   (interactive)
   (with-output-to-temp-buffer "*Doom refresh*"

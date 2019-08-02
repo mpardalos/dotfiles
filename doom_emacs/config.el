@@ -148,7 +148,7 @@
  :localleader
  :desc "TODO"         "o" #'org-todo
  :desc "Make table"   "t" #'org-table-create
- :desc "Export"       "e" #'my/org-export-choose
+ :desc "Export"       "e" #'org-export-dispatch
  :desc "Schedule"     "s" #'org-schedule
  :desc "Add deadline" "d" #'org-deadline
  :desc "Archive"      "a" #'org-archive-subtree))
