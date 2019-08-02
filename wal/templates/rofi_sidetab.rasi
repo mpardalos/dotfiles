@@ -55,8 +55,9 @@ window {{
 }}
 
 mainbox {{
+    height: 100%;
 	spacing:  0.1em;
-	children: [ inputbar,listview,sidebar ];
+	children: [ inputbar,listview ];
 }}
 
 button {{
@@ -94,6 +95,7 @@ listview {{
 	dynamic: false;
 	cycle:   true;
     columns: 1;
+    height: 100%;
 }}
 
 element {{ padding: 10px; }}
