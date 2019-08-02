@@ -8,5 +8,6 @@
 (package! ripgrep)
 (package! alloy-mode
   :recipe (:fetcher github :repo "dwwmmn/alloy-mode"))
+(package! smooth-scrolling)
 
 (package! evil-snipe :disable t)
