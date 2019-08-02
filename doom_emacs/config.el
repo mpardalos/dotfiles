@@ -56,6 +56,11 @@
             (lambda () (setq indent-tabs-mode nil)))
   (setq alloy-mode-map (make-sparse-keymap)))
 
+(def-package! evil
+  :config
+  (add-hook 'evil-normal-state-entry-hook
+            (lambda () (if (buffer-file-name) (save-buffer)))))
+
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")
 
