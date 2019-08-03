@@ -69,6 +69,14 @@
     :height 0.3
     :ttl nil)
 
+  (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
+    :vslot -5
+    :size 0.35
+    :select t
+    :modeline t
+    :quit 'current
+    :ttl nil)
+
   (after! 'neotree
     (set-popup-rule! "^ ?\\*NeoTree"
       :side neo-window-position :size neo-window-width
