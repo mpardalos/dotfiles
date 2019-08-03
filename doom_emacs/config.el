@@ -62,6 +62,12 @@
 (def-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
 
+(def-package! centaur-tabs
+  :custom
+  (centaur-tabs-style "slant" "VSCode-ish style")
+  (centaur-tabs-set-icons t "Pretty icons")
+  (centaur-tabs-set-bar 'over "Pretty icons"))
+
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
   :vslot -5
@@ -96,8 +102,13 @@
  :n "M-l" 'evil-window-right
 
  ;; Moving around Buffers
- :n "M-u" 'evil-prev-buffer
- :n "M-i" 'evil-next-buffer
+ (:when (featurep! :ui tabbar)
+   :n "M-u" #'centaur-tabs-backward
+   :n "M-i" #'centaur-tabs-forward)
+
+ (:when (not (featurep! :ui tabbar))
+   :n "M-u" 'evil-prev-buffer
+   :n "M-i" 'evil-next-buffer)
 
  ;; (un)fold
  :n "TAB"    #'+fold/toggle

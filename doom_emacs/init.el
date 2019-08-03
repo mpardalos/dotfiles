@@ -17,6 +17,7 @@
  vc-gutter
  vi-tilde-fringe
  window-select
+ tabbar
 
  :editor
  (evil +everywhere +commands)
