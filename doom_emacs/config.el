@@ -64,10 +64,6 @@
   (add-hook 'evil-normal-state-entry-hook
             (lambda () (if (buffer-file-name) (save-buffer)))))
 
-(def-package! smooth-scrolling
-  :config
-  (smooth-scrolling-mode 1))
-
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")
 
