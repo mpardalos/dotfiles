@@ -59,20 +59,19 @@
   (add-hook 'evil-normal-state-entry-hook
             (lambda () (if (buffer-file-name) (save-buffer)))))
 
-(after! 'popup
-  (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
-    :vslot -5
-    :size 0.35
-    :select t
-    :modeline t
-    :quit 'current
-    :ttl nil)
+;; Popup rules
+(set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
+  :vslot -5
+  :size 0.35
+  :select t
+  :modeline t
+  :quit 'current
+  :ttl nil)
 
-  (after! 'neotree
-    (set-popup-rule! "^ ?\\*NeoTree"
-      :side neo-window-position :size neo-window-width
-      :quit 'current :select t)))
-
+(after! 'neotree
+  (set-popup-rule! "^ ?\\*NeoTree"
+    :side neo-window-position :size neo-window-width
+    :quit 'current :select t))
 
 ;; Save theme
 (advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))
