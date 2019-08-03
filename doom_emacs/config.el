@@ -59,16 +59,7 @@
   (add-hook 'evil-normal-state-entry-hook
             (lambda () (if (buffer-file-name) (save-buffer)))))
 
-(defvar dedicated-name "*dedicated-term*"
-  "The name of the dedicated terminal buffer")
-
 (after! 'popup
-  (set-popup-rule! dedicated-name
-    :side 'bottom
-    :width 0.45
-    :height 0.3
-    :ttl nil)
-
   (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
     :vslot -5
     :size 0.35
