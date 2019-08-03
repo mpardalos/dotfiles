@@ -8,5 +8,6 @@
 (package! ripgrep)
 (package! alloy-mode
   :recipe (:fetcher github :repo "dwwmmn/alloy-mode"))
+(package! esh-autosuggest)
 
 (package! evil-snipe :disable t)

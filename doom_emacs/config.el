@@ -59,6 +59,9 @@
   (add-hook 'evil-normal-state-entry-hook
             (lambda () (if (buffer-file-name) (save-buffer)))))
 
+(def-package! esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
+
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
   :vslot -5
