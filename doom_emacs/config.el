@@ -31,11 +31,6 @@
   (neo-window-fixed-size nil "Allow resizing")
 
   :config
-  ;; Reset the popup rule as well, since it's set to follow the original
-  ;; neo-window-position
-  (set-popup-rule! "^ ?\\*NeoTree"
-    :side neo-window-position :size neo-window-width
-    :quit 'current :select t)
   ;; Only hide actually hidden files
   (custom-reevaluate-setting 'neo-hidden-regexp-list))
 
@@ -67,11 +62,18 @@
 (defvar dedicated-name "*dedicated-term*"
   "The name of the dedicated terminal buffer")
 
-(set-popup-rule! dedicated-name
-  :side 'bottom
-  :width 0.45
-  :height 0.3
-  :ttl nil)
+(after! 'popup
+  (set-popup-rule! dedicated-name
+    :side 'bottom
+    :width 0.45
+    :height 0.3
+    :ttl nil)
+
+  (after! 'neotree
+    (set-popup-rule! "^ ?\\*NeoTree"
+      :side neo-window-position :size neo-window-width
+      :quit 'current :select t)))
+
 
 ;; Save theme
 (advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))
