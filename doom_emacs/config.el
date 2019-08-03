@@ -125,8 +125,8 @@
 ;; Consoles
 (map!
  :leader :prefix ("c" . "Consoles")
- :desc "Internal" :leader "c" #'my/pop-to-dedicated-term
- :desc "External" :leader "e" #'my/open-external-term)
+ :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
+ :desc "Terminal emulator" :leader "t" #'my/open-external-term)
 
 ;; Windows
 (map!

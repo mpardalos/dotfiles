@@ -58,6 +58,7 @@
 
  :term
  term
+ eshell
 
  :app
  ;;(email +gmail)    ; emacs as an email client
