@@ -134,7 +134,10 @@
 
  ;; evil-surround
  :v  "S"     #'evil-surround-region
- :o  "s"     #'evil-surround-edit)
+ :o  "s"     #'evil-surround-edit
+
+ ;; Multiple cursors
+ :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here)
 
 ;; Consoles
 (map!
