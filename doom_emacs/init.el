@@ -55,6 +55,7 @@
  (cc +lsp)
  ocaml
  idris
+ (web +html +css)
 
  :term
  term
