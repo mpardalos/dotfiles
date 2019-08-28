@@ -46,7 +46,7 @@
  emacs-lisp
  markdown
  (csharp +unity)
- (haskell +dante)
+ (haskell +lsp)
  (org
   +attach
   +babel
