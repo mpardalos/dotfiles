@@ -176,7 +176,11 @@
  :desc "Export"       "e" #'org-export-dispatch
  :desc "Schedule"     "s" #'org-schedule
  :desc "Add deadline" "d" #'org-deadline
- :desc "Archive"      "a" #'org-archive-subtree))
+ :desc "Archive"      "a" #'org-archive-subtree
+ :desc "Cycle list"   "b" #'org-cycle-list-bullet
+
+ (:prefix "x"
+   :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)))
 
 ;; Searching
 (map!
@@ -300,7 +304,8 @@
  :mode lsp-mode
  :localleader
  :desc "Rename symbol" "r" #'lsp-rename
- :desc "Code action"   "a" #'lsp-execute-code-action)
+ :desc "Code action"   "a" #'lsp-execute-code-action
+ :desc "Format buffer" "f" #'lsp-format-buffer)
 
 ;; C(++)
 (map!
