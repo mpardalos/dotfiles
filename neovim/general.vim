@@ -46,5 +46,9 @@ if !exists("autocommands_loaded")
     au BufNewFile,BufRead *.es6 set filetype=javascript
     " Auto insert mode in the terminal
     autocmd BufEnter * if &buftype == "terminal" | startinsert | endif
+
+    " Write the file after some inactivity
+    autocmd CursorHold <buffer> :update
+
 endif
 " }}}
