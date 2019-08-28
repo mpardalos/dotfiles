@@ -9,6 +9,7 @@ xsetroot -cursor_name left_ptr # Set default cursor
 
 ! ( pgrep "sxhkd" ) && sxhkd &
 ! ( pgrep "compton" ) && compton &
+! ( pgrep "hexchat" ) && hexchat --minimize=2 &
 [ -f ~/.fehbg ] && ~/.fehbg
 wal -R &
 ~/.bin/start_polybar &
