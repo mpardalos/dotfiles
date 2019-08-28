@@ -7,22 +7,22 @@
  doom-theme (my/remember-theme-read 'doom-one)
  doom-font (font-spec :family "Source Code Pro" :size 14))
 
-(def-package! org
+(use-package! org
   :custom
   (org-agenda-files (list "~/org/"))
   (org-todo-keywords
         '((sequence "[ ](t)" "[?](m)" "[+](p)" "|" "[X](d)" "[~](w)" ))))
 
-(def-package! magit
+(use-package! magit
   :custom
   (magit-blame-echo-style 'margin))
 
-(def-package! lsp-ui
+(use-package! lsp-ui
   :custom
   (lsp-ui-sideline-show-hover nil)
   (lsp-ui-sideline-show-code-actions nil))
 
-(def-package! neotree
+(use-package! neotree
   :custom
   (neo-window-position 'right)
   (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
@@ -34,15 +34,15 @@
   ;; Only hide actually hidden files
   (custom-reevaluate-setting 'neo-hidden-regexp-list))
 
-(def-package! cc-mode
+(use-package! cc-mode
   :config
   (set-pretty-symbols! '(c-mode c++-mode)
     :return "return"))
 
-(def-package! vimrc-mode
+(use-package! vimrc-mode
   :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
-(def-package! alloy-mode
+(use-package! alloy-mode
   :custom
   (alloy-basic-offset 2)
 
@@ -51,7 +51,7 @@
             (lambda () (setq indent-tabs-mode nil)))
   (setq alloy-mode-map (make-sparse-keymap)))
 
-(def-package! evil
+(use-package! evil
   :custom
   (evil-move-cursor-back nil
                          "Disable the annoying vim quirk of moving the cursor back when exiting insert mode")
@@ -59,7 +59,7 @@
   (add-hook 'evil-normal-state-entry-hook
             (lambda () (if (buffer-file-name) (save-buffer)))))
 
-(def-package! esh-autosuggest
+(use-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
 
 (def-package! centaur-tabs
@@ -77,10 +77,9 @@
   :quit 'current
   :ttl nil)
 
-(after! 'neotree
-  (set-popup-rule! "^ ?\\*NeoTree"
+(set-popup-rule! "^ ?\\*NeoTree"
     :side neo-window-position :size neo-window-width
-    :quit 'current :select t))
+    :quit 'current :select t)
 
 ;; Save theme
 (advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))

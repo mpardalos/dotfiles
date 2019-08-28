@@ -7,7 +7,7 @@
 (package! vimrc-mode)
 (package! ripgrep)
 (package! alloy-mode
-  :recipe (:fetcher github :repo "dwwmmn/alloy-mode"))
+  :recipe (:host github :repo "dwwmmn/alloy-mode"))
 (package! esh-autosuggest)
 
 (package! evil-snipe :disable t)
