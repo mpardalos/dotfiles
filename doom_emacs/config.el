@@ -62,11 +62,12 @@
 (use-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
 
-(def-package! centaur-tabs
-  :custom
-  (centaur-tabs-style "slant" "VSCode-ish style")
-  (centaur-tabs-set-icons t "Pretty icons")
-  (centaur-tabs-set-bar 'over "Pretty icons"))
+(if (featurep! :ui tabbar) 
+    (use-package! centaur-tabs
+      :custom
+      (centaur-tabs-style "slant" "VSCode-ish style")
+      (centaur-tabs-set-icons t "Pretty icons")
+      (centaur-tabs-set-bar 'over "Pretty icons")))
 
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
