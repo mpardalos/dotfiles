@@ -110,6 +110,8 @@
    :n "M-u" 'evil-prev-buffer
    :n "M-i" 'evil-next-buffer)
 
+ (:desc "Kill current buffer" :leader "bd" #'kill-this-buffer)
+
  ;; (un)fold
  :n "TAB"    #'+fold/toggle
 
