@@ -80,7 +80,7 @@ visual_bell:
   duration: 0 # Disables
 
 # 1.0 is opaque
-background_opacity: 1.0
+background_opacity: 0.95
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
