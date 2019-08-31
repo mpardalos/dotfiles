@@ -1,0 +1,12 @@
+#!/bin/sh
+"""
+Fuzzy find all files in a directory
+"""
+
+DIR=$1
+CHOICE=$(fd -t f . $DIR \
+    | cut -c$(echo $DIR | wc -c)- \
+    | fzf --preview="bat -p --color=always --pager=never $DIR/{}")
+
+test $RESULT && $EDITOR $RESULT
+
