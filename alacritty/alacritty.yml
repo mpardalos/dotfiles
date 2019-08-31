@@ -16,7 +16,7 @@ window:
     y: 0
 
   # Window decorations. none|full
-  decorations: none
+  decorations: full
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
