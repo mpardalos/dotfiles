@@ -42,8 +42,8 @@ send_notification() {
 }
 
 case $1 in
-    up) volume_up 5 ;;
-    down) volume_down 5 ;;
+    up) unmute; volume_up 5 ;;
+    down) unmute; volume_down 5 ;;
     mute) toggle_mute ;;
     *)
         usage
