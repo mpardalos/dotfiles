@@ -1,21 +1,6 @@
-#!/bin/env python
+#!/usr/bin/env sh
 
-from pathlib import Path
-from subprocess import run
-from collections import OrderedDict
+WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
+CHOICE=$(ls $WALLPAPERS_DIR | rofi -dmenu -i -p "Wallpaper")
 
-from rofi import Rofi
-from rofi_menu import menu
-
-wallpapersdir = Path.home()/'Pictures'/'Wallpapers'
-args = ['feh', '--bg-fill']
-
-def runner(args):
-    return lambda: run(args)
-
-options = {
-    f.stem: runner([*args, wallpapersdir/f.name])
-    for f in wallpapersdir.iterdir()
-}
-
-menu(Rofi(), 'Choose a Wallpaper', OrderedDict(sorted(options.items(), key=lambda it: it[0])))
+feh --bg-fill "$WALLPAPERS_DIR/$CHOICE"
