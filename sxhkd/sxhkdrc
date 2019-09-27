@@ -149,6 +149,8 @@ super + s
 ## Desktop management
 super         + {u,i}
     bspc desktop --focus {prev, next}
+super + ctrl  + {u,i}
+    bspc desktop --bubble {prev, next}
 super + shift + {u,i}
     bspc node --to-desktop {prev, next} --follow
 
