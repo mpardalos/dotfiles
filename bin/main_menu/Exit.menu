@@ -1,12 +1,12 @@
-#!/bin/env python
+#!/bin/sh
 
-from rofi import Rofi
-from rofi_menu import menu
-import sh
-
-menu(Rofi(rofi_args=['-i']), 'Exit', {
-    'Log out': sh.bspc.quit,
-    'Shutdown': sh.systemctl.poweroff,
-    'Reboot': sh.systemctl.reboot,
-    'Lock': sh.Command('~/.bin/lock')
-})
+case \
+    $(echo "Hibernate|Lock|Log out|Reboot|Shutdown|Sleep" \
+    | rofi -sep '|' -dmenu -i) in
+    "Hibernate") lock && systemctl hybrid-sleep ;;
+    "Lock")      lock                           ;;
+    "Log out")   bspc quit                      ;;
+    "Reboot")    systemctl reboot               ;;
+    "Shutdown")  systemctl poweroff             ;;
+    "Sleep")     lock && systemctl suspend      ;;
+esac
