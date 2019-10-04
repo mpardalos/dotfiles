@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
 WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
-CHOICE=$(ls $WALLPAPERS_DIR | rofi -dmenu -i -p "Wallpaper")
+CHOICE=$(ls $WALLPAPERS_DIR | dmenu -i -p "Wallpaper")
 
 feh --bg-fill "$WALLPAPERS_DIR/$CHOICE"

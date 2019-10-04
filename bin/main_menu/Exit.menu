@@ -2,7 +2,7 @@
 
 case \
     $(echo "Hibernate|Lock|Log out|Reboot|Shutdown|Sleep" \
-    | rofi -sep '|' -dmenu -i) in
+    | dmenu -sep '|' -i) in
     "Hibernate") lock && systemctl hybrid-sleep ;;
     "Lock")      lock                           ;;
     "Log out")   bspc quit                      ;;

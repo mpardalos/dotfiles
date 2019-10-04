@@ -1,5 +1,5 @@
 #!/bin/sh
  
-ls .screenlayout | xargs -I'{}' basename "{}" .sh | rofi -dmenu | xargs -I'{}' bash -c ".screenlayout/{}.sh"
+ls .screenlayout | xargs -I'{}' basename "{}" .sh | dmenu -i | xargs -I'{}' bash -c ".screenlayout/{}.sh"
 pkill polybar
 ~/.bin/start_polybar

@@ -1,2 +1,2 @@
 #!/bin/bash
-bspc monitor --add-desktops $(rofi -dmenu -p 'Name for the new workspace')
+bspc monitor --add-desktops $(dmenu -p 'Name for the new workspace')
