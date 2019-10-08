@@ -8,6 +8,8 @@
  doom-font (font-spec :family "Source Code Pro" :size 14)
  doom-variable-pitch-font (font-spec :family "Ubuntu"))
 
+(setq initial-buffer-choice "~/org/TODO.org")
+
 (use-package! org
   :custom
   (org-agenda-files (list "~/org/"))
