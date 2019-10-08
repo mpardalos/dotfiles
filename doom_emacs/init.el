@@ -64,9 +64,9 @@
  :app
  ;;(email +gmail)    ; emacs as an email client
  ;;(rss +org)        ; emacs as an RSS reader
- ;;(write            ; emacs as a word processor (latex + org + markdown)
- ;; +wordnut         ; wordnet (wn) search
- ;; +langtool)       ; a proofreader (grammar/style check) for Emacs
+ (write            ; emacs as a word processor (latex + org + markdown)
+ +wordnut         ; wordnet (wn) search
+ +langtool)       ; a proofreader (grammar/style check) for Emacs
 
  :collab
  ;;floobits          ; peer programming for a price
