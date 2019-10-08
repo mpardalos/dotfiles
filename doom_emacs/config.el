@@ -14,7 +14,7 @@
   :custom
   (org-agenda-files (list "~/org/"))
   (org-todo-keywords
-        '((sequence "[ ](t)" "[?](m)" "[+](p)" "|" "[X](d)" "[~](w)" ))))
+        '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "WAIT(w)" "|" "DONE(d)"))))
 
 (use-package! magit
   :custom
