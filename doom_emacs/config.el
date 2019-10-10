@@ -128,6 +128,7 @@
 (map!
  ;; Commentary
  :n "gc" 'evil-commentary
+ :n "gcc" 'evil-commentary-line
 
  ;; Make newline behave
  :i [remap newline] #'newline-and-indent
