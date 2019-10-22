@@ -56,6 +56,7 @@
  ocaml
  idris
  (web +html +css)
+ (latex +latexmk)
 
  :term
  term
