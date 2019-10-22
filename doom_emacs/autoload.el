@@ -43,3 +43,25 @@
 (defun my/open-external-term ()
   (interactive)
   (start-process "external-term" nil "alacritty"))
+;;;###autoload
+(defun evil-mc-vertical-align (character)
+  "Aligns all cursors vertically with a given CHARACTER to the one with the
+highest colum number (the rightest).
+Might not behave as intended if more than one cursors are on the same line."
+  (interactive "c")
+  (let ((rightest-column (current-column)))
+    (evil-mc-execute-for-all-cursors
+     (lambda (x) "get the rightest cursor"
+       (interactive)
+       (setq rightest-column (max (current-column) rightest-column))
+       ))
+    (evil-mc-execute-for-all-cursors
+     (lambda (x)
+       (interactive)
+       (let ((missing-spaces (- rightest-column (current-column))))
+         (save-excursion (insert (make-string missing-spaces character)))
+         (forward-char missing-spaces))))))
+
+(defun evil-mc-vertical-align-with-space ()
+  (interactive)
+  (evil-mc-vertical-align 32))
