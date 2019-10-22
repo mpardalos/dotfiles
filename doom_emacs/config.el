@@ -273,6 +273,7 @@
    :desc "Magit status"      "g" #'magit-status
    :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
    :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
+   :desc "Checkout"          "o" #'magit-checkout
    :desc "Git Timemachine"   "t" #'git-timemachine)
 
  (:map git-timemachine-mode-map
