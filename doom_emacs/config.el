@@ -188,6 +188,15 @@
  (:prefix "x"
    :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)))
 
+;; Common files
+(map!
+ :leader
+ :prefix ("e" . "Edit common file")
+
+ :desc "Org TODO"    "t" (λ! () (find-file "~/org/TODO.org"))
+ :desc "Doom config" "d" (λ! () (find-file "~/.config/dotfiles/doom_emacs/config.el"))
+ :desc "Doom init"   "i" (λ! () (find-file "~/.config/dotfiles/doom_emacs/init.el")))
+
 ;; Searching
 (map!
  :leader
