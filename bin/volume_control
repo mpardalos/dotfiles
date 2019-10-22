@@ -11,7 +11,8 @@ usage() {
 }
 
 is_mute() {
-    return pamixer --get-mute | grep false
+    pamixer --get-mute | grep true
+    return $?
 }
 unmute()      pamixer --unmute
 toggle_mute() pamixer --toggle-mute
