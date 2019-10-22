@@ -126,9 +126,9 @@
 
 ;; Text editing
 (map!
- ;; Commentary
- :n "gc" 'evil-commentary
- :n "gcc" 'evil-commentary-line
+ ;; Comments
+ :n "gc" 'evilnc-comment-operator
+ :textobj "c" #'evilnc-inner-comment #'evilnc-outer-commenter
 
  ;; Make newline behave
  :i [remap newline] #'newline-and-indent
