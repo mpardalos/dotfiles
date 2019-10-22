@@ -59,8 +59,7 @@
   (evil-move-cursor-back nil
                          "Disable the annoying vim quirk of moving the cursor back when exiting insert mode")
   :config
-  (add-hook 'evil-normal-state-entry-hook
-            (lambda () (if (buffer-file-name) (save-buffer)))))
+  (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
 (use-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
