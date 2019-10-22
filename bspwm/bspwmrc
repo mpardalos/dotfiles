@@ -1,18 +1,16 @@
 #! /bin/sh
-~/.screenlayout/Desk.sh
-
 export TERMINAL='/home/mpardalos/.bin/colored_alacritty'
 export SXHKD_SHELL='/usr/bin/sh'
 export _JAVA_AWT_WM_NONREPARENTING=1 # For AWT to play nice
 
-xsetroot -cursor_name left_ptr # Set default cursor
-
-! ( pgrep "sxhkd" ) && sxhkd &
+# Programs that can/should start before bspwm config
+~/.screenlayout/Desk.sh
+wal -R 
 ! ( pgrep "compton" ) && compton &
-! ( pgrep "hexchat" ) && hexchat --minimize=2 &
-[ -f ~/.fehbg ] && ~/.fehbg
-wal -R &
-~/.bin/start_polybar &
+! ( pgrep "sxhkd" ) && sxhkd &
+! ( pgrep "dunst" ) && dunst &
+
+xsetroot -cursor_name left_ptr # Set default cursor
 
 bspc monitor primary -d 1 2 3 4 5
 
@@ -36,3 +34,10 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Emacs state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a sun-awt-X11-XFramePeer state=floating
+
+~/.bin/start_polybar 
+# ! ( pgrep "hexchat" ) && hexchat --minimize=2 &
+[ -f ~/.fehbg ] && ~/.fehbg
+
+# Focus on the middle desktop
+bspc desktop --focus 3
