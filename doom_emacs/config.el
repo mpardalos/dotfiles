@@ -124,8 +124,7 @@
  ;; completion
  :i "C-SPC"   #'company-complete
 
- :leader
- :desc "Search in file" :n "j" #'swiper)
+ (:desc "Search in file" :leader "j" #'swiper))
 
 ;; Text editing
 (map!
