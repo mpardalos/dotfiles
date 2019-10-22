@@ -64,6 +64,10 @@
 (use-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
 
+(use-package! web-mode
+  :custom
+  (web-mode-markup-indent-offset 2))
+
 (if (featurep! :ui tabbar) 
     (use-package! centaur-tabs
       :custom
