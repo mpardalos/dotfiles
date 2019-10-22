@@ -18,3 +18,5 @@
 	rebase = true
 [credential]
 	helper = cache
+[github]
+	user = mpardalos
