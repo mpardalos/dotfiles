@@ -28,9 +28,9 @@ cursor-scroll =
 font-0 = Noto Sans Display:size=12
 font-1 = SauceCodePro Nerd Font
 
-modules-left = menu player-mpris-tail volume cpu-temp
+modules-left = menu battery date time player-mpris-tail volume wifi keyboard cpu-temp  
 modules-center = bspwm
-modules-right = wifi keyboard battery date time
+modules-right = 
 
 [section/base]
 include-file = $HOME/.config/polybar/colors
