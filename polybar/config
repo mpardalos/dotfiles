@@ -28,7 +28,7 @@ cursor-scroll =
 font-0 = Noto Sans Display:size=12
 font-1 = SauceCodePro Nerd Font
 
-modules-left = menu player-mpris-tail volume
+modules-left = menu player-mpris-tail volume cpu-temp
 modules-center = bspwm
 modules-right = wifi keyboard battery date time
 
@@ -191,5 +191,14 @@ type = internal/xkeyboard
 format =  <label-layout>
 format-foreground = ${colors.color1}
 label-layout-foreground = ${colors.foreground}
+
+[module/cpu-temp]
+type = custom/script
+exec = sensors -j | jq '.["coretemp-isa-0000"]["Package id 0"]["temp1_input"]'
+interval = 5
+
+format = CPU <label>  
+
+label = %output%°C
 
 ; vim: set ft=cfg:
