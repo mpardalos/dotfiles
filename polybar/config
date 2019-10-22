@@ -197,8 +197,10 @@ type = custom/script
 exec = sensors -j | jq '.["coretemp-isa-0000"]["Package id 0"]["temp1_input"]'
 interval = 5
 
-format = CPU <label>  
+format =  <label>
+format-foreground = ${colors.color1}
 
 label = %output%°C
+label-foreground =  ${colors.foreground}
 
 ; vim: set ft=cfg:
