@@ -1,0 +1,10 @@
+#!/bin/sh
+egpu is-connected && {
+    echo "eGPU connected, using"
+    export XORGCONFIG="egpu.conf"
+} || {
+    echo "eGPU disconnected, disabling"
+    export XORGCONFIG=
+}
+
+/usr/bin/startx
