@@ -1,0 +1,8 @@
+#!/bin/sh
+if lspci | grep -i amd | grep -iv intel > /dev/null; then
+    echo "Connected"
+    exit 0
+else
+    echo "Disconnected"
+    exit 1
+fi
