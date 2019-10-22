@@ -1,3 +1,4 @@
 function dote -d "Edit dotfiles"
-    fzf-dir ~/.config/dotfiles
+    cd ~/.config/dotfiles
+    fzf-dir .
 end
