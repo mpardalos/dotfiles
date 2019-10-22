@@ -28,9 +28,9 @@ cursor-scroll =
 font-0 = Noto Sans Display:size=12
 font-1 = SauceCodePro Nerd Font
 
-modules-left = menu battery date time player-mpris-tail volume wifi keyboard cpu-temp  
+modules-left = menu player-mpris-tail volume
 modules-center = bspwm
-modules-right = 
+modules-right = wifi keyboard cpu-temp battery datetime
 
 [section/base]
 include-file = $HOME/.config/polybar/colors
@@ -83,6 +83,15 @@ format-foreground = ${colors.color1}
 label-foreground = ${colors.foreground}
 
 date = %H:%M
+
+[module/datetime]
+type = internal/date
+format =  <label>
+
+format-foreground = ${colors.color1}
+label-foreground = ${colors.foreground}
+
+date = %a %d/%m/%g %H:%M
 
 [module/battery]
 type = internal/battery
