@@ -10,6 +10,9 @@
 
 (setq initial-buffer-choice "~/org/TODO.org")
 
+(use-package! vterm
+  :custom (vterm-shell "/bin/fish"))
+
 (use-package! org
   :custom
   (org-agenda-files (list "~/org/"))
@@ -147,7 +150,7 @@
 ;; Consoles
 (map!
  :leader :prefix ("c" . "Consoles")
- :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
+ :desc "Internal (eshell)" :leader "c" #'+vterm/toggle
  :desc "Terminal emulator" :leader "t" #'my/open-external-term)
 
 ;; Windows

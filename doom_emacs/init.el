@@ -59,7 +59,7 @@
  (latex +latexmk)
 
  :term
- term
+ vterm
  eshell
 
  :app
