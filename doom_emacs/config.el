@@ -61,15 +61,6 @@
   :config
   (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
-(after! 'popup
-  (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
-    :vslot -5
-    :size 0.35
-    :select t
-    :modeline t
-    :quit 'current
-    :ttl nil))
-
 (use-package! web-mode
   :custom
   (web-mode-markup-indent-offset 2))
