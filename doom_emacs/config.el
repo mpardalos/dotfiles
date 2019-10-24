@@ -61,8 +61,14 @@
   :config
   (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
-(use-package! esh-autosuggest
-  :hook (eshell-mode . esh-autosuggest-mode))
+(after! 'popup
+  (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
+    :vslot -5
+    :size 0.35
+    :select t
+    :modeline t
+    :quit 'current
+    :ttl nil))
 
 (use-package! web-mode
   :custom
