@@ -33,7 +33,7 @@
   (neo-window-position 'right)
   (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
   (neo-show-hidden-files nil "Don't show hidden files by default")
-  (neo-window-width 40 "Increase window width")
+  (neo-window-width 70 "Increase window width")
   (neo-window-fixed-size nil "Allow resizing")
 
   :config
