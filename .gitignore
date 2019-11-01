@@ -22,3 +22,5 @@ dunst/dunstrc
 qutebrowser/autoconfig.yml
 
 bonclay
+/fish/fish_variables
+/fish/functions/fish_prompt.fish
