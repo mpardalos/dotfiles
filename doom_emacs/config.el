@@ -124,7 +124,11 @@
  ;; completion
  :i "C-SPC"   #'company-complete
 
- (:desc "Search in file" :leader "j" #'swiper))
+ (:desc "Search in file" :leader "j" #'swiper)
+
+ :n "C--" #'doom/decrease-font-size
+ :n "C-=" #'doom/increase-font-size
+ :n "C-0" #'doom/reset-font-size)
 
 ;; Text editing
 (map!
