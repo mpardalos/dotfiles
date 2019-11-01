@@ -42,6 +42,7 @@
  flycheck
 
  :lang
+ agda
  (sh +fish)
  emacs-lisp
  markdown
