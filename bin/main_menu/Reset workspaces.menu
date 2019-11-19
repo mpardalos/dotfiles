@@ -2,6 +2,7 @@
 
 DESKTOPS=$(
     echo "Docs Main Extra K Music|Lecture NotLecture|1 2 3 4 5|Web Music" \
-    | dmenu -sep '|' -p "Desktop names (Space separated)")
+        | dmenu -sep '|' -p "Names"
+        )
 
 bspc monitor focused -d $DESKTOPS
