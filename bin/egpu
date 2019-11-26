@@ -1,8 +1,28 @@
 #!/bin/sh
-if lspci | grep -i amd | grep -iv intel > /dev/null; then
-    echo "Connected"
-    exit 0
-else
-    echo "Disconnected"
-    exit 1
-fi
+
+usage() {
+    printf "Usage: %s (eject|unload|load|status|help)\n" "$0"
+    printf "  eject|unload \t Unload amdgpu module\n"
+    printf "  load         \t Load amdgpu module\n"
+    printf "  status       \t Check if egpu is connected (Default)\n"
+    printf "  help         \t Show this message\n"
+}
+
+case $1 in
+    unload|eject) sudo modprobe -r amdgpu ;;
+    load) sudo modprobe amdgpu ;;
+    status|"")
+        if lspci | grep -i amd | grep -iv intel > /dev/null; then
+            echo "Connected"
+            exit 0
+        else
+            echo "Disconnected"
+            exit 1
+        fi
+        ;;
+    help) usage;;
+    *)
+        echo "Invalid command: $1"
+        usage
+        ;;
+esac

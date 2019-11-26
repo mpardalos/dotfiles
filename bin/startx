@@ -1,5 +1,5 @@
 #!/bin/sh
-egpu is-connected && {
+egpu status && {
     echo "eGPU connected, using"
     export XORGCONFIG="egpu.conf"
 } || {
