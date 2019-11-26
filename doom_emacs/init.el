@@ -41,6 +41,7 @@
  editorconfig
  flyspell
  flycheck
+ pdf
  ein
 
  :lang
