@@ -1,3 +1,3 @@
 function fish_greeting
-	~/.motd
+	~/.motd -t 0.001
 end
