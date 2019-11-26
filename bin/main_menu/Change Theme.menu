@@ -7,7 +7,7 @@ from collections import OrderedDict
 from rofi import Rofi
 from rofi_menu import menu
 
-colorschemes_path=Path("/usr/lib/python3.7/site-packages/pywal/colorschemes/")
+colorschemes_path=Path("/usr/lib/python3.8/site-packages/pywal/colorschemes/")
 
 light_schemes = [name.stem for name in (colorschemes_path/"light").iterdir()]
 dark_schemes =  [name.stem for name in (colorschemes_path/"dark").iterdir()]
