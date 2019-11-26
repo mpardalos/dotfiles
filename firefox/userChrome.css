@@ -5,7 +5,9 @@
 	overflow: hidden;
 }
 
-:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar {
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar, 
+:root:not([customizing]) #navigator-toolbox:hover #nav-bar 
+{
 	max-height: 32px;
 	height: 32px;
 }
