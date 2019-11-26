@@ -17,6 +17,7 @@
  vc-gutter
  vi-tilde-fringe
  window-select
+ hydra
 
  :editor
  (evil +everywhere +commands)
@@ -40,6 +41,7 @@
  editorconfig
  flyspell
  flycheck
+ ein
 
  :lang
  agda
