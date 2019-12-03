@@ -193,7 +193,10 @@
  :desc "Cycle list"   "b" #'org-cycle-list-bullet
 
  (:prefix "x"
-   :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)))
+   :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)
+
+ (:prefix "l"
+   :desc "Toggle link display" "v" #'org-toggle-link-display)))
 
 ;; Common files
 (map!
