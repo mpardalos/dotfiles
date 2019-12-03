@@ -291,6 +291,7 @@
    :desc "Magit status"      "g" #'magit-status
    :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
    :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
+   :desc "Stage file"        "S" #'magit-stage-file
    :desc "Checkout"          "o" #'magit-checkout
    :desc "Git Timemachine"   "t" #'git-timemachine)
 
