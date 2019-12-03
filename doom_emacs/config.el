@@ -217,6 +217,8 @@
  :desc "Themes"            "t" #'load-theme
  :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
  :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
+ ;; This needs updating every year
+ :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
  :desc "Online"            "o" #'+lookup/online)
 
 ;; Evil easymotion
