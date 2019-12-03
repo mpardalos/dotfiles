@@ -6,7 +6,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # For AWT to play nice
 # Programs that can/should start before bspwm config
 ~/.screenlayout/Desk.sh
 wal -R 
-! ( pgrep "compton" ) && compton &
+! ( pgrep "picom" ) && picom &
 ! ( pgrep "sxhkd" ) && sxhkd &
 ! ( pgrep "dunst" ) && dunst &
 
