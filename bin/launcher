@@ -1,2 +1,6 @@
 #!/bin/sh
-rofi -modi windowcd,drun -show drun
+rofi \
+    -display-combi "Program" \
+    -modi "combi" \
+    -combi-modi "window,drun" \
+    -show combi
