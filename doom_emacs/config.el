@@ -217,7 +217,7 @@
  :desc "Themes"            "t" #'load-theme
  :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
  :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
- :desc "Online"            "s" #'+lookup/online)
+ :desc "Online"            "o" #'+lookup/online)
 
 ;; Evil easymotion
 (map!
