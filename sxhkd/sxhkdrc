@@ -51,7 +51,7 @@ super + t; {_, super +} t
 super + t; b
     ~/.bin/toggle bar
 super + t; c
-    ~/.bin/toggle compton
+    ~/.bin/toggle compositor
 
 # Toggles
 ###########
