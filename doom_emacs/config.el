@@ -199,13 +199,15 @@
  :n "M-l" nil
 
  :localleader
- :desc "TODO"         "o" #'org-todo
- :desc "Make table"   "t" #'org-table-create
+ :desc "TODO"         "t" #'org-todo
  :desc "Export"       "e" #'org-export-dispatch
  :desc "Schedule"     "s" #'org-schedule
  :desc "Add deadline" "d" #'org-deadline
  :desc "Archive"      "a" #'org-archive-subtree
  :desc "Cycle list"   "b" #'org-cycle-list-bullet
+
+ (:prefix-map ("i" . "insert")
+   :desc "Table""t" #'org-table-create)
 
  (:prefix "x"
    :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)
