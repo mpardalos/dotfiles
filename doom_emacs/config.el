@@ -151,6 +151,19 @@
  ;; Multiple cursors
  :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here)
 
+;; Within ivy
+(map!
+ (:after ivy
+   :map ivy-minibuffer-map
+   "C-SPC" #'ivy-call-and-recenter  ; preview file
+   "C-l"   #'ivy-alt-done
+   "C-v"   #'yank)
+ (:after counsel
+   :map counsel-ag-map
+   "C-SPC"    #'ivy-call-and-recenter ; preview
+   "C-l"      #'ivy-done
+   [C-return] #'+ivy/git-grep-other-window-action))
+
 ;; Consoles
 (map!
  :leader :prefix ("c" . "Consoles")
