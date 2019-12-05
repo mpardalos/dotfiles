@@ -166,7 +166,7 @@
  (:prefix ("s" . "Split")
    :desc "Horizontally" "h" #'split-window-right
    :desc "Vertically"   "v" #'split-window-below)
- :desc "Other window" "o" #'other-window
+ :desc "Other window" "w" #'other-window
  :desc "Kill window"  "x" #'ace-delete-window)
 
 ;; Org mode
