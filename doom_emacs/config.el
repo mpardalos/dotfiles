@@ -8,6 +8,8 @@
  doom-font (font-spec :family "Source Code Pro" :size 14)
  doom-variable-pitch-font (font-spec :family "Noto Sans"))
 
+(setq +latex-viewers '(pdf-tools zathura))
+
 (setq initial-buffer-choice "~/org/TODO.org")
 
 (use-package! vterm

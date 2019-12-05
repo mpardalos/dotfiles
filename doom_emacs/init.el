@@ -60,7 +60,7 @@
  ocaml
  idris
  (web +html +css)
- (latex +latexmk)
+ (latex +latexmk +viewers)
 
  :term
  vterm
