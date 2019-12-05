@@ -2,7 +2,7 @@
 
 (doom!
  :completion
- ivy
+ (ivy +icons +childframe)
  (company +auto)
 
  :ui
