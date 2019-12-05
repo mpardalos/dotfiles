@@ -6,7 +6,7 @@
  doom-localleader-key "SPC SPC"
  doom-theme (my/remember-theme-read 'doom-one)
  doom-font (font-spec :family "Source Code Pro" :size 14)
- doom-variable-pitch-font (font-spec :family "Ubuntu"))
+ doom-variable-pitch-font (font-spec :family "Noto Sans"))
 
 (setq initial-buffer-choice "~/org/TODO.org")
 
