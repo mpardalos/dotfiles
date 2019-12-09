@@ -28,7 +28,7 @@ cursor-scroll =
 font-0 = Noto Sans Display:size=12
 font-1 = SauceCodePro Nerd Font
 
-modules-left = menu bspwm
+modules-left = menu bspwm active-window
 modules-right = player-mpris-tail volume wifi keyboard cpu-temp battery datetime
 
 [section/base]
@@ -65,6 +65,9 @@ label-focused-underline = ${colors.color2}
 
 label-separator = <>
 label-separator-foreground = ${colors.color2}
+
+[module/active-window]
+type = internal/xwindow
 
 [module/date]
 type = internal/date
