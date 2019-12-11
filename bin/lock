@@ -8,6 +8,7 @@ source ~/.bin/colors-rgba.sh
 
 i3lock \
     -i "$IMG" \
+    --tiling \
     --indicator \
     --insidecolor="$background" \
     --timecolor="$foreground" \
