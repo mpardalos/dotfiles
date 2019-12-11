@@ -9,6 +9,10 @@ wal -R
 ! ( pgrep "picom" ) && picom &
 ! ( pgrep "sxhkd" ) && sxhkd &
 ! ( pgrep "dunst" ) && dunst &
+! ( pgrep "lxqt-policykit-agent" ) && lxqt-policykit-agent &
+! ( pgrep "blueman-applet" ) && blueman-applet &
+! ( pgrep "redshift-gtk" ) && redshift-gtk &
+! ( pgrep "nm-applet" ) && nm-applet &
 
 xsetroot -cursor_name left_ptr # Set default cursor
 
