@@ -11,7 +11,7 @@
  ophints
  hl-todo
  nav-flash
- neotree
+ treemacs
  (popup +all +defaults)
  (pretty-code +fira)
  vc-gutter

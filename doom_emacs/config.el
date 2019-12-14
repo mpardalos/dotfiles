@@ -30,17 +30,23 @@
   (lsp-ui-sideline-show-hover nil)
   (lsp-ui-sideline-show-code-actions nil))
 
-(use-package! neotree
-  :custom
-  (neo-window-position 'right)
-  (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
-  (neo-show-hidden-files nil "Don't show hidden files by default")
-  (neo-window-width 70 "Increase window width")
-  (neo-window-fixed-size nil "Allow resizing")
+(when (featurep! :ui neotree)
+  (use-package! neotree
+    :custom
+    (neo-window-position 'right)
+    (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
+    (neo-show-hidden-files nil "Don't show hidden files by default")
+    (neo-window-width 70 "Increase window width")
+    (neo-window-fixed-size nil "Allow resizing")
 
-  :config
-  ;; Only hide actually hidden files
-  (custom-reevaluate-setting 'neo-hidden-regexp-list))
+    :config
+    ;; Only hide actually hidden files
+    (custom-reevaluate-setting 'neo-hidden-regexp-list))
+
+  (set-popup-rule! "^ ?\\*NeoTree"
+    :side neo-window-position :size neo-window-width
+    :quit 'current :select t))
+
 
 (use-package! cc-mode
   :config
@@ -85,10 +91,6 @@
   :modeline t
   :quit 'current
   :ttl nil)
-
-(set-popup-rule! "^ ?\\*NeoTree"
-    :side neo-window-position :size neo-window-width
-    :quit 'current :select t)
 
 ;; Save theme
 (advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))
@@ -292,15 +294,17 @@
 
 ;; File management
 (map!
- (:leader :desc "File drawer" "/" #'neotree-toggle)
+ :leader :desc "File drawer" "/" #'+treemacs/toggle
 
- :mode neotree-mode
- :desc "Go to project root"   "P" #'my/neotree-project-root
- :desc "Go to parent"         "U" #'neotree-select-up-node
- :desc "Set as current node"  "l" #'neotree-change-root
- :desc "Open next to current" "h" #'neotree-enter-vertical-split
- :desc "Open below current"   "v" #'neotree-enter-horizontal-split
- :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application)
+ (:when (featurep! :ui neotree-mode)
+   :mode neotree-mode
+
+   :desc "Go to project root"   "P" #'my/neotree-project-root
+   :desc "Go to parent"         "U" #'neotree-select-up-node
+   :desc "Set as current node"  "l" #'neotree-change-root
+   :desc "Open next to current" "h" #'neotree-enter-vertical-split
+   :desc "Open below current"   "v" #'neotree-enter-horizontal-split
+   :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application))
 
 ;; VCS
 (map!
