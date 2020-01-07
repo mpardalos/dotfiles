@@ -368,3 +368,8 @@
  :mode haskell-mode
  :localleader
  :desc "Hoogle query" "h" #'haskell-hoogle)
+
+(map!
+ :map ein:notebook-mode-map
+ :localleader
+ "," #'+ein/hydra/body)
