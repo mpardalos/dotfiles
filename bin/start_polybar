@@ -2,7 +2,7 @@
 
 export POLYBAR_MONITOR=$(~/.bin/get-primary-monitor)
 
-source ~/.cache/wal/colors.sh
+. ~/.cache/wal/colors.sh
 export MPRIS_FORMAT="%{F$color1}{icon}%{F-} {artist} - {title}"
 
 polybar main &
