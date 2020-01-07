@@ -9,3 +9,5 @@
 (package! fill-column-indicator)
 
 (package! evil-snipe :disable t)
+
+(package! rebecca-theme)
