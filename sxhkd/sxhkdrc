@@ -38,6 +38,8 @@ super + w ; m
     spotify
 super + w ; t
     alacritty
+super + w ; s
+    steam
 
 # Launcher
 ###########
