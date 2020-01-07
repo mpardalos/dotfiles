@@ -6,7 +6,8 @@
  doom-localleader-key "SPC SPC"
  doom-theme (my/remember-theme-read 'doom-one)
  doom-font (font-spec :family "Source Code Pro" :size 14)
- doom-variable-pitch-font (font-spec :family "Noto Sans"))
+ doom-variable-pitch-font (font-spec :family "Noto Sans")
+ +pretty-code-enabled-modes '('not 'vterm 'eshell))
 
 (setq +latex-viewers '(pdf-tools zathura))
 
