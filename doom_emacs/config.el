@@ -353,10 +353,13 @@
 ;; LSP
 (map!
     :mode lsp-mode
-    :localleader
-    :desc "Rename symbol" "r" #'lsp-rename
-    :desc "Code action"   "a" #'lsp-execute-code-action
-    :desc "Format buffer" "f" #'lsp-format-buffer)
+
+    (:localleader
+        :desc "Rename symbol" "r" #'lsp-rename
+        :desc "Code action"   "a" #'lsp-execute-code-action
+        :desc "Format buffer" "f" #'lsp-format-buffer)
+
+    :desc "Glance documentation" "gh" #'lsp-ui-doc-glance)
 
 ;; C(++)
 (map!
