@@ -20,7 +20,7 @@
     :custom
     (org-agenda-files (list "~/org/"))
     (org-todo-keywords
-        '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "WAIT(w)" "|" "DONE(d)" "CANCEL(c)"))))
+        '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))))
 
 (use-package! magit
     :custom
