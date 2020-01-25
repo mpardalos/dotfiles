@@ -359,7 +359,8 @@
         :desc "Code action"   "a" #'lsp-execute-code-action
         :desc "Format buffer" "f" #'lsp-format-buffer)
 
-    :desc "Glance documentation" "gh" #'lsp-ui-doc-glance)
+    :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
+    :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
 
 ;; C(++)
 (map!
