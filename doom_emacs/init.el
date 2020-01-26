@@ -40,8 +40,6 @@
     magit
     lsp
     editorconfig
-    flyspell
-    flycheck
     pdf
     ein
 
@@ -63,6 +61,10 @@
     (latex +latexmk +viewers)
     (python +lsp)
     (fsharp +lsp)
+
+    :checkers
+    spell
+    syntax
 
     :term
     vterm
