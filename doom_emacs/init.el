@@ -2,7 +2,7 @@
 
 (doom!
     :completion
-    (ivy +icons +prescient)
+    (ivy +icons +prescient +fuzzy)
     (company +auto)
 
     :ui
