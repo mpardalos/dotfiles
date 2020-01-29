@@ -8,81 +8,52 @@
     doom-font (font-spec :family "Source Code Pro" :size 14)
     doom-variable-pitch-font (font-spec :family "Noto Sans")
     +pretty-code-enabled-modes '('not 'vterm 'eshell))
+    +latex-viewers '(pdf-tools zathura))
+
+;; Save theme
+(advice-add 'load-theme :after
+    (lambda (&rest args) (my/remember-theme-save)))
 
 (setq +latex-viewers '(pdf-tools zathura))
+(setq vterm-shell "/bin/fish")
 
-(setq initial-buffer-choice "~/org/TODO.org")
-
-(use-package! vterm
-    :custom (vterm-shell "/bin/fish"))
-
-(use-package! org
-    :custom
-    (org-agenda-files (list "~/org/"))
-    (org-todo-keywords
+(after! org-mode
+    (setq
+        org-agenda-files (list "~/org/")
+        org-todo-keywords
         '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))))
 
-(use-package! magit
-    :custom
-    (magit-blame-echo-style 'margin))
+(after! magit
+    (setq magit-blame-echo-style 'margin))
 
-(use-package! lsp-ui
-    :custom
-    (lsp-ui-sideline-show-hover nil)
-    (lsp-ui-sideline-show-code-actions nil))
+(after! lsp-mode
+    (setq
+        lsp-ui-sideline-show-hover nil
+        lsp-ui-sideline-show-code-actions nil))
 
-(when (featurep! :ui neotree)
-    (use-package! neotree
-        :custom
-        (neo-window-position 'right)
-        (neo-theme (if (display-graphic-p) 'icons 'arrow) "icons theme if in graphical mode, arrow otherwise")
-        (neo-show-hidden-files nil "Don't show hidden files by default")
-        (neo-window-width 70 "Increase window width")
-        (neo-window-fixed-size nil "Allow resizing")
+(after! treemacs
+  (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
 
-        :config
-        ;; Only hide actually hidden files
-        (custom-reevaluate-setting 'neo-hidden-regexp-list))
-
-    (set-popup-rule! "^ ?\\*NeoTree"
-        :side neo-window-position :size neo-window-width
-        :quit 'current :select t))
-
-
-(use-package! cc-mode
-    :config
+(after! (:or c-mode c++-mode)
     (set-pretty-symbols! '(c-mode c++-mode)
         :return "return"))
 
-(use-package! vimrc-mode
-    :mode ("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+(add-to-list 'auto-mode-alist
+        '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
-(use-package! alloy-mode
-    :custom
-    (alloy-basic-offset 2)
-
-    :config
+(after! alloy-mode
     (add-hook 'alloy-mode-hook
         (lambda () (setq indent-tabs-mode nil)))
-    (setq alloy-mode-map (make-sparse-keymap)))
+    (setq
+        alloy-mode-map (make-sparse-keymap)
+        alloy-basic-offset 2))
 
-(use-package! evil
-    :custom
-    (evil-move-cursor-back nil
-        "Disable the annoying vim quirk of moving the cursor back when exiting insert mode")
-    :config
+(after! evil
+    (setq evil-move-cursor-back nil)
     (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
-(use-package! web-mode
-    :custom
-    (web-mode-markup-indent-offset 2))
-
-(if (featurep! :ui tabbar) 
-    (use-package! centaur-tabs
-        :custom
-        (centaur-tabs-style "slant" "VSCode-ish style")
-        (centaur-tabs-set-icons t "Pretty icons")
-        (centaur-tabs-set-bar 'over "Pretty icons")))
+(after! web-mode
+    (setq web-mode-markup-indent-offset 2))
 
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
@@ -92,9 +63,6 @@
     :modeline t
     :quit 'current
     :ttl nil)
-
-;; Save theme
-(advice-add 'load-theme :after (lambda (&rest args) (my/remember-theme-save)))
 
 ;;;; Maps ;;;;
 ;; General
