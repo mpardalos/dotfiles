@@ -102,6 +102,11 @@
     :n "C-=" #'doom/increase-font-size
     :n "C-0" #'doom/reset-font-size)
 
+;; Project commands
+(map! :mode projectile-mode
+    :localleader "r" #'projectile-run-project
+    :localleader "b" #'projectile-compile-project)
+
 ;; Text editing
 (map!
     ;; Comments
