@@ -100,15 +100,14 @@
 
     :n "C--" #'doom/decrease-font-size
     :n "C-=" #'doom/increase-font-size
-    :n "C-0" #'doom/reset-font-size)
+    :n "C-0" #'doom/reset-font-size
 
-;; Project commands
-(map! :mode projectile-mode
-    :localleader "r" #'projectile-run-project
-    :localleader "b" #'projectile-compile-project)
+    ;; Project commands
+    (:mode projectile-mode
+        :localleader "t" #'projectile-test-project
+        :localleader "r" #'projectile-run-project
+        :localleader "b" #'projectile-compile-project)
 
-;; Text editing
-(map!
     ;; Comments
     :n "gc" 'evilnc-comment-operator
     :textobj "c" #'evilnc-inner-comment #'evilnc-outer-commenter
@@ -126,10 +125,9 @@
     :o  "s"     #'evil-surround-edit
 
     ;; Multiple cursors
-    :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here)
+    :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here
 
-;; Within ivy
-(map!
+    ;; Ivy
     (:after ivy
         :map ivy-minibuffer-map
         "C-SPC" #'ivy-call-and-recenter  ; preview file
@@ -139,35 +137,26 @@
         :map counsel-ag-map
         "C-SPC"    #'ivy-call-and-recenter ; preview
         "C-l"      #'ivy-done
-        [C-return] #'+ivy/git-grep-other-window-action))
+        [C-return] #'+ivy/git-grep-other-window-action)
 
-;; Consoles
-(map!
-    :leader :prefix ("c" . "Consoles")
-    :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
-    :desc "Internal (vterm)"  :leader "t" #'+vterm/toggle
-    :desc "Terminal emulator" :leader "e" #'my/open-external-term)
+    ;; Console
+    (:leader :prefix ("c" . "Consoles")
+        :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
+        :desc "Internal (vterm)"  :leader "t" #'+vterm/toggle
+        :desc "Terminal emulator" :leader "e" #'my/open-external-term)
 
-;; Windows
-(map!
-    :leader
-    :prefix-map ("w" . "Windows")
+    ;; Windows
+    (:leader
+        :prefix-map ("w" . "Windows")
 
-    (:prefix ("s" . "Split")
-        :desc "Horizontally" "h" #'split-window-right
-        :desc "Vertically"   "v" #'split-window-below)
-    :desc "Other window" "w" #'other-window
-    :desc "Kill window"  "x" #'ace-delete-window)
+        (:prefix ("s" . "Split")
+            :desc "Horizontally" "h" #'split-window-right
+            :desc "Vertically"   "v" #'split-window-below)
+        :desc "Other window" "w" #'other-window
+        :desc "Kill window"  "x" #'ace-delete-window)
 
-;; Org mode
-(map!
-    :after org
-    :when (featurep! :lang org)
-
-    (:leader :prefix ("o" . "Org mode")
-        :desc "Agenda" "a" #'org-agenda-list)
-
-    (:mode org-mode
+    ;; Org mode
+    (:after org :when (featurep! :lang org) :mode org-mode
 
         ;; Unmap these because they interfere with window switching
         :n "M-h" nil
@@ -188,99 +177,91 @@
             :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)
 
         (:prefix "l"
-            :desc "Toggle link display" "v" #'org-toggle-link-display)))
+            :desc "Toggle link display" "v" #'org-toggle-link-display))
 
-;; Common files
-(map!
-    :leader
-    :prefix ("e" . "Edit common file")
+    ;; Opening Common files
+    (:leader :prefix ("e" . "Edit common file")
 
-    :desc "Org TODO"    "t" (λ! () (find-file "~/org/TODO.org"))
-    :desc "Doom config" "d" (λ! () (find-file "~/.config/dotfiles/doom_emacs/config.el"))
-    :desc "Doom init"   "i" (λ! () (find-file "~/.config/dotfiles/doom_emacs/init.el")))
+        :desc "Org TODO"    "t" (λ! () (find-file "~/org/TODO.org"))
+        :desc "Doom config" "d" (λ! () (find-file "~/.config/dotfiles/doom_emacs/config.el"))
+        :desc "Doom init"   "i" (λ! () (find-file "~/.config/dotfiles/doom_emacs/init.el")))
 
-;; Searching
-(map!
-    :leader
-    :prefix ("f" . "Search")
+    ;; Searching
+    (:leader :prefix ("f" . "Search")
 
-    :desc "Org files"         "o" (λ! () (counsel-file-jump "" "~/org"))
-    :desc "Buffers"           "b" #'ivy-switch-buffer
-    :desc "Projects"          "p" #'projectile-switch-project
-    :desc "Project files"     "G" #'projectile-find-file
-    :desc "Project git files" "g" #'counsel-git
-    :desc "Themes"            "t" #'load-theme
-    :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
-    :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
-    ;; This needs updating every year
-    :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
-    :desc "Online"            "o" #'+lookup/online)
+        :desc "Org files"         "o" (λ! () (counsel-file-jump "" "~/org"))
+        :desc "Buffers"           "b" #'ivy-switch-buffer
+        :desc "Projects"          "p" #'projectile-switch-project
+        :desc "Project files"     "G" #'projectile-find-file
+        :desc "Project git files" "g" #'counsel-git
+        :desc "Themes"            "t" #'load-theme
+        :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
+        :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
+        ;; This needs updating every year
+        :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
+        :desc "Online"            "o" #'+lookup/online)
 
-;; Evil easymotion
-(map!
-    :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
-    :after evil-easymotion
-    :map evilem-map
-    "," #'avy-goto-char-timer
-    "/" (evilem-create #'evil-ex-search-next
-            :pre-hook (save-excursion (call-interactively #'evil-ex-search-forward))
-            :bind ((evil-search-wrap)))
-    "?" (evilem-create #'evil-ex-search-previous
-            :pre-hook (save-excursion (call-interactively #'evil-ex-search-backward))
-            :bind ((evil-search-wrap))))
+    ;; Evil-easymotion
+    ( :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
+        :after evil-easymotion
+        :map evilem-map
+        "," #'avy-goto-char-timer
+        "/" (evilem-create #'evil-ex-search-next
+                :pre-hook (save-excursion (call-interactively #'evil-ex-search-forward))
+                :bind ((evil-search-wrap)))
+        "?" (evilem-create #'evil-ex-search-previous
+                :pre-hook (save-excursion (call-interactively #'evil-ex-search-backward))
+                :bind ((evil-search-wrap))))
 
-;; Next/Previous
-(map!
-    (:when (featurep! :ui hl-todo)
-        :desc "Previous TODO"   :n "[t" #'hl-todo-previous
-        :desc "Next TODO"       :n "]t" #'hl-todo-next)
+    ;; Next/Previous
+    ((:when (featurep! :ui hl-todo)
+         :desc "Previous TODO"   :n "[t" #'hl-todo-previous
+         :desc "Next TODO"       :n "]t" #'hl-todo-next)
 
-    :desc "Previous Error"  :n "[e" 'flycheck-previous-error
-    :desc "Next Error"      :n "]e" 'flycheck-next-error
+        :desc "Previous Error"  :n "[e" 'flycheck-previous-error
+        :desc "Next Error"      :n "]e" 'flycheck-next-error
 
-    :desc "Previous Hunk"  :n "[g" 'git-gutter:previous-hunk
-    :desc "Next hunk"      :n "]g" 'git-gutter:next-hunk
+        :desc "Previous Hunk"  :n "[g" 'git-gutter:previous-hunk
+        :desc "Next hunk"      :n "]g" 'git-gutter:next-hunk
 
-    :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
-    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
+        :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
+        :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
 
-;; Help
-(map!
-    :leader
-    :prefix ("h" . "help")
+    ;; Help
+    (
+        :leader
+        :prefix ("h" . "help")
 
-    :desc "Apropos"                       "a"   #'apropos
-    :desc "Command log"                   "L"   #'global-command-log-mode
-    :desc "Describe DOOM module"          "d"   #'doom/describe-module
-    :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
-    :desc "Describe at point"             "."   #'helpful-at-point
-    :desc "Describe face"                 "F"   #'describe-face
-    :desc "Describe function"             "f"   #'describe-function
-    :desc "Describe key"                  "k"   #'describe-key
-    :desc "Describe mode"                 "M"   #'describe-mode
-    :desc "Describe variable"             "v"   #'describe-variable
-    :desc "Emacs help map"                "H"   help-map
-    :desc "Show shortcuts"                "h"   #'which-key-show-top-level
-    :desc "Man pages"                     "w"   #'+default/man-or-woman
-    :desc "Print Doom version"            "V"   #'doom/version
-    :desc "View *Messages*"               ";"   #'view-echo-area-messages)
+        :desc "Apropos"                       "a"   #'apropos
+        :desc "Command log"                   "L"   #'global-command-log-mode
+        :desc "Describe DOOM module"          "d"   #'doom/describe-module
+        :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
+        :desc "Describe at point"             "."   #'helpful-at-point
+        :desc "Describe face"                 "F"   #'describe-face
+        :desc "Describe function"             "f"   #'describe-function
+        :desc "Describe key"                  "k"   #'describe-key
+        :desc "Describe mode"                 "M"   #'describe-mode
+        :desc "Describe variable"             "v"   #'describe-variable
+        :desc "Emacs help map"                "H"   help-map
+        :desc "Show shortcuts"                "h"   #'which-key-show-top-level
+        :desc "Man pages"                     "w"   #'+default/man-or-woman
+        :desc "Print Doom version"            "V"   #'doom/version
+        :desc "View *Messages*"               ";"   #'view-echo-area-messages)
 
-;; File management
-(map!
-    :leader :desc "File drawer" "/" #'+treemacs/toggle
+    ;; File management
+    (:leader :desc "File drawer" "/" #'+treemacs/toggle
 
-    (:when (featurep! :ui neotree-mode)
-        :mode neotree-mode
+        (:when (featurep! :ui neotree-mode)
+            :mode neotree-mode
 
-        :desc "Go to project root"   "P" #'my/neotree-project-root
-        :desc "Go to parent"         "U" #'neotree-select-up-node
-        :desc "Set as current node"  "l" #'neotree-change-root
-        :desc "Open next to current" "h" #'neotree-enter-vertical-split
-        :desc "Open below current"   "v" #'neotree-enter-horizontal-split
-        :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application))
+            :desc "Go to project root"   "P" #'my/neotree-project-root
+            :desc "Go to parent"         "U" #'neotree-select-up-node
+            :desc "Set as current node"  "l" #'neotree-change-root
+            :desc "Open next to current" "h" #'neotree-enter-vertical-split
+            :desc "Open below current"   "v" #'neotree-enter-horizontal-split
+            :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application))
 
-;; VCS
-(map!
+    ;; VCS
     (:leader :prefix ("g" . "VCS")
         :desc "Blame annotations" "b" #'magit-blame
         :desc "Commit"            "c" #'magit-commit
@@ -297,56 +278,47 @@
         :n "[["  #'git-timemachine-show-previous-revision
         :n "]]"  #'git-timemachine-show-next-revision
         :n "q"   #'git-timemachine-quit
-        :n "gb"  #'git-timemachine-blame))
+        :n "gb"  #'git-timemachine-blame)
 
-;; Toggles
-(map!
-    :leader
-    :prefix ("t" . "Toggles")
+    ;; Toggles
+    (:leader :prefix ("t" . "Toggles")
 
-    :desc "Flyspell"                     "s" #'flyspell-mode
-    :desc "Flycheck list"                "f" #'flycheck-list-errors
-    :desc "Line numbers"                 "l" #'doom/toggle-line-numbers
-    :desc "Frame fullscreen"             "F" #'toggle-frame-fullscreen
-    :desc "Indent guides"                "i" #'highlight-indentation-mode
-    :desc "Indent guides (column)"       "I" #'highlight-indentation-current-column-mode
-    :desc "Impatient mode"               "h" #'+impatient-mode/toggle
-    :desc "Big mode"                     "b" #'doom-big-font-mode
-    :desc "Evil goggles"                 "g" #'evil-goggles-mode
-    :desc "Whitespace visualisation"     "w" #'whitespace-mode)
+        :desc "Flyspell"                     "s" #'flyspell-mode
+        :desc "Flycheck list"                "f" #'flycheck-list-errors
+        :desc "Line numbers"                 "l" #'doom/toggle-line-numbers
+        :desc "Frame fullscreen"             "F" #'toggle-frame-fullscreen
+        :desc "Indent guides"                "i" #'highlight-indentation-mode
+        :desc "Indent guides (column)"       "I" #'highlight-indentation-current-column-mode
+        :desc "Impatient mode"               "h" #'+impatient-mode/toggle
+        :desc "Big mode"                     "b" #'doom-big-font-mode
+        :desc "Evil goggles"                 "g" #'evil-goggles-mode
+        :desc "Whitespace visualisation"     "w" #'whitespace-mode)
 
-;; Make
-(map!
-    :leader
-    :prefix ("m" . "Make")
-    :desc "Execute last recipe" "m" #'+make/run-last
-    :desc "Execute recipe"      "r" #'+make/run)
+    ;; Make
+    (:leader :prefix ("m" . "Make")
+        :desc "Execute last recipe" "m" #'+make/run-last
+        :desc "Execute recipe"      "r" #'+make/run)
 
-;; LSP
-(map!
-    :mode lsp-mode
+    ;; LSP
+    (:mode lsp-mode
+        (:localleader
+            :desc "Rename symbol" "r" #'lsp-rename
+            :desc "Code action"   "a" #'lsp-execute-code-action
+            :desc "Format buffer" "f" #'lsp-format-buffer)
 
-    (:localleader
-        :desc "Rename symbol" "r" #'lsp-rename
-        :desc "Code action"   "a" #'lsp-execute-code-action
-        :desc "Format buffer" "f" #'lsp-format-buffer)
+        :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
+        :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
 
-    :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
-    :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
+    ;; C(++)
+    (:mode cpp-mode
+        :localleader
+        :desc "Toggle header/source" "t" #'ff-find-other-file)
 
-;; C(++)
-(map!
-    :mode cpp-mode
-    :localleader
-    :desc "Toggle header/source" "t" #'ff-find-other-file)
+    ;; Haskell
+    (:mode haskell-mode
+        :localleader
+        :desc "Hoogle query" "h" #'haskell-hoogle)
 
-;; Haskell
-(map!
-    :mode haskell-mode
-    :localleader
-    :desc "Hoogle query" "h" #'haskell-hoogle)
-
-(map!
-    :map ein:notebook-mode-map
-    :localleader
-    "," #'+ein/hydra/body)
+    (:map ein:notebook-mode-map
+        :localleader
+        "," #'+ein/hydra/body))
