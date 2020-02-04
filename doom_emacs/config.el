@@ -88,8 +88,6 @@
         :n "M-u" 'evil-prev-buffer
         :n "M-i" 'evil-next-buffer)
 
-    (:desc "Kill current buffer" :leader "bd" #'kill-this-buffer)
-
     ;; (un)fold
     :n "TAB"    #'+fold/toggle
 
@@ -126,6 +124,14 @@
 
     ;; Multiple cursors
     :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here
+
+    ;; [B]uffers or [B]ookmarks
+    (:leader :prefix-map ("b" . "Buffers/Bookmarks")
+        :desc "Kill this buffer"      "d" #'kill-this-buffer
+        :desc "Jump/Create bookmark"                 "m" #'bookmark-jump
+        :desc "Jump/Create bookmark (Other window)"  "M" #'bookmark-jump-other-window
+        :desc "Delete bookmark"                      "k" #'bookmark-delete
+        :desc "Rename bookmark"                      "r" #'bookmark-rename)
 
     ;; Ivy
     (:after ivy
