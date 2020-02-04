@@ -7,13 +7,13 @@ export STEAM_FRAME_FORCE_CLOSE=1 # Minimze steam to tray
 # Programs that can/should start before bspwm config
 ~/.screenlayout/Desk.sh
 wal -R 
-! ( pgrep "picom" ) && picom &
-! ( pgrep "sxhkd" ) && sxhkd &
-! ( pgrep "dunst" ) && dunst &
+! ( pgrep "picom"                ) && picom                &
+! ( pgrep "sxhkd"                ) && sxhkd                &
+! ( pgrep "dunst"                ) && dunst                &
 ! ( pgrep "lxqt-policykit-agent" ) && lxqt-policykit-agent &
-! ( pgrep "blueman-applet" ) && blueman-applet &
-! ( pgrep "redshift-gtk" ) && redshift-gtk &
-! ( pgrep "nm-applet" ) && nm-applet &
+! ( pgrep "blueman-applet"       ) && blueman-applet       &
+! ( pgrep "redshift-gtk"         ) && redshift-gtk         &
+! ( pgrep "nm-applet"            ) && nm-applet            &
 
 xsetroot -cursor_name left_ptr # Set default cursor
 
