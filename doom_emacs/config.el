@@ -119,6 +119,17 @@
     ;; Multiple cursors
     :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here
 
+    ;; Evil-easymotion
+    :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
+    (:map evilem-map
+        "," #'avy-goto-char-timer
+        "/" (evilem-create #'evil-ex-search-next
+                :pre-hook (save-excursion (call-interactively #'evil-ex-search-forward))
+                :bind ((evil-search-wrap)))
+        "?" (evilem-create #'evil-ex-search-previous
+                :pre-hook (save-excursion (call-interactively #'evil-ex-search-backward))
+                :bind ((evil-search-wrap))))
+
     ;; [B]uffers or [B]ookmarks
     (:leader :prefix-map ("b" . "Buffers/Bookmarks")
         :desc "Kill this buffer"      "d" #'kill-this-buffer
@@ -214,18 +225,6 @@
         ;; This needs updating every year
         :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
         :desc "Online"            "o" #'+lookup/online)
-
-    ;; Evil-easymotion
-    ( :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
-        :after evil-easymotion
-        :map evilem-map
-        "," #'avy-goto-char-timer
-        "/" (evilem-create #'evil-ex-search-next
-                :pre-hook (save-excursion (call-interactively #'evil-ex-search-forward))
-                :bind ((evil-search-wrap)))
-        "?" (evilem-create #'evil-ex-search-previous
-                :pre-hook (save-excursion (call-interactively #'evil-ex-search-backward))
-                :bind ((evil-search-wrap))))
 
     ;; Next/Previous
     ((:when (featurep! :ui hl-todo)
