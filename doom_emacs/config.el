@@ -100,12 +100,6 @@
     :n "C-=" #'doom/increase-font-size
     :n "C-0" #'doom/reset-font-size
 
-    ;; Project commands
-    (:mode projectile-mode
-        :localleader "t" #'projectile-test-project
-        :localleader "r" #'projectile-run-project
-        :localleader "b" #'projectile-compile-project)
-
     ;; Comments
     :n "gc" 'evilnc-comment-operator
     :textobj "c" #'evilnc-inner-comment #'evilnc-outer-commenter
@@ -185,21 +179,35 @@
         (:prefix "l"
             :desc "Toggle link display" "v" #'org-toggle-link-display))
 
-    ;; Opening Common files
-    (:leader :prefix ("e" . "Edit common file")
-
-        :desc "Org TODO"    "t" (λ! () (find-file "~/org/TODO.org"))
-        :desc "Doom config" "d" (λ! () (find-file "~/.config/dotfiles/doom_emacs/config.el"))
-        :desc "Doom init"   "i" (λ! () (find-file "~/.config/dotfiles/doom_emacs/init.el")))
+    ;; Projects
+    (:leader :prefix-map ("p" . "project")
+        :desc "Test project"                 "t" #'projectile-test-project
+        :desc "Compile in project"           "c" #'projectile-compile-project
+        :desc "Run project"                  "r" #'projectile-run-project
+        :desc "Configure project"            "g" #'projectile-configure-project
+        :desc "Repeat last command"          "C" #'projectile-repeat-last-command
+        :desc "Switch project"               "p" #'projectile-switch-project
+        :desc "Kill project buffers"         "k" #'projectile-kill-buffers
+        :desc "Find file in other project"   "F" #'doom/find-file-in-other-project
+        :desc "Find file in project"         "f" #'projectile-find-file
+        :desc "Find other file"              "o" #'projectile-find-other-file
+        :desc "Find recent project files"    "R" #'projectile-recentf
+        :desc "List project tasks"           "T" #'magit-todos-list
+        :desc "Edit project .dir-locals"     "e" #'projectile-edit-dir-locals
+        :desc "Run cmd in project root"      "!" #'projectile-run-shell-command-in-root
+        :desc "Save project files"           "s" #'projectile-save-project-buffers
+        :desc "Switch to project buffer"     "b" #'projectile-switch-to-buffer
+        :desc "Switch to scratch buffer"     "X" #'doom/switch-to-project-scratch-buffer
+        :desc "Pop up scratch buffer"        "x" #'doom/open-project-scratch-buffer
+        :desc "Remove known project"         "d" #'projectile-remove-known-project
+        :desc "Add new project"              "a" #'projectile-add-known-project
+        :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache)
 
     ;; Searching
     (:leader :prefix ("f" . "Search")
 
         :desc "Org files"         "o" (λ! () (counsel-file-jump "" "~/org"))
         :desc "Buffers"           "b" #'ivy-switch-buffer
-        :desc "Projects"          "p" #'projectile-switch-project
-        :desc "Project files"     "G" #'projectile-find-file
-        :desc "Project git files" "g" #'counsel-git
         :desc "Themes"            "t" #'load-theme
         :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
         :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
