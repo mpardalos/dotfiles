@@ -35,8 +35,6 @@ bspc config remove_disabled_monitors   true
 bspc config remove_unplugged_monitors  true
 bspc config merge_overlapping_monitors true
 
-# bspc rule -a Alacritty state=floating rectangle=1000x600+460+240
-bspc rule -a Emacs state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a gnuplot_qt state=floating
 bspc rule -a sun-awt-X11-XFramePeer state=floating
