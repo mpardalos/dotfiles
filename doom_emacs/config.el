@@ -7,7 +7,8 @@
     doom-theme (my/remember-theme-read 'doom-one)
     doom-font (font-spec :family "Fira Code" :size 14)
     doom-variable-pitch-font (font-spec :family "Noto Sans")
-    +latex-viewers '(pdf-tools zathura))
+    +latex-viewers '(pdf-tools zathura)
+    +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode))
 
 ;; Save theme
 (advice-add 'load-theme :after
@@ -32,10 +33,6 @@
 
 (after! treemacs
   (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
-
-(after! (:or c-mode c++-mode)
-    (set-pretty-symbols! '(c-mode c++-mode)
-        :return "return"))
 
 (add-to-list 'auto-mode-alist
         '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
