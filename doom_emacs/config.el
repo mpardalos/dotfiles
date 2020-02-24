@@ -8,7 +8,9 @@
     doom-font (font-spec :family "Fira Code" :size 14)
     doom-variable-pitch-font (font-spec :family "Noto Sans")
     +latex-viewers '(pdf-tools zathura)
-    +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode))
+    +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode)
+    ;; Smooth(er) scrolling
+    mouse-wheel-scroll-amount '(2 ((shift) . 5)))
 
 ;; Save theme
 (advice-add 'load-theme :after
