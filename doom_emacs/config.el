@@ -7,7 +7,6 @@
     doom-theme (my/remember-theme-read 'doom-one)
     doom-font (font-spec :family "Fira Code" :size 14)
     doom-variable-pitch-font (font-spec :family "Noto Sans")
-    +latex-viewers '(pdf-tools zathura)
     +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode)
     ;; Smooth(er) scrolling
     mouse-wheel-scroll-amount '(2 ((shift) . 5)))
@@ -16,7 +15,6 @@
 (advice-add 'load-theme :after
     (lambda (&rest args) (my/remember-theme-save)))
 
-(setq +latex-viewers '(pdf-tools zathura))
 (setq vterm-shell "/bin/fish")
 
 (after! org-mode
@@ -24,6 +22,8 @@
         org-agenda-files (list "~/org/")
         org-todo-keywords
         '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))))
+    +latex-viewers '(pdf-tools zathura)
+    LaTeX-item-indent 2
 
 (after! magit
     (setq magit-blame-echo-style 'margin))
@@ -32,6 +32,8 @@
     (setq
         lsp-ui-sideline-show-hover nil
         lsp-ui-sideline-show-code-actions nil))
+
+(add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
 (after! treemacs
   (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
