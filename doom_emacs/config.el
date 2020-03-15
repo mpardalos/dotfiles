@@ -15,23 +15,30 @@
 (advice-add 'load-theme :after
     (lambda (&rest args) (my/remember-theme-save)))
 
-(setq vterm-shell "/bin/fish")
+(setq!
+    evil-move-cursor-back nil
 
-(after! org-mode
-    (setq
-        org-agenda-files (list "~/org/")
-        org-todo-keywords
-        '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))))
     +latex-viewers '(pdf-tools zathura)
     LaTeX-item-indent 2
 
-(after! magit
-    (setq magit-blame-echo-style 'margin))
+    vterm-shell "/bin/fish"
 
-(after! lsp-mode
-    (setq
-        lsp-ui-sideline-show-hover nil
-        lsp-ui-sideline-show-code-actions nil))
+    org-agenda-files (list "~/org/")
+    org-todo-keywords
+    '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))
+
+    magit-blame-echo-style 'margin
+
+    lsp-ui-sideline-show-hover nil
+    lsp-ui-sideline-show-code-actions nil
+    lsp-eldoc-enable-hover nil
+
+    alloy-mode-map (make-sparse-keymap)
+    alloy-basic-offset 2
+
+    web-mode-markup-indent-offset 2
+
+    dired-listing-switches "-ABhl -X --group-directories-first")
 
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
@@ -43,17 +50,11 @@
 
 (after! alloy-mode
     (add-hook 'alloy-mode-hook
-        (lambda () (setq indent-tabs-mode nil)))
-    (setq
-        alloy-mode-map (make-sparse-keymap)
-        alloy-basic-offset 2))
+        (lambda () (setq indent-tabs-mode nil))))
 
 (after! evil
-    (setq evil-move-cursor-back nil)
     (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
-(after! web-mode
-    (setq web-mode-markup-indent-offset 2))
 ;; Hugo mode
 (after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
