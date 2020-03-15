@@ -37,7 +37,7 @@
     eval
     make
     magit
-    lsp
+    (lsp +peek)
     editorconfig
     pdf
     ein
