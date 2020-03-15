@@ -58,6 +58,8 @@
     (latex +latexmk +viewers)
     (python +lsp)
     (fsharp +lsp)
+    (javascript +lsp)
+    rest
 
     :checkers
     spell
