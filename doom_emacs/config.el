@@ -55,6 +55,9 @@
 (after! evil
     (add-hook 'evil-normal-state-entry-hook #'my/save-if-named))
 
+(after! tramp
+    (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
 ;; Hugo mode
 (after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
