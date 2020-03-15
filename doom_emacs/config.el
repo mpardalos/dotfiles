@@ -77,11 +77,12 @@
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
     :vslot -5
-    :size 0.35
+    :size 0.4
     :select t
     :modeline t
     :quit 'current
-    :ttl nil)
+    :ttl nil
+    :side 'right)
 
 ;;;; Maps ;;;;
 ;; General
