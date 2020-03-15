@@ -54,6 +54,25 @@
 
 (after! web-mode
     (setq web-mode-markup-indent-offset 2))
+;; Hugo mode
+(after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
+(autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
+(add-hook 'markdown-mode-hook #'hugo-minor-mode)
+
+;; Set up ccls for TRAMP
+(after! (lsp tramp)
+    (lsp-register-client
+        (make-lsp-client
+            :new-connection (lsp-tramp-connection "ccls")
+            :major-modes '(c-mode c++-mode cuda-mode objc-mode)
+            :server-id 'ccls-remote
+            :multi-root nil
+            :notification-handlers
+            (lsp-ht ("$ccls/publishSkippedRanges" #'ccls--publish-skipped-ranges)
+                ("$ccls/publishSemanticHighlight" #'ccls--publish-semantic-highlight))
+            :initialization-options (lambda () ccls-initialization-options)
+            :library-folders-fn ccls-library-folders-fn
+            :remote? t)))
 
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
@@ -335,4 +354,11 @@
 
     (:map ein:notebook-mode-map
         :localleader
-        "," #'+ein/hydra/body))
+        "," #'+ein/hydra/body)
+
+    (:mode hugo-minor-mode
+        :localleader
+        :prefix-map ("h" . "Hugo")
+        :desc "Hugo status"        "h" #'hugo-status
+        :desc "Start/Stop server"  "s" #'hugo-start-stop-server
+        :desc "Browse to website"  "b" #'hugo-browse))
