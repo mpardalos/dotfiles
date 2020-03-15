@@ -43,10 +43,10 @@
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
 (after! treemacs
-  (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
+    (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
 
 (add-to-list 'auto-mode-alist
-        '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+    '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 
 (after! alloy-mode
     (add-hook 'alloy-mode-hook
@@ -322,7 +322,6 @@
 
     ;; Toggles
     (:leader :prefix ("t" . "Toggles")
-
         :desc "Flyspell"                     "s" #'flyspell-mode
         :desc "Flycheck list"                "f" #'flycheck-list-errors
         :desc "Line numbers"                 "l" #'doom/toggle-line-numbers
