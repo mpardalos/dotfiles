@@ -104,6 +104,8 @@
     :n "M-k" 'evil-window-up
     :n "M-l" 'evil-window-right
 
+    :n "C-w C-o" 'nil
+
     ;; Moving around Buffers
     (:when (featurep! :ui tabbar)
         :n "M-u" #'centaur-tabs-backward
