@@ -160,6 +160,10 @@ super + shift + {u,i}
 super + {parenleft,0,parenright}
     bspc node --layer {below,normal,above}
 
+## Circulate windows. Useful in a monocle desktop
+super + {shift,_} + Tab
+    bspc node @/ --circulate {backward,forward}
+
 # Window Management
 ###################
 
