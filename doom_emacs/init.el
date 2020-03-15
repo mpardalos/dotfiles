@@ -27,6 +27,7 @@
     multiple-cursors
     rotate-text
     fold
+    format
 
     :emacs
     (dired +icons)
