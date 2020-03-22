@@ -1,0 +1,32 @@
+#!/bin/sh
+
+RUN_NAME="$0"
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -d|--desktop) DESKTOP="$2"; shift 2;;
+        *) NAME="$1"; shift;;
+    esac
+done
+
+[ -z "$NAME" ] && {
+    printf "Usage: %s [options] NAME\n" "$RUN_NAME"
+    printf "\tNAME: Name of target desktop file (without \".desktop\")\n"
+    printf "Options:\n"
+    printf "\t-d, --desktop DESKTOP_NAME:\n"
+    printf "\t\tOnly hide the file in a specific desktop\n"
+    printf "\t\tUsed for the \"NotShowIn=\" value in the .desktop file\n"
+    exit 1
+}
+
+if [ -z "$DESKTOP" ]; then
+    (
+    echo [Desktop Entry]
+    echo NoDisplay=true
+    ) > "$HOME/.local/share/applications/$NAME.desktop"
+else
+    (
+    echo [Desktop Entry]
+    echo NotShowIn="$DESKTOP"
+    ) > "$HOME/.local/share/applications/$NAME.desktop"
+fi
