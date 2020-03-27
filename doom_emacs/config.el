@@ -165,6 +165,13 @@
         :desc "Delete bookmark"                      "k" #'bookmark-delete
         :desc "Rename bookmark"                      "r" #'bookmark-rename)
 
+    (:leader :prefix-map ("n" . "Narrow")
+        :desc "Toggle" "n" #'doom/toggle-narrow-buffer
+        (:map org-mode-map
+            :desc "To block" "b" #'org-narrow-to-block
+            :desc "To element" "e" #'org-narrow-to-element
+            :desc "To subtree" "s" #'org-narrow-to-subtree))
+
     ;; Ivy
     (:after ivy
         :map ivy-minibuffer-map
