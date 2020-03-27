@@ -171,9 +171,12 @@
     (:leader :prefix-map ("n" . "Narrow")
         :desc "Toggle" "n" #'doom/toggle-narrow-buffer
         (:map org-mode-map
-            :desc "To block" "b" #'org-narrow-to-block
+            :desc "To block"   "b" #'org-narrow-to-block
             :desc "To element" "e" #'org-narrow-to-element
-            :desc "To subtree" "s" #'org-narrow-to-subtree))
+            :desc "To subtree" "s" #'org-narrow-to-subtree)
+        (:map tex-mode-map
+            :desc "To environment" "e" #'LaTeX-narrow-to-environment
+            :desc "To group"       "g" #'TeX-narrow-to-group))
 
     ;; Ivy
     (:after ivy
