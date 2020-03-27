@@ -38,7 +38,10 @@
 
     web-mode-markup-indent-offset 2
 
-    dired-listing-switches "-ABhl -X --group-directories-first")
+    dired-listing-switches "-ABhl -X --group-directories-first"
+
+    ;; Make flycheck faster
+    flycheck-highlighting-mode 'lines)
 
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
