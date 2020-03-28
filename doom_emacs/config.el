@@ -9,7 +9,8 @@
     doom-variable-pitch-font (font-spec :family "Noto Sans")
     +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode)
     ;; Smooth(er) scrolling
-    mouse-wheel-scroll-amount '(2 ((shift) . 5)))
+    scroll-step 1
+    scroll-margin 1)
 
 ;; Save theme
 (advice-add 'load-theme :after
