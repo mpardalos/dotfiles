@@ -1,0 +1,50 @@
+#!/bin/sh
+
+usage() {
+    echo "Usage: $(basename "$0") [options] (selection|fullscreen|window)"
+    echo "Take a screenshot. Saves to clipboard by default unless otherwise specified."
+    echo
+    echo "  Commands:"
+    echo "    selection   Select a rectangle from the screen"
+    echo "    fullscreen  Take the full screen (all monitors)"
+    echo "    window      Select a window"
+    echo
+    echo "  Options:"
+    echo "    -f|--file FILENAME  Save screenshot to FILENAME (as png)"
+    echo "    -h|--help           Show this help message"
+}
+
+SOURCE=""
+TARGET=""
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -h|--help) usage; exit 0;;
+        -f|--file) TARGET="$2"; shift; shift;;
+        selection|fullscreen|window) SOURCE="$1"; shift;;
+        *)
+            echo "Invalid argument: $1" >&2
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+MAIMOPTS=""
+case "$SOURCE" in
+    selection) MAIMOPTS="-s";;
+    fullscreen) MAIMOPTS="-i root";;
+    window) MAIMOPTS="-i $(xdotool selectwindow)";;
+    "")
+        echo "No command given" >&2
+        echo
+        usage
+        exit 1
+        ;;
+esac
+
+if [ "$TARGET" ]; then
+    maim $MAIMOPTS > "$TARGET"
+else
+    maim $MAIMOPTS | xclip -selection clip -t image/png
+fi

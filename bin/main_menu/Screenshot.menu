@@ -1,20 +1,17 @@
-#!/usr/bin/fish
+#!/bin/sh
 
-set choices "Selection (clipboard)\nFullscreen (clipboard)\nWindow (clipboard)\nSelection (file)\nFullscreen (file)\nWindow (file)"
-set filename (date +'%Y%m%d_%H%M%S')
+choices="Selection (clipboard)|Fullscreen (clipboard)|Window (clipboard)|Selection (file)|Fullscreen (file)|Window (file)"
+filename="$(date +'%Y%m%d_%H%M%S')"
+filepath="$HOME/Pictures/screenshots/$filename.png"
 
-switch (echo -e $choices | dmenu -i -p Screenshot) 
-    case "Selection (clipboard)" 
-        maim -s | xclip -selection clip -t image/png
-    case "Fullscreen (clipboard)" 
-        maim -i root | xclip -selection clip -t image/png
-    case "Window (clipboard)" 
-        maim -i (xdotool selectwindow) | xclip -selection clip -t image/png
-    case "Selection (file)" 
-        maim -s > ~/Pictures/screenshots/$filename.png
-    case "Fullscreen (file)" 
+case "$(echo "$choices" | dmenu -sep '|' -i -p Screenshot)" in
+    "Selection (clipboard)") screenshot selection;;
+    "Fullscreen (clipboard)") screenshot fullscreen;;
+    "Window (clipboard)") screenshot window;;
+    "Selection (file)") screenshot --file "$filepath" selection;;
+    "Fullscreen (file)")
         sleep 1 # wait for rofi to close
-        maim -i root > ~/Pictures/screenshots/$filename.png
-    case "Window (file)" 
-        maim -i (xdotool selectwindow) > ~/Pictures/screenshots/$filename.png
-end
+        screenshot --file "$filepath" fullscreen
+        ;;
+    "Window (file)") screenshot --file "$filepath" window;;
+esac
