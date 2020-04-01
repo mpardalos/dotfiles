@@ -63,6 +63,8 @@ super + t; c
 
 Print
     ~/.bin/main_menu/Screenshot.menu
+shift + Print
+    ~/.bin/screenshot selection
 
 ## Audio
 XF86AudioMute
