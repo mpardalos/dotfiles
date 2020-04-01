@@ -64,6 +64,7 @@
     data
 
     :checkers
+    grammar
     spell
     (syntax +childframe)
 
