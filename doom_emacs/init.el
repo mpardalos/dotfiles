@@ -64,7 +64,7 @@
 
     :checkers
     spell
-    syntax
+    (syntax +childframe)
 
     :term
     vterm
