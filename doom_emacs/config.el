@@ -62,6 +62,9 @@
 (after! tramp
     (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
+(after! tex
+    (setq TeX-master "shared"))
+
 ;; Hugo mode
 (after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
