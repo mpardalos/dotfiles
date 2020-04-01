@@ -61,6 +61,7 @@
     (fsharp +lsp)
     (javascript +lsp)
     rest
+    data
 
     :checkers
     spell
