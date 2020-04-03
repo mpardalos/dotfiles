@@ -30,9 +30,9 @@
 
     magit-blame-echo-style 'margin
 
-    lsp-ui-sideline-show-hover nil
-    lsp-ui-sideline-show-code-actions nil
+    lsp-ui-sideline-enable nil
     lsp-eldoc-enable-hover nil
+    lsp-eldoc-hook '(lsp-hover)
 
     alloy-mode-map (make-sparse-keymap)
     alloy-basic-offset 2
