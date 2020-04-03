@@ -42,7 +42,10 @@
     dired-listing-switches "-ABhl -X --group-directories-first"
 
     ;; Make flycheck faster
-    flycheck-highlighting-mode 'lines)
+    flycheck-highlighting-mode 'lines
+
+    ;; Reduce strain from company completion
+    company-idle-delay 0.5)
 
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
