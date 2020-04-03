@@ -98,6 +98,15 @@
     :ttl nil
     :side 'right)
 
+(set-popup-rule! "^\\*compilation\\*"
+    :vslot -4
+    :size 0.4
+    :select t
+    :modeline t
+    :quit 'current
+    :ttl nil
+    :side 'right)
+
 ;;;; Maps ;;;;
 ;; General
 (map!
