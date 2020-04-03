@@ -62,6 +62,7 @@
     (javascript +lsp)
     rest
     data
+    (rust +lsp)
 
     :checkers
     grammar
