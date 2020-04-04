@@ -88,6 +88,19 @@
             :library-folders-fn ccls-library-folders-fn
             :remote? t)))
 
+;; Kima mode
+(define-generic-mode 'kima-mode
+  '("#")
+    '("fun" "data" "True""False" "let""var" "while""if" "else""effect" "handle" "IO" "Unit")
+    nil
+    '(".k\\'")
+    "Major mode for the kima programming language")
+
+(quickrun-add-command "kima"
+    '((:command . "kima")
+         (:exec . "%c run %s"))
+    :mode 'kima-mode)
+
 ;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
     :vslot -5
