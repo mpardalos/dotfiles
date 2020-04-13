@@ -1,13 +1,48 @@
-:root:not([customizing]) #navigator-toolbox #nav-bar {
-	min-height: 0!important;
-	max-height: 0;
-	height: 0;
-	overflow: hidden;
+#navigator-toolbox {
+    -moz-appearance: none;
+    border-top: none;
 }
 
-:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar,
-:root:not([customizing]) #navigator-toolbox:hover #nav-bar
-{
-	max-height: 32px;
-	height: 32px;
+.browser-toolbar:not(.titlebar-color),
+#tabbrowser-tabs:not([movingtab])
+                    > .tabbrowser-arrowscrollbox
+                    > .tabbrowser-tab
+                    > .tab-stack
+                    > .tab-background[multiselected='true']:-moz-lwtheme,
+#tabbrowser-tabs:not([movingtab])
+                    > .tabbrowser-arrowscrollbox
+                    > .tabbrowser-tab
+                    > .tab-stack
+                    > .tab-background[selected='true']:-moz-lwtheme,
+box {
+    background-image: none !important;
+}
+* {
+    --tab-min-width: 76px;
+}
+
+
+#urlbar:not(.megabar):not([focused='true']):-moz-lwtheme,
+#urlbar.megabar:not([focused='true']):-moz-lwtheme > #urlbar-background,
+#navigator-toolbox #searchbar:not(:focus-within):-moz-lwtheme,
+#navigator-toolbox {
+    border: none !important;
+}
+
+toolbox {
+    z-index: 10;
+    margin-top: 0px !important;
+    margin-bottom: -30px !important;
+    height: 0 !important;
+}
+
+#nav-bar {
+    visibility: hidden;
+    transition: visibility 1s !important;
+}
+
+
+#titlebar:hover + #nav-bar,
+#nav-bar:focus-within {
+    visibility: visible;
 }
