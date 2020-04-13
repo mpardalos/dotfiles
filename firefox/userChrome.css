@@ -43,6 +43,8 @@ toolbox {
 
 
 #titlebar:hover + #nav-bar,
-#nav-bar:focus-within {
+#nav-bar:hover,
+#nav-bar:focus-within
+{
     visibility: visible;
 }
