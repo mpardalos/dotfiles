@@ -88,7 +88,7 @@ def free_space():
     # Find the line for the filesystem in the output of df -h, and split the columns
     mount_location  = r'/'
     df_data         = \
-        next( line for line in sh.df('-h') if line.split()[5] == mount_location)\
+        next( line for line in sh.df('-h', _ok_code=[0,1]) if line.split()[5] == mount_location)\
         .split()
     fs_name         = df_data[0]
     total_space     = df_data[1][:-1] # The [:-1] removes the unit (G/M/K, etc.)
