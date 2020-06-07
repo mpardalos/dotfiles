@@ -8,10 +8,14 @@ usage() {
     echo "Usage: $(basename $0) (up|down)"
 }
 
+get_percent() {
+    echo "100 * $(brightnessctl get) / $(brightnessctl max)" | bc
+}
+
 send_notification() {
     icon="display-brightness-symbolic.symbolic"
-    brightness=$(xbacklight -get | cut -d '.' -f 1)
-    bar=$(~/.bin/draw_bar 20 --percentage $brightness)
+    brightness=$(get_percent)
+    bar=$(~/.bin/draw_bar 20 --percentage "$brightness")
     notification_id=2501
 
     dunstify \
@@ -22,15 +26,16 @@ send_notification() {
 }
 
 case $1 in
-    up) xbacklight -time 0 -inc 5 ;;
-    down) 
+    up) brightnessctl set 5%+ ;;
+    down)
         # Check if it would go to 0 and if so, only let it go to 1
         # Going to 0 turns the screen off
-        if [ $(xbacklight -get | cut -d'.' -f 1) -le 5 ]; then
-            xbacklight -time 0 -set 1
+        if [ "$(get_percent)" -le 5 ]; then
+            brightnessctl set 1
         else
-            xbacklight -time 0 -dec 5
-        fi ;;
+            brightnessctl set 5%-
+        fi
+        ;;
     *) usage; exit 1 ;;
 esac
 
