@@ -38,6 +38,7 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Zathura state=tiled
 bspc rule -a gnuplot_qt state=floating
 bspc rule -a sun-awt-X11-XFramePeer state=floating
+bspc rule -a Emacs state=tiled
 
 ~/.bin/start_polybar 
 # ! ( pgrep "hexchat" ) && hexchat --minimize=2 &
