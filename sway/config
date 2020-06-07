@@ -13,6 +13,14 @@ set $term alacritty
 set $font "Noto Sans Display 11"
 font $font
 
+include "~/.cache/wal/colors-sway"
+
+# Colors {{{
+    client.focused $color7 $color7 $background
+    client.focused_inactive $background  $background $foreground
+    client.unfocused $background  $background $foreground
+# }}}
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -194,9 +202,12 @@ bar {
     pango_markup enabled
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        statusline $foreground
+        background $background
+
+        inactive_workspace $background $background $foreground
+        focused_workspace $color1 $background $foreground
+        active_workspace $color1 $background $foreground
     }
 }
 
