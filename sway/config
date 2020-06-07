@@ -93,8 +93,8 @@ bindsym $mod+Shift+$right move right
 bindsym $mod+u workspace prev
 bindsym $mod+i workspace next
 
-bindsym $mod+Shift+u move container to workspace prev
-bindsym $mod+Shift+i move container to workspace next
+bindsym $mod+Shift+u exec "swaymsg move container to workspace prev && swaymsg workspace prev"
+bindsym $mod+Shift+i exec "swaymsg move container to workspace next && swaymsg workspace next"
 
 # Switch to workspace
 bindsym $mod+1 workspace 1
