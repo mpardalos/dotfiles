@@ -1,0 +1,197 @@
+#### Variables ####
+
+# Win key as mod
+set $mod Mod4
+# hjkl movement
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+
+set $font "Noto Sans Display 11"
+font $font
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu j4-dmenu-desktop --dmenu="bemenu -i"
+
+# Wallpaper
+output * bg ~/Pictures/Wallpapers/Keyboards.jpg fill
+
+###
+### Example configuration:
+###
+###   output HDMI-A-1 resolution 1920x1080 position 1920,0
+###
+### You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' \
+#               resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
+    tap enabled
+    tap_button_map lrm
+}
+
+### Key bindings ###
+
+bindsym $mod+Shift+c reload
+bindsym $mod+d exec $menu
+
+# Quick launcher mode
+mode "launcher" {
+    bindsym t exec "$term & swaymsg mode \"default\""
+    bindsym b exec "firefox & swaymsg mode \"default\""
+    bindsym f exec "thunar & swaymsg mode \"default\""
+    bindsym e exec "emacs & swaymsg mode \"default\""
+    bindsym m exec "spotify & swaymsg mode \"default\""
+    bindsym s exec "steam & swaymsg mode \"default\""
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+} 
+bindsym $mod+w mode "launcher" 
+
+# Kill focused window
+bindsym $mod+q kill
+
+floating_modifier $mod normal
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+ 
+# Workspaces:
+
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
+
+bindsym $mod+Shift+u move container to workspace prev
+bindsym $mod+Shift+i move container to workspace next
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+mode "layout: [s]tacked [t]abbed [n]ormal" {
+    bindsym s exec 'swaymsg layout stacking & swaymsg mode "default"'
+    bindsym t exec 'swaymsg layout tabbed & swaymsg mode "default"'
+    bindsym n exec 'swaymsg layout toggle split & swaymsg mode "default"'
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Ctrl+Shift+l mode "layout: [s]tacked [t]abbed [n]ormal" 
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+f floating toggle
+
+bindsym $mod+shift+f fullscreen toggle
+
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod+m exec sway-output-toggle
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+
+    status_command i3blocks
+
+    font $font
+    height 0
+    pango_markup enabled
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
+include /etc/sway/config.d/*
