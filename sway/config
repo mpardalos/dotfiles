@@ -195,6 +195,10 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+m exec sway-output-toggle
 
+## Special keys
+bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioRaiseVolume exec "volume_control up"
 bindsym XF86AudioLowerVolume exec "volume_control down"
 bindsym XF86AudioMute exec "volume_control mute"
