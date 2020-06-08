@@ -16,11 +16,11 @@ send_notification() {
     icon="display-brightness-symbolic.symbolic"
     brightness=$(get_percent)
     bar=$(~/.bin/draw_bar 20 --percentage "$brightness")
-    notification_id=2501
 
-    dunstify \
+    notify-send.sh \
+        --expire-time=1000 \
         --icon=$icon \
-        --replace=$notification_id \
+        --replace-file="/tmp/brightness-notification-id" \
         --urgency=low \
         "$bar"
 }

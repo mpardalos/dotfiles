@@ -4,7 +4,7 @@
 # https://github.com/dastorm/volume-notification-dunst/blob/master/volume.sh
 # https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
 
-notification_id=2500
+notification_id_file="/tmp/volume-notification-id"
 
 usage() {
     echo "Usage: $(basename $0) [up|down|mute]"
@@ -25,18 +25,20 @@ send_notification() {
     iconSound="audio-volume-high-symbolic.symbolic"
     iconMuted="audio-volume-muted-symbolic.symbolic"
     if is_mute; then
-        dunstify \
-            --icon $iconMuted \
-            --replace $notification_id \
+        notify-send.sh \
+            --expire-time=1000 \
+            --icon=$iconMuted \
+            --replace-file=$notification_id_file \
             --urgency low \
             "mute"
     else
         volume=$(get_volume)
         bar=$(~/.bin/draw_bar 20 --percentage $volume)
 
-        dunstify \
+        notify-send.sh \
+            --expire-time=1000 \
             --icon=$iconSound \
-            --replace=$notification_id \
+            --replace-file=$notification_id_file \
             --urgency=low \
             "$bar"
     fi
