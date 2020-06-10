@@ -20,9 +20,8 @@ interval=60
 
 
 [cpu_usage]
-command=contrib/cpu_usage2/cpu_usage2 -l ""
+command=contrib/cpu_usage2/cpu_usage2 -l "" -d 0
 interval=persist
-min_width=C 100.00%
 
 [battery]
 command=contrib/battery2/battery2
