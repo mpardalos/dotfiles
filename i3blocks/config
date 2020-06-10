@@ -1,6 +1,11 @@
 separator_block_width=15
 markup=pango
 
+[bandwidth]
+command=contrib/bandwidth2/bandwidth2
+interval=persist
+label=
+
 [memory]
 command=contrib/memory/memory
 label=<span font="Font Awesome 5 Free"> </span>
@@ -13,10 +18,6 @@ label=<span> </span>
 DIR=/
 interval=60
 
-[bandwidth]
-command=contrib/bandwidth2/bandwidth2
-interval=persist
-LABEL=
 
 [cpu_usage]
 command=contrib/cpu_usage2/cpu_usage2 -l ""
