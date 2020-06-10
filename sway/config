@@ -30,21 +30,23 @@ font $font
 # From default config:
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu j4-dmenu-desktop --dmenu="bemenu \
-    --prompt=Run \
-    --ignorecase \
-    --line-height $bar_height \
-    --nb=$background \
-    --tb=$background \
-    --fb=$background \
-    --nf=$foreground \
-    --tf=$foreground \
-    --ff=$foreground \
-    --hb=$color1 \
-    --hf=$background \
-    --fn $font"
+#
+# For bemenu
+# set $menu j4-dmenu-desktop --dmenu="bemenu \
+#     --prompt=Run \
+#     --ignorecase \
+#     --line-height $bar_height \
+#     --nb=$background \
+#     --tb=$background \
+#     --fb=$background \
+#     --nf=$foreground \
+#     --tf=$foreground \
+#     --ff=$foreground \
+#     --hb=$color1 \
+#     --hf=$background \
+#     --fn $font"
 
-# Wallpaper
+set $menu ~/.bin/launcher
 # }}}
 
 # Wallpaper {{{
