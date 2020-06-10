@@ -18,6 +18,10 @@ label=<span> </span>
 DIR=/
 interval=60
 
+[temperature]
+command=contrib/temperature/temperature --chip coretemp-isa-0000
+interval=5
+label=<span> </span>
 
 [cpu_usage]
 command=contrib/cpu_usage2/cpu_usage2 -l "" -d 0
