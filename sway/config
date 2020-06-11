@@ -110,6 +110,7 @@ bindsym $mod+w mode "launcher"
 
 # Kill focused window
 bindsym $mod+q kill
+bindsym --border BTN_MIDDLE kill
 
 floating_modifier $mod normal
 
