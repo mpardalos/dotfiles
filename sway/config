@@ -59,6 +59,10 @@ output * bg ~/Pictures/Wallpapers/Keyboards.jpg fill
 gaps inner 10
 gaps outer 5
 smart_gaps on
+smart_borders on
+hide_edge_borders smart
+# Matches bar height
+titlebar_padding 2
 
 # }}}
 
@@ -254,7 +258,6 @@ bar {
 
     font $font
     height $bar_height
-    height 0
     pango_markup enabled
 
     colors {
