@@ -176,7 +176,7 @@
     :o  "s"     #'evil-surround-edit
 
     ;; Multiple cursors
-    :v  "gi"    #'+multiple-cursors/evil-mc-make-cursor-here
+    :v  "gi"    #'+multiple-cursors/evil-mc-toggle-cursor-here
 
     ;; Evil-easymotion
     :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
