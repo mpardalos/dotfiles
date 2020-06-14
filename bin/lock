@@ -1,36 +1,3 @@
-#!/bin/bash
-IMG="/tmp/lockscreen.png"
+#!/bin/sh
 
-import -window root -resize 48x27 "$IMG"
-imgp --nn --mute --overwrite --enlarge --res=1920x1080 "$IMG"
-
-source ~/.bin/colors-rgba.sh
-
-i3lock \
-    -i "$IMG" \
-    --tiling \
-    --indicator \
-    --insidecolor="$background" \
-    --timecolor="$foreground" \
-    --ringcolor="$color2" \
-    --separatorcolor="$color2" \
-    --radius=250 \
-    --ring-width=15 \
-    --line-uses-inside \
-    --veriftext="" \
-    --wrongtext="" \
-    --noinputtext="" \
-    --time-font="Noto Sans Display" \
-    --date-font="Noto Sans Display" \
-    --layout-font="Noto Sans Display" \
-    --verif-font="Noto Sans Display" \
-    --wrong-font="Noto Sans Display" \
-    --force-clock \
-    --timepos="ix:iy" \
-    --timestr="%H:%M" \
-    --refresh-rate=30.0 \
-    --datepos="tx:ty+20" \
-    --datestr="%A, %d %B %Y" \
-    --datecolor="$foreground" \
-    --ignore-empty-password \
-
+exec swaylock $@
