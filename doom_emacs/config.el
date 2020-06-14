@@ -91,7 +91,7 @@
 ;; Kima mode
 (define-generic-mode 'kima-mode
   '("#")
-    '("fun" "data" "True""False" "let""var" "while""if" "else""effect" "handle" "IO" "Unit")
+    '("fun" "data" "True""False" "let""var" "while""if" "else" "effect" "handle" "with" "IO" "Unit")
     nil
     '(".k\\'")
     "Major mode for the kima programming language")
