@@ -261,27 +261,33 @@
 
     ;; Projects
     (:leader :prefix-map ("p" . "project")
-        :desc "Test project"                 "t" #'projectile-test-project
-        :desc "Compile in project"           "c" #'projectile-compile-project
-        :desc "Run project"                  "r" #'projectile-run-project
-        :desc "Configure project"            "g" #'projectile-configure-project
-        :desc "Repeat last command"          "C" #'projectile-repeat-last-command
         :desc "Switch project"               "p" #'projectile-switch-project
         :desc "Kill project buffers"         "k" #'projectile-kill-buffers
+        :desc "Remove known project"         "d" #'projectile-remove-known-project
+        :desc "Add new project"              "a" #'projectile-add-known-project
+        :desc "Edit project .dir-locals"     "e" #'projectile-edit-dir-locals
+        :desc "Save project files"           "s" #'projectile-save-project-buffers
+
         :desc "Find file in other project"   "F" #'doom/find-file-in-other-project
         :desc "Find file in project"         "f" #'projectile-find-file
         :desc "Find other file"              "o" #'projectile-find-other-file
         :desc "Find recent project files"    "R" #'projectile-recentf
         :desc "List project tasks"           "T" #'magit-todos-list
-        :desc "Edit project .dir-locals"     "e" #'projectile-edit-dir-locals
         :desc "Run cmd in project root"      "!" #'projectile-run-shell-command-in-root
-        :desc "Save project files"           "s" #'projectile-save-project-buffers
         :desc "Switch to project buffer"     "b" #'projectile-switch-to-buffer
         :desc "Switch to scratch buffer"     "X" #'doom/switch-to-project-scratch-buffer
         :desc "Pop up scratch buffer"        "x" #'doom/open-project-scratch-buffer
-        :desc "Remove known project"         "d" #'projectile-remove-known-project
-        :desc "Add new project"              "a" #'projectile-add-known-project
-        :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache)
+        :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache
+        :desc "Search in project"            "s" #'+ivy/project-search)
+
+    (:leader :prefix-map ("r")
+        :desc "Run file or project"            "r" (lambda! () (if (projectile-project-p) (call-interactively #'projectile-run-project) (+eval/buffer)))
+        (:mode 'projectile-mode
+            :desc "Test project"               "t" #'projectile-test-project
+            :desc "Compile in project"         "c" #'projectile-compile-project
+            :desc "Configure project"          "g" #'projectile-configure-project
+            :desc "Repeat last command"        "C" #'projectile-repeat-last-command
+            :desc "Pop to compilation buffer"  "b" (lambda! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer")))))
 
     ;; Searching
     (:leader :prefix ("f" . "Search")
