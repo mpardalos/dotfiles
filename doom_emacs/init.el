@@ -54,16 +54,15 @@
         +babel
         +export)
     (cc +lsp)
-    ocaml
     idris
     (web +html +css)
     (latex +latexmk +viewers)
     (python +lsp)
-    (fsharp +lsp)
     (javascript +lsp)
     rest
     data
     (rust +lsp)
+    csharp
 
     :checkers
     grammar
