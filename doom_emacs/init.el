@@ -38,7 +38,7 @@
     lookup
     eval
     make
-    magit
+    (magit +forge)
     (lsp +peek)
     editorconfig
     pdf
