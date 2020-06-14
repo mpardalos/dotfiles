@@ -48,7 +48,7 @@
     (sh +fish)
     emacs-lisp
     markdown
-    (haskell +lsp)
+    (haskell +ghcide)
     (org
         +attach
         +babel
