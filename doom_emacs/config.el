@@ -47,6 +47,8 @@
     ;; Reduce strain from company completion
     company-idle-delay 0.5)
 
+(add-to-list '+lookup-provider-url-alist '("Mozilla Developer Network" "https://developer.mozilla.org/en-US/search?q=%s"))
+
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
 (after! treemacs
