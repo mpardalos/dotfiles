@@ -7,6 +7,7 @@
 
     :ui
     doom
+    doom-dashboard
     modeline
     ophints
     hl-todo
