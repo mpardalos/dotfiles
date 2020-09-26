@@ -279,7 +279,6 @@ bindsym --locked $mod+Space exec "~/.bin/change_layout"
 
 bar {
     position top
-    mode hide
 
     status_command i3blocks
 
