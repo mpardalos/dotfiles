@@ -17,6 +17,26 @@ font $font
 
 # }}}
 
+# Outputs {{{
+output DP-3 {
+    mode 1920x1080@60Hz
+    transform 90
+    pos 0 0
+    background ~/Pictures/Wallpapers/launch-left.png fill
+}
+
+output DP-4 {
+    mode 2560x1440@164.998001Hz
+    adaptive_sync on
+    pos 1080 190
+    background ~/Pictures/Wallpapers/launch-right.png fill
+}
+
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+# }}}
+
 # Colors {{{
     include "~/.cache/wal/colors-sway"
 
@@ -47,10 +67,6 @@ font $font
 #     --fn $font"
 
 set $menu ~/.bin/launcher
-# }}}
-
-# Wallpaper {{{
-output * bg ~/Pictures/Wallpapers/Keyboards.jpg fill
 # }}}
 
 # Window Manager behaviour {{{
