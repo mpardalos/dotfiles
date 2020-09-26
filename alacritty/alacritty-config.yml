@@ -22,6 +22,8 @@ window:
   # Window decorations. none|full
   decorations: full
 
+  dynamic_title: true
+
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -76,10 +78,6 @@ font:
 cursor:
     cursor_style: Block
 
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0 # Disables
-
 # 1.0 is opaque
 background_opacity: 0.9
 
@@ -109,8 +107,6 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-dynamic_title: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
