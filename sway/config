@@ -112,6 +112,8 @@ mode "launcher" {
 } 
 bindsym $mod+w mode "launcher" 
 
+bindsym $mod+s sticky toggle
+
 # Kill focused window
 bindsym $mod+q kill
 bindsym --border BTN_MIDDLE kill
@@ -177,6 +179,8 @@ bindsym $mod+Ctrl+Shift+l mode "layout: [s]tacked [t]abbed [n]ormal"
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+f floating toggle
+bindsym --border BTN_RIGHT floating toggle
+
 
 bindsym $mod+shift+f fullscreen toggle
 
@@ -234,6 +238,8 @@ mode "Main Menu" {
 }
 bindsym $mod+a mode "Main Menu"
 
+# Dismiss last notification
+bindsym $mod+n exec "makoctl dismiss"
 
 ## Special keys
 bindsym XF86AudioPrev exec "playerctl previous"
@@ -245,6 +251,11 @@ bindsym XF86AudioMute exec "volume_control mute"
 bindsym XF86MonBrightnessUp exec "brightness_control up"
 bindsym XF86MonBrightnessDown exec "brightness_control down"
 
+bindsym Print exec "grimshot copy area"
+bindsym Shift+Print exec "grimshot copy screen"
+
+# Toggle keyboard layout
+bindsym --locked $mod+Space exec "~/.bin/change_layout"
 
 # }}}
 
