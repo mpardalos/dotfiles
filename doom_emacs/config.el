@@ -90,6 +90,14 @@
             :library-folders-fn ccls-library-folders-fn
             :remote? t)))
 
+;;; ~ Extra Packages
+
+(use-package lsp-haskell
+ :defer t
+ :ensure t
+ :config
+ (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper"))
+
 ;; Kima mode
 (define-generic-mode 'kima-mode
   '("#")
