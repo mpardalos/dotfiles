@@ -141,6 +141,8 @@
         :nv "s" 'evil-substitute)
 
     ;; Moving around windows
+    :g "<mouse-8>" 'previous-buffer
+    :g "<mouse-9>" 'next-buffer
     :n "M-h" 'evil-window-left
     :n "M-j" 'evil-window-down
     :n "M-k" 'evil-window-up
