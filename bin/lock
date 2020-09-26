@@ -2,5 +2,7 @@
 
 exec swaylock \
     --daemonize \
-    --screenshots --effect-pixelate 20 --effect-greyscale \
+    --clock \
+    --indicator \
+    --screenshots --effect-pixelate 32 --effect-vignette 0.7:0.9\
     $@
