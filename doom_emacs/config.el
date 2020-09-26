@@ -193,17 +193,6 @@
     ;;; ~~ Multiple cursors
     :v  "gi"    #'+multiple-cursors/evil-mc-toggle-cursor-here
 
-    ;; Evil-easymotion
-    :m  ","    #'+evil/easymotion  ; lazy-load `evil-easymotion'
-    (:map evilem-map
-        "," #'avy-goto-char-timer
-        "/" (evilem-create #'evil-ex-search-next
-                :pre-hook (save-excursion (call-interactively #'evil-ex-search-forward))
-                :bind ((evil-search-wrap)))
-        "?" (evilem-create #'evil-ex-search-previous
-                :pre-hook (save-excursion (call-interactively #'evil-ex-search-backward))
-                :bind ((evil-search-wrap))))
-
     ;;; ~~ [B]uffers or [B]ookmarks
     (:leader :prefix-map ("b" . "Buffers/Bookmarks")
         :desc "Kill this buffer"      "d" #'kill-this-buffer

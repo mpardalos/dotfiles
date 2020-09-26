@@ -7,6 +7,6 @@
 (package! hugo
     :recipe (:host github :repo "aaronbieber/hugo.el"))
 
-(package! evil-snipe :disable t)
+; (package! evil-snipe :disable t)
 
 (package! rebecca-theme)
