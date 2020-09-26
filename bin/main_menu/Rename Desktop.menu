@@ -1,2 +1,0 @@
-#!/bin/sh
-bspc desktop --rename $(dmenu -p "New Name")

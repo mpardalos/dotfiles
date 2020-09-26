@@ -1,6 +1,0 @@
-#!/bin/sh
-
-printf "Compton\nBar" \
-    | dmenu \
-    | tr '[:upper:]' '[:lower:]' \
-    | xargs ~/.bin/toggle

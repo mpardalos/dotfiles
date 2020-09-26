@@ -1,6 +1,0 @@
-#!/bin/sh
-
-OPTIONS="Music|Talk|Main"
-
-bspc monitor --add-desktops \
-    "$(echo "$OPTIONS" | dmenu -sep '|' -p 'Name for the new workspace')"

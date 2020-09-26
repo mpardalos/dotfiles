@@ -1,0 +1,2 @@
+#!/bin/sh
+exec rofi -modi run -show run
