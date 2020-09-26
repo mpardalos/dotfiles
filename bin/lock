@@ -1,3 +1,6 @@
 #!/bin/sh
 
-exec swaylock -f $@
+exec swaylock \
+    --daemonize \
+    --screenshots --effect-pixelate 20 --effect-greyscale \
+    $@
