@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DELAY="$1"
+if [ -z "$DELAY" ]; then
+    DELAY=3
+fi
+
+echo 0 > /sys/module/amdgpu/drivers/pci:amdgpu/0000:08:00.0/hwmon/hwmon9/pwm1_enable
+sleep $DELAY
+echo 2 > /sys/module/amdgpu/drivers/pci:amdgpu/0000:08:00.0/hwmon/hwmon9/pwm1_enable
+
