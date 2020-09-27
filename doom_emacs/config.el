@@ -1,6 +1,6 @@
- ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
+;;;/.doom.d/config.el -*- lexical-binding: t; -*-
 
-;;; ~ Doom settings
+;;; Doom settings
 (setq
     doom-leader-key "SPC"
     doom-localleader-key "SPC SPC"
@@ -12,11 +12,11 @@
     scroll-step 1
     scroll-margin 1)
 
-;;; ~ Save theme
+;;; Save theme
 (advice-add 'load-theme :after
     (lambda (&rest args) (my/remember-theme-save)))
 
-;;; ~ Options
+;;; Options
 (setq!
     evil-move-cursor-back nil
 
@@ -91,7 +91,7 @@
             :library-folders-fn ccls-library-folders-fn
             :remote? t)))
 
-;;; ~ Extra Packages
+;;; Extra Packages
 
 (use-package lsp-haskell
  :defer t
@@ -112,7 +112,7 @@
          (:exec . "%c run %s"))
     :mode 'kima-mode)
 
-;;; ~ Popup rules
+;;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
     :vslot -5
     :size 0.4
@@ -132,9 +132,9 @@
     :side 'right)
 
 
-;;; ~ Maps
+;;; Maps
 (map!
-    ;;; ~~ General
+;;;; General
     (:desc "Universal Argument" :leader "u" #'universal-argument)
 
     (:map override
@@ -145,7 +145,7 @@
     :g "<mouse-8>" 'previous-buffer
     :g "<mouse-9>" 'next-buffer
 
-    ;;; ~~ Moving around windows
+;;;; Moving around windows
     :n "M-h" 'evil-window-left
     :n "M-j" 'evil-window-down
     :n "M-k" 'evil-window-up
@@ -153,7 +153,7 @@
 
     :n "C-w C-o" 'nil
 
-    ;;; ~~ Moving around Buffers
+;;;; Moving around Buffers
     (:when (featurep! :ui tabbar)
         :n "M-u" #'centaur-tabs-backward
         :n "M-i" #'centaur-tabs-forward)
@@ -162,10 +162,10 @@
         :n "M-u" 'evil-prev-buffer
         :n "M-i" 'evil-next-buffer)
 
-    ;;; ~~ (un)fold
+;;;; (un)fold
     :n "TAB"    #'+fold/toggle
 
-    ;;; ~~ completion
+;;;; completion
     :i "C-SPC"   #'company-complete
 
     (:desc "Search in file" :leader "j" #'swiper)
@@ -174,26 +174,26 @@
     :n "C-=" #'doom/increase-font-size
     :n "C-0" #'doom/reset-font-size
 
-    ;;; ~~ Comments
+;;;; Comments
     :n "gc" 'evilnc-comment-operator
     :textobj "c" #'evilnc-inner-comment #'evilnc-outer-commenter
 
-    ;;; ~~ Make newline behave
+;;;; Make newline behave
     :i [remap newline] #'newline-and-indent
     :i "C-j"           #'+default/newline
 
-    ;;; ~~ don't leave visual mode after shifting
+;;;; don't leave visual mode after shifting
     :v  "<"     #'+evil/visual-dedent
     :v  ">"     #'+evil/visual-indent
 
-    ;;; ~~ evil-surround
+;;;; evil-surround
     :v  "S"     #'evil-surround-region
     :o  "s"     #'evil-surround-edit
 
-    ;;; ~~ Multiple cursors
+;;;; Multiple cursors
     :v  "gi"    #'+multiple-cursors/evil-mc-toggle-cursor-here
 
-    ;;; ~~ [B]uffers or [B]ookmarks
+;;;; [B]uffers or [B]ookmarks
     (:leader :prefix-map ("b" . "Buffers/Bookmarks")
         :desc "Kill this buffer"      "d" #'kill-this-buffer
         :desc "Jump/Create bookmark"                 "m" #'bookmark-jump
@@ -211,7 +211,7 @@
             :desc "To environment" "e" #'LaTeX-narrow-to-environment
             :desc "To group"       "g" #'TeX-narrow-to-group))
 
-    ;;; ~~ Ivy
+;;;; Ivy
     (:after ivy
         :map ivy-minibuffer-map
         "C-SPC" #'ivy-call-and-recenter  ; preview file
@@ -223,13 +223,13 @@
         "C-l"      #'ivy-done
         [C-return] #'+ivy/git-grep-other-window-action)
 
-    ;;; ~~ Console
+;;;; Console
     (:leader :prefix ("c" . "Consoles")
         :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
         :desc "Internal (vterm)"  :leader "t" #'+vterm/toggle
         :desc "Terminal emulator" :leader "e" #'my/open-external-term)
 
-    ;;; ~~ Windows
+;;;; Windows
     (:leader
         :prefix-map ("w" . "Windows")
 
@@ -239,7 +239,7 @@
         :desc "Other window" "w" #'other-window
         :desc "Kill window"  "x" #'ace-delete-window)
 
-    ;;; ~~ Org mode
+;;;; Org mode
     (:after org :when (featurep! :lang org) :mode org-mode
 
         ;; Unmap these because they interfere with window switching
@@ -263,7 +263,7 @@
         (:prefix "l"
             :desc "Toggle link display" "v" #'org-toggle-link-display))
 
-    ;;; ~~ Projects
+;;;; Projects
     (:leader :prefix-map ("p" . "project")
         :desc "Switch project"               "p" #'projectile-switch-project
         :desc "Kill project buffers"         "k" #'projectile-kill-buffers
@@ -293,7 +293,7 @@
             :desc "Repeat last command"        "C" #'projectile-repeat-last-command
             :desc "Pop to compilation buffer"  "b" (lambda! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer")))))
 
-    ;;; ~~ Searching
+;;;; Searching
     (:leader :prefix ("f" . "Search")
 
         :desc "Org files"         "o" (λ! () (counsel-file-jump "" "~/org"))
@@ -305,7 +305,7 @@
         :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
         :desc "Online"            "o" #'+lookup/online)
 
-    ;;; ~~ Next/Previous
+;;;; Next/Previous
     ((:when (featurep! :ui hl-todo)
          :desc "Previous TODO"   :n "[t" #'hl-todo-previous
          :desc "Next TODO"       :n "]t" #'hl-todo-next)
@@ -319,7 +319,7 @@
         :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
         :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
 
-    ;;; ~~ Help
+;;;; Help
     (
         :leader
         :prefix ("h" . "help")
@@ -340,7 +340,7 @@
         :desc "Print Doom version"            "V"   #'doom/version
         :desc "View *Messages*"               ";"   #'view-echo-area-messages)
 
-    ;;; ~~ File management
+;;;; File management
     (:leader :desc "File drawer" "/" #'+treemacs/toggle
 
         (:when (featurep! :ui neotree-mode)
@@ -353,7 +353,7 @@
             :desc "Open below current"   "v" #'neotree-enter-horizontal-split
             :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application))
 
-    ;;; ~~ VCS
+;;;; VCS
     (:leader :prefix ("g" . "VCS")
         :desc "Blame annotations" "b" #'magit-blame
         :desc "Commit"            "c" #'magit-commit
@@ -372,7 +372,7 @@
         :n "q"   #'git-timemachine-quit
         :n "gb"  #'git-timemachine-blame)
 
-    ;;; ~~ Toggles
+;;;; Toggles
     (:leader :prefix ("t" . "Toggles")
         :desc "Flyspell"                     "s" #'flyspell-mode
         :desc "Flycheck list"                "f" #'flycheck-list-errors
@@ -385,12 +385,12 @@
         :desc "Evil goggles"                 "g" #'evil-goggles-mode
         :desc "Whitespace visualisation"     "w" #'whitespace-mode)
 
-    ;;; ~~ Make
+;;;; Make
     (:leader :prefix ("m" . "Make")
         :desc "Execute last recipe" "m" #'+make/run-last
         :desc "Execute recipe"      "r" #'+make/run)
 
-    ;;; ~~ LSP
+;;;; LSP
     (:mode lsp-mode
         (:localleader
             :desc "Rename symbol" "r" #'lsp-rename
@@ -400,25 +400,31 @@
         :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
         :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
 
-    ;;; ~~ C(++)
+;;;; C(++)
     (:mode cpp-mode
         :localleader
         :desc "Toggle header/source" "t" #'ff-find-other-file)
 
-    ;;; ~~ Haskell
+;;;; Haskell
     (:map haskell-mode-map
         :localleader
         :desc "Hoogle query" "h" #'haskell-hoogle)
 
-    ;;; ~~ ein
+;;;; ein
     (:map ein:notebook-mode-map
         :localleader
         "," #'+ein/hydra/body)
 
-    ;;; ~~ hugo
+;;;; hugo
     (:mode hugo-minor-mode
         :localleader
         :prefix-map ("h" . "Hugo")
         :desc "Hugo status"        "h" #'hugo-status
         :desc "Start/Stop server"  "s" #'hugo-start-stop-server
         :desc "Browse to website"  "b" #'hugo-browse))
+
+
+;;; Local Variables
+;; Local Variables:
+;; eval: (outline-hide-sublevels 5)
+;; End:
