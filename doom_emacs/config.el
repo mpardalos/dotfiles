@@ -73,6 +73,9 @@
 (after! tex
     (setq TeX-master "shared"))
 
+(after! forge
+    (add-to-list 'forge-alist '("gitlab.haskell.org" "gitlab.haskell.org/api/v4" "gitlab.haskell.org" forge-gitlab-repository)))
+
 ;; Hugo mode
 (after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
