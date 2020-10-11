@@ -63,6 +63,7 @@
     data
     (rust +lsp)
     csharp
+    coq
 
     :checkers
     grammar

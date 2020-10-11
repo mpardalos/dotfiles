@@ -423,8 +423,11 @@
         :prefix-map ("h" . "Hugo")
         :desc "Hugo status"        "h" #'hugo-status
         :desc "Start/Stop server"  "s" #'hugo-start-stop-server
-        :desc "Browse to website"  "b" #'hugo-browse))
+        :desc "Browse to website"  "b" #'hugo-browse)
 
+    (:mode coq-mode
+        :localleader
+        :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point))
 
 ;;; Local Variables
 ;; Local Variables:
