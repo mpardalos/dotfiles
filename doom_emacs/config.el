@@ -53,9 +53,13 @@
 ;; Enable vimish fold globally
 (vimish-fold-global-mode 1)
 
+;;; Mode customizations
 (add-to-list '+lookup-provider-url-alist '("Mozilla Developer Network" "https://developer.mozilla.org/en-US/search?q=%s"))
 
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
+
+;; This is slow and useless so just disable
+(add-hook 'haskell-mode-hook (lambda () (smartparens-mode -1)))
 
 (add-hook 'vimish-fold-mode-hook #'vimish-fold-from-marks)
 
