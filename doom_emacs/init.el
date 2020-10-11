@@ -14,7 +14,7 @@
     nav-flash
     treemacs
     (popup +all +defaults)
-    (pretty-code +fira)
+    (ligatures +fira)
     vc-gutter
     vi-tilde-fringe
     window-select
