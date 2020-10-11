@@ -1,2 +1,3 @@
 anchor=bottom-right
 icon-path=/usr/share/icons/Adwaita/
+layer=overlay
