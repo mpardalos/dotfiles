@@ -286,13 +286,13 @@
         :desc "Search in project"            "s" #'+ivy/project-search)
 
     (:leader :prefix-map ("r")
-        :desc "Run file or project"            "r" (lambda! () (if (projectile-project-p) (call-interactively #'projectile-run-project) (+eval/buffer)))
+        :desc "Run file or project"            "r" (cmd! () (if (projectile-project-p) (call-interactively #'projectile-run-project) (+eval/buffer)))
         (:mode 'projectile-mode
             :desc "Test project"               "t" #'projectile-test-project
             :desc "Compile in project"         "c" #'projectile-compile-project
             :desc "Configure project"          "g" #'projectile-configure-project
             :desc "Repeat last command"        "C" #'projectile-repeat-last-command
-            :desc "Pop to compilation buffer"  "b" (lambda! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer")))))
+            :desc "Pop to compilation buffer"  "b" (cmd! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer")))))
 
 ;;;; Searching
     (:leader :prefix ("f" . "Search")
