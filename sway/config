@@ -32,6 +32,10 @@ output DP-4 {
     background ~/Pictures/Wallpapers/launch-right.png fill
 }
 
+output eDP-1 {
+    background ~/Pictures/Wallpapers/Runaway blue.png fill
+}
+
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
