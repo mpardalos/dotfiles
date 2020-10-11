@@ -3,6 +3,8 @@
 (package! vimrc-mode)
 (package! alloy-mode
     :recipe (:host github :repo "dwwmmn/alloy-mode"))
+(package! cmm-mode
+    :recipe (:host github :repo "bgamari/cmm-mode"))
 (package! fill-column-indicator)
 (package! hugo
     :recipe (:host github :repo "aaronbieber/hugo.el"))
