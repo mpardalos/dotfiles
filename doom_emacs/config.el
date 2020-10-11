@@ -305,7 +305,8 @@
         :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
         ;; This needs updating every year
         :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_3"))
-        :desc "Online"            "o" #'+lookup/online)
+        :desc "Online"            "o" #'+lookup/online
+        :desc "Recent files"      "r" #'counsel-recentf)
 
 ;;;; Next/Previous
     ((:when (featurep! :ui hl-todo)
