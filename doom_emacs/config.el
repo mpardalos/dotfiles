@@ -35,6 +35,7 @@
     lsp-ui-sideline-enable nil
     lsp-eldoc-enable-hover nil
     lsp-eldoc-hook '(lsp-hover)
+    lsp-auto-guess-root 't
 
     alloy-mode-map (make-sparse-keymap)
     alloy-basic-offset 2
