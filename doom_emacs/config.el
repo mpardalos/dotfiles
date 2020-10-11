@@ -259,9 +259,6 @@
         (:prefix-map ("i" . "insert")
             :desc "Table""t" #'org-table-create)
 
-        (:prefix "x"
-            :desc "Toggle latex fragment preview" "l" #'org-toggle-latex-fragment)
-
         (:prefix "l"
             :desc "Toggle link display" "v" #'org-toggle-link-display))
 
