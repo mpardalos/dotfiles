@@ -8,5 +8,6 @@
     :recipe (:host github :repo "aaronbieber/hugo.el"))
 
 ; (package! evil-snipe :disable t)
+(package! lsp-treemacs)
 
 (package! rebecca-theme)
