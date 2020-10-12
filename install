@@ -19,7 +19,7 @@ test -e "$TARGET/install" || {
 
 
 # Source file, passing it dotfiles dir
-. "$TARGET/install" $(pwd)
+. "$TARGET/install"
 
 # Check deps
 for dep in $DEPENDS; do
@@ -31,4 +31,4 @@ for dep in $DEPENDS; do
 done
 
 # Install
-module_install
+module_install $(pwd)

@@ -1,9 +1,7 @@
 #!/bin/sh
 
-DOTS="$1"
-
 module_install() {
     rm -f ~/.gitconfig 
-    ln -s $DOTS/git/gitconfig ~/.gitconfig
+    ln -s $1/git/gitconfig ~/.gitconfig
 }
 

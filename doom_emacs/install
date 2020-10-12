@@ -1,8 +1,7 @@
-DOTS=$1
 DEPENDS="emacs fd aspell pandoc editorconfig"
 
 module_install() {
-    ln -sf $DOTS/doom_emacs ~/.config/doom
+    ln -sf $1/doom_emacs ~/.config/doom
 
     printf "\n==> Cloning doom-emacs\n"
     git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
