@@ -24,7 +24,8 @@ test -e "$TARGET/install" || {
 # Check deps
 for dep in $DEPENDS; do
     command -v $dep &> /dev/null || {
-        echo "$TARGET requires $dep to be installed"
+        echo "==> Module $TARGET requires $dep to be installed"
+        echo "==> Also requires: $DEPENDS"
         exit 1
     }
 done
