@@ -1,0 +1,33 @@
+#!/bin/sh
+
+TARGET="$1"
+
+test -n "$TARGET" || {
+    echo "You must specify a target to install"
+    exit 1
+}
+
+test -d "$TARGET" || {
+    echo "Target $TARGET does not exist"
+    exit 1
+}
+
+test -e "$TARGET/install" || {
+    echo "Target $TARGET does not have an install file"
+    exit 1
+}
+
+
+# Source file, passing it dotfiles dir
+. "$TARGET/install" $(pwd)
+
+# Check deps
+for dep in $DEPENDS; do
+    command -v $dep &> /dev/null || {
+        echo "$TARGET requires $dep to be installed"
+        exit 1
+    }
+done
+
+# Install
+module_install

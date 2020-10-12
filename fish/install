@@ -1,9 +1,12 @@
 #!/bin/sh
-
-DEPENDS="fish exa" 
-MAKEDEPENDS="curl"
+DOTS="$1"
+DEPENDS="fish exa curl neofetch" 
 
 module_install() {
+    rm ~/.config/fish
+    rm -r ~/.config/fish/
+    ln -s $DOTS/fish ~/.config/fish
+
     if fish -c "! type omf >/dev/null 2>&1 "; then
         echo
         echo "==> Downloading omf installer"
