@@ -1,9 +1,10 @@
 #!/bin/sh
 
-MAKEDEPENDS="curl"
-DEPENDS="neovim python-neovim"
+DEPENDS="curl nvim"
 
 module_install() {
+    ln -snf $1/neovim/ ~/.config/nvim
+
     curl --silent -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
