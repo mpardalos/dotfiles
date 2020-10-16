@@ -68,6 +68,8 @@
 
 (add-to-list 'auto-mode-alist
     '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+(add-to-list 'auto-mode-alist
+    '("\\.mod\\'" . gmpl-mode))
 
 (after! alloy-mode
     (add-hook 'alloy-mode-hook

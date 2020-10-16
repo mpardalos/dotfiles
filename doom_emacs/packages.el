@@ -8,6 +8,8 @@
 (package! fill-column-indicator)
 (package! hugo
     :recipe (:host github :repo "aaronbieber/hugo.el"))
+(package! gmpl-mode
+    :recipe (:host github :repo "cute-jumper/gmpl-mode"))
 
 ; (package! evil-snipe :disable t)
 (package! lsp-treemacs)
