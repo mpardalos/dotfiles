@@ -446,7 +446,8 @@
 
     (:mode coq-mode
         :localleader
-        :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point))
+        :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point
+        :desc "Show definition overlay" "d" #'company-coq-toggle-definition-overlay))
 
 ;;; Local Variables
 ;; Local Variables:
