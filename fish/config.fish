@@ -6,3 +6,5 @@ abbr --add v nvim
 abbr --add tree "ll --tree"
 
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
+eval (direnv hook fish)
