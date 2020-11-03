@@ -67,7 +67,7 @@
 
     :checkers
     grammar
-    spell
+    (spell +flyspell)
     (syntax +childframe)
 
     :term
