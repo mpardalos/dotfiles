@@ -42,7 +42,7 @@
 ;;;###autoload
 (defun my/open-external-term ()
   (interactive)
-  (start-process "external-term" nil "alacritty"))
+  (start-process "external-term" nil "gnome-terminal"))
 
 ;;;###autoload
 (defun my/save-if-named ()
