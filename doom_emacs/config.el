@@ -87,6 +87,12 @@
 (after! forge
     (add-to-list 'forge-alist '("gitlab.haskell.org" "gitlab.haskell.org/api/v4" "gitlab.haskell.org" forge-gitlab-repository)))
 
+(after! boogie-friends
+    (setq flycheck-dafny-executable "~/.local/share/dafny/dafny")
+    (setq flycheck-boogie-executable "~/.local/share/dafny/dafny-server")
+    (setq flycheck-z3-smt2-executable "~/.local/share/dafny/z3/bin/z3")
+    (setq flycheck-inferior-dafny-executable "~/.local/share/dafny/dafny-server"))
+
 ;; Hugo mode
 (after! hugo (evil-set-initial-state 'hugo-mode 'emacs))
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
