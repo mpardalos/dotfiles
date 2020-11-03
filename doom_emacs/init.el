@@ -43,6 +43,7 @@
     editorconfig
     pdf
     ein
+    direnv
 
     :lang
     (sh +fish)
