@@ -65,6 +65,7 @@
     (rust +lsp)
     csharp
     coq
+    ocaml
 
     :checkers
     grammar
