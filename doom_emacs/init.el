@@ -32,6 +32,7 @@
     :emacs
     (dired +icons)
     vc
+    undo
 
     :tools
     lookup
