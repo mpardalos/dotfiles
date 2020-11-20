@@ -10,8 +10,8 @@
     +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode)
     ;; Smooth(er) scrolling
     scroll-step 1
-    maximum-scroll-margin 0.4
-    scroll-margin 50)
+    maximum-scroll-margin 0.2
+    scroll-margin 20)
 
 ;;; Save theme
 (advice-add 'load-theme :after
