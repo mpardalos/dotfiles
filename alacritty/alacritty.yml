@@ -4,7 +4,7 @@
 
 env:
   # Defaults to xterm-256color.
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # 0x0, 0x0 just does whatever the window manager says
@@ -48,15 +48,15 @@ draw_bold_text_with_bright_colors: true
 # * file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: SauceCodePro Nerd Font Mono
+    family: Fira Code
     style: Semibold
 
   bold:
-    family: SauceCodePro Nerd Font Mono # should be "Menlo" or something on macOS.
+    family: Fira Code
     style: Bold
 
   italic:
-    family: SauceCodePro Nerd Font Mono
+    family: Fira Code
     # style: Oblique
 
   size: 14.0
@@ -166,7 +166,7 @@ key_bindings:
   - { key: Insert,   mods: Shift,            action: PasteSelection      }
   - { key: Key0,     mods: Control,          action: ResetFontSize       }
   - { key: Equals,   mods: Control,          action: IncreaseFontSize    }
-  - { key: Subtract, mods: Control,          action: DecreaseFontSize    }
+  - { key: Minus,    mods: Control,          action: DecreaseFontSize    }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
