@@ -113,6 +113,11 @@
             :library-folders-fn ccls-library-folders-fn
             :remote? t)))
 
+(after! verilog-mode
+    (setq verilog-indent-level 2)
+    (setq verilog-indent-level-module 0)
+    (setq verilog-indent-level-declaration 0))
+
 ;;; Extra Packages
 
 (use-package lsp-haskell
