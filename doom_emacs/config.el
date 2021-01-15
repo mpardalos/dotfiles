@@ -421,7 +421,7 @@
             :desc "Rename symbol" "r" #'lsp-rename
             :desc "Code action"   "a" #'lsp-execute-code-action
             :desc "Format buffer" "f" #'lsp-format-buffer
-            :desc "Show symbols"  "s" #'lsp-treemacs-symbols)
+            :desc "Find symbol"   "s" #'lsp-ui-find-workspace-symbol)
 
         :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
         :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
