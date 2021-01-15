@@ -30,7 +30,7 @@
     format
 
     :emacs
-    (dired +icons)
+    (dired +ranger +icons)
     vc
     undo
 
@@ -39,11 +39,12 @@
     eval
     make
     (magit +forge)
-    (lsp +peek)
+    (lsp)
     editorconfig
     pdf
     ein
     direnv
+    (debugger +lsp)
 
     :lang
     (sh +fish)
@@ -66,6 +67,7 @@
     csharp
     coq
     ocaml
+    (go +lsp)
 
     :checkers
     grammar
