@@ -1,0 +1,5 @@
+DEPENDS="neofetch"
+
+module_install() {
+    ln -snf $1/neofetch/ ~/.config/neofetch
+}
