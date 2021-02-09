@@ -28,19 +28,9 @@
 
 ;;; File management
 (setq! dired-listing-switches "-ABhl -X --group-directories-first")
-(map!
-    :leader
-    :desc "File drawer" "/" #'+treemacs/toggle
 
-    (:when (featurep! :ui neotree-mode)
-        :mode neotree-mode
-
-        :desc "Go to project root"   "P" #'my/neotree-project-root
-        :desc "Go to parent"         "U" #'neotree-select-up-node
-        :desc "Set as current node"  "l" #'neotree-change-root
-        :desc "Open next to current" "h" #'neotree-enter-vertical-split
-        :desc "Open below current"   "v" #'neotree-enter-horizontal-split
-        :desc "Open externally"      "<C-return>" #'neotree-open-file-in-system-application))
+(after! tramp
+    (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 ;;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
@@ -120,17 +110,6 @@
     :desc "Online"            "o" #'+lookup/online
     :desc "Recent files"      "r" #'counsel-recentf)
 
-;;; Treemacs
-(after! treemacs
-    (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
-
-(add-to-list 'auto-mode-alist
-    '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
-(add-to-list 'auto-mode-alist
-    '("\\.mod\\'" . gmpl-mode))
-
-(after! tramp
-    (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 ;;; Folding
 (add-hook 'vimish-fold-mode-hook #'vimish-fold-from-marks)

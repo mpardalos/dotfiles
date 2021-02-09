@@ -12,7 +12,6 @@
     ophints
     hl-todo
     nav-flash
-    treemacs
     (popup +all +defaults)
     vc-gutter
     vi-tilde-fringe
