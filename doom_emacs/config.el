@@ -93,23 +93,9 @@
     :desc "Previous Error"  :n "[e" 'flycheck-previous-error
     :desc "Next Error"      :n "]e" 'flycheck-next-error
     :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
-    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
+    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error
 
-;;; Searching
-(map!
-    :leader
-    :prefix ("f" . "Search")
-
-    :desc "Org files"         "o" (λ! () (counsel-file-jump "" "~/org"))
-    :desc "Buffers"           "b" #'ivy-switch-buffer
-    :desc "Themes"            "t" #'load-theme
-    :desc "Shells"            "s" #'counsel-switch-to-shell-buffer
-    :desc "Dotfiles"          "d" (λ! () (counsel-file-jump "" "~/.config/dotfiles"))
-    ;; This needs updating every year
-    :desc "College Files"     "c" (λ! () (counsel-file-jump "" "~/Documents/Imperial/Year_4"))
-    :desc "Online"            "o" #'+lookup/online
-    :desc "Recent files"      "r" #'counsel-recentf)
-
+    :desc "Recent Files" :g "C-x C-r" #'recentf-open-files)
 
 ;;; Folding
 (add-hook 'vimish-fold-mode-hook #'vimish-fold-from-marks)
