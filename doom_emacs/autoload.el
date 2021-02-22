@@ -69,6 +69,7 @@ Might not behave as intended if more than one cursors are on the same line."
          (save-excursion (insert (make-string missing-spaces character)))
          (forward-char missing-spaces))))))
 
+;;;###autoload
 (defun evil-mc-vertical-align-with-space ()
   (interactive)
   (evil-mc-vertical-align 32))
