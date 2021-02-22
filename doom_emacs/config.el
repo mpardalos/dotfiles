@@ -32,6 +32,13 @@
 (after! tramp
     (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
+(map!
+    :leader
+    :prefix ("d" . "Directory")
+    :desc "Documents" "d" (lambda! () (find-file "~/Documents"))
+    :desc "Dotfiles" "c" (lambda! () (find-file "~/.config/dotfiles"))
+    :desc "Imperial" "i" (lambda! () (find-file "~/Documents/Imperial")))
+
 ;;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
     :vslot -5
