@@ -254,7 +254,11 @@
     :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
 
 ;;; Languages
-;;; Web mode
+(add-to-list 'auto-mode-alist
+    '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+(add-to-list 'auto-mode-alist
+    '("\\.mod\\'" . gmpl-mode))
+;;;; Web mode
 (setq! web-mode-markup-indent-offset 2)
 ;;;; Coq
 (map!
