@@ -40,9 +40,9 @@
         :desc "Find under current directory" "f" #'counsel-file-jump)
 
     (:prefix ("d" . "Directory")
-        :desc "Documents" "d" (lambda! () (find-file "~/Documents"))
-        :desc "Dotfiles" "c" (lambda! () (find-file "~/.config/dotfiles"))
-        :desc "Imperial" "i" (lambda! () (find-file "~/Documents/Imperial"))))
+        :desc "Documents" "d" (cmd! () (find-file "~/Documents"))
+        :desc "Dotfiles" "c" (cmd! () (find-file "~/.config/dotfiles"))
+        :desc "Imperial" "i" (cmd! () (find-file "~/Documents/Imperial"))))
 
 ;;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
@@ -384,7 +384,6 @@
 
 (use-package lsp-haskell
     :defer t
-    :ensure t
     :config
     (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper"))
 
