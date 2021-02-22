@@ -218,6 +218,27 @@
     :n "C-=" #'doom/increase-font-size
     :n "C-0" #'doom/reset-font-size)
 
+;;; Org-roam
+
+(setq org-roam-directory "~/Documents/org-roam")
+
+(map!
+    :leader
+    :prefix ("n" . "Notes (roam)")
+    :desc "Switch to buffer"              "b" #'org-roam-switch-to-buffer
+    :desc "Org Roam Capture"              "c" #'org-roam-capture
+    :desc "Find file"                     "f" #'org-roam-find-file
+    :desc "Show graph"                    "g" #'org-roam-graph
+    :desc "Insert"                        "i" #'org-roam-insert
+    :desc "Insert (skipping org-capture)" "I" #'org-roam-insert-immediate
+    :desc "Org Roam"                      "r" #'org-roam
+
+    (:prefix ("d" . "by date")
+        :desc "Arbitrary date" "d" #'org-roam-dailies-find-date
+        :desc "Today"          "t" #'org-roam-dailies-find-today
+        :desc "Tomorrow"       "m" #'org-roam-dailies-find-tomorrow
+        :desc "Yesterday"      "y" #'org-roam-dailies-find-yesterday))
+
 ;;; Console
 (setq! vterm-shell "/bin/fish")
 (map!

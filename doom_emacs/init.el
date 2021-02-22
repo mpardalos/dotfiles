@@ -53,7 +53,8 @@
     (org
         +attach
         +babel
-        +export)
+        +export
+        +roam)
     (cc +lsp)
     idris
     (web +html +css)
