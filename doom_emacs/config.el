@@ -34,10 +34,15 @@
 
 (map!
     :leader
-    :prefix ("d" . "Directory")
-    :desc "Documents" "d" (lambda! () (find-file "~/Documents"))
-    :desc "Dotfiles" "c" (lambda! () (find-file "~/.config/dotfiles"))
-    :desc "Imperial" "i" (lambda! () (find-file "~/Documents/Imperial")))
+    (:prefix ("f" . "File")
+        :desc "Recent Files" "r" #'recentf-open-files
+        :desc "Project Files" "p" #'projectile-find-file
+        :desc "Find under current directory" "f" #'counsel-file-jump)
+
+    (:prefix ("d" . "Directory")
+        :desc "Documents" "d" (lambda! () (find-file "~/Documents"))
+        :desc "Dotfiles" "c" (lambda! () (find-file "~/.config/dotfiles"))
+        :desc "Imperial" "i" (lambda! () (find-file "~/Documents/Imperial"))))
 
 ;;; Popup rules
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
@@ -100,9 +105,8 @@
     :desc "Previous Error"  :n "[e" 'flycheck-previous-error
     :desc "Next Error"      :n "]e" 'flycheck-next-error
     :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
-    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error
+    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
 
-    :desc "Recent Files" :g "C-x C-r" #'recentf-open-files)
 
 ;;; Folding
 (add-hook 'vimish-fold-mode-hook #'vimish-fold-from-marks)
