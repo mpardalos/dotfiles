@@ -43,7 +43,6 @@
     pdf
     ein
     direnv
-    (debugger +lsp)
 
     :lang
     (sh +fish)
