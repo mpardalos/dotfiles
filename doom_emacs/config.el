@@ -6,8 +6,9 @@
     doom-localleader-key "SPC SPC"
     doom-theme (my/remember-theme-read 'doom-one)
     doom-font (font-spec :family "Fira Code")
-    doom-variable-pitch-font (font-spec :family "Noto Sans"))
+    doom-variable-pitch-font (font-spec :family "Noto Sans")
 
+    +doom-dashboard-functions '(doom-dashboard-widget-banner doom-dashboard-widget-loaded))
 ;;; Evil mode
 (setq! evil-move-cursor-back nil)
 (add-hook 'evil-normal-state-entry-hook #'my/save-if-named)
@@ -40,7 +41,8 @@
         :desc "Find under current directory" "f" #'counsel-file-jump)
 
     (:prefix ("d" . "Directory")
-        :desc "Documents" "d" (cmd! () (find-file "~/Documents"))
+        :desc "Current" "d" (cmd! () (find-file "."))
+        :desc "Documents" "D" (cmd! () (find-file "~/Documents"))
         :desc "Dotfiles" "c" (cmd! () (find-file "~/.config/dotfiles"))
         :desc "Imperial" "i" (cmd! () (find-file "~/Documents/Imperial"))))
 
@@ -220,7 +222,11 @@
 
 ;;; Org-roam
 
-(setq org-roam-directory "~/Documents/org-roam")
+(setq
+    org-roam-directory "~/Documents/org-roam"
+    org-roam-file-exclude-regexp ".stversions/")
+
+(require 'org-quick-peek)
 
 (map!
     :leader
