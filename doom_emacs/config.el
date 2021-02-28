@@ -7,6 +7,7 @@
     doom-theme (my/remember-theme-read 'doom-one)
     doom-font (font-spec :family "Fira Code")
     doom-variable-pitch-font (font-spec :family "Noto Sans")
+    display-line-numbers-type nil
 
     +doom-dashboard-functions '(doom-dashboard-widget-banner doom-dashboard-widget-loaded))
 ;;; Evil mode
