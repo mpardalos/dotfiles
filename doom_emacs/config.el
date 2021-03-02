@@ -35,6 +35,12 @@
     (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 (map!
+    (:mode dired-mode
+        :n "h" #'dired-up-directory
+        :n "j" #'dired-next-line
+        :n "k" #'dired-previous-line
+        :n "l" #'dired-find-file)
+
     :leader
     (:prefix ("f" . "File")
         :desc "Recent Files" "r" #'recentf-open-files

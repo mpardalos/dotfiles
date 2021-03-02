@@ -14,5 +14,6 @@
 
 ; (package! evil-snipe :disable t)
 (package! lsp-treemacs)
+(package! dired-single)
 
 (package! rebecca-theme)

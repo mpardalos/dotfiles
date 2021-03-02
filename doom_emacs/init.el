@@ -29,7 +29,7 @@
     format
 
     :emacs
-    (dired +ranger +icons)
+    (dired +icons)
     vc
     undo
 
