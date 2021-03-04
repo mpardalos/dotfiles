@@ -82,9 +82,7 @@
 
     (:map override
         :n ";" 'evil-ex
-        :n ":" 'execute-extended-command
         :nv "s" 'evil-substitute)
-
 
     :n "M-u" 'previous-buffer
     :n "M-i" 'next-buffer
