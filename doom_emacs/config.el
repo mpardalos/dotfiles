@@ -9,7 +9,7 @@
     doom-variable-pitch-font (font-spec :family "Noto Sans")
     display-line-numbers-type nil
 
-    +doom-dashboard-functions '(doom-dashboard-widget-banner doom-dashboard-widget-loaded))
+    +doom-dashboard-functions '())
 ;;; Evil mode
 (setq! evil-move-cursor-back nil)
 (add-hook 'evil-normal-state-entry-hook #'my/save-if-named)
