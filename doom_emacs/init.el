@@ -41,7 +41,6 @@
     (lsp)
     editorconfig
     pdf
-    ein
     direnv
 
     :lang
