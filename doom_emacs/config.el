@@ -233,8 +233,6 @@
     org-roam-directory "~/Documents/org-roam"
     org-roam-file-exclude-regexp ".stversions/")
 
-(require 'org-quick-peek)
-
 (map!
     :leader
     :prefix ("n" . "Notes (roam)")

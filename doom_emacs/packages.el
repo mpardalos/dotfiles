@@ -12,8 +12,6 @@
     :recipe (:host github :repo "cute-jumper/gmpl-mode"))
 (package! boogie-friends)
 
-; (package! evil-snipe :disable t)
-(package! lsp-treemacs)
 (package! dired-single)
 
 (package! rebecca-theme)
