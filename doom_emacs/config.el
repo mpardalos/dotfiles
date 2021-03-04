@@ -112,7 +112,10 @@
     :desc "Previous Error"  :n "[e" 'flycheck-previous-error
     :desc "Next Error"      :n "]e" 'flycheck-next-error
     :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
-    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
+    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error
+
+    ;; Help
+    "C-h a" #'counsel-apropos)
 
 
 ;;; Folding
