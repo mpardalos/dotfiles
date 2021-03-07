@@ -400,7 +400,6 @@
     :desc "Export"       "e" #'org-export-dispatch
     :desc "Schedule"     "s" #'org-schedule
     :desc "Add deadline" "d" #'org-deadline
-    :desc "Cycle list"   "b" #'org-cycle-list-bullet
 
     (:prefix-map ("i" . "insert")
         :desc "Table""t" #'org-table-create)
