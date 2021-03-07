@@ -70,7 +70,7 @@
     :checkers
     grammar
     (spell +flyspell)
-    (syntax +childframe)
+    syntax
 
     :term
     vterm
