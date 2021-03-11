@@ -155,21 +155,14 @@
 
 ;;; Help
 (map!
-    :leader
-    :prefix ("h" . "help")
+    :prefix ("C-h" . "help")
 
-    :desc "Apropos"                       "a"   #'apropos
-    :desc "Command log"                   "L"   #'global-command-log-mode
     :desc "Describe DOOM module"          "d"   #'doom/describe-module
-    :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
-    :desc "Describe at point"             "."   #'helpful-at-point
-    :desc "Describe face"                 "F"   #'describe-face
-    :desc "Describe function"             "f"   #'describe-function
-    :desc "Describe key"                  "k"   #'describe-key
     :desc "Describe mode"                 "M"   #'describe-mode
-    :desc "Describe variable"             "v"   #'describe-variable
-    :desc "Emacs help map"                "H"   help-map
-    :desc "Show shortcuts"                "h"   #'which-key-show-top-level
+    :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
+    :desc "Describe face"                 "F"   #'describe-face
+    :desc "Show bindings"                 "b"   #'which-key-show-top-level
+    :desc "Show bindings detailed"        "B"   #'counsel-descbinds
     :desc "Man pages"                     "w"   #'+default/man-or-woman
     :desc "Print Doom version"            "V"   #'doom/version
     :desc "View *Messages*"               ";"   #'view-echo-area-messages)
