@@ -23,7 +23,7 @@ test -e "$TARGET/install" || {
 
 # Check deps
 for dep in $DEPENDS; do
-    command -v $dep &> /dev/null || {
+    command -v "$dep" >/dev/null 2>&1  || {
         echo "==> Module $TARGET requires $dep to be installed"
         echo "==> Also requires: $DEPENDS"
         exit 1
@@ -31,4 +31,4 @@ for dep in $DEPENDS; do
 done
 
 # Install
-module_install $(pwd)
+module_install "$(pwd)"
