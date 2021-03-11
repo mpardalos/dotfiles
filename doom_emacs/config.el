@@ -280,7 +280,7 @@
         :desc "Rename symbol" "r" #'lsp-rename
         :desc "Code action"   "a" #'lsp-execute-code-action
         :desc "Format buffer" "f" #'lsp-format-buffer
-        :desc "Find symbol"   "s" #'lsp-ui-find-workspace-symbol)
+        :desc "Find symbol"   "s" #'lsp-ivy-workspace-symbol)
 
     :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
     :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
