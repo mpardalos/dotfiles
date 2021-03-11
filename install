@@ -30,5 +30,17 @@ for dep in $DEPENDS; do
     }
 done
 
+# Optional dependencies
+missing_optdepends=""
+for dep in $OPTDEPENDS; do
+    command -v "$dep" >/dev/null 2>&1  || {
+        missing_optdepends="$missing_optdepends $dep"
+    }
+done
+
+test -z "$missing_optdepends" || {
+    echo "==> Module $TARGET also optionally requires: $missing_optdepends"
+}
+
 # Install
 module_install "$(pwd)"
