@@ -52,7 +52,8 @@
         +attach
         +babel
         +export
-        +roam)
+        +roam
+        +gnuplot)
     (cc +lsp)
     idris
     (web +html +css)
