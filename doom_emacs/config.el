@@ -41,6 +41,9 @@
         :n "k" #'dired-previous-line
         :n "l" #'dired-find-file)
 
+    ;; dired-jump in other window, or in current window with prefix arg
+    ("C-x C-j" (cmd! (dired-jump (not current-prefix-arg))))
+
     :leader
     (:prefix ("f" . "File")
         :desc "Recent Files" "r" #'recentf-open-files
@@ -48,7 +51,6 @@
         :desc "Find under current directory" "f" #'counsel-file-jump)
 
     (:prefix ("d" . "Directory")
-        :desc "Current" "d" (cmd! () (find-file "."))
         :desc "Documents" "D" (cmd! () (find-file "~/Documents"))
         :desc "Dotfiles" "c" (cmd! () (find-file "~/.config/dotfiles"))
         :desc "Imperial" "i" (cmd! () (find-file "~/Documents/Imperial"))))
