@@ -1,9 +1,10 @@
 #!/bin/sh
 DOTS="$1"
 DEPENDS="fish exa curl direnv"
+OPTDEPENDS="gh"
 
 module_install() {
-    ln -sf $1/fish ~/.config/fish
+    ln -sf "$1/fish" ~/.config/fish
 
     if fish -c "! type omf >/dev/null 2>&1 "; then
         echo
@@ -19,4 +20,8 @@ module_install() {
     echo "==> Setting omf theme"
     fish -c "omf install agnoster"
     fish -c "omf theme agnoster"
+
+    command -v gh >/dev/null 2>&1 && {
+        gh completion -s fish > ~/.config/fish/completions/gh.fish
+    }
 }
