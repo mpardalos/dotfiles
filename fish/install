@@ -1,6 +1,6 @@
 #!/bin/sh
 DOTS="$1"
-DEPENDS="fish exa curl neofetch direnv"
+DEPENDS="fish exa curl direnv"
 
 module_install() {
     ln -sf $1/fish ~/.config/fish
