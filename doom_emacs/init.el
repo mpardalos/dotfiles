@@ -85,3 +85,7 @@
 
 ;; Needs to be set early so it can't go into config
 (setq evil-respect-visual-line-mode t)
+
+(when doom-debug-p
+  (require 'benchmark-init)
+  (add-hook 'doom-first-input-hook #'benchmark-init/deactivate))

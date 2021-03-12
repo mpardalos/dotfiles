@@ -18,3 +18,5 @@
 
 (package! ligature
     :recipe (:host github :repo "mickeynp/ligature.el"))
+
+(package! benchmark-init)
