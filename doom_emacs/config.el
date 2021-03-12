@@ -43,6 +43,7 @@
 
     ;; dired-jump in other window, or in current window with prefix arg
     ("C-x C-j" (cmd! (dired-jump (not current-prefix-arg))))
+    (:mode +doom-dashboard-mode "C-x C-j" (cmd! (dired-jump current-prefix-arg)))
 
     :leader
     (:prefix ("f" . "File")
