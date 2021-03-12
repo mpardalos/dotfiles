@@ -15,3 +15,6 @@
 (package! dired-single)
 
 (package! rebecca-theme)
+
+(package! ligature
+    :recipe (:host github :repo "mickeynp/ligature.el"))

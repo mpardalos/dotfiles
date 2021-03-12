@@ -218,13 +218,33 @@
     :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache
     :desc "Search in project"            "s" #'+ivy/project-search)
 
-;;; Font size
+;;; Fonts
 (map!
     :n "C--" #'doom/decrease-font-size
     :n "C-=" #'doom/increase-font-size
     :n "C-0" #'doom/reset-font-size)
 
-;;; Org-roam
+(use-package! ligature
+    :config
+    ;; Enable ligatures in programming modes
+    (ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                            ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                            "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                            "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" "/*" "/**"
+                                            "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                                            "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                                            "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                                            "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                                            "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                                            "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+    (global-ligature-mode 1))
+
+;;; Org mode
+
+(after! org
+    (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs)))
+
+;;;; Org-roam
 
 (setq
     org-roam-directory "~/Documents/org-roam"
