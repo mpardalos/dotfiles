@@ -63,7 +63,6 @@
     rest
     data
     (rust +lsp)
-    csharp
     coq
     ocaml
     (go +lsp)
