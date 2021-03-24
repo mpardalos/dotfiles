@@ -243,6 +243,7 @@
 
 (after! org
     (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+    (set-company-backend! 'org-mode nil)
     (setq org-format-latex-options
       (plist-put org-format-latex-options :background "Transparent")))
 
