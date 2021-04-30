@@ -12,7 +12,7 @@
 	co = checkout
 	re = reset
 	s = status --short
-	ls = status --long
+	ss = status --long
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	get-ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [pull]
