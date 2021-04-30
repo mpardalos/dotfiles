@@ -319,7 +319,8 @@
 ;;;; Coq
 (map!
     :mode coq-mode
-    :desc "Proof go to point" "C-c C-SPC" #'company-coq-proof-goto-point
+    :desc "Proof go to point" "C-c C-c" #'company-coq-proof-goto-point
+    :desc "Interrupt proof" "C-c C-k" #'proof-interrupt-process
 
     :localleader
     :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point
