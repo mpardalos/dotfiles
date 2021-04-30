@@ -326,6 +326,9 @@
     :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point
     :desc "Show definition overlay" "d" #'company-coq-toggle-definition-overlay)
 
+;; Workaround for a bug
+(setq coq-show-proof-diffs-regexp "")
+
 ;;;; C(++)
 (map!
     :mode cpp-mode
