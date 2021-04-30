@@ -8,7 +8,7 @@
     :ui
     doom
     doom-dashboard
-    modeline
+    (modeline +light)
     ophints
     hl-todo
     nav-flash
