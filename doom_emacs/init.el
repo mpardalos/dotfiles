@@ -65,7 +65,6 @@
     data
     (rust +lsp)
     coq
-    ocaml
     (go +lsp)
 
     :checkers
