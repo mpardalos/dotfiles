@@ -257,7 +257,6 @@
 (map!
     :leader
     :prefix ("n" . "Notes (roam)")
-    :desc "Switch to buffer"              "b" #'org-roam-switch-to-buffer
     :desc "Org Roam Capture"              "c" #'org-roam-capture
     :desc "Find file"                     "f" #'org-roam-find-file
     :desc "Show graph"                    "g" #'org-roam-graph
@@ -270,6 +269,18 @@
         :desc "Today"          "t" #'org-roam-dailies-find-today
         :desc "Tomorrow"       "m" #'org-roam-dailies-find-tomorrow
         :desc "Yesterday"      "y" #'org-roam-dailies-find-yesterday))
+
+;;; Bibliography
+
+(setq bibtex-completion-bibliography '("~/Documents/bibliography/bibliography.bib"))
+(setq bibtex-completion-library-path '("~/Documents/bibliography/pdfs"))
+(setq bibtex-completion-notes-path "~/Documents/bibliography/notes.org")
+(setq bibtex-completion-additional-search-fields '("tags"))
+
+(map!
+    :leader
+    :desc "Bibliography" "b" #'ivy-bibtex
+    :desc "Bibliography" "B" #'ivy-bibtex-with-local-bibliography)
 
 ;;; Console
 (setq! vterm-shell "/bin/fish")

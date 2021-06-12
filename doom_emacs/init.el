@@ -42,6 +42,7 @@
     editorconfig
     pdf
     direnv
+    biblio
 
     :lang
     (sh +fish)
