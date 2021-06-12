@@ -22,7 +22,7 @@
     scroll-margin 20
 
     ;; Make flycheck faster
-    flycheck-highlighting-mode 'lines
+    flycheck-highlighting-mode 'symbols
 
     ;; Reduce strain from company completion
     company-idle-delay 0.5)
