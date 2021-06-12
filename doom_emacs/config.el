@@ -362,11 +362,6 @@
 (after! tex
     (setq TeX-master "shared"))
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
-(map!
-    :mode tex-mode
-    :localleader
-    :desc "To environment" "e" #'LaTeX-narrow-to-environment
-    :desc "To group"       "g" #'TeX-narrow-to-group)
 
 ;;;; Dafny/boogie
 (after! boogie-friends
