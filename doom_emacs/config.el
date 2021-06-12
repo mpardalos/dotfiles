@@ -397,10 +397,6 @@
     :desc "Browse to website"  "b" #'hugo-browse)
 
 ;;;; Verilog
-(after! verilog-mode
-    (setq verilog-indent-level 2)
-    (setq verilog-indent-level-module 0)
-    (setq verilog-indent-level-declaration 0))
 
 (defun vericert-clean-up ()
     (interactive)
