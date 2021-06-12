@@ -142,7 +142,8 @@
     :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
     :desc "Stage file"        "S" #'magit-stage-file
     :desc "Checkout"          "o" #'magit-checkout
-    :desc "Git Timemachine"   "t" #'git-timemachine)
+    :desc "Git Timemachine"   "t" #'git-timemachine
+    :desc "Smerge"            "m" #'+vc/smerge-hydra/body)
 
 (map!
     :desc "Previous Hunk"  :n "[g" 'git-gutter:previous-hunk
