@@ -56,7 +56,6 @@
         +roam2
         +gnuplot)
     (cc +lsp)
-    idris
     (web +html +css)
     (latex +latexmk +viewers)
     (python +lsp)
