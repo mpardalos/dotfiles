@@ -66,6 +66,7 @@
     (rust +lsp)
     coq
     (go +lsp)
+    nix
 
     :checkers
     grammar
