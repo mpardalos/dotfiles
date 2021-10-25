@@ -2,7 +2,7 @@
 
 (doom!
     :completion
-    (ivy +icons +prescient +fuzzy)
+    (ivy +icons +fuzzy)
     (company +childframe)
 
     :ui
