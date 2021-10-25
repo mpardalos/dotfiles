@@ -53,7 +53,7 @@
         +attach
         +babel
         +export
-        +roam
+        +roam2
         +gnuplot)
     (cc +lsp)
     idris
