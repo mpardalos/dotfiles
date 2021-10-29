@@ -355,6 +355,10 @@
     :desc "Proof go to point" "SPC" #'company-coq-proof-goto-point
     :desc "Show definition overlay" "d" #'company-coq-toggle-definition-overlay)
 
+;; Fix for slow startup
+(after! core-editor
+  (add-to-list 'doom-detect-indentation-excluded-modes 'coq-mode))
+
 (setq
     ;; Workaround for a bug
     coq-show-proof-diffs-regexp ""
