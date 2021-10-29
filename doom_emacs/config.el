@@ -253,24 +253,37 @@
 
 (setq
     org-roam-directory "~/Documents/org-roam"
+    +org-roam-open-buffer-on-find-file nil
     org-roam-file-exclude-regexp ".stversions/")
 
 (map!
     :leader
     :prefix ("n" . "Notes (roam)")
-    :desc "Find file"                     "f" #'org-roam-node-find
-    ;; :desc "Switch to buffer"              "b" #'org-roam-switch-to-buffer
-    ;; :desc "Org Roam Capture"              "c" #'org-roam-capture
-    :desc "Show graph"                    "g" #'org-roam-graph
-    ;; :desc "Insert"                        "i" #'org-roam-insert
-    ;; :desc "Insert (skipping org-capture)" "I" #'org-roam-insert-immediate
-    ;; :desc "Org Roam"                      "r" #'org-roam
+    :desc "Notes (org-roam)" "n" #'org-roam-node-find
 
     (:prefix ("d" . "by date")
         :desc "Arbitrary date" "d" #'org-roam-dailies-find-date
         :desc "Today"          "t" #'org-roam-dailies-find-today
         :desc "Tomorrow"       "m" #'org-roam-dailies-find-tomorrow
         :desc "Yesterday"      "y" #'org-roam-dailies-find-yesterday))
+
+(map!
+    :prefix ("C-c n" . "Notes (roam)")
+    :desc "Find file"                  "f" #'org-roam-node-find
+    :desc "Show ui"                    "u" #'org-roam-ui-mode
+    :desc "Org roam buffer"            "n" #'org-roam-buffer-toggle
+    :desc "Insert link"                "i" #'org-roam-node-insert)
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;;; Bibliography
 
