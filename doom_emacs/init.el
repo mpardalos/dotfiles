@@ -43,6 +43,7 @@
     pdf
     direnv
     biblio
+    (docker +lsp)
 
     :lang
     (sh +fish)
