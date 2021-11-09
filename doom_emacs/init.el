@@ -67,6 +67,7 @@
     coq
     (go +lsp)
     nix
+    yaml
 
     :checkers
     grammar
