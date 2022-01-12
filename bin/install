@@ -2,6 +2,6 @@
 DEPENDS=""
 
 module_install() {
-    echo "export PATH=\"\$PATH:$1/bin\"" >> ~/.bashrc
+    echo "export PATH=\"\$PATH:$1/bin\"" >> ~/.profile
 }
 
