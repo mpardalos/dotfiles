@@ -25,8 +25,7 @@
     flycheck-highlighting-mode 'symbols
 
     ;; Reduce strain from company completion
-    company-idle-delay 0.5)
-(setq! +pretty-code-enabled-modes '(haskell-mode fsharp-mode emacs-lisp-mode markdown-mode))
+    company-idle-delay nil)
 
 ;;; File management
 (setq! dired-listing-switches "-ABhl -X --group-directories-first")
