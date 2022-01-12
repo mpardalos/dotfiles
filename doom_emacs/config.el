@@ -326,7 +326,7 @@
         :desc "Rename symbol" "r" #'lsp-rename
         :desc "Code action"   "a" #'lsp-execute-code-action
         :desc "Format buffer" "f" #'lsp-format-buffer
-        :desc "Find symbol"   "s" #'lsp-ivy-workspace-symbol)
+        :desc "Find symbol"  "s" #'lsp-ivy-workspace-symbol)
 
     :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
     :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
@@ -450,8 +450,6 @@
     :localleader
     :desc "TODO"         "t" #'org-todo
     :desc "Export"       "e" #'org-export-dispatch
-    :desc "Schedule"     "s" #'org-schedule
-    :desc "Add deadline" "d" #'org-deadline
 
     (:prefix-map ("i" . "insert")
         :desc "Table""t" #'org-table-create)
