@@ -246,6 +246,7 @@
     :desc "Notes (org-roam)" "n" #'org-roam-node-find)
 
 (map!
+    :mode org-roam-mode
     :prefix ("C-c n" . "Notes (roam)")
     :desc "Find file"                  "f" #'org-roam-node-find
     :desc "Show ui"                    "u" #'org-roam-ui-mode
