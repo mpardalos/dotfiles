@@ -9,7 +9,7 @@ module_install() {
     if fish -c "! type omf >/dev/null 2>&1 "; then
         echo
         echo "==> Downloading omf installer"
-        curl --silent --location https://get.oh-my.fish > /tmp/fish-install-omf 2>/dev/null
+	curl --silent https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install -o /tmp/fish-install-omf
 
         echo
         echo "==> Running omf installer"
