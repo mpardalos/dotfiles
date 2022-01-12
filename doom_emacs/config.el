@@ -315,8 +315,9 @@
             :initialization-options (lambda () ccls-initialization-options)
             :library-folders-fn ccls-library-folders-fn
             :remote? t)))
-(setq!
+(setq
     lsp-ui-sideline-enable nil
+    lsp-ui-doc-position 'top
     lsp-eldoc-enable-hover nil
     lsp-eldoc-hook '(lsp-hover)
     lsp-auto-guess-root 't)
