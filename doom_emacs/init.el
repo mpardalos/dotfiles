@@ -44,6 +44,7 @@
     direnv
     biblio
     (docker +lsp)
+    (debugger +lsp)
 
     :lang
     (sh +fish)

@@ -364,6 +364,8 @@
     :localleader
     :desc "Toggle header/source" "t" #'ff-find-other-file)
 
+(require 'dap-gdb-lldb)
+
 ;;;; Make
 (map!
     :leader
