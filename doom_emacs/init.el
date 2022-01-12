@@ -73,7 +73,7 @@
     :checkers
     grammar
     (spell +flyspell)
-    syntax
+    (syntax +childframe)
 
     :term
     vterm
