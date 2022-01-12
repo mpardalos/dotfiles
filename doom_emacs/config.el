@@ -260,13 +260,7 @@
 (map!
     :leader
     :prefix ("n" . "Notes (roam)")
-    :desc "Notes (org-roam)" "n" #'org-roam-node-find
-
-    (:prefix ("d" . "by date")
-        :desc "Arbitrary date" "d" #'org-roam-dailies-find-date
-        :desc "Today"          "t" #'org-roam-dailies-find-today
-        :desc "Tomorrow"       "m" #'org-roam-dailies-find-tomorrow
-        :desc "Yesterday"      "y" #'org-roam-dailies-find-yesterday))
+    :desc "Notes (org-roam)" "n" #'org-roam-node-find)
 
 (map!
     :prefix ("C-c n" . "Notes (roam)")
