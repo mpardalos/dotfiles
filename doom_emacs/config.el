@@ -299,9 +299,11 @@
 (setq
     lsp-ui-sideline-enable nil
     lsp-ui-doc-position 'top
+    lsp-lens-auto-enable nil
     lsp-eldoc-enable-hover nil
     lsp-eldoc-hook '(lsp-hover)
     lsp-auto-guess-root 't)
+
 (map!
     :mode lsp-mode
     (:localleader
