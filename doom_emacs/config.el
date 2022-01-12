@@ -278,10 +278,8 @@
 ;;; Console
 (setq! vterm-shell "/bin/fish")
 (map!
-    :leader :prefix ("c" . "Consoles")
-    :desc "Internal (eshell)" :leader "c" #'+eshell/toggle
-    :desc "Internal (vterm)"  :leader "t" #'+vterm/toggle
-    :desc "Terminal emulator" :leader "e" #'my/open-external-term)
+    :leader
+    :desc "Terminal" "c" #'+vterm/toggle)
 
 ;;; LSP
 ;; Set up ccls for TRAMP
