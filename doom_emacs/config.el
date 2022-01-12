@@ -114,10 +114,7 @@
     :desc "Previous Error"  :n "[e" 'flycheck-previous-error
     :desc "Next Error"      :n "]e" 'flycheck-next-error
     :desc "Previous spelling error" :n "[s" #'evil-prev-flyspell-error
-    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error
-
-    ;; Help
-    "C-h a" #'counsel-apropos)
+    :desc "Next spelling error"     :n "]s" #'evil-next-flyspell-error)
 
 
 ;;; Folding
@@ -155,20 +152,6 @@
     :n "]]"  #'git-timemachine-show-next-revision
     :n "q"   #'git-timemachine-quit
     :n "gb"  #'git-timemachine-blame)
-
-;;; Help
-(map!
-    :prefix ("C-h" . "help")
-
-    :desc "Describe DOOM module"          "d"   #'doom/describe-module
-    :desc "Describe mode"                 "M"   #'describe-mode
-    :desc "Describe active minor modes"   "m"   #'doom/describe-active-minor-mode
-    :desc "Describe face"                 "F"   #'describe-face
-    :desc "Show bindings"                 "b"   #'which-key-show-top-level
-    :desc "Show bindings detailed"        "B"   #'counsel-descbinds
-    :desc "Man pages"                     "w"   #'+default/man-or-woman
-    :desc "Print Doom version"            "V"   #'doom/version
-    :desc "View *Messages*"               ";"   #'view-echo-area-messages)
 
 ;;; Run
 (map!
