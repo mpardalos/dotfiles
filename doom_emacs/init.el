@@ -69,6 +69,7 @@
     (go +lsp)
     nix
     yaml
+    lean
 
     :checkers
     grammar
