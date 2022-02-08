@@ -73,3 +73,11 @@ Might not behave as intended if more than one cursors are on the same line."
 (defun evil-mc-vertical-align-with-space ()
   (interactive)
   (evil-mc-vertical-align 32))
+
+;;;###autoload
+(defun vericert-clean-up ()
+    (interactive)
+    "Clean up vericert-generated verilog"
+    (save-excursion
+        (let ((evil-ex-current-buffer (current-buffer)))
+            (evil-ex-execute "%s/begin\\n\\s+\\(.+?\\)\\n\\s+end/\\1"))))

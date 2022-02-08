@@ -424,12 +424,6 @@
 
 ;;;; Verilog
 
-(defun vericert-clean-up ()
-    (interactive)
-    "Clean up vericert-generated verilog"
-    (save-excursion
-        (let ((evil-ex-current-buffer (current-buffer)))
-            (evil-ex-execute "%s/begin\\n\\s+\\(.+?\\)\\n\\s+end/\\1"))))
 
 ;;;; Ivy
 (map!
