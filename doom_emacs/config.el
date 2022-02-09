@@ -270,6 +270,7 @@
     (:leader
         :prefix ("t" . "Toggles")
         :desc "Visual line mode"             "v" (cmd!! #'visual-line-mode)
+        :desc "Server"                       "S" (cmd!! #'server-mode)
         :desc "Flyspell"                     "s" #'flyspell-mode
         :desc "Flycheck list"                "f" #'flycheck-list-errors
         :desc "Line numbers"                 "l" #'doom/toggle-line-numbers
