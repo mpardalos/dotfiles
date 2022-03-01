@@ -12,7 +12,10 @@
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
  '(safe-local-variable-values
-   '((eval toggle-truncate-lines 1)
+   '((counsel-compile-local-builds "./mk bringup.x86hops noarmhops" "./mk" "./regress")
+     (counsel-compile-local-builds "./mk bringup.x86hops noarmhops")
+     (projectile-project-compilation-cmd . "./mk bringup.x86hops noarmhops")
+     (eval toggle-truncate-lines 1)
      (lsp-haskell-formatting-provider . stylish-haskell)
      (lsp-haskell-formatting-provider . "stylish-haskell")
      (eval require 'org-roam-dev)
