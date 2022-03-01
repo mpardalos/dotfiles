@@ -67,6 +67,7 @@
     ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
     org-plantuml-exec-mode 'plantuml
 
+    org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
     +org-roam-open-buffer-on-find-file nil
     org-roam-file-exclude-regexp ".stversions/"
