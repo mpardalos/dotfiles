@@ -189,6 +189,9 @@
     :n "TAB"    #'+fold/toggle
     ;; dired-jump in other window, or in current window with prefix arg
     ("C-x C-j" (cmd! (dired-jump (not current-prefix-arg))))
+
+    (:map 'evil-window-map :desc "Window hydra" "SPC" #'+hydra/window-nav/body)
+
     (:mode +doom-dashboard-mode "C-x C-j" (cmd! (dired-jump current-prefix-arg)))
 
 ;;;; Files
