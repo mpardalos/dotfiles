@@ -1,5 +1,6 @@
 # Aliases
 alias ll="exa -lg --group-directories-first"
+alias csvcol="column -s, -t"
 
 abbr --add g git
 abbr --add v nvim
