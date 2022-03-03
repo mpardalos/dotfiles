@@ -340,6 +340,15 @@
         :desc "Interrupt proof" "C-c C-k" #'proof-interrupt-process)
     )
 
+;;; Tweaks
+(defun my/find-file-ace (filename)
+    (interactive "F")
+    (let ((aw-dispatch-when-more-than 1))
+        (ace-window nil)
+        (find-file filename)))
+
+(add-to-list 'org-link-frame-setup '(file . my/find-file-ace))
+
 ;;; Local Variables
 ;; Local Variables:
 ;; eval: (outline-hide-sublevels 5)
