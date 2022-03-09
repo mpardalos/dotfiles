@@ -88,9 +88,19 @@
     )
 
 ;;; Org mode
-(after! org
+(defun my/find-file-ace (filename)
+    (interactive "F")
+    (require 'ace-window)
+    (let ((aw-dispatch-when-more-than 1))
+        (ace-window nil)
+        (find-file filename)))
+
+(defun my/org-hacks ()
     (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+    (setf (alist-get 'file org-link-frame-setup) #'my/find-file-ace)
     (set-company-backend! 'org-mode nil))
+
+(add-hook! 'org-load-hook :append #'my/org-hacks)
 
 (use-package! websocket
     :after org-roam)
@@ -339,15 +349,6 @@
         :desc "Proof go to point" "C-c C-c" #'company-coq-proof-goto-point
         :desc "Interrupt proof" "C-c C-k" #'proof-interrupt-process)
     )
-
-;;; Tweaks
-(defun my/find-file-ace (filename)
-    (interactive "F")
-    (let ((aw-dispatch-when-more-than 1))
-        (ace-window nil)
-        (find-file filename)))
-
-(add-to-list 'org-link-frame-setup '(file . my/find-file-ace))
 
 ;;; Local Variables
 ;; Local Variables:
