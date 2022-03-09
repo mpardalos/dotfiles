@@ -197,7 +197,8 @@
     '((lambda ()
           (setq imenu-generic-expression
               '(("Label" "^\\s-*\\(\\(\\w\\|_\\)+\\):+" 1)
-                    ("Segment" "^\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))))
+                   ("Segment" "^\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))
+          (modify-syntax-entry ?_ "w")))
     "Pchip assembler mode")
 
 ;;; Hugo
