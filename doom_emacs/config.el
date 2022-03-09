@@ -194,7 +194,10 @@
              ("^\\s-*\\(\\w\\|_\\|\\.\\)+" . font-lock-function-name-face))
         cpp-font-lock-keywords)
     '("\\.pasm\\'")
-    '()
+    '((lambda ()
+          (setq imenu-generic-expression
+              '(("Label" "^\\s-*\\(\\(\\w\\|_\\)+\\):+" 1)
+                    ("Segment" "^\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))))
     "Pchip assembler mode")
 
 ;;; Hugo
