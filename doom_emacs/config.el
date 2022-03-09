@@ -184,6 +184,19 @@
          (:exec . "%c run %s"))
     :mode 'kima-mode)
 
+;;; Pasm
+(define-generic-mode 'pasm-mode
+    '("//" ("/*" . "*/"))
+    '("constant" "export" "register" "register_a" "register_b" "slotgroup" "struct" "union" "typedef" "MACRO" "ENDM")
+    (append
+        '(("^\\s-*\\.\\(\\w\\|_\\|\\.\\)+" . font-lock-builtin-face)
+             ("^\\s-*\\(\\w\\|_\\)+:+" . font-lock-constant-face)
+             ("^\\s-*\\(\\w\\|_\\|\\.\\)+" . font-lock-function-name-face))
+        cpp-font-lock-keywords)
+    '("\\.pasm\\'")
+    '()
+    "Pchip assembler mode")
+
 ;;; Hugo
 (autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
 (evil-set-initial-state 'hugo-mode 'emacs)
