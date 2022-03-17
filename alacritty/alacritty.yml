@@ -24,6 +24,8 @@ window:
 
   dynamic_title: true
 
+  opacity: 0.9
+
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -77,9 +79,6 @@ font:
 
 cursor:
     cursor_style: Block
-
-# 1.0 is opaque
-background_opacity: 0.9
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
