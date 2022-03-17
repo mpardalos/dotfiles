@@ -38,6 +38,7 @@
     editorconfig
     pdf
     direnv
+    lookup
 
     :lang
     (sh +fish)
