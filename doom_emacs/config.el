@@ -205,7 +205,7 @@
 ;;; Maps
 (map!
     (:desc "Universal Argument" :leader "u" #'universal-argument)
-    (:desc "Search in file" :leader "j" #'swiper)
+    (:desc "Search in file" :leader "j" #'consult-line)
     (:map override
         :n ";" 'evil-ex
         :nv "s" 'evil-substitute)
@@ -222,7 +222,7 @@
     (:leader :prefix ("f" . "File")
         :desc "Recent Files" "r" #'recentf-open-files
         :desc "Project Files" "p" #'projectile-find-file
-        :desc "Find under current directory" "f" #'counsel-file-jump)
+        :desc "Find under current directory" "f" #'+default/find-file-under-here)
 
     (:leader :prefix ("d" . "Directory")
         :desc "Documents" "D" (cmd! () (find-file "~/Documents"))
@@ -325,7 +325,7 @@
         :desc "Switch to scratch buffer"     "X" #'doom/switch-to-project-scratch-buffer
         :desc "Pop up scratch buffer"        "x" #'doom/open-project-scratch-buffer
         :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache
-        :desc "Search in project"            "s" #'+ivy/project-search)
+        :desc "Search in project"            "s" #'+vertico/project-search)
 
 ;;;; Org
     (:leader
@@ -337,11 +337,6 @@
         :desc "Show ui"                    "u" #'org-roam-ui-mode
         :desc "Org roam buffer"            "n" #'org-roam-buffer-toggle
         :desc "Insert link"                "i" #'org-roam-node-insert)
-
-;;;; Bibliography
-    (:leader
-        :desc "Bibliography" "b" #'ivy-bibtex
-        :desc "Bibliography" "B" #'ivy-bibtex-with-local-bibliography)
 
 ;;;; Terminal
     (:leader :desc "Terminal" "c" #'+vterm/toggle)
