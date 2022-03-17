@@ -21,10 +21,7 @@
 
     :editor
     (evil +everywhere +commands)
-    snippets
-    file-templates
     multiple-cursors
-    rotate-text
     fold
     format
 
@@ -34,7 +31,6 @@
     undo
 
     :tools
-    lookup
     eval
     make
     (magit +forge)
@@ -42,9 +38,6 @@
     editorconfig
     pdf
     direnv
-    biblio
-    (docker +lsp)
-    (debugger +lsp)
 
     :lang
     (sh +fish)
@@ -63,26 +56,20 @@
     (python +lsp +pyright)
     (javascript +lsp)
     rest
-    data
+    data ;; csv + XML
     (rust +lsp)
     coq
     (go +lsp)
     nix
     yaml
-    lean
 
     :checkers
     grammar
-    (spell +flyspell)
-    (syntax +childframe)
+    spell
 
     :term
     vterm
     eshell
-
-    :app
-    ;;(email +gmail)    ; emacs as an email client
-    ;;(rss +org)        ; emacs as an RSS reader
     )
 
 
