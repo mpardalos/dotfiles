@@ -71,7 +71,3 @@
     vterm
     eshell
     )
-
-
-;; Needs to be set early so it can't go into config
-(setq evil-respect-visual-line-mode t)
