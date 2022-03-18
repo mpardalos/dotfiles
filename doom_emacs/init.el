@@ -12,7 +12,7 @@
     ophints
     hl-todo
     nav-flash
-    (popup +all +defaults)
+    popup
     vc-gutter
     vi-tilde-fringe
     window-select
