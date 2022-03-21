@@ -207,18 +207,22 @@
     "Pchip assembler mode")
 
 (defun pasm-out-highlight-critical-path ()
-  "Highlight the lines marked with a 'cp' in a pasm.out file"
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (while (re-search-forward "\\bcp\\b" nil t)
-      (let ((ov (make-overlay (point-at-bol) (point-at-eol))))
-        (overlay-put ov 'face 'hl-line)
-        (overlay-put ov 'type 'critical-path)))))
+    "Highlight the lines marked with a 'cp' in a pasm.out file"
+    (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "\\bcp\\b" nil t)
+            (add-text-properties (point-at-bol) (point-at-eol) '('face 'hl-line))
+            (let ((ov (make-overlay (point-at-bol) (point-at-eol))))
+                (overlay-put ov 'face 'hl-line-face)
+                (overlay-put ov 'type 'critical-path)))))
 
 (defun pasm-out-remove-highlight-critical-path ()
-  (interactive)
   (remove-overlays nil nil 'type 'critical-path))
+
+(defun pasm-out-hide-non-critical-path ()
+    "Hide the lines that are not marked as critical path. Use `hide-lines-show-all' to show all lines again"
+    (interactive)
+    (hide-lines-not-matching "\\bcp\\b"))
 
 (define-generic-mode 'pasm-out-mode
     '("//" ("/*" . "*/"))
@@ -233,7 +237,8 @@
               '(("Label" ":\\s-*\\(\\(\\w\\|_\\)+\\):+" 1)
                    ("Segment" ":\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))
           (modify-syntax-entry ?_ "w")
-          (pasm-out-highlight-critical-path)))
+          (pasm-out-highlight-critical-path)
+          (view-mode)))
     "Pchip assembler output mode")
 
 ;;; Maps

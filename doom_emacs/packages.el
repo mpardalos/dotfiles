@@ -25,3 +25,6 @@
 (package! websocket)
 (package! org-roam-ui
     :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
+
+(package! hide-lines
+    :recipe (:host github :repo "vapniks/hide-lines"))
