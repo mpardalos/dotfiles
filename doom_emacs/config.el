@@ -376,7 +376,8 @@
 ;;;; Org
     (:leader
         :desc "Notes (org-roam)" "n" #'org-roam-node-find
-        :desc "Bibliography" "b" #'citar-open)
+        :desc "Bibliography" "b" #'citar-open
+        :desc "Agenda"           "a" #'org-agenda)
     (:mode org-roam-mode
         :localleader
         :prefix ("n" . "Notes (roam)")
