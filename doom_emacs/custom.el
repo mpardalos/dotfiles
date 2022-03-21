@@ -17,7 +17,10 @@
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
  '(safe-local-variable-values
-   '((counsel-compile-local-builds "./mk bringup.x86hops noarmhops" "./mk" "./regress")
+   '((counsel-compile-local-builds "ssh pardalos@rs6 \"echo 'make -C /work/pardalos/vhdl.mp/npchip/tb/assembler -j' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -p:\"-log4 /work/pardalos/npasm_log.cfg\" -E lava' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -p:\"-log4 /work/pardalos/npasm_log.cfg\" -P lava' | tcsh -s\"")
+     (counsel-compile-local-builds "ssh pardalos@rs6 \"echo 'make -C /work/pardalos/vhdl.mp/npchip/tb/assembler -j' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -E lava' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -P lava' | tcsh -s\"")
+     (counsel-compile-local-builds "ssh pardalos@rs6 \"echo 'make -C /work/pardalos/vhdl.mp/npchip/tb/assembler -j' | tcsh -s\"")
+     (counsel-compile-local-builds "./mk bringup.x86hops noarmhops" "./mk" "./regress")
      (counsel-compile-local-builds "./mk bringup.x86hops noarmhops")
      (projectile-project-compilation-cmd . "./mk bringup.x86hops noarmhops")
      (eval toggle-truncate-lines 1)
