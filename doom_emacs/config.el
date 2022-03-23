@@ -190,56 +190,12 @@
     :mode 'kima-mode)
 
 ;;; Pasm
-(define-generic-mode 'pasm-mode
-    '("//" ("/*" . "*/"))
-    '("constant" "export" "register" "register_a" "register_b" "slotgroup" "struct" "union" "typedef" "MACRO" "ENDM")
-    (append
-        '(("^\\s-*\\.\\(\\w\\|_\\|\\.\\)+" . font-lock-builtin-face)
-             ("^\\s-*\\(\\w\\|_\\)+:+" . font-lock-constant-face)
-             ("^\\s-*\\(\\w\\|_\\|\\.\\)+" . font-lock-function-name-face))
-        cpp-font-lock-keywords)
-    '("\\.pasm\\'")
-    '((lambda ()
-          (setq imenu-generic-expression
-              '(("Label" "^\\s-*\\(\\(\\w\\|_\\)+\\):+" 1)
-                   ("Segment" "^\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))
-          (modify-syntax-entry ?_ "w")))
-    "Pchip assembler mode")
+(load! "+pasm" nil t)
 
-(defun pasm-out-highlight-critical-path ()
-    "Highlight the lines marked with a 'cp' in a pasm.out file"
-    (save-excursion
-        (goto-char (point-min))
-        (while (re-search-forward "\\bcp\\b" nil t)
-            (add-text-properties (point-at-bol) (point-at-eol) '('face 'hl-line))
-            (let ((ov (make-overlay (point-at-bol) (point-at-eol))))
-                (overlay-put ov 'face 'hl-line-face)
-                (overlay-put ov 'type 'critical-path)))))
-
-(defun pasm-out-remove-highlight-critical-path ()
-  (remove-overlays nil nil 'type 'critical-path))
-
-(defun pasm-out-hide-non-critical-path ()
-    "Hide the lines that are not marked as critical path. Use `hide-lines-show-all' to show all lines again"
-    (interactive)
-    (hide-lines-not-matching "\\bcp\\b"))
-
-(define-generic-mode 'pasm-out-mode
-    '("//" ("/*" . "*/"))
-    '("constant" "export" "register" "register_a" "register_b" "slotgroup" "struct" "union" "typedef" "MACRO" "ENDM")
-    '((":\\s-*\\(\\.\\(\\w\\|_\\|\\.\\)+\\)" (1 font-lock-builtin-face))
-         (":\\s-*\\(\\(\\w\\|_\\)+:+\\)" (1 font-lock-constant-face))
-         (":\\s-*\\(\\(\\w\\|_\\|\\.\\)+\\)" (1 font-lock-function-name-face))
-         ("\\bcp\\b" . font-lock-warning-face))
-    '("\\.pasm\\.out\\'")
-    '((lambda ()
-          (setq imenu-generic-expression
-              '(("Label" ":\\s-*\\(\\(\\w\\|_\\)+\\):+" 1)
-                   ("Segment" ":\\s-*// BEGIN_SEGMENT \\(.*\\)$" 1)))
-          (modify-syntax-entry ?_ "w")
-          (pasm-out-highlight-critical-path)
-          (view-mode)))
-    "Pchip assembler output mode")
+;;; Hugo
+(autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
+(evil-set-initial-state 'hugo-mode 'emacs)
+(add-hook 'markdown-mode-hook #'hugo-minor-mode)
 
 ;;; Maps
 (map!
