@@ -18,6 +18,7 @@
     window-select
     hydra
     zen
+    svg
 
     :editor
     (evil +everywhere +commands)
