@@ -6,8 +6,6 @@
     (lambda (&rest args) (my/remember-theme-save)))
 
 ;;;; Save on normal mode
-;;;; Calculate vimish folds when opening a file
-(add-hook 'vimish-fold-mode-hook #'vimish-fold-from-marks)
 (add-hook 'evil-normal-state-entry-hook
     (fn!! (if buffer-file-name (save-buffer) (message "Current buffer is unnamed"))))
 
