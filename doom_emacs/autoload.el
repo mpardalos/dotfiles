@@ -45,12 +45,6 @@
   (start-process "external-term" nil "gnome-terminal"))
 
 ;;;###autoload
-(defun my/save-if-named ()
-  "Save the current buffer if it has a filename"
-  (interactive)
-  (lambda () (if (buffer-file-name) (save-buffer) (message "Current buffer is unnamed"))))
-
-;;;###autoload
 (defun evil-mc-vertical-align (character)
   "Aligns all cursors vertically with a given CHARACTER to the one with the
 highest colum number (the rightest).
