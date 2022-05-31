@@ -24,6 +24,7 @@
     multiple-cursors
     fold
     format
+    snippets
 
     :emacs
     (dired +icons)
