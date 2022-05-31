@@ -231,11 +231,6 @@
           (pasm-out-highlight-critical-path)))
     "Pchip assembler output mode")
 
-;;; Hugo
-(autoload 'hugo-minor-mode "hugo" "Hugo minor mode")
-(evil-set-initial-state 'hugo-mode 'emacs)
-(add-hook 'markdown-mode-hook #'hugo-minor-mode)
-
 ;;; Maps
 (map!
     (:desc "Universal Argument" :leader "u" #'universal-argument)
