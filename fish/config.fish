@@ -1,6 +1,7 @@
 # Aliases
 alias ll="exa -lg --group-directories-first"
 alias csvcol="column -s, -t"
+alias open-rust-doc="open /usr/share/doc/rust/html/index.html"
 
 abbr --add g git
 abbr --add v nvim
