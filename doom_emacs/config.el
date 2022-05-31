@@ -249,6 +249,9 @@
 
     ;; :desc "Format region/buffer" "gQ" #'+format/region-or-buffer
 
+    ;; Export to pdf
+    (:mode org-mode "C-c p" (cmd! (display-buffer-pop-up-window (find-file-noselect (org-latex-export-to-pdf)) nil)))
+
 ;;;; Files
     (:leader :prefix ("f" . "File")
         :desc "Recent Files" "r" #'recentf-open-files
