@@ -247,6 +247,8 @@
 
     (:mode +doom-dashboard-mode "C-x C-j" (cmd! (dired-jump current-prefix-arg)))
 
+    ;; :desc "Format region/buffer" "gQ" #'+format/region-or-buffer
+
 ;;;; Files
     (:leader :prefix ("f" . "File")
         :desc "Recent Files" "r" #'recentf-open-files
@@ -375,7 +377,6 @@
         (:localleader
             :desc "Rename symbol" "r" #'lsp-rename
             :desc "Code action"   "a" #'lsp-execute-code-action
-            :desc "Format buffer" "f" #'lsp-format-buffer
             :desc "Find symbol"  "s" #'lsp-ivy-workspace-symbol)
 
         :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
