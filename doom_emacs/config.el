@@ -59,6 +59,7 @@
     proof-three-window-enable nil
     +latex-viewers '(pdf-tools zathura)
     LaTeX-item-indent 2
+    LaTeX-beamer-item-overlay-flag nil
     TeX-master "shared"
 
     org-agenda-files (list "~/org/")
