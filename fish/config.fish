@@ -9,6 +9,7 @@ abbr --add tree "ll --tree"
 
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
+set -p PATH ~/.cargo/bin
 set -a PATH ~/.local/bin
 set -a PATH ~/.emacs.d/bin
 set -a PATH ~/.ghcup/bin
