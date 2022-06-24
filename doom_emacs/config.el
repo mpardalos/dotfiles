@@ -88,6 +88,8 @@
     vimish-fold-global-mode 't
     )
 
+(recentf-mode)
+
 ;;; Org mode
 (defun my/find-file-ace (filename)
     (interactive "F")
