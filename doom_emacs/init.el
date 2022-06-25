@@ -66,7 +66,6 @@
     yaml
 
     :checkers
-    grammar
     spell
 
     :term
