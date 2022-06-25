@@ -240,6 +240,8 @@
         :n ";" 'evil-ex
         :nv "s" 'evil-substitute)
 
+    (:desc "Where is the cursor" "C-x w" #'+nav-flash/blink-cursor)
+
     :n "TAB"    #'+fold/toggle
     ;; dired-jump in other window, or in current window with prefix arg
     ("C-x C-j" (cmd! (dired-jump (not current-prefix-arg))))
