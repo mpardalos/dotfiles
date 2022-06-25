@@ -23,10 +23,6 @@
     display-line-numbers-type nil
     evil-move-cursor-back nil
 
-    scroll-step 1
-    maximum-scroll-margin 0.2
-    scroll-margin 20
-
     ;; Make flycheck faster
     flycheck-highlighting-mode 'symbols
 
