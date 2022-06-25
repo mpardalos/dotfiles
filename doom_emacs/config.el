@@ -64,6 +64,10 @@
     ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
     org-plantuml-exec-mode 'plantuml
 
+    citar-bibliography '("~/Documents/bibliography/bibliography.bib")
+    citar-library-paths '("~/Documents/bibliography/pdfs")
+    citar-notes-paths '("~/Documents/bibliography/notes")
+
     org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
     +org-roam-open-buffer-on-find-file nil
@@ -366,7 +370,8 @@
 
 ;;;; Org
     (:leader
-        :desc "Notes (org-roam)" "n" #'org-roam-node-find)
+        :desc "Notes (org-roam)" "n" #'org-roam-node-find
+        :desc "Bibliography" "b" #'citar-open)
     (:mode org-roam-mode
         :localleader
         :prefix ("n" . "Notes (roam)")

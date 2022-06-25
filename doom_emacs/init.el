@@ -40,6 +40,7 @@
     pdf
     direnv
     lookup
+    biblio
 
     :lang
     (sh +fish)
