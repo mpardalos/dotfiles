@@ -82,6 +82,8 @@
     alloy-basic-offset 2
 
     vimish-fold-global-mode 't
+
+    global-hl-line-modes ()
     )
 
 (recentf-mode)
