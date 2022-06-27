@@ -8,6 +8,7 @@
  '(flycheck-posframe-position 'window-bottom-right-corner)
  '(font-latex-fontify-sectioning 'color)
  '(lsp-ui-doc-position 'top t)
+ '(lsp-haskell-formatting-provider "stylish-haskell")
  '(lsp-ui-doc-position 'top)
  '(orderless-component-separator 'orderless-escapable-split-on-space)
  '(org-export-with-broken-links nil)
