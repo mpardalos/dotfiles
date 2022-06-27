@@ -8,6 +8,8 @@
  '(flycheck-posframe-position 'window-bottom-right-corner)
  '(font-latex-fontify-sectioning 'color)
  '(lsp-ui-doc-position 'top t)
+ '(lsp-ui-doc-position 'top)
+ '(orderless-component-separator 'orderless-escapable-split-on-space)
  '(org-export-with-broken-links nil)
  '(pixel-scroll-mode t)
  '(pixel-scroll-precision-interpolate-page t)
