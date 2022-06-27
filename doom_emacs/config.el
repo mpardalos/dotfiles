@@ -331,7 +331,7 @@
         (:localleader
             :desc "Rename symbol" "r" #'lsp-rename
             :desc "Code action"   "a" #'lsp-execute-code-action
-            :desc "Find symbol"  "s" #'lsp-ivy-workspace-symbol)
+            :desc "Find symbol"  "s" #'consult-lsp-symbols)
 
         :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
         :desc "Go to type definition" :n "gt" #'lsp-goto-type-definition)
