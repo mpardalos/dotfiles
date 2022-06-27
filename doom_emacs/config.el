@@ -141,20 +141,6 @@
 (after! forge
     (add-to-list 'forge-alist '("gitlab.haskell.org" "gitlab.haskell.org/api/v4" "gitlab.haskell.org" forge-gitlab-repository)))
 
-;;; Ligatures
-(use-package! ligature
-    :config
-    ;; Enable ligatures in programming modes
-    (ligature-set-ligatures 'haskell-mode
-        '("{-" "::" ":::" "!!" "-}"
-             "----------" "-<" "-<<" ".=" "??" "/=" "&&" "||" "|>" "^=" "$>" "++" "+++"
-             "+>" "==" "=<<" "=/=" ">-" ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|"
-             "<|>" "<$" "<$>" "<->" "<+" "<+>" "<=" "<=>" "<=<" "<>" "<<" "<<-" "<<="
-             "<<<"))
-    (ligature-set-ligatures 'c-mode '("/*" "*/" "++" "+=" "-=" "/=" "*="))
-    (ligature-set-ligatures 'cpp-mode '("/*" "*/" "++" "+=" "-=" "/=" "*="))
-    (global-ligature-mode 1))
-
 ;;; Coq
 ;; Fix for slow startup
 (after! core-editor
