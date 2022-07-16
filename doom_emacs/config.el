@@ -7,7 +7,7 @@
 
 ;;;; Save on normal mode
 (add-hook 'evil-normal-state-entry-hook
-    (fn!! (if buffer-file-name (save-buffer) (message "Current buffer is unnamed"))))
+    (lambda () (if buffer-file-name (save-buffer) (message "Current buffer is unnamed"))))
 
 ;;; Settings
 (setq!
