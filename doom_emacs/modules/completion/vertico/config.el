@@ -20,7 +20,7 @@ overrides `completion-styles' during company completion sessions.")
         "Highlight company matches correctly, and try default completion styles before orderless."
         :around #'company-capf--candidates
         (let ((orderless-match-faces [completions-common-part])
-                 (completion-styles +vertico-company-completion-styles))
+                 (completion-styles '(basic partial-completion orderless)))
             (apply fn args)))
 
     (setq completion-styles '(orderless basic)
