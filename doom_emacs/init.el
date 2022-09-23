@@ -43,6 +43,7 @@
     lookup
     biblio
     terraform
+    ansible
     (docker +lsp)
 
     :lang
