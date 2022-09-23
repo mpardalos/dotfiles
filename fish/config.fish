@@ -1,5 +1,5 @@
 # Aliases
-alias ll="exa -lg --group-directories-first"
+alias ll="exa -lg --group-directories-first --git"
 alias csvcol="column -s, -t"
 alias open-rust-doc="open /usr/share/doc/rust/html/index.html"
 
@@ -10,12 +10,12 @@ abbr --add tree "ll --tree"
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -p PATH ~/.cargo/bin
-set -a PATH ~/.local/bin
-set -a PATH ~/.emacs.d/bin
-set -a PATH ~/.ghcup/bin
-set -a PATH ~/.cabal/bin
-set -a PATH ~/Documents/go/bin
-set -a PATH ~/.local/share/npm/bin
+set -p PATH ~/.local/bin
+set -p PATH ~/.emacs.d/bin
+set -p PATH ~/.ghcup/bin
+set -p PATH ~/.cabal/bin
+set -p PATH ~/Documents/go/bin
+set -p PATH ~/.local/share/npm/bin
 
 set -x GOPATH "$HOME/Documents/go"
 
