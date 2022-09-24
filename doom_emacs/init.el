@@ -42,6 +42,7 @@
     direnv
     lookup
     biblio
+    terraform
 
     :lang
     (sh +fish)
