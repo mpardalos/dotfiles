@@ -25,3 +25,15 @@ set -x EDITOR /usr/bin/nvim
 set -x OSTYPE linux
 
 eval (direnv hook fish)
+
+function tmux-set-pane-title 
+    if test -n $TMUX
+        printf "\033]2;%s\033\ \n" "$argv" 
+    end
+end
+
+function ssh
+  tmux-set-pane-title "$argv"
+  command ssh $argv 
+  tmux-set-pane-title (hostname)
+end
