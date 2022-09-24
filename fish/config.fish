@@ -1,3 +1,18 @@
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.elan/bin"
+fish_add_path "$HOME/.cargo/bin"
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.emacs.d/bin"
+fish_add_path "$HOME/.ghcup/bin"
+fish_add_path "$HOME/.cabal/bin"
+fish_add_path "$HOME/Documents/go/bin"
+fish_add_path "$HOME/.local/share/npm/bin"
+
+set -gx GOPATH "$HOME/Documents/go"
+set -gx VISUAL "/usr/bin/nvim"
+set -gx EDITOR "/usr/bin/nvim"
+set -gx OSTYPE "linux"
+
 # Aliases
 alias ll="exa -lg --group-directories-first --git"
 alias csvcol="column -s, -t"
@@ -8,21 +23,6 @@ abbr --add v nvim
 abbr --add tree "ll --tree"
 
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-
-set -p PATH ~/.cargo/bin
-set -p PATH ~/.local/bin
-set -p PATH ~/.emacs.d/bin
-set -p PATH ~/.ghcup/bin
-set -p PATH ~/.cabal/bin
-set -p PATH ~/Documents/go/bin
-set -p PATH ~/.local/share/npm/bin
-
-set -x GOPATH "$HOME/Documents/go"
-
-set -x VISUAL /usr/bin/nvim
-set -x EDITOR /usr/bin/nvim
-
-set -x OSTYPE linux
 
 eval (direnv hook fish)
 
