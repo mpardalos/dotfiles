@@ -43,6 +43,7 @@
     lookup
     biblio
     terraform
+    (docker +lsp)
 
     :lang
     (sh +fish)
