@@ -7,7 +7,9 @@
 
 (package! orderless)
 (package! consult)
-(package! embark)
 (package! marginalia)
 (package! all-the-icons-completion)
+
+(package! embark)
+(package! embark-consult)
 (package! wgrep)

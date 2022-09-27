@@ -69,6 +69,11 @@ overrides `completion-styles' during company completion sessions.")
     :config
     (set-popup-rule! "^\\*Embark Export Grep" :size 0.35 :ttl 0 :quit nil))
 
+(use-package! embark-consult
+  :after (embark consult)
+  :config
+  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+
 (use-package! marginalia
     :hook (doom-first-input . marginalia-mode)
     :init
