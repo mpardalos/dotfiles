@@ -52,6 +52,7 @@
     markdown
     (haskell +lsp)
     (org
+        +pretty
         +attach
         +babel
         +export
