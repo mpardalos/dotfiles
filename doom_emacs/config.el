@@ -179,7 +179,7 @@
 (add-hook 'markdown-mode-hook #'hugo-minor-mode)
 
 ;;; Writeroom mode
-(setq! writeroom-major-modes '(text-mode org-mode))
+(setq! writeroom-major-modes '(org-mode))
 (global-writeroom-mode 1)
 
 ;;; Maps
