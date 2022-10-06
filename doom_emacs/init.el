@@ -57,7 +57,8 @@
         +babel
         +export
         +roam2
-        +gnuplot)
+        +gnuplot
+        +dragndrop)
     (cc +lsp)
     (web +html +css)
     (latex +latexmk +viewers)
