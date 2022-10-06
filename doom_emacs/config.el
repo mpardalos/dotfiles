@@ -108,6 +108,9 @@
 (use-package! websocket
     :after org-roam)
 
+; Doom changes this. Set it back to the default
+(setq! org-attach-id-dir "data/")
+
 ;;; vimrc
 (add-to-list 'auto-mode-alist
     '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
