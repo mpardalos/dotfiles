@@ -111,6 +111,11 @@
 ; Doom changes this. Set it back to the default
 (setq! org-attach-id-dir "data/")
 
+;;; Spell check
+(add-hook 'spell-fu-mode-hook
+    (lambda ()
+      (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "el"))))
+
 ;;; vimrc
 (add-to-list 'auto-mode-alist
     '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
