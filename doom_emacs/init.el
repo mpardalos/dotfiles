@@ -73,7 +73,7 @@
     yaml
 
     :checkers
-    spell
+    (spell +aspell)
 
     :term
     vterm
