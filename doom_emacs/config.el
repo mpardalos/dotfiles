@@ -350,7 +350,8 @@
         :desc "Find file"                  "f" #'org-roam-node-find
         :desc "Show ui"                    "u" #'org-roam-ui-mode
         :desc "Org roam buffer"            "n" #'org-roam-buffer-toggle
-        :desc "Insert link"                "i" #'org-roam-node-insert)
+        :desc "Insert link"                "i" #'org-roam-node-insert
+        :desc "Publish note"               "p" (cmd! (org-roam-tag-add '("publish"))))
 
 ;;;; Terminal
     (:leader :desc "Terminal" "c" #'+vterm/toggle)
