@@ -58,7 +58,8 @@
         +export
         +roam2
         +gnuplot
-        +dragndrop)
+        +dragndrop
+        +hugo)
     (cc +lsp)
     (web +html +css)
     (latex +latexmk +viewers)
