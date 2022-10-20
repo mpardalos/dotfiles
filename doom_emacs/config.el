@@ -327,9 +327,9 @@
         :desc "Notes (org-roam)" "n" #'org-roam-node-find
         :desc "Bibliography" "b" #'citar-open
         :desc "Agenda"           "a" #'org-agenda)
-    (:mode org-roam-mode
+    (:mode org-mode
         :localleader
-        :prefix ("n" . "Notes (roam)")
+        :prefix "m"
         :desc "Find file"                  "f" #'org-roam-node-find
         :desc "Show ui"                    "u" #'org-roam-ui-mode
         :desc "Org roam buffer"            "n" #'org-roam-buffer-toggle
