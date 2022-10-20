@@ -186,6 +186,23 @@
 (evil-set-initial-state 'hugo-mode 'emacs)
 (add-hook 'markdown-mode-hook #'hugo-minor-mode)
 
+;; Advise org-hugo so that it uses the "optionalref" shortcode instead of
+;; "relref".  This is needed for the export of my org-roam notes, since I will
+;; not export all of them to hugo, and using relref would cause errors in the
+;; hugo export.  The "optionalref" shortcode is defined in hugo to instead just
+;; tag the link as broken if the page it links to has not been exported
+;; See the "Personal Website" org-roam note
+(defvar mpardalos/org-hugo-relref-shortcode "optionalref"
+  "The hugo shortcode to use for references. org-hugo uses 'relref' by default")
+
+(defun mpardalos/org-hugo-use-alternative-relref (f &rest args)
+  (replace-regexp-in-string
+   "\\[\\(.*?\\)\\]({{< relref \"\\(.*?\\)\" >}})"
+   (format "{{< %s \"\\1\" \"\\2\" >}}" mpardalos/org-hugo-relref-shortcode)
+   (apply f args)))
+
+(advice-add 'org-hugo-link :around #'mpardalos/org-hugo-use-alternative-relref)
+
 ;;; Writeroom mode
 (setq! writeroom-major-modes '(org-mode))
 (global-writeroom-mode 1)
