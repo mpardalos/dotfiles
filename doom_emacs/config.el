@@ -45,8 +45,6 @@
     bibtex-completion-additional-search-fields '("tags")
     vterm-shell "/bin/fish"
 
-    web-mode-markup-indent-offset 2
-
     ;; Workaround for a bug
     coq-show-proof-diffs-regexp ""
     ;; Disable response buffer
@@ -149,6 +147,11 @@
 (after! forge
     (add-to-list 'forge-alist '("gitlab.haskell.org" "gitlab.haskell.org/api/v4" "gitlab.haskell.org" forge-gitlab-repository)))
 
+;;; Web
+(add-hook 'web-mode-hook
+    (lambda ()
+        (indent-tabs-mode)
+        (web-mode-use-tabs)))
 ;;; Coq
 ;; Fix for slow startup
 (after! core-editor
