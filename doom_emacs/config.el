@@ -73,6 +73,10 @@
     org-roam-ui-update-on-save t
     org-roam-ui-open-on-start t
 
+    org-id-extra-files (org-roam-list-files)
+    org-hugo-base-dir "/home/mpardalos/Documents/mpardalos.com"
+    org-hugo-section "brain"
+
     flycheck-dafny-executable "~/.local/share/dafny/dafny"
     flycheck-boogie-executable "~/.local/share/dafny/dafny-server"
     flycheck-z3-smt2-executable "~/.local/share/dafny/z3/bin/z3"
@@ -205,6 +209,22 @@
    (apply f args)))
 
 (advice-add 'org-hugo-link :around #'mpardalos/org-hugo-use-alternative-relref)
+
+(defun mpardalos/org-roam-hugo-export ()
+    "Export all org-roam files tagged with :publish: using ox-hugo to my hugo site"
+    (interactive)
+    (setq org-id-extra-files (org-roam-list-files)) ; Refresh the list of files that org-mode can find by id
+    (dolist (fil (org-roam--list-files org-roam-directory))
+        (with-current-buffer (find-file-noselect fil)
+            (if (member "publish" (org-get-tags)) (org-hugo-export-wim-to-md))
+            (kill-buffer))))
+
+(defun mpardalos/org-roam-hugo-publish-and-magit ()
+    "Publish the current org-roam note and then jump to the magit buffer for your website"
+    (interactive)
+    (org-roam-tag-add '("publish"))
+    (org-hugo-export-wim-to-md)
+    (magit-status org-hugo-base-dir))
 
 ;;; Writeroom mode
 (setq! writeroom-major-modes '(org-mode))
@@ -354,7 +374,7 @@
         :desc "Show ui"                    "u" #'org-roam-ui-mode
         :desc "Org roam buffer"            "n" #'org-roam-buffer-toggle
         :desc "Insert link"                "i" #'org-roam-node-insert
-        :desc "Publish note"               "p" (cmd! (org-roam-tag-add '("publish"))))
+        :desc "Publish note to site"       "p" #'mpardalos/org-roam-hugo-publish-and-magit)
 
 ;;;; Terminal
     (:leader :desc "Terminal" "c" #'+vterm/toggle)
