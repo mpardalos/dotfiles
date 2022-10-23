@@ -226,6 +226,12 @@
     (org-hugo-export-wim-to-md)
     (magit-status org-hugo-base-dir))
 
+(defun mpardalos/org-roam-hugo-publish-graph ()
+    "Export the org-roam graph and publish it to my hugo site"
+    (interactive)
+    (org-roam-db-sync)
+    (shell-command (format "org-roam-graph-export > %s/static/brain-graph.json" org-hugo-base-dir)))
+
 ;;; Writeroom mode
 (setq! writeroom-major-modes '(org-mode))
 (global-writeroom-mode 1)
