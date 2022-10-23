@@ -218,6 +218,7 @@
         (with-current-buffer (find-file-noselect fil)
             (if (member "publish" (org-get-tags)) (org-hugo-export-wim-to-md))
             (kill-buffer)))
+    (mpardalos/org-roam-hugo-publish-graph)
     (magit-status org-hugo-base-dir))
 
 (defun mpardalos/org-roam-hugo-publish-and-magit ()
