@@ -210,7 +210,7 @@
 
 (advice-add 'org-hugo-link :around #'mpardalos/org-hugo-use-alternative-relref)
 
-(defun mpardalos/org-roam-hugo-export ()
+(defun mpardalos/org-roam-hugo-publish-all ()
     "Export all org-roam files tagged with :publish: using ox-hugo to my hugo site"
     (interactive)
     (setq org-id-extra-files (org-roam-list-files)) ; Refresh the list of files that org-mode can find by id
