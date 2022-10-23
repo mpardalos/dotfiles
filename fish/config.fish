@@ -1,12 +1,12 @@
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.elan/bin"
 fish_add_path "$HOME/.cargo/bin"
-fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.emacs.d/bin"
 fish_add_path "$HOME/.ghcup/bin"
 fish_add_path "$HOME/.cabal/bin"
 fish_add_path "$HOME/Documents/go/bin"
 fish_add_path "$HOME/.local/share/npm/bin"
+fish_add_path "$HOME/.config/dotfiles/bin"
 
 set -gx GOPATH "$HOME/Documents/go"
 set -gx VISUAL "/usr/bin/nvim"
