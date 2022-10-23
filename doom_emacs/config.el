@@ -217,7 +217,8 @@
     (dolist (fil (org-roam--list-files org-roam-directory))
         (with-current-buffer (find-file-noselect fil)
             (if (member "publish" (org-get-tags)) (org-hugo-export-wim-to-md))
-            (kill-buffer))))
+            (kill-buffer)))
+    (magit-status org-hugo-base-dir))
 
 (defun mpardalos/org-roam-hugo-publish-and-magit ()
     "Publish the current org-roam note and then jump to the magit buffer for your website"
