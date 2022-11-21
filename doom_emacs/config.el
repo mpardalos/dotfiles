@@ -70,7 +70,6 @@
 
     org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
-    +org-roam-auto-backlinks-buffer t
     org-roam-file-exclude-regexp ".stversions/"
     org-roam-ui-sync-theme t
     org-roam-ui-follow t
