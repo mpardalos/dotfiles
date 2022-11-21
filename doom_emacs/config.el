@@ -63,6 +63,10 @@
     citar-bibliography '("~/Documents/bibliography/bibliography.bib")
     citar-library-paths '("~/Documents/bibliography/pdfs")
     citar-notes-paths '("~/Documents/bibliography/notes")
+    citar-symbols `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
+                       (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
+                       (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " "))
+    citar-org-roam-note-title-template "${title} (${year}) (${author editor})"
 
     org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
