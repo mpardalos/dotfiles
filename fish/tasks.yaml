@@ -1,0 +1,23 @@
+---
+- name: Install fish and dependencies
+  become: yes
+  package:
+    state: latest
+    name:
+      - fish
+      - exa
+      - direnv
+- name: Install oh-my-fish
+  shell:
+    cmd: "curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish"
+    creates: "{{ home }}/.local/share/omf/"
+- name: Link fish config
+  file:
+    state: link
+    src: "{{ dotfiles }}/fish/fish_config/"
+    dest: "{{ home }}/.config/fish"
+- name: Link omf config
+  file:
+    state: link
+    src: "{{ dotfiles }}/fish/omf_config/"
+    dest: "{{ home }}/.config/omf"

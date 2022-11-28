@@ -12,3 +12,5 @@
       import_tasks: neovim/tasks.yaml
     - tags: emacs
       import_tasks: doom_emacs/tasks.yaml
+    - tags: fish
+      import_tasks: fish/tasks.yaml
