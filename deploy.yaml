@@ -1,0 +1,10 @@
+---
+- name: Deploy dotfiles
+  hosts: localhost
+  vars:
+      dotfiles: "{{ playbook_dir }}"
+      home: "{{ ansible_facts['user_dir'] }}"
+  tasks:
+    - import_tasks: git/tasks.yaml
+    - import_tasks: tmux/tasks.yaml
+    - import_tasks: alacritty/tasks.yaml

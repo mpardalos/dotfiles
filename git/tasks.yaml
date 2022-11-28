@@ -1,0 +1,6 @@
+---
+- name: Link git config
+  file:
+    state: link
+    src: "{{ dotfiles }}/git/gitconfig"
+    dest: "{{ home }}/.gitconfig"

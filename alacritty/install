@@ -1,5 +1,0 @@
-DEPENDS="alacritty"
-
-module_install() {
-    ln -sf $1/alacritty ~/.config/alacritty
-}

@@ -1,5 +1,0 @@
-DEPENDS="tmux"
-
-module_install() {
-    ln -snf $1/tmux/tmux.conf ~/.tmux.conf
-}

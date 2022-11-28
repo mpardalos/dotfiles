@@ -1,7 +1,0 @@
-#!/bin/sh
-
-module_install() {
-    rm -f ~/.gitconfig 
-    ln -s $1/git/gitconfig ~/.gitconfig
-}
-

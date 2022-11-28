@@ -1,0 +1,6 @@
+---
+- name: Link alacritty config
+  file:
+    state: link
+    src: "{{ dotfiles }}/alacritty"
+    dest: "{{ home }}/.config/alacritty"
