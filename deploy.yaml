@@ -10,3 +10,5 @@
     - import_tasks: alacritty/tasks.yaml
     - tags: neovim
       import_tasks: neovim/tasks.yaml
+    - tags: emacs
+      import_tasks: doom_emacs/tasks.yaml
