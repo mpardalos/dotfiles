@@ -1,6 +1,5 @@
 - name: Applications
   community.general.flatpak:
-    method: user
     name:
       - com.anydesk.Anydesk
       - com.belmoussaoui.Authenticator
