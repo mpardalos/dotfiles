@@ -4,5 +4,6 @@ if ! which -v ansible-playbook > /dev/null; then
     dnf install ansible-core
 fi
 
+ansible-galaxy install -r requirements.yaml
 echo "Enter sudo password"
 ansible-playbook deploy.yaml --diff

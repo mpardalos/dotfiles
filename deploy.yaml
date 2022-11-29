@@ -17,3 +17,7 @@
       tags: emacs
     - import_tasks: fish/tasks.yaml
       tags: fish
+    - import_tasks: other_tasks/applications.yaml
+      tags: applications
+    - import_tasks: other_tasks/gnome-utils.yaml
+      tags: [ never, gnome-utils ]

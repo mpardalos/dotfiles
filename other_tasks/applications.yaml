@@ -1,33 +1,16 @@
----
-- name: Install Flatpak applications
+- name: Applications
   community.general.flatpak:
     method: user
     name:
-      - ar.xjuan.Cambalache
-      - ca.desrt.dconf-editor
       - com.anydesk.Anydesk
       - com.belmoussaoui.Authenticator
       - com.bitwarden.desktop
       - com.discordapp.Discord
-      - com.github.GradienceTeam.Gradience
       - com.github.junrrein.PDFSlicer
-      - com.github.tchx84.Flatseal
-      - com.gitlab.newsflash
       - com.lakoliu.Furtherance
       - com.slack.Slack
       - com.spotify.Client
-      - com.usebottles.bottles
       - com.viber.Viber
       - im.riot.Riot
-      - net.ankiweb.Anki
-      - org.bluesabre.MenuLibre
-      - org.gimp.GIMP
-      - org.gnome.Extensions
-      - org.gnome.World.Secrets
-      - org.gnome.design.Palette
-      - org.gnome.dfeet
-      - org.gustavoperedo.FontDownloader
-      - org.sqlitebrowser.sqlitebrowser
       - org.telegram.desktop
-      - org.zulip.Zulip
-      - re.sonny.Workbench
+      - org.mozilla.Thunderbird
