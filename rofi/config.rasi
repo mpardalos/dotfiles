@@ -1,4 +1,0 @@
-configuration {
-	case-sensitive: true;
-	theme: "rofi_sidetab";
-}

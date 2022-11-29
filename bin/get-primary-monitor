@@ -1,2 +1,0 @@
-#!/bin/sh
-xrandr --listmonitors | grep -E '\*' | cut --delimiter=' '  --fields=6

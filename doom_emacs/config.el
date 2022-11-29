@@ -237,6 +237,11 @@
     (org-roam-db-sync)
     (shell-command (format "org-roam-graph-export > %s/static/brain-graph.json" org-hugo-base-dir)))
 
+;;; Ansible
+(defun mpardalos/set-ansible-indent ()
+    (setq yaml-indent-offset 2))
+(add-hook 'ansible-hook #'mpardalos/set-ansible-indent)
+
 ;;; Writeroom mode
 (setq! writeroom-major-modes '(org-mode))
 (global-writeroom-mode 1)

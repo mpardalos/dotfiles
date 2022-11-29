@@ -1,4 +1,0 @@
-#!/bin/sh
-
-SELECTION="$(find ~/.bin/main_menu/*.menu -exec basename {} .menu \; | rofi -dmenu -i)"
-"$HOME/.bin/main_menu/$SELECTION.menu"

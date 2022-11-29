@@ -1,8 +1,0 @@
-#!/bin/sh
-
-exec swaylock \
-    --daemonize \
-    --clock \
-    --indicator \
-    --screenshots --effect-pixelate 32 --effect-vignette 0.7:0.9\
-    $@

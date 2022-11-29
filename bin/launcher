@@ -1,7 +1,0 @@
-#!/bin/sh
-rofi \
-    -i \
-    -display-combi "Program" \
-    -modi "combi" \
-    -combi-modi "window,drun" \
-    -show combi

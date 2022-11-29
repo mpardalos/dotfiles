@@ -1,4 +1,0 @@
-#!/bin/sh
-
-selection="$(swaymsg -t get_outputs | jq -r '.[] | .name' | bemenu -i -m -1)"
-swaymsg output "$selection" toggle
