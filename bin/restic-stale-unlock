@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. ~/.config/restic/restic.conf
+export B2_ACCOUNT_ID
+export B2_ACCOUNT_KEY
+export RESTIC_PASSWORD
+restic -r $RESTIC_REPOSITORY unlock
