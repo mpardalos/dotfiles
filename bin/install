@@ -1,7 +1,0 @@
-#!/bin/sh
-DEPENDS=""
-
-module_install() {
-    echo "export PATH=\"\$PATH:$1/bin\"" >> ~/.profile
-}
-
