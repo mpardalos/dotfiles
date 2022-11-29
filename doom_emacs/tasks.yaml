@@ -1,25 +1,33 @@
 ---
-- name: Install requirements for doom emacs
-  become: yes
-  package:
-    name:
-      - emacs
-      - fd-find
-      - aspell
-      - pandoc
-      - editorconfig
-    state: latest
-- name: Link doom emacs configuration
-  file:
-    state: link
-    src: "{{ dotfiles }}/doom_emacs"
-    dest: "{{ home }}/.config/doom"
-- name: Download doom emacs
-  git:
-    repo: "https://github.com/doomemacs/doomemacs.git"
-    dest: "{{ home }}/.emacs.d/"
-    update: no
-- name: Install doom emacs
-  shell:
-    cmd: "{{ home }}/.emacs.d/bin/doom install"
-    creates: "{{ home }}/.emacs.d/.local/straight"
+- name: Check if emacs is installed
+  shell: command -v emacs
+  ignore_errors: yes
+  register: emacs_installed
+  check_mode: no # Run even in check mode
+  changed_when: false # This never makes a change, just checks
+
+- when: "emacs_installed.rc == 0"
+  block:
+    - name: Install doom emacs dependencies
+      become: yes
+      package:
+        name:
+          - fd-find
+          - aspell
+          - pandoc
+          - editorconfig
+        state: latest
+    - name: Link doom emacs configuration
+      file:
+        state: link
+        src: "{{ dotfiles }}/doom_emacs"
+        dest: "{{ home }}/.config/doom"
+    - name: Download doom emacs
+      git:
+        repo: "https://github.com/doomemacs/doomemacs.git"
+        dest: "{{ home }}/.emacs.d/"
+        update: no
+    - name: Install doom emacs
+      shell:
+        cmd: "{{ home }}/.emacs.d/bin/doom install"
+        creates: "{{ home }}/.emacs.d/.local/straight"
