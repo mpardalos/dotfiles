@@ -14,7 +14,7 @@
     doom-leader-key "SPC"
     doom-localleader-key "SPC SPC"
     doom-theme (my/remember-theme-read 'doom-one)
-    doom-font (font-spec :family "Source Code Pro" :weight 'semi-bold :size 16)
+    doom-font (font-spec :family "Fira Code" :weight 'semi-bold :size 16)
     doom-variable-pitch-font (font-spec :family "Quicksand" :weight 'medium)
     +doom-dashboard-functions '()
 
