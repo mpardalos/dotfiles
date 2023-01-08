@@ -36,6 +36,7 @@
     lsp-eldoc-hook '(lsp-hover)
     lsp-auto-guess-root 't
     lsp-haskell-process-path-hie "haskell-language-server-wrapper"
+    haskell-interactive-popup-errors nil
     dap-default-terminal-kind "integrated" ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
     dap-auto-configure-mode 't
 
