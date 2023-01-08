@@ -94,6 +94,9 @@
     global-hl-line-modes ()
     )
 
+;; Transparent background
+(add-to-list 'default-frame-alist '(alpha-background . 80))
+
 (recentf-mode)
 
 ;;; Org mode
