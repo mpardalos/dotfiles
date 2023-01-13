@@ -68,6 +68,7 @@
                        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
                        (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " "))
     citar-org-roam-note-title-template "${title} (${year}) (${author editor})"
+    gscholar-bibtex-database-file "~/Documents/bibliography/bibliography.bib"
 
     org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
@@ -382,11 +383,16 @@
         :desc "Invalidate project cache"     "i" #'projectile-invalidate-cache
         :desc "Search in project"            "s" #'+vertico/project-search)
 
-;;;; Org
-    (:leader
-        :desc "Notes (org-roam)" "n" #'org-roam-node-find
+;;;; Bibliography
+    (:leader :prefix ("b" . "Bibliography")
         :desc "Bibliography" "b" #'citar-open
-        :desc "Agenda"           "a" #'org-agenda)
+        :desc "Search"       "s" #'gscholar-bibtex)
+    (:map gscholar-bibtex-mode-map
+        :e "k" #'gscholar-bibtex-previous-item
+        :e "j" #'gscholar-bibtex-next-item)
+
+;;;; Org-roam
+    (:leader :desc "Notes (org-roam)" "n" #'org-roam-node-find)
     (:mode org-mode
         :localleader
         :prefix "m"
