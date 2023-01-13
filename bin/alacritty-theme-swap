@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sed -i \
+    -e "s/^import: \[ ~\/.config\/alacritty\/papercolor_light.yaml \]/#\0/" \
+    -e "t" \
+    -e "s/^#\(import: \[ ~\/.config\/alacritty\/papercolor_light.yaml \]\)/\1/" \
+    ~/.config/alacritty/alacritty.yml
+
+
