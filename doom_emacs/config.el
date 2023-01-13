@@ -95,10 +95,11 @@
     global-hl-line-modes ()
     )
 
+(recentf-mode)
+
 ;; Transparent background
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
-(recentf-mode)
 
 ;;; Org mode
 (defun my/find-file-ace (filename)
