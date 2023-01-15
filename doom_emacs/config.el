@@ -95,10 +95,9 @@
     global-hl-line-modes ()
     )
 
-(recentf-mode)
-
 ;; Transparent background
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(add-to-list 'default-frame-alist '(alpha-background . 90))
+(recentf-mode)
 
 ;;; Bibliography
 (defun my/find-bibliography-file ()
