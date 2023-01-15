@@ -100,6 +100,21 @@
 ;; Transparent background
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
+;;; Bibliography
+(defun my/find-bibliography-file ()
+    (interactive)
+    (find-file gscholar-bibtex-database-file))
+
+(defun my/reformat-bibliography-file (&rest args)
+    (with-temp-buffer
+        (insert-file-contents gscholar-bibtex-database-file)
+        (bibtex-reformat)
+        (write-file gscholar-bibtex-database-file)))
+
+(use-package! gscholar-bibtex
+    :after
+    (advice-add #'gscholar-bibtex-append-bibtex-to-database :after #'my/reformat-bibliography-file)
+    (advice-add #'gscholar-bibtex-write-bibtex-to-database :after #'my/reformat-bibliography-file))
 
 ;;; Org mode
 (defun my/find-file-ace (filename)
