@@ -386,8 +386,9 @@
 
 ;;;; Bibliography
     (:leader :prefix ("b" . "Bibliography")
-        :desc "Bibliography" "b" #'citar-open
-        :desc "Search"       "s" #'gscholar-bibtex)
+        :desc "Bibliography"           "b" #'citar-open
+        :desc "Search"                 "s" #'gscholar-bibtex
+        :desc "Open bibliography file" "f" #'my/find-bibliography-file)
     (:map gscholar-bibtex-mode-map
         :e "k" #'gscholar-bibtex-previous-item
         :e "j" #'gscholar-bibtex-next-item)
