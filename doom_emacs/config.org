@@ -7,7 +7,7 @@ I save the name of a current theme in a file, and then read it on startup. I lik
 #+begin_src elisp
 (setq! doom-theme (my/remember-theme-read 'doom-one))
 (advice-add 'load-theme :after
-    (lambda (&rest args) (my/remember-theme-save)))
+            (lambda (&rest args) (my/remember-theme-save)))
 #+end_src
 
 I also like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
@@ -71,34 +71,33 @@ Change up how dired displays items.
 Place terminal on the right
 #+begin_src elisp
 (set-popup-rule! "^\\*doom:\\(?:v?term\\|eshell\\)-popup"
-    :vslot -5
-    :size 0.4
-    :select t
-    :modeline t
-    :quit 'current
-    :ttl nil
-    :side 'right)
+  :vslot -5
+  :size 0.4
+  :select t
+  :modeline t
+  :quit 'current
+  :ttl nil
+  :side 'right)
 #+end_src
 
 Place compilation on the right
 #+begin_src elisp
 (set-popup-rule! "^\\*compilation\\*"
-    :vslot -4
-    :size 0.4
-    :select t
-    :modeline t
-    :quit 'current
-    :ttl nil
-    :side 'right)
+  :vslot -4
+  :size 0.4
+  :select t
+  :modeline t
+  :quit 'current
+  :ttl nil
+  :side 'right)
 #+end_src
 
 
 ** Keybindings
 Set up the leader keys first.
 #+begin_src elisp
-(setq!
-    doom-leader-key "SPC"
-    doom-localleader-key "SPC SPC")
+(setq! doom-leader-key "SPC"
+       doom-localleader-key "SPC SPC")
 #+end_src
 
 #+begin_src elisp
@@ -126,11 +125,10 @@ Set up the leader keys first.
 
 Switching buffers. I use the mouse back and forward keys as a secondary choice. Nice when flicking through buffers quickly.
 #+begin_src elisp
-(map!
-    :n "M-u" 'previous-buffer
-    :n "M-i" 'next-buffer
-    :g "<mouse-8>" 'previous-buffer
-    :g "<mouse-9>" 'next-buffer)
+(map! :n "M-u" 'previous-buffer
+      :n "M-i" 'next-buffer
+      :g "<mouse-8>" 'previous-buffer
+      :g "<mouse-9>" 'next-buffer)
 #+end_src
 
 Dired
@@ -213,15 +211,14 @@ Run
 #+begin_src elisp
 (map! :leader
       :prefix ("r" . "Run")
-      :desc "Run file or project" "r" (cmd! () (if (projectile-project-p) (call-interactively #'projectile-run-project) (+eval/buffer))))
-
-(map! :mode 'projectile-mode
-      :prefix ("p" . "Project")
-      :desc "Test project"               "t" #'projectile-test-project
-      :desc "Compile in project"         "c" #'projectile-compile-project
-      :desc "Configure project"          "g" #'projectile-configure-project
-      :desc "Repeat last command"        "C" #'projectile-repeat-last-command
-      :desc "Pop to compilation buffer"  "b" (cmd! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer"))))
+      :desc "Run file or project" "r" (cmd! () (if (projectile-project-p) (call-interactively #'projectile-run-project) (+eval/buffer)))
+      (:mode 'projectile-mode
+       :prefix ("p" . "Project")
+       :desc "Test project"               "t" #'projectile-test-project
+       :desc "Compile in project"         "c" #'projectile-compile-project
+       :desc "Configure project"          "g" #'projectile-configure-project
+       :desc "Repeat last command"        "C" #'projectile-repeat-last-command
+       :desc "Pop to compilation buffer"  "b" (cmd! () (if (get-buffer "*compilation*") (pop-to-buffer "*compilation*") (message "No *compilation* buffer")))))
 #+end_src
 
 * Tools
@@ -292,10 +289,11 @@ Reduce strain from company completion. Make completion only show up when manuall
 * Prose
 ** Org mode
 #+begin_src elisp
-(setq!
-    org-todo-keywords
-    '((sequence "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)" "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))
-    org-plantuml-exec-mode 'plantuml)
+(setq! org-todo-keywords
+       '((sequence
+          "TODO(t)" "MAYBE(m)" "WIP(p)" "SCHEDULED(s)"
+          "|" "WAIT(w)" "DONE(d)" "CANCEL(c)"))
+       org-plantuml-exec-mode 'plantuml)
 #+end_src
 
 Doom changes this. Set it back to the default
@@ -312,7 +310,7 @@ I like writeroom-mode, but only for writing prose, so I only enable it for org-m
 Use ~ace-window~ to choose the window to open links in
 #+begin_src elisp
 (after! org
-    (setf (alist-get 'file org-link-frame-setup) #'my/find-file-ace))
+  (setf (alist-get 'file org-link-frame-setup) #'my/find-file-ace))
 
 (defun my/find-file-ace (filename)
   (interactive "F")
@@ -347,19 +345,18 @@ Keybindings
 #+end_src
 
 #+begin_src elisp
-(setq!
-    org-roam-directory "~/Documents/org-roam"
-    org-roam-file-exclude-regexp ".stversions/"
-    org-roam-ui-sync-theme t
-    org-roam-ui-follow t
-    org-roam-ui-update-on-save t
-    org-roam-ui-open-on-start t)
+(setq! org-roam-directory "~/Documents/org-roam"
+       org-roam-file-exclude-regexp ".stversions/"
+       org-roam-ui-sync-theme t
+       org-roam-ui-follow t
+       org-roam-ui-update-on-save t
+       org-roam-ui-open-on-start t)
 #+end_src
 
 This setting has to be deferred because it causes org-mode to load, slowing down startup *a lot*
 #+begin_src elisp
 (after! org-roam
-    org-id-extra-files (org-roam-list-files))
+  org-id-extra-files (org-roam-list-files))
 #+end_src
 
 This is needed for ~org-roam-ui~
@@ -370,9 +367,8 @@ This is needed for ~org-roam-ui~
 *** Exporting to hugo
 Exporting to hugo:
 #+begin_src elisp
-(setq!
-    org-hugo-base-dir "/home/mpardalos/Documents/mpardalos.com"
-    org-hugo-section "brain")
+(setq! org-hugo-base-dir "/home/mpardalos/Documents/mpardalos.com"
+       org-hugo-section "brain")
 #+end_src
 
 Advise org-hugo so that it uses the ~optionalref~ shortcode instead of ~relref~.  This is needed for the export of my org-roam notes, since I will not export all of them to hugo, and using relref would cause errors in the hugo export.  The ~optionalref~ shortcode is defined in hugo to instead just tag the link as broken if the page it links to has not been exported.
@@ -391,28 +387,28 @@ See the "Personal Website" org-roam note
 (advice-add 'org-hugo-link :around #'mpardalos/org-hugo-use-alternative-relref)
 
 (defun mpardalos/org-roam-hugo-publish-all ()
-    "Export all org-roam files tagged with :publish: using ox-hugo to my hugo site"
-    (interactive)
-    (setq org-id-extra-files (org-roam-list-files)) ; Refresh the list of files that org-mode can find by id
-    (dolist (fil (org-roam--list-files org-roam-directory))
-        (with-current-buffer (find-file-noselect fil)
-            (if (member "publish" (org-get-tags)) (org-hugo-export-wim-to-md))
-            (kill-buffer)))
-    (mpardalos/org-roam-hugo-publish-graph)
-    (magit-status org-hugo-base-dir))
+  "Export all org-roam files tagged with :publish: using ox-hugo to my hugo site"
+  (interactive)
+  (setq org-id-extra-files (org-roam-list-files)) ; Refresh the list of files that org-mode can find by id
+  (dolist (fil (org-roam--list-files org-roam-directory))
+    (with-current-buffer (find-file-noselect fil)
+      (if (member "publish" (org-get-tags)) (org-hugo-export-wim-to-md))
+      (kill-buffer)))
+  (mpardalos/org-roam-hugo-publish-graph)
+  (magit-status org-hugo-base-dir))
 
 (defun mpardalos/org-roam-hugo-publish-and-magit ()
-    "Publish the current org-roam note and then jump to the magit buffer for your website"
-    (interactive)
-    (org-roam-tag-add '("publish"))
-    (org-hugo-export-wim-to-md)
-    (magit-status org-hugo-base-dir))
+  "Publish the current org-roam note and then jump to the magit buffer for your website"
+  (interactive)
+  (org-roam-tag-add '("publish"))
+  (org-hugo-export-wim-to-md)
+  (magit-status org-hugo-base-dir))
 
 (defun mpardalos/org-roam-hugo-publish-graph ()
-    "Export the org-roam graph and publish it to my hugo site"
-    (interactive)
-    (org-roam-db-sync)
-    (shell-command (format "org-roam-graph-export > %s/static/brain-graph.json" org-hugo-base-dir)))
+  "Export the org-roam graph and publish it to my hugo site"
+  (interactive)
+  (org-roam-db-sync)
+  (shell-command (format "org-roam-graph-export > %s/static/brain-graph.json" org-hugo-base-dir)))
 #+end_src
 
 ** Bibliography/Research
@@ -427,54 +423,49 @@ The bibliography file is used a few times, so I set it here once and re-use it.
       :desc "Open bibliography file" "f" #'my/find-bibliography-file)
 
 (defun my/find-bibliography-file ()
-    (interactive)
-    (find-file my/bibliography-file))
+  (interactive)
+  (find-file my/bibliography-file))
 #+end_src
 
 
 *** Bibtex
 #+begin_src elisp
-(setq!
-    bibtex-completion-bibliography `(,my/bibliography-file)
-    bibtex-completion-library-path '("~/Documents/bibliography/pdfs")
-    bibtex-completion-notes-path "~/Documents/bibliography/notes.org"
-    bibtex-completion-additional-search-fields '("tags"))
+(setq! bibtex-completion-bibliography `(,my/bibliography-file)
+       bibtex-completion-library-path '("~/Documents/bibliography/pdfs")
+       bibtex-completion-notes-path "~/Documents/bibliography/notes.org"
+       bibtex-completion-additional-search-fields '("tags"))
 #+end_src
 
 *** Citar
 #+begin_src elisp
-(setq!
-    citar-bibliography `(,my/bibliography-file)
-    citar-library-paths '("~/Documents/bibliography/pdfs")
-    citar-notes-paths '("~/Documents/bibliography/notes")
-    citar-symbols `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
+(setq! citar-bibliography `(,my/bibliography-file)
+       citar-library-paths '("~/Documents/bibliography/pdfs")
+       citar-notes-paths '("~/Documents/bibliography/notes")
+       citar-symbols `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
                        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
                        (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " "))
-    citar-org-roam-note-title-template "${title} (${year}) (${author editor})")
+       citar-org-roam-note-title-template "${title} (${year}) (${author editor})")
 #+end_src
 
 ** LaTeX
 #+begin_src elisp
-(setq!
-    +latex-viewers '(pdf-tools zathura)
-    LaTeX-item-indent 2
-    LaTeX-beamer-item-overlay-flag nil
-    TeX-master "shared")
+(setq! +latex-viewers '(pdf-tools zathura)
+       LaTeX-item-indent 2
+       LaTeX-beamer-item-overlay-flag nil
+       TeX-master "shared")
 
 (add-hook! LaTeX-mode (auto-fill-mode -1))
 #+end_src
 * Programming
 ** General LSP
 #+begin_src elisp
-(setq!
-    lsp-ui-sideline-enable nil
-    lsp-ui-doc-position 'top
-    lsp-lens-auto-enable nil
-    lsp-eldoc-enable-hover nil
-    lsp-eldoc-hook '(lsp-hover)
-    lsp-auto-guess-root 't)
+(setq! lsp-ui-sideline-enable nil
+       lsp-ui-doc-position 'top
+       lsp-lens-auto-enable nil
+       lsp-eldoc-enable-hover nil
+       lsp-eldoc-hook '(lsp-hover)
+       lsp-auto-guess-root 't)
 #+end_src
-
 
 Keybindings
 #+begin_src elisp
@@ -490,17 +481,18 @@ Keybindings
 #+end_src
 
 ** DAP
+Make sure that, when debugging a terminal program, it uses an emacs terminal
 #+begin_src elisp
-(setq!
-;; Make sure that terminal programs open a term for I/O in an Emacs buffer
-    dap-default-terminal-kind "integrated"
-    dap-auto-configure-mode 't)
+(setq! dap-default-terminal-kind "integrated")
+#+end_src
+
+#+begin_src elisp
+(setq! dap-auto-configure-mode 't)
 #+end_src
 ** Flycheck
 #+begin_src elisp
-(map!
-    :desc "Previous Error"  :n "[e" 'flycheck-previous-error
-    :desc "Next Error"      :n "]e" 'flycheck-next-error)
+(map! :desc "Previous Error"  :n "[e" 'flycheck-previous-error
+      :desc "Next Error"      :n "]e" 'flycheck-next-error)
 #+end_src
 
 Slightly speed up flycheck by only highlighting symbols, not individual characters.
@@ -528,7 +520,7 @@ Disable response buffer
 Fix for slow startup
 #+begin_src elisp
 (after! core-editor
-    (add-to-list 'doom-detect-indentation-excluded-modes 'coq-mode))
+  (add-to-list 'doom-detect-indentation-excluded-modes 'coq-mode))
 #+end_src
 
 Keybindings
@@ -539,9 +531,8 @@ Keybindings
 #+end_src
 ** Haskell
 #+begin_src elisp
-(setq!
-    lsp-haskell-process-path-hie "haskell-language-server-wrapper"
-    haskell-interactive-popup-errors nil)
+(setq! lsp-haskell-process-path-hie "haskell-language-server-wrapper"
+       haskell-interactive-popup-errors nil)
 #+end_src
 
 ~smartparens-mode~ is useless in haskell and makes everything too slow. Just disable it
@@ -550,35 +541,33 @@ Keybindings
 #+end_src
 ** Alloy
 #+begin_src elisp
-(setq!
-    alloy-mode-map (make-sparse-keymap)
-    alloy-basic-offset 2)
+(setq! alloy-mode-map (make-sparse-keymap)
+       alloy-basic-offset 2)
 
 (setq-hook! alloy-mode
   indent-tabs-mode nil)
 #+end_src
 ** Dafny
 #+begin_src elisp
-(setq!
-    flycheck-dafny-executable "~/.local/share/dafny/dafny"
-    flycheck-boogie-executable "~/.local/share/dafny/dafny-server"
-    flycheck-z3-smt2-executable "~/.local/share/dafny/z3/bin/z3"
-    flycheck-inferior-dafny-executable "~/.local/share/dafny/dafny-server")
+(setq! flycheck-dafny-executable "~/.local/share/dafny/dafny"
+       flycheck-boogie-executable "~/.local/share/dafny/dafny-server"
+       flycheck-z3-smt2-executable "~/.local/share/dafny/z3/bin/z3"
+       flycheck-inferior-dafny-executable "~/.local/share/dafny/dafny-server")
 #+end_src
 ** Kima
 [[https://kima.xyz][Kima]] is a programming language I was working on in the past. I have added a very simple mode for it, which includes a configuration for ~quickrun~.
 #+begin_src elisp
 (define-generic-mode 'kima-mode
-    '("#")
-    '("fun" "data" "True""False" "let""var" "while""if" "else" "effect" "handle" "with" "IO" "Unit")
-    nil
-    '(".k\\'")
-    "Major mode for the kima programming language")
+  '("#")
+  '("fun" "data" "True""False" "let""var" "while""if" "else" "effect" "handle" "with" "IO" "Unit")
+  nil
+  '(".k\\'")
+  "Major mode for the kima programming language")
 
 (quickrun-add-command "kima"
-    '((:command . "kima")
-         (:exec . "%c run %s"))
-    :mode 'kima-mode)
+  '((:command . "kima")
+    (:exec . "%c run %s"))
+  :mode 'kima-mode)
 #+end_src
 ** Ansible
 #+begin_src elisp
@@ -587,11 +576,11 @@ Keybindings
 ** GMPL
 #+begin_src elisp
 (add-to-list 'auto-mode-alist
-    '("\\.mod\\'" . gmpl-mode))
+             '("\\.mod\\'" . gmpl-mode))
 #+end_src
 ** Vimrc
 Because every now and then you remember that evil mode was based on an actual program called vim.
 #+begin_src elisp
 (add-to-list 'auto-mode-alist
-    '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+             '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 #+end_src
