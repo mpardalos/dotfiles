@@ -61,12 +61,6 @@ Change up how dired displays items.
 #+begin_src elisp
 (setq! dired-listing-switches "-ABhl -X --group-directories-first")
 #+end_src
-
-# Enable vimish-fold
-# #+begin_src elisp
-# (setq! vimish-fold-global-mode 't)
-# #+end_src
-
 *** Popups
 Place terminal on the right
 #+begin_src elisp
