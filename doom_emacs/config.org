@@ -355,7 +355,6 @@ Keybindings
 
 #+begin_src elisp
 (setq!
-    org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
     org-roam-file-exclude-regexp ".stversions/"
     org-roam-ui-sync-theme t
