@@ -22,5 +22,3 @@
 
 (package! hide-lines
     :recipe (:host github :repo "vapniks/hide-lines"))
-
-;; Research
