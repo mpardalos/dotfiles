@@ -78,7 +78,6 @@
     org-roam-ui-update-on-save t
     org-roam-ui-open-on-start t
 
-    org-id-extra-files (org-roam-list-files)
     org-hugo-base-dir "/home/mpardalos/Documents/mpardalos.com"
     org-hugo-section "brain"
 
@@ -94,6 +93,9 @@
 
     global-hl-line-modes ()
     )
+
+(after! org-roam
+    org-id-extra-files (org-roam-list-files))
 
 ;; Transparent background
 (add-to-list 'default-frame-alist '(alpha-background . 90))
