@@ -41,7 +41,7 @@
     dap-auto-configure-mode 't
 
     my/bibliography-file "~/Documents/bibliography/bibliography.bib"
-    bibtex-completion-bibliography '(my/bibliography-file)
+    bibtex-completion-bibliography `(,my/bibliography-file)
     bibtex-completion-library-path '("~/Documents/bibliography/pdfs")
     bibtex-completion-notes-path "~/Documents/bibliography/notes.org"
     bibtex-completion-additional-search-fields '("tags")
@@ -62,7 +62,7 @@
     ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
     org-plantuml-exec-mode 'plantuml
 
-    citar-bibliography '(my/bibliography-file)
+    citar-bibliography `(,my/bibliography-file)
     citar-library-paths '("~/Documents/bibliography/pdfs")
     citar-notes-paths '("~/Documents/bibliography/notes")
     citar-symbols `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
