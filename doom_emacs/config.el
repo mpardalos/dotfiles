@@ -40,7 +40,8 @@
     dap-default-terminal-kind "integrated" ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
     dap-auto-configure-mode 't
 
-    bibtex-completion-bibliography '("~/Documents/bibliography/bibliography.bib")
+    my/bibliography-file "~/Documents/bibliography/bibliography.bib"
+    bibtex-completion-bibliography '(my/bibliography-file)
     bibtex-completion-library-path '("~/Documents/bibliography/pdfs")
     bibtex-completion-notes-path "~/Documents/bibliography/notes.org"
     bibtex-completion-additional-search-fields '("tags")
@@ -61,14 +62,13 @@
     ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
     org-plantuml-exec-mode 'plantuml
 
-    citar-bibliography '("~/Documents/bibliography/bibliography.bib")
+    citar-bibliography '(my/bibliography-file)
     citar-library-paths '("~/Documents/bibliography/pdfs")
     citar-notes-paths '("~/Documents/bibliography/notes")
     citar-symbols `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
                        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
                        (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " "))
     citar-org-roam-note-title-template "${title} (${year}) (${author editor})"
-    gscholar-bibtex-database-file "~/Documents/bibliography/bibliography.bib"
 
     org-agenda-files "~/.config/org-agenda-files"
     org-roam-directory "~/Documents/org-roam"
@@ -102,18 +102,7 @@
 ;;; Bibliography
 (defun my/find-bibliography-file ()
     (interactive)
-    (find-file gscholar-bibtex-database-file))
-
-(defun my/reformat-bibliography-file (&rest args)
-    (with-temp-buffer
-        (insert-file-contents gscholar-bibtex-database-file)
-        (bibtex-reformat)
-        (write-file gscholar-bibtex-database-file)))
-
-(use-package! gscholar-bibtex
-    :after
-    (advice-add #'gscholar-bibtex-append-bibtex-to-database :after #'my/reformat-bibliography-file)
-    (advice-add #'gscholar-bibtex-write-bibtex-to-database :after #'my/reformat-bibliography-file))
+    (find-file my/bibliography-file))
 
 ;;; Org mode
 (defun my/find-file-ace (filename)
@@ -401,11 +390,7 @@
 ;;;; Bibliography
     (:leader :prefix ("b" . "Bibliography")
         :desc "Bibliography"           "b" #'citar-open
-        :desc "Search"                 "s" #'gscholar-bibtex
         :desc "Open bibliography file" "f" #'my/find-bibliography-file)
-    (:map gscholar-bibtex-mode-map
-        :e "k" #'gscholar-bibtex-previous-item
-        :e "j" #'gscholar-bibtex-next-item)
 
 ;;;; Org-roam
     (:leader :desc "Notes (org-roam)" "n" #'org-roam-node-find)

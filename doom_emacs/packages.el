@@ -27,5 +27,3 @@
     :recipe (:host github :repo "vapniks/hide-lines"))
 
 ;; Research
-(package! gscholar-bibtex
-    :recipe (:host github :repo "cute-jumper/gscholar-bibtex"))
