@@ -13,3 +13,6 @@
 (package! embark)
 (package! embark-consult)
 (package! wgrep)
+(package! compat)
+(package! consult-dir)
+(package! consult-flycheck)
