@@ -331,13 +331,6 @@ Disable completion in org mode. It's annoying in prose but I would like to have 
 #+begin_src elisp
 (after! org (set-company-backend! 'org-mode nil))
 #+end_src
-
-Keybindings
-#+begin_src elisp
-(map!
-    ;; Export to pdf
-    (:mode org-mode "C-c p" (cmd! (display-buffer-pop-up-window (find-file-noselect (org-latex-export-to-pdf)) nil))))
-#+end_src
 ** org-roam
 Keybindings
 #+begin_src elisp
