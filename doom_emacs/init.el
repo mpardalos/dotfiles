@@ -1,6 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
 (doom!
+    :config
+    literate
+
     :completion
     (vertico +icons)
     (company +childframe)
