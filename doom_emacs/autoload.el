@@ -1,25 +1,6 @@
  ;;; ~/.config/dotfiles/doom_emacs/autoload.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
-(defun my/remember-theme-read (default)
-  "Return the theme specified in ~/.emacs-theme, or `default' if that fails"
-  (with-temp-buffer
-
-    (condition-case nil
-      (insert-file-contents "~/.emacs-theme")
-      (error (insert (symbol-name default))))
-
-    (let ((theme-symbol (intern (car (split-string (buffer-string) "\n" t)))))
-      (if (member theme-symbol (custom-available-themes)) theme-symbol default))))
-
-;;;###autoload
-(defun my/remember-theme-save ()
-  "Save theme"
-  (with-temp-buffer
-    (insert (symbol-name doom-theme))
-    (write-file "~/.emacs-theme")))
-
-;;;###autoload
 (defun my/doom-refresh-reload ()
   (interactive)
   (with-output-to-temp-buffer "*Doom refresh*"
