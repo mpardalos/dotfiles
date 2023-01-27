@@ -12,6 +12,7 @@ set -gx GOPATH "$HOME/Documents/go"
 set -gx VISUAL "/usr/bin/nvim"
 set -gx EDITOR "/usr/bin/nvim"
 set -gx OSTYPE "linux"
+set -gx VAGRANT_DEFAULT_PROVIDER "libvirt"
 
 # Aliases
 alias ll="exa -lg --group-directories-first --git"
