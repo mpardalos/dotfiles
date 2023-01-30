@@ -22,3 +22,6 @@
 
 (package! hide-lines
     :recipe (:host github :repo "vapniks/hide-lines"))
+
+(package! emacs-conflict
+    :recipe (:host github :repo "ibizaman/emacs-conflict"))

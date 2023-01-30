@@ -291,6 +291,11 @@ Reduce strain from company completion. Make completion only show up when manuall
 #+begin_src elisp
 (setq! company-idle-delay nil)
 #+end_src
+** Emacs-conflict
+This package is used to resolve conflicts due to syncthing, which I use to sync my org-roam and bibliography files.
+#+begin_src elisp
+(use-package! emacs-conflict)
+#+end_src
 * Prose
 ** Org mode
 #+begin_src elisp
