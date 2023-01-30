@@ -190,11 +190,12 @@ Files
       :desc "Find under current directory" "f" #'+default/find-file-under-here)
 #+end_src
 
+Shortcuts to often-accessed directories
 #+begin_src elisp
 (map! :leader :prefix ("d" . "Directory")
-      :desc "Documents" "D" (cmd! () (find-file "~/Documents"))
       :desc "Dotfiles" "c" (cmd! () (find-file "~/.config/dotfiles"))
-      :desc "Imperial" "i" (cmd! () (find-file "~/Documents/Imperial")))
+      :desc "PhD" "p" (cmd! () (find-file "~/Documents/PhD"))
+      :desc "ITSynergy" "i" (cmd! () (find-file "~/Documents/ITSynergy")))
 #+end_src
 
 Evil
