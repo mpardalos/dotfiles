@@ -109,8 +109,7 @@ Set up the leader keys first.
       :desc "Universal Argument" "u" #'universal-argument)
 
 (map! :map override
-      :n ";" 'evil-ex
-      :nv "s" 'evil-substitute)
+      :n ";" 'evil-ex)
 
 (map! :desc "Where is the cursor" "C-x w" #'+nav-flash/blink-cursor)
 
