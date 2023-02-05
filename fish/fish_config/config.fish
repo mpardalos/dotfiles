@@ -19,6 +19,7 @@ alias ll="exa -lg --group-directories-first --git"
 alias csvcol="column -s, -t"
 alias open-rust-doc="open /usr/share/doc/rust/html/index.html"
 
+abbr --add ec "emacsclient -n"
 abbr --add g git
 abbr --add v nvim
 abbr --add tree "ll --tree"

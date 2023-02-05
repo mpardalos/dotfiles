@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fish_abbr_ec:emacsclient\x20\x2dn
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_tree:ll\x20\x2d\x2dtree
 SETUVAR _fish_abbr_v:nvim
