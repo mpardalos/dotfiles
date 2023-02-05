@@ -1,0 +1,23 @@
+- name: Check that Restic config exists
+  file:
+    state: file
+    path: "{{ home }}/.config/restic/restic.conf"
+- name: Install restic
+  become: true
+  dnf:
+    name: restic
+    state: installed
+- name: Install systemd service files
+  file:
+    state: link
+    src: "{{ dotfiles }}/restic/{{ item }}"
+    dest: "{{ home }}/.config/systemd/user/{{ item }}"
+  loop:
+    - "restic-backup.service"
+    - "restic-backup.timer"
+    - "service-failure-notify@.service"
+- name: Enable backup service
+  systemd:
+    scope: user
+    name: restic-backup.timer
+    enabled: true

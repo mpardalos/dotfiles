@@ -1,0 +1,6 @@
+[Unit]
+Name=Service failure notifier
+
+[Service]
+Type=oneshot
+ExecStart=notify-send -i computer-fail-symbolic "Service failed: %i"
