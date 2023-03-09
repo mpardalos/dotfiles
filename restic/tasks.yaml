@@ -4,7 +4,7 @@
     path: "{{ home }}/.config/restic/restic.conf"
 - name: Install restic
   become: true
-  dnf:
+  package:
     name: restic
     state: installed
 - name: Install systemd service files
