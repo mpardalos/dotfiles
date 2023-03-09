@@ -1,4 +1,10 @@
 ---
+- name: Ensure alacritty is installed
+  package:
+    name:
+      - alacritty
+      - ttf-fira-code
+    state: present
 - name: Link alacritty config
   file:
     state: link
