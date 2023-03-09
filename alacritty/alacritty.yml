@@ -71,9 +71,6 @@ font:
     x: 0
     y: 0
 
-  # OS X only. For retina displays
-  use_thin_strokes: false
-
 cursor:
     cursor_style: Block
 
