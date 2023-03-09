@@ -11,6 +11,12 @@
   shell:
     cmd: "curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish"
     creates: "{{ home }}/.local/share/omf/"
+  register: install_omf
+- name: Remove default fish config
+  file:
+    path: "{{ home }}/.config/fish"
+    state: absent
+  when: install_omf is changed
 - name: Link fish config
   file:
     state: link
