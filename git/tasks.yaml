@@ -4,3 +4,8 @@
     state: link
     src: "{{ dotfiles }}/git"
     dest: "{{ home }}/.config/git"
+
+- name: Install difftastic
+  dnf:
+    name: difftastic
+    state: present

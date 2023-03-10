@@ -25,3 +25,5 @@
 	user = michalis_pardalos
 [gitlab "gitlab.haskell.org/api/v4"]
 	user = mpardalos
+[diff]
+	external = difft
