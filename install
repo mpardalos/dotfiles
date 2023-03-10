@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if ! which -v ansible-playbook > /dev/null; then
-    dnf install ansible-core
+if ! which ansible-playbook 2>&1 > /dev/null; then
+    sudo dnf install ansible
 fi
 
 ansible-galaxy install -r requirements.yaml
