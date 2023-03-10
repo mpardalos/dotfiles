@@ -3,24 +3,7 @@
 * Base
 This is the config that applies to all of emacs, regardless of mode.
 ** Visuals
-I save the name of a current theme in a file, and then read it on startup. I like to change themes a lot.
-#+begin_src elisp
-(setq! doom-theme
-       (with-temp-buffer
-         (condition-case nil
-             (insert-file-contents "~/.emacs-theme")
-           (error (insert (symbol-name default))))
-
-         (let ((theme-symbol
-                (intern (car (split-string (buffer-string) "\n" t)))))
-           (if (member theme-symbol (custom-available-themes)) theme-symbol default))))
-(add-hook! doom-load-theme-hook
-  (with-temp-buffer
-    (insert (symbol-name doom-theme))
-    (write-file "~/.emacs-theme")))
-#+end_src
-
-I also like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
+I like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
 #+begin_src elisp
 (add-to-list 'default-frame-alist '(alpha-background . 90))
 #+end_src
