@@ -25,9 +25,9 @@
     - name: Download doom emacs
       git:
         repo: "https://github.com/doomemacs/doomemacs.git"
-        dest: "{{ home }}/.emacs.d/"
+        dest: "{{ home }}/.config/emacs/"
         update: no
     - name: Install doom emacs
       shell:
-        cmd: "{{ home }}/.emacs.d/bin/doom install"
-        creates: "{{ home }}/.emacs.d/.local/straight"
+        cmd: "{{ home }}/.config/emacs/bin/doom install --force"
+        creates: "{{ home }}/.config/emacs/.local/straight"
