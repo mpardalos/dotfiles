@@ -1,9 +1,8 @@
 ---
 - name: Ensure alacritty is installed
-  package:
-    name:
-      - alacritty
-      - ttf-fira-code
+  become: true
+  dnf:
+    name: alacritty
     state: present
 - name: Link alacritty config
   file:
