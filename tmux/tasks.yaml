@@ -2,5 +2,5 @@
 - name: Link tmux config
   file:
     state: link
-    src: "{{ dotfiles }}/tmux/tmux.conf"
-    dest: "{{ home }}/.tmux.conf"
+    src: "{{ dotfiles }}/tmux"
+    dest: "{{ home }}/.config/tmux"
