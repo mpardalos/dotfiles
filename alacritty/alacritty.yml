@@ -1,4 +1,3 @@
-
 env:
   # Defaults to xterm-256color.
   TERM: xterm-256color
@@ -71,6 +70,13 @@ font:
     x: 0
     y: 0
 
+bell:
+  duration: 100
+  animation: Linear
+  # command:
+  #   program: "notify-send"
+  #   args: ["--transient", "Bell in terminal"]
+
 cursor:
     cursor_style: Block
 
@@ -103,6 +109,58 @@ selection:
 
 # Live config reload (changes require restart)
 live_config_reload: true
+
+# Themes
+light-colors: &light-colors
+  # Default colors
+  primary:
+    background: '0xeeeeee'
+    foreground: '0x444444'
+
+  cursor:
+    text: '0xeeeeee'
+    cursor: '0x444444'
+
+  # Normal colors
+  normal:
+    black:   '0xeeeeee'
+    red:     '0xaf0000'
+    green:   '0x008700'
+    yellow:  '0x5f8700'
+    blue:    '0x0087af'
+    magenta: '0x878787'
+    cyan:    '0x005f87'
+    white:   '0x444444'
+
+  # Bright colors
+  bright:
+    black:   '0xbcbcbc'
+    red:     '0xd70000'
+    green:   '0xd70087'
+    yellow:  '0x8700af'
+    blue:    '0xd75f00'
+    magenta: '0xd75f00'
+    cyan:    '0x005faf'
+    white:   '0x005f87'
+
+dark-colors: &dark-colors
+  # Default colors
+  primary:
+    background: '0x282c34'
+    foreground: '0xbbc2cf'
+
+  # Normal colors
+  normal:
+    black:   '0x282c34'
+    red:     '0xff6c6b'
+    green:   '0x98be65'
+    yellow:  '0xecbe7b'
+    blue:    '0x51afef'
+    magenta: '0xc678dd'
+    cyan:    '0x46d9ff'
+    white:   '0xbbc2cf'
+
+colors: *dark-colors
 
 # Shell
 #

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 sed -i \
-    -e "s/^import: \[ ~\/.config\/alacritty\/papercolor_light.yaml \]/#\0/" \
+    -e "s/^colors: \\*dark-colors/colors: *light-colors/" \
     -e "t" \
-    -e "s/^#\(import: \[ ~\/.config\/alacritty\/papercolor_light.yaml \]\)/\1/" \
+    -e "s/^colors: \\*light-colors/colors: *dark-colors/" \
     ~/.config/alacritty/alacritty.yml
-
-
