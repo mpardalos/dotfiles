@@ -25,3 +25,5 @@
 
 (package! emacs-conflict
     :recipe (:host github :repo "ibizaman/emacs-conflict"))
+
+(package! auto-dark)
