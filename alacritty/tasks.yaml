@@ -9,3 +9,9 @@
     state: link
     src: "{{ dotfiles }}/alacritty"
     dest: "{{ home }}/.config/alacritty"
+- name: Enable alacritty to follow GNOME dark or light theme
+  systemd:
+    name: alacritty-theme-follow-gnome.service
+    scope: user
+    state: started
+    enabled: true

@@ -1,7 +1,31 @@
 #!/bin/bash
 
-sed -i \
-    -e "s/^colors: \\*dark-colors/colors: *light-colors/" \
-    -e "t" \
-    -e "s/^colors: \\*light-colors/colors: *dark-colors/" \
-    ~/.config/alacritty/alacritty.yml
+usage() {
+    echo "Usage"
+    echo "    $(basename $0) [dark|light|swap]"
+    echo
+    echo "Commands"
+    echo "    dark     Set alacritty theme to dark"
+    echo "    light    Set alacritty theme to light"
+    echo "    swap     Toggle alacritty theme"
+}
+
+case "$1" in
+    swap)
+        sed -i \
+            -e "s/^colors: \\*dark-colors/colors: *light-colors/" \
+            -e "t" \
+            -e "s/^colors: \\*light-colors/colors: *dark-colors/" \
+            ~/.config/alacritty/alacritty.yml
+        ;;
+    dark)
+        sed -i -e "s/^colors: .*/colors: *dark-colors/" \
+            ~/.config/alacritty/alacritty.yml
+        ;;
+    light)
+        sed -i -e "s/^colors: .*/colors: *light-colors/" \
+            ~/.config/alacritty/alacritty.yml
+        ;;
+    help) usage ;;
+    *) usage; exit 1 ;;
+esac

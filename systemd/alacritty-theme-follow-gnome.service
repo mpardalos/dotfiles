@@ -1,0 +1,8 @@
+[Unit]
+Name=Make alacritty follow GNOME dark or light mode
+
+[Service]
+ExecStart=/home/mpardalos/.config/dotfiles/bin/alacritty-theme-follow-gnome
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SETTING_SCHEMA="org.gnome.desktop.interface"
+SETTING_KEY="color-scheme"
+
+case "$(gsettings get $SETTING_SCHEMA $SETTING_KEY)" in
+    "'prefer-dark'") alacritty-theme-swap dark ;;
+    "'default'") alacritty-theme-swap light ;;
+esac
+
+gsettings monitor $SETTING_SCHEMA $SETTING_KEY | \
+    while read -r line; do
+        case "$line" in
+            "color-scheme: 'prefer-dark'") alacritty-theme-swap dark ;;
+            "color-scheme: 'default'") alacritty-theme-swap light ;;
+        esac
+    done

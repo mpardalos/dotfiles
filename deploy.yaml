@@ -5,6 +5,8 @@
       dotfiles: "{{ playbook_dir }}"
       home: "{{ ansible_facts['user_dir'] }}"
   tasks:
+    - import_tasks: systemd/tasks.yaml
+      tags: systemd
     - import_tasks: git/tasks.yaml
       tags: git
     - import_tasks: tmux/tasks.yaml
