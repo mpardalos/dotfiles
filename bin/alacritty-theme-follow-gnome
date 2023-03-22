@@ -2,6 +2,7 @@
 
 SETTING_SCHEMA="org.gnome.desktop.interface"
 SETTING_KEY="color-scheme"
+PATH="$(dirname $0):$PATH"
 
 case "$(gsettings get $SETTING_SCHEMA $SETTING_KEY)" in
     "'prefer-dark'") alacritty-theme-swap dark ;;
