@@ -1,7 +1,7 @@
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.elan/bin"
 fish_add_path "$HOME/.cargo/bin"
-fish_add_path "$HOME/.emacs.d/bin"
+fish_add_path "$HOME/.config/emacs/bin"
 fish_add_path "$HOME/.ghcup/bin"
 fish_add_path "$HOME/.cabal/bin"
 fish_add_path "$HOME/Documents/go/bin"
