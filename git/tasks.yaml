@@ -6,6 +6,7 @@
     dest: "{{ home }}/.config/git"
 
 - name: Install difftastic
+  become: true
   dnf:
     name: difftastic
     state: present
