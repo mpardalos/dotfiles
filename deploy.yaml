@@ -5,6 +5,11 @@
       dotfiles: "{{ playbook_dir }}"
       home: "{{ ansible_facts['user_dir'] }}"
   tasks:
+    - name: Update git submodules
+      command: git submodule update --init
+      register: git_submodules
+      changed_when: git_submodules.stdout != ""
+      tags: always
     - import_tasks: systemd/tasks.yaml
       tags: systemd
     - import_tasks: git/tasks.yaml
