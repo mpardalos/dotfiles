@@ -7,6 +7,8 @@
       - fish
       - exa
       - direnv
+      - fzf
+      - fd-find
 - name: Link fish config
   file:
     state: link
