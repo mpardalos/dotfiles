@@ -39,3 +39,7 @@ function ssh
   command ssh $argv 
   tmux-set-pane-title (hostname)
 end
+
+# Plugin: THEME PURE
+set -p fish_function_path $__fish_config_dir/plugins/pure/functions/
+source $__fish_config_dir/plugins/pure/conf.d/pure.fish;
