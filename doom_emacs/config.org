@@ -7,7 +7,7 @@ This is the config that applies to all of emacs, regardless of mode.
 (use-package! auto-dark
   :custom
   (auto-dark-dark-theme 'doom-lantern)
-  (auto-dark-light-theme 'doom-earl-grey)
+  (auto-dark-light-theme 'doom-one-light)
   :config
   (auto-dark-mode t))
 #+end_src
