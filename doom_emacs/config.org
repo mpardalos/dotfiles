@@ -472,6 +472,11 @@ The bibliography file is used a few times, so I set it here once and re-use it.
       :desc "Format region or buffer" "f" #'+format/region-or-buffer)
 #+end_src
 
+** Tree-sitter
+I just don't find it useful, and it just uses too many colours which gets distracting
+#+begin_src elisp
+(setq +tree-sitter-hl-enabled-modes '())
+#+end_src
 ** General LSP
 #+begin_src elisp
 (setq! lsp-ui-sideline-enable nil

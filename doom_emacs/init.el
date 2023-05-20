@@ -48,12 +48,13 @@
     terraform
     ansible
     (docker +lsp)
+    tree-sitter
 
     :lang
     (sh +fish)
     emacs-lisp
     markdown
-    (haskell +lsp)
+    (haskell +lsp +tree-sitter)
     (org
         +pretty
         +attach
