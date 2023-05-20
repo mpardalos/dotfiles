@@ -465,6 +465,13 @@ The bibliography file is used a few times, so I set it here once and re-use it.
 (add-hook! LaTeX-mode (auto-fill-mode -1))
 #+end_src
 * Programming
+** General
+#+begin_src elisp
+(map! :mode prog-mode
+      :localleader
+      :desc "Format region or buffer" "f" #'+format/region-or-buffer)
+#+end_src
+
 ** General LSP
 #+begin_src elisp
 (setq! lsp-ui-sideline-enable nil
@@ -480,7 +487,6 @@ Keybindings
       (:localleader
        :desc "Rename symbol" "r" #'lsp-rename
        :desc "Code action"   "a" #'lsp-execute-code-action
-       :desc "Format buffer" "f" #'lsp-format-buffer
        :desc "Find symbol"  "s" #'consult-lsp-symbols)
 
       :desc "Glance documentation"  :n "gh" #'lsp-ui-doc-glance
