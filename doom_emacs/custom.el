@@ -44,3 +44,4 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'company-coq-fold 'disabled nil)
 (put 'customize-group 'disabled nil)
+(put 'magit-clean 'disabled nil)
