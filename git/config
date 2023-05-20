@@ -27,3 +27,5 @@
 	user = mpardalos
 [diff]
 	external = difft
+[init]
+	defaultBranch = master
