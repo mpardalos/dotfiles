@@ -1,0 +1,17 @@
+---
+- name: Hyperland | Copr
+  become: true
+  community.general.copr:
+    name: obito1903/hyprland
+    state: enabled
+- name: Hyprland | Package
+  become: yes
+  dnf:
+    name: hyprland
+    state: present
+    install_weak_deps: false
+- name: Hyprland | Config
+  file:
+    state: link
+    src: "{{ dotfiles }}/hypr/"
+    dest: "{{ home }}/.config/hypr"
