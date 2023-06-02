@@ -1,0 +1,6 @@
+---
+- name: Make Cabal build documentation for installed packages
+  lineinfile:
+    path: ~/.config/cabal/config
+    regexp: '^-- documentation:'
+    line: 'documentation: True'

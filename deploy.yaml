@@ -28,6 +28,8 @@
       tags: hypr
     - import_tasks: restic/tasks.yaml
       tags: [ never, restic ]
+    - import_tasks: other_tasks/customisations.yaml
+      tags: customisations
     - import_tasks: other_tasks/applications.yaml
       tags: applications
     - import_tasks: other_tasks/gnome-utils.yaml
