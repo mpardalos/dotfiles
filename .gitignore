@@ -24,3 +24,4 @@ qutebrowser/autoconfig.yml
 bonclay
 /fish/fish_variables
 /fish/functions/fish_prompt.fish
+/fish/fish_config/conf.d/secrets.fish
