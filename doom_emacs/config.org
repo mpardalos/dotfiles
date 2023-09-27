@@ -337,6 +337,12 @@ Shrink block delimiters. Makes documents with lots of blocks cleaner.
   (set-face-attribute 'org-block-begin-line nil :height 0.6))
 #+end_src
 
+Reasonable default for image size. Half a screen width on a 1080p screen.
+#+begin_src elisp
+(after! org
+  (setq! org-image-actual-width '(960)))
+#+end_src
+
 ** org-roam
 Keybindings
 #+begin_src elisp
