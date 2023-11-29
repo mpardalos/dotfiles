@@ -47,3 +47,6 @@ source $__fish_config_dir/plugins/pure/conf.d/pure.fish;
 # Plugin: fzf.fish
 set -p fish_function_path $__fish_config_dir/plugins/fzf/functions/
 source $__fish_config_dir/plugins/fzf/conf.d/fzf.fish;
+
+# Plugin: bass
+set -p fish_function_path $__fish_config_dir/plugins/bass/functions/

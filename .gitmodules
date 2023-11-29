@@ -7,3 +7,6 @@
 [submodule "fish/fish_config/plugins/fzf"]
 	path = fish/fish_config/plugins/fzf
 	url = git@github.com:PatrickF1/fzf.fish.git
+[submodule "fish/fish_config/plugins/bass"]
+	path = fish/fish_config/plugins/bass
+	url = git@github.com:edc/bass.git
