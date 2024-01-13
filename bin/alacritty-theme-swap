@@ -13,18 +13,18 @@ usage() {
 case "$1" in
     swap)
         sed -i \
-            -e "s/^colors: \\*dark-colors/colors: *light-colors/" \
+            -e "s/theme-dark\\.toml/theme-light.toml/" \
             -e "t" \
-            -e "s/^colors: \\*light-colors/colors: *dark-colors/" \
-            ~/.config/alacritty/alacritty.yml
+            -e "s/theme-light\\.toml/theme-dark.toml/" \
+            ~/.config/alacritty/alacritty.toml
         ;;
     dark)
-        sed -i -e "s/^colors: .*/colors: *dark-colors/" \
-            ~/.config/alacritty/alacritty.yml
+        sed -i -e "s/theme-.*\\?\\.toml/theme-dark.toml/" \
+            ~/.config/alacritty/alacritty.toml
         ;;
     light)
-        sed -i -e "s/^colors: .*/colors: *light-colors/" \
-            ~/.config/alacritty/alacritty.yml
+        sed -i -e "s/theme-.*\\?\\.toml/theme-light.toml/" \
+            ~/.config/alacritty/alacritty.toml
         ;;
     help) usage ;;
     *) usage; exit 1 ;;
