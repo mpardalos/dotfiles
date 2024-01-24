@@ -40,6 +40,18 @@ function ssh
   tmux-set-pane-title (hostname)
 end
 
+# Fix for remote emacs connecting to this machine
+# https://github.com/oh-my-fish/theme-bobthefish/issues/148
+if test "$TERM" = "dumb"
+  function fish_prompt
+    echo "\$ "
+  end
+
+  function fish_right_prompt; end
+  function fish_greeting; end
+  function fish_title; end
+end
+
 # Plugin: THEME PURE
 set -p fish_function_path $__fish_config_dir/plugins/pure/functions/
 source $__fish_config_dir/plugins/pure/conf.d/pure.fish;
