@@ -26,7 +26,8 @@
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
  '(safe-local-variable-values
-   '((lsp-haskell-server-path . "haskell-language-server")
+   '((eval ansible 1)
+     (lsp-haskell-server-path . "haskell-language-server")
      (eval add-to-list 'auto-mode-alist
       '("\\.v\\'" . verilog-mode))
      (counsel-compile-local-builds "ssh pardalos@rs6 \"echo 'make -C /work/pardalos/vhdl.mp/npchip/tb/assembler -j' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -p:\"-log4 /work/pardalos/npasm_log.cfg\" -E lava' | tcsh -s\"" "ssh pardalos@rs6 \"echo 'cd /work/pardalos/vhdl.mp/np5chip/ && go -p:\"-log4 /work/pardalos/npasm_log.cfg\" -P lava' | tcsh -s\"")
