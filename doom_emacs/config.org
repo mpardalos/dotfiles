@@ -62,7 +62,21 @@ Make it so that entering and exiting insert state keeps the cursor in place
 Change up how dired displays items.
 #+begin_src elisp
 (setq! dired-listing-switches "-ABhl -X --group-directories-first")
+
+(defun dired-dotfiles-toggle ()
+    "Show/hide dot-files"
+    (interactive)
+    (when (equal major-mode 'dired-mode)
+      (if (or (not (boundp 'dired-dotfiles-show-p)) dired-dotfiles-show-p) ; if currently showing
+	  (progn
+	    (set (make-local-variable 'dired-dotfiles-show-p) nil)
+	    (message "h")
+	    (dired-mark-files-regexp "^\\\.")
+	    (dired-do-kill-lines))
+	(progn (revert-buffer) ; otherwise just revert to re-show
+	       (set (make-local-variable 'dired-dotfiles-show-p) t)))))
 #+end_src
+
 *** Popups
 Place terminal on the right
 #+begin_src elisp
