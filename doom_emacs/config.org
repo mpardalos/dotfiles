@@ -586,9 +586,10 @@ Keybindings
 #+begin_src elisp
 (setq! flycheck-dafny-executable "~/.local/share/dafny/dafny"
        flycheck-boogie-executable "~/.local/share/dafny/dafny-server"
-       flycheck-z3-smt2-executable "~/.local/share/dafny/z3/bin/z3"
+       flycheck-z3-smt2-executable "z3"
        flycheck-inferior-dafny-executable "~/.local/share/dafny/dafny-server")
 #+end_src
+
 ** Kima
 [[https://kima.xyz][Kima]] is a programming language I was working on in the past. I have added a very simple mode for it, which includes a configuration for ~quickrun~.
 #+begin_src elisp
