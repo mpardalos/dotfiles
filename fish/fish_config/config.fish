@@ -15,7 +15,7 @@ set -gx OSTYPE "linux"
 set -gx VAGRANT_DEFAULT_PROVIDER "libvirt"
 
 # Aliases
-alias ll="exa -lg --group-directories-first --git"
+alias ll="eza -lg --group-directories-first --git"
 alias csvcol="column -s, -t"
 alias open-rust-doc="open /usr/share/doc/rust/html/index.html"
 
