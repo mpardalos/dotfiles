@@ -316,10 +316,9 @@ Doom changes this. Set it back to the default
 (setq! org-attach-id-dir "data/")
 #+end_src
 
-I like writeroom-mode, but only for writing prose, so I only enable it for org-mode.
+I like to use mixed-pitch fonts for writing.
 #+begin_src elisp
-(setq! writeroom-major-modes '(org-mode))
-(global-writeroom-mode 1)
+(add-hook 'org-mode-hook #'mixed-pitch-mode)
 #+end_src
 
 Use ~ace-window~ to choose the window to open links in
