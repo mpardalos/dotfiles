@@ -77,6 +77,7 @@
     (go +lsp)
     nix
     yaml
+    dhall
     ocaml
 
     :checkers
