@@ -27,3 +27,5 @@
     :recipe (:host github :repo "ibizaman/emacs-conflict"))
 
 (package! auto-dark)
+
+(package! plantuml-mode)

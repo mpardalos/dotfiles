@@ -480,6 +480,13 @@ The bibliography file is used a few times, so I set it here once and re-use it.
 
 (add-hook! LaTeX-mode (auto-fill-mode -1))
 #+end_src
+
+** PlantUML
+#+begin_src elisp
+(setq!
+    plantuml-default-exec-mode 'executable
+    plantuml-executable-path "plantuml")
+#+end_src
 * Programming
 ** General
 #+begin_src elisp
