@@ -29,6 +29,7 @@
     fold
     format
     snippets
+    lispy
 
     :emacs
     (dired +icons)
