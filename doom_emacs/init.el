@@ -76,6 +76,7 @@
     (go +lsp)
     nix
     yaml
+    ocaml
 
     :checkers
     (spell +aspell)
