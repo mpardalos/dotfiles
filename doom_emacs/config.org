@@ -487,6 +487,28 @@ The bibliography file is used a few times, so I set it here once and re-use it.
     plantuml-default-exec-mode 'executable
     plantuml-executable-path "plantuml")
 #+end_src
+
+** Markdown
+I like to use mixed-pitch fonts for writing.
+#+begin_src elisp
+(add-hook 'markdown-mode-hook #'mixed-pitch-mode)
+#+end_src
+
+Copied from [[https://codeberg.org/sochotnicky/dotfiles/src/branch/main/dot_doom.d/config.org#headline-74][here]].
+#+begin_quote
+To create a nested TOC in Markdown docs:
+
+Originally due to https://github.com/ardumont/markdown-toc/issues/51 See https://github.com/jrblevin/markdown-mode/issues/578#issuecomment-1126380098 https://github.com/jrblevin/markdown-mode/pull/721
+#+end_quote
+
+#+begin_src elisp
+(setq native-comp-deferred-compilation-deny-list '("markdown-mode\\.el$"))
+
+(defun set-markdown-nested()
+  (setq-local imenu-create-index-function 'markdown-imenu-create-nested-index))
+(add-hook 'markdown-mode-hook #'set-markdown-nested)
+#+end_src
+
 * Programming
 ** General
 #+begin_src elisp
