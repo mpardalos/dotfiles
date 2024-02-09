@@ -1,0 +1,23 @@
+---
+- name: Eww | Ensure dependencies are installed
+  become: true
+  dnf:
+    name:
+      - gtk3
+      - gtk-layer-shell
+      - gtk-layer-shell-devel
+      - pango
+      - gdk-pixbuf2
+      - cairo
+      - glib2
+    state: present
+- name: Eww | Ensure eww is installed
+  become: true
+  command: "{{ dotfiles }}/eww/install.sh"
+  args:
+    creates: "{{ home }}/.local/bin/eww"
+- name: Eww | Config
+  file:
+    state: link
+    src: "{{ dotfiles }}/eww/"
+    dest: "{{ home }}/.config/eww"

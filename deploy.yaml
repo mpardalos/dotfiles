@@ -28,6 +28,8 @@
       tags: hypr
     - import_tasks: direnv/tasks.yaml
       tags: direnv
+    - import_tasks: eww/tasks.yaml
+      tags: eww
     - import_tasks: restic/tasks.yaml
       tags: [ never, restic ]
     - import_tasks: other_tasks/customisations.yaml
