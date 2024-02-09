@@ -26,7 +26,8 @@
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
  '(safe-local-variable-values
-   '((eval ansible 1)
+   '((org-latex-caption-above)
+     (eval ansible 1)
      (lsp-haskell-server-path . "haskell-language-server")
      (eval add-to-list 'auto-mode-alist
       '("\\.v\\'" . verilog-mode))
