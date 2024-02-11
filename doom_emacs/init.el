@@ -78,7 +78,7 @@
     nix
     yaml
     dhall
-    ocaml
+    (ocaml +lsp)
 
     :checkers
     (spell +aspell)
