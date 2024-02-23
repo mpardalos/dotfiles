@@ -15,7 +15,7 @@ set -gx OSTYPE "linux"
 set -gx VAGRANT_DEFAULT_PROVIDER "libvirt"
 
 zoxide init fish | source
-# alias cd=zi
+alias cd=z
 
 # Aliases
 alias ll="eza -lg --group-directories-first --git"
