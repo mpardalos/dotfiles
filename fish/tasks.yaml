@@ -9,6 +9,7 @@
       - direnv
       - fzf
       - fd-find
+      - zoxide
 - name: Link fish config
   file:
     state: link

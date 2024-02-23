@@ -14,10 +14,14 @@ set -gx EDITOR "/usr/bin/nvim"
 set -gx OSTYPE "linux"
 set -gx VAGRANT_DEFAULT_PROVIDER "libvirt"
 
+zoxide init fish | source
+# alias cd=zi
+
 # Aliases
 alias ll="eza -lg --group-directories-first --git"
 alias csvcol="column -s, -t"
 alias open-rust-doc="open /usr/share/doc/rust/html/index.html"
+alias dnf="dnf5"
 
 abbr --add ec "emacsclient -n"
 abbr --add g git
