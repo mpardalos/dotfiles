@@ -30,15 +30,6 @@ Don't highlight the current line. I just find it distracting.
 #+end_src
 
 ** Tweaks
-Save on entering evil normal state
-#+begin_src elisp
-(add-hook 'evil-normal-state-entry-hook
-          (lambda ()
-            (if buffer-file-name
-                (save-buffer)
-              (message "Current buffer is unnamed"))))
-#+end_src
-
 Line numbers slow down typing. There is a binding to turn them on when needed.
 #+begin_src elisp
 (setq! display-line-numbers-type nil)
