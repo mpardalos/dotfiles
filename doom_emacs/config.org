@@ -292,6 +292,33 @@ This package is used to resolve conflicts due to syncthing, which I use to sync 
 #+begin_src elisp
 (use-package! emacs-conflict)
 #+end_src
+** Org SSH
+I want to add an org-mode link type to ssh into remote machines in libvterm.
+
+This function will ssh to a server in a vterm buffer
+#+begin_src emacs-lisp :tangle yes
+(defun ssh-to-server (ssh-target)
+  "Open a vterm terminal and SSH into a server."
+  (interactive "sEnter [<user>@]<server>: ")
+  (require 'vterm)
+  (let ((buffer-name (format "*ssh %s*" ssh-target)))
+    (if (get-buffer buffer-name)
+        (switch-to-buffer buffer-name)
+      (progn
+        (vterm)
+        (rename-buffer buffer-name)
+        (vterm-send-string (format "ssh %s; exit" ssh-target))
+        (vterm-send-return)
+        (vterm-send-string "clear")
+        (vterm-send-return)))))
+#+end_src
+
+We then need the org-mode link type
+#+begin_src emacs-lisp :tangle yes
+(after! org
+    (org-add-link-type "ssh" #'ssh-to-server))
+#+end_src
+
 * Prose
 ** Org mode
 #+begin_src elisp
