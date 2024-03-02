@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+SERVER_NAME="temp-vpn"
+IMAGE_NAME="rocky-9"
+SERVER_TYPE="cx11" # Cheapest instance
+
+usage() {
+    echo "Provision a temporary tailscale exit-node on Hetzner cloud"
+    echo ""
+    echo "Usage:"
+    echo "  $(basename $0) <create|destroy>"
+    echo ""
+    echo "Commands:"
+    echo "  create    Create the instance (if it does not exist)"
+    echo "  destroy   Destroy the instance (if it exists)"
+}
+
+COMMAND=$1
+if [[ -z "$COMMAND" ]]; then
+    usage
+    exit 1
+fi
+
+server-exists() {
+    hcloud server list -o noheader -o columns=name | grep "^${SERVER_NAME}$"
+}
+
+create() {
+    if server-exists; then
+        echo Already exists
+        exit 0
+    fi
+
+    echo "> Create server"
+    SERVER_INFO=$(
+        hcloud server create \
+            --name "$SERVER_NAME" \
+            --image "$IMAGE_NAME" \
+            --type "$SERVER_TYPE" \
+            --ssh-key "mpardalos@odin" \
+            --ssh-key "mpardalos@magni" \
+            --output json
+               )
+
+    IP_ADDR=$(jq -r '.server.public_net.ipv4.ip' <<<"$SERVER_INFO")
+    IP_ADDR=37.27.17.235
+    echo "IP Address: $IP_ADDR"
+
+    echo "> Wait for SSH to be up"
+    until ssh -o"StrictHostKeyChecking=accept-new" root@$IP_ADDR 'echo I am up'; do
+        sleep 1
+    done
+
+    echo "> Provision server"
+    ssh root@$IP_ADDR bash -s <<-EOF
+        echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.d/99-tailscale.conf
+        echo 'net.ipv6.conf.all.forwarding = 1' >> /etc/sysctl.d/99-tailscale.conf
+        sysctl -p /etc/sysctl.d/99-tailscale.conf
+        curl -fsSL https://tailscale.com/install.sh | sh
+        tailscale up --advertise-exit-node
+EOF
+
+    echo "> You need to approve $SERVER_NAME to be used as an exit node."
+    echo "> Go to this url to approve it: "
+    echo ">         https://login.tailscale.com/admin/machines"
+    echo "> More information at https://tailscale.com/kb/1103/exit-nodes#step-3-allow-the-exit-node-from-the-admin-console"
+}
+
+destroy() {
+    if !(server-exists); then
+        echo Does not exist
+        exit 0
+    fi
+
+    echo "> Get server IP"
+    IP_ADDR=$(hcloud server list -o noheader -o columns=name,ipv4 | awk '/^temp-vpn/ { print $2 }')
+
+    echo "> Forget server host key"
+    ssh-keygen -R $IP_ADDR
+
+    echo "> Destroy server"
+    hcloud server delete "$SERVER_NAME"
+
+    echo "> You might want to remove the node from your tailnet here:"
+    echo ">         https://login.tailscale.com/admin/machines"
+    echo "> Look for a node named $SERVER_NAME or $SERVER_NAME-<number>"
+}
+
+case $COMMAND in
+    create) create ;;
+    destroy) destroy ;;
+    *) usage; exit 1 ;;
+esac
