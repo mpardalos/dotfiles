@@ -57,10 +57,20 @@ create() {
         tailscale up --advertise-exit-node
 EOF
 
+    tailscale_ip=$(ssh root@$IP_ADDR 'tailscale status --json' | jq -r '.Self.TailscaleIPs[0]')
+
+    echo
     echo "> You need to approve $SERVER_NAME to be used as an exit node."
     echo "> Go to this url to approve it: "
+    echo ">"
     echo ">         https://login.tailscale.com/admin/machines"
+    echo ">"
     echo "> More information at https://tailscale.com/kb/1103/exit-nodes#step-3-allow-the-exit-node-from-the-admin-console"
+    echo "> Afterwards, you can you can route your internet traffic through it by running"
+    echo ">"
+    echo ">         tailscale set --exit-node=$tailscale_ip"
+    echo ">"
+    echo "> Or using Trayscale"
 }
 
 destroy() {
