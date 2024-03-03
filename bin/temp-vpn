@@ -84,29 +84,15 @@ destroy() {
 }
 
 status() {
-    (
-        echo -n "Server exists,"
-        if server-exists >/dev/null; then echo "Yes"; else echo "No"; fi
+    if server-exists >/dev/null; then
+        echo "Server exists"
+    else
+        echo "Server does not exist"
+    fi
 
-        tailscale status --json \
-            | jq -r ".Peer[]
-                     | select(.HostName == \"$SERVER_NAME\")
-                     | [.Online, .ExitNode, .ExitNodeOption]
-                     | @tsv" \
-            | sed -e 's/true/Yes/g' -e 's/false/No/g' \
-            | (
-            read vpn_online vpn_exit_node vpn_exit_node_option
-            if [ $? -eq 0 ]; then
-                echo "Server on tailscale,Yes"
-                echo "Tailscale node online,$vpn_online"
-                echo "Tailscale exit node option,$vpn_exit_node_option"
-                echo "Tailscale exit node active,$vpn_exit_node"
-            else
-                echo "Server on tailscale,No"
-            fi
-        )
-
-    ) | awk -F',' '{ printf "%-30s %s\n", $1": ", $2 }'
+    echo
+    echo "Matching tailscale nodes:"
+    tailscale status | grep "$SERVER_NAME"
 }
 
 case $COMMAND in
