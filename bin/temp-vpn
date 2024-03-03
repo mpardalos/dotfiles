@@ -8,18 +8,16 @@ usage() {
     echo "Provision a temporary tailscale exit-node on Hetzner cloud"
     echo ""
     echo "Usage:"
-    echo "  $(basename $0) <create|destroy>"
+    echo "  $(basename $0) <create|destroy|status|help>"
     echo ""
     echo "Commands:"
+    echo "  status    Show information about the vpn (default)"
+    echo "  help      Show this help message"
     echo "  create    Create the instance (if it does not exist)"
     echo "  destroy   Destroy the instance (if it exists)"
 }
 
 COMMAND=$1
-if [[ -z "$COMMAND" ]]; then
-    usage
-    exit 1
-fi
 
 server-exists() {
     hcloud server list -o noheader -o columns=name | grep "^${SERVER_NAME}$"
@@ -43,7 +41,6 @@ create() {
                )
 
     IP_ADDR=$(jq -r '.server.public_net.ipv4.ip' <<<"$SERVER_INFO")
-    IP_ADDR=37.27.17.235
     echo "IP Address: $IP_ADDR"
 
     echo "> Wait for SSH to be up"
@@ -86,8 +83,36 @@ destroy() {
     echo "> Look for a node named $SERVER_NAME or $SERVER_NAME-<number>"
 }
 
+status() {
+    (
+        echo -n "Server exists,"
+        if server-exists >/dev/null; then echo "Yes"; else echo "No"; fi
+
+        tailscale status --json \
+            | jq -r ".Peer[]
+                     | select(.HostName == \"$SERVER_NAME\")
+                     | [.Online, .ExitNode, .ExitNodeOption]
+                     | @tsv" \
+            | sed -e 's/true/Yes/g' -e 's/false/No/g' \
+            | (
+            read vpn_online vpn_exit_node vpn_exit_node_option
+            if [ $? -eq 0 ]; then
+                echo "Server on tailscale,Yes"
+                echo "Tailscale node online,$vpn_online"
+                echo "Tailscale exit node option,$vpn_exit_node_option"
+                echo "Tailscale exit node active,$vpn_exit_node"
+            else
+                echo "Server on tailscale,No"
+            fi
+        )
+
+    ) | awk -F',' '{ printf "%-30s %s\n", $1": ", $2 }'
+}
+
 case $COMMAND in
     create) create ;;
     destroy) destroy ;;
-    *) usage; exit 1 ;;
+    "" | status) status ;;
+    help) usage; exit 0 ;;
+    *) echo -e "Unknown command: $COMMAND\n"; usage; exit 1 ;;
 esac
