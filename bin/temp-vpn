@@ -3,6 +3,7 @@
 SERVER_NAME="temp-vpn"
 IMAGE_NAME="rocky-9"
 SERVER_TYPE="cx11" # Cheapest instance
+DATACENTER="nbg1-dc3" # Nuremberg, Germany
 
 usage() {
     echo "Provision a temporary tailscale exit-node on Hetzner cloud"
@@ -35,6 +36,7 @@ create() {
             --name "$SERVER_NAME" \
             --image "$IMAGE_NAME" \
             --type "$SERVER_TYPE" \
+            --datacenter "$DATACENTER" \
             --ssh-key "mpardalos@odin" \
             --ssh-key "mpardalos@magni" \
             --output json
