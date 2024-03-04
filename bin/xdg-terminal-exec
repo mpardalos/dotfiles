@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if [ $# -eq 0 ]; then
+    exec alacritty
+elif [ $1 = "-e" ]; then
+    exec alacritty $@
+else
+    exec alacritty -e "$@"
+fi
