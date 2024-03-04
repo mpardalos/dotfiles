@@ -12,16 +12,17 @@ usage() {
     echo "  $(basename $0) <create|destroy|status|help>"
     echo ""
     echo "Commands:"
-    echo "  status    Show information about the vpn (default)"
-    echo "  help      Show this help message"
-    echo "  create    Create the instance (if it does not exist)"
-    echo "  destroy   Destroy the instance (if it exists)"
+    echo "  status       Show information about the vpn (default)"
+    echo "  help         Show this help message"
+    echo "  create       Create the instance (if it does not exist)"
+    echo "  destroy      Destroy the instance (if it exists)"
+    echo "  interactive  Show the status and prompt to create/destroy the server"
 }
 
 COMMAND=$1
 
 server-exists() {
-    hcloud server list -o noheader -o columns=name | grep "^${SERVER_NAME}$"
+    hcloud server list -o noheader -o columns=name | grep "^${SERVER_NAME}$" >/dev/null
 }
 
 create() {
@@ -107,10 +108,32 @@ status() {
     tailscale status | grep "$SERVER_NAME"
 }
 
+interactive() {
+    status
+
+    if server-exists; then
+        echo -n "Server exists. Would you like to destroy it? [Y/n] "
+        read response
+
+        case $response in
+            y|Y|"") destroy ;;
+        esac
+    else
+        echo -n "Server does not exist. Would you like to create it? [Y/n] "
+        read response
+
+        case $response in
+            y|Y|"") create ;;
+        esac
+    fi
+
+}
+
 case $COMMAND in
     create) create ;;
     destroy) destroy ;;
-    "" | status) status ;;
+    status) status ;;
+    interactive) interactive ;;
     help) usage; exit 0 ;;
     *) echo -e "Unknown command: $COMMAND\n"; usage; exit 1 ;;
 esac
