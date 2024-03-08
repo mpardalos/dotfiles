@@ -10,6 +10,8 @@
       register: git_submodules
       changed_when: git_submodules.stdout != ""
       tags: always
+    - import_tasks: bin/tasks.yaml
+      tags: bin
     - import_tasks: systemd/tasks.yaml
       tags: systemd
     - import_tasks: git/tasks.yaml
