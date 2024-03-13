@@ -17,9 +17,22 @@ usage() {
     echo "  create       Create the instance (if it does not exist)"
     echo "  destroy      Destroy the instance (if it exists)"
     echo "  interactive  Show the status and prompt to create/destroy the server"
+    echo ""
+    echo "Flags:"
+    echo "  --dry-run    Do not actually perform any actions"
 }
 
 COMMAND=$1
+shift
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --dry-run) DRY_RUN=1; shift ;;
+    esac
+done
+
+is_real_run() {
+    [ ! "$DRY_RUN" ]
+}
 
 server-exists() {
     hcloud server list -o noheader -o columns=name | grep "^${SERVER_NAME}$" >/dev/null
@@ -32,35 +45,60 @@ create() {
     fi
 
     echo "> Create server"
-    SERVER_INFO=$(
-        hcloud server create \
-            --name "$SERVER_NAME" \
-            --image "$IMAGE_NAME" \
-            --type "$SERVER_TYPE" \
-            --datacenter "$DATACENTER" \
-            --ssh-key "mpardalos@odin" \
-            --ssh-key "mpardalos@magni" \
-            --output json
-               )
+    if is_real_run; then
+        SERVER_INFO=$(
+            hcloud server create \
+                --name "$SERVER_NAME" \
+                --image "$IMAGE_NAME" \
+                --type "$SERVER_TYPE" \
+                --datacenter "$DATACENTER" \
+                --ssh-key "mpardalos@odin" \
+                --ssh-key "mpardalos@magni" \
+                --output json
+                )
+    else
+        >&2 echo
+        >&2 echo '  ...Create server on hcloud'
+        >&2 echo
+        SERVER_INFO='{ "server": { "public_net": { "ipv4": { "ip": "0.0.0.0" }}}}'
+    fi
 
     IP_ADDR=$(jq -r '.server.public_net.ipv4.ip' <<<"$SERVER_INFO")
     echo "IP Address: $IP_ADDR"
 
     echo "> Wait for SSH to be up"
-    until ssh -o"StrictHostKeyChecking=accept-new" root@$IP_ADDR 'echo I am up'; do
-        sleep 1
-    done
+    if is_real_run; then
+        until ssh -o"StrictHostKeyChecking=accept-new" root@$IP_ADDR 'echo I am up'; do
+            sleep 1
+        done
+    else
+        >&2 echo
+        >&2 echo "  ...Wait for server to be up"
+        >&2 echo
+    fi
 
     echo "> Provision server"
-    ssh root@$IP_ADDR bash -s <<-EOF
-        echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.d/99-tailscale.conf
-        echo 'net.ipv6.conf.all.forwarding = 1' >> /etc/sysctl.d/99-tailscale.conf
-        sysctl -p /etc/sysctl.d/99-tailscale.conf
-        curl -fsSL https://tailscale.com/install.sh | sh
-        tailscale up --advertise-exit-node
-EOF
+    if is_real_run; then
 
-    tailscale_ip=$(ssh root@$IP_ADDR 'tailscale status --json' | jq -r '.Self.TailscaleIPs[0]')
+        ssh root@$IP_ADDR bash -s <<-EOF
+            echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.d/99-tailscale.conf
+            echo 'net.ipv6.conf.all.forwarding = 1' >> /etc/sysctl.d/99-tailscale.conf
+            sysctl -p /etc/sysctl.d/99-tailscale.conf
+            curl -fsSL https://tailscale.com/install.sh | sh
+            tailscale up --advertise-exit-node
+EOF
+    else
+        >&2 echo
+        >&2 echo "  ...Do the provisioning"
+        >&2 echo "  ...Wait for tailscale authentication"
+        >&2 echo
+    fi
+
+    if is_real_run; then
+        tailscale_ip=$(ssh root@$IP_ADDR 'tailscale status --json' | jq -r '.Self.TailscaleIPs[0]')
+    else
+        tailscale_ip=0.0.0.0
+    fi
 
     echo
     echo "> You need to approve $SERVER_NAME to be used as an exit node."
@@ -106,6 +144,9 @@ status() {
     echo
     echo "Matching tailscale nodes:"
     tailscale status | grep "$SERVER_NAME"
+    if [[ ! $? -eq 0 ]]; then
+        echo
+    fi
 }
 
 interactive() {
