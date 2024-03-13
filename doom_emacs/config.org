@@ -66,6 +66,9 @@ Change up how dired displays items.
 	    (dired-do-kill-lines))
 	(progn (revert-buffer) ; otherwise just revert to re-show
 	       (set (make-local-variable 'dired-dotfiles-show-p) t)))))
+*** GC notifications with gc-geiger
+#+begin_src emacs-lisp :tangle yes
+(use-package! gc-geiger)
 #+end_src
 
 *** Popups

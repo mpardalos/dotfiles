@@ -29,3 +29,6 @@
 (package! auto-dark)
 
 (package! plantuml-mode)
+
+(package! gc-geiger
+    :recipe (:host github :repo "mpardalos/gc-geiger"))
