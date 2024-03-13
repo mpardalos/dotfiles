@@ -6,7 +6,7 @@ This is the config that applies to all of emacs, regardless of mode.
 #+begin_src elisp
 (use-package! auto-dark
   :custom
-  (auto-dark-dark-theme 'doom-lantern)
+  (auto-dark-dark-theme 'rebecca)
   (auto-dark-light-theme 'doom-one-light)
   :config
   (auto-dark-mode t))
