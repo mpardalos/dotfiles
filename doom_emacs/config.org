@@ -322,6 +322,15 @@ We then need the org-mode link type
 (after! org
     (org-link-set-parameters "ssh" :follow #'ssh-to-server))
 #+end_src
+** elfeed
+RSS in Emacs!
+
+#+begin_src emacs-lisp :tangle yes
+(after! elfeed
+  (setq elfeed-feeds
+        '("https://xeiaso.net/blog.rss"
+          )))
+#+end_src
 
 * Prose
 ** Org mode
