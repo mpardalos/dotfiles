@@ -30,5 +30,8 @@
 
 (package! plantuml-mode)
 
+(package! smtlib-mode
+    :recipe (:host github :repo "chsticksel/smtlib-mode"))
+
 (package! gc-geiger
     :recipe (:host github :repo "mpardalos/gc-geiger"))
