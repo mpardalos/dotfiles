@@ -320,7 +320,7 @@ This function will ssh to a server in a vterm buffer
 We then need the org-mode link type
 #+begin_src emacs-lisp :tangle yes
 (after! org
-    (org-add-link-type "ssh" #'ssh-to-server))
+    (org-link-set-parameters "ssh" :follow #'ssh-to-server))
 #+end_src
 
 * Prose
