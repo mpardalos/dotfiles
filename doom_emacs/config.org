@@ -68,6 +68,11 @@ Change up how dired displays items.
              (set (make-local-variable 'dired-dotfiles-show-p) t)))))
 #+end_src
 
+Open urls in eww by default
+#+begin_src emacs-lisp :tangle yes
+(setq! browse-url-default-browser #'eww-browse-url)
+#+end_src
+
 *** GC notifications with gc-geiger
 #+begin_src emacs-lisp :tangle yes
 (use-package! gc-geiger)
