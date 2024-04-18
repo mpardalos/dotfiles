@@ -286,10 +286,11 @@ Add the greek dictionary
 #+end_src
 ** Terminal
 I just use vterm. I used to use eshell occasionally, but I found a plain terminal is usually what I want.
+Also, I just use the plain "vterm" command, instead of doom emacs' ~+vterm/toggle~. I can use ~C-x 4 4~ and ~C-x 4 1~ to open vterm in another window or in this window
 #+begin_src elisp :tangle yes
 (setq! vterm-shell "/bin/fish")
 (map! :leader
-      :desc "Terminal" "c" #'+vterm/toggle)
+      :desc "Terminal" "c" #'vterm)
 #+end_src
 ** Company
 Reduce strain from company completion. Make completion only show up when manually triggered (~C-x C-o~)
