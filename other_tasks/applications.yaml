@@ -1,15 +1,10 @@
-- name: Applications
+- name: Flatpak applications
   community.general.flatpak:
     name:
-      - com.anydesk.Anydesk
       - com.belmoussaoui.Authenticator
       - com.bitwarden.desktop
       - com.discordapp.Discord
       - com.github.junrrein.PDFSlicer
-      - com.lakoliu.Furtherance
-      - com.slack.Slack
       - com.spotify.Client
       - com.viber.Viber
-      - im.riot.Riot
       - org.telegram.desktop
-      - org.mozilla.Thunderbird
