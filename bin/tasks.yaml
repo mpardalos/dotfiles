@@ -7,7 +7,7 @@
       baseurl=https://repo.charm.sh/yum/
       enabled=1
       gpgcheck=1
-      gpgkey=https://repo.charm.sh/yum/gpg.key'
+      gpgkey=https://repo.charm.sh/yum/gpg.key
     dest: /etc/yum.repos.d/charm.repo
 
 - name: Requirements for scripts
