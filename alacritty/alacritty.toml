@@ -1,5 +1,6 @@
 live_config_reload = true
 import = ["~/.config/alacritty/theme-light.toml"]
+shell = "/usr/bin/fish"
 
 [bell]
 animation = "Linear"
