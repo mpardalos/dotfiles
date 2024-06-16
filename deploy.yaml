@@ -12,8 +12,6 @@
       tags: always
     - import_tasks: bin/tasks.yaml
       tags: bin
-    - import_tasks: systemd/tasks.yaml
-      tags: systemd
     - import_tasks: git/tasks.yaml
       tags: git
     - import_tasks: tmux/tasks.yaml
