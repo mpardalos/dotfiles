@@ -27,7 +27,9 @@
         repo: "https://github.com/doomemacs/doomemacs.git"
         dest: "{{ home }}/.config/emacs/"
         update: no
-    - name: Install doom emacs
-      shell:
-        cmd: "{{ home }}/.config/emacs/bin/doom install --force"
-        creates: "{{ home }}/.config/emacs/.local/straight"
+    - debug:
+        msg: "* Remember to run `doom install` afterwards!`"
+    # - name: Install doom emacs
+    #   shell:
+    #     cmd: "{{ home }}/.config/emacs/bin/doom install --force"
+    #     creates: "{{ home }}/.config/emacs/.local/straight"
