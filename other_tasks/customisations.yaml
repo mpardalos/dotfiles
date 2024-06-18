@@ -1,6 +1,12 @@
 ---
+- name: Check if cabal config exists
+  stat:
+    path: ~/.config/cabal/config
+  register: cabal_config
+
 - name: Make Cabal build documentation for installed packages
   lineinfile:
     path: ~/.config/cabal/config
     regexp: '^-- documentation:'
     line: 'documentation: True'
+  when: cabal_config.stat.exists
