@@ -478,7 +478,7 @@ See the "Personal Website" org-roam note
 ** Bibliography/Research
 The bibliography file is used a few times, so I set it here once and re-use it.
 #+begin_src elisp :tangle yes
-(setq! my/bibliography-file "~/Documents/bibliography/bibliography.bib")
+(setq! my/bibliography-file "~/Documents/Bibliography/bibliography.bib")
 #+end_src
 
 #+begin_src elisp :tangle yes
@@ -495,16 +495,16 @@ The bibliography file is used a few times, so I set it here once and re-use it.
 *** Bibtex
 #+begin_src elisp :tangle yes
 (setq! bibtex-completion-bibliography `(,my/bibliography-file)
-       bibtex-completion-library-path '("~/Documents/bibliography/pdfs")
-       bibtex-completion-notes-path "~/Documents/bibliography/notes.org"
+       bibtex-completion-library-path '("~/Documents/Bibliography/pdfs")
+       bibtex-completion-notes-path "~/Documents/Bibliography/notes.org"
        bibtex-completion-additional-search-fields '("tags"))
 #+end_src
 
 *** Citar
 #+begin_src elisp :tangle yes
 (setq! citar-bibliography `(,my/bibliography-file)
-       citar-library-paths '("~/Documents/bibliography/pdfs")
-       citar-notes-paths '("~/Documents/bibliography/notes")
+       citar-library-paths '("~/Documents/Bibliography/pdfs")
+       citar-notes-paths '("~/Documents/Bibliography/notes")
        citar-org-roam-note-title-template "${title} (${year}) (${author editor})")
 #+end_src
 
