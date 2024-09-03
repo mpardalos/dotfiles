@@ -124,6 +124,7 @@
      (eval require 'org-roam-dev)
      (eval outline-hide-sublevels 5)))
  '(vc-handled-backends '(SVN Git Hg CVS))
+ '(vterm-tramp-shells '(("docker" "/bin/sh") ("ssh" "/bin/bash")))
  '(warning-suppress-types
    '((org-element-cache)
      (org-element-cache)
