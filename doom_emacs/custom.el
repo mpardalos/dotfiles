@@ -104,6 +104,8 @@
    '("Cargo.toml" "package.json" "requirements.txt" "setup.py" "stack.yaml"))
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
+ '(proof-three-window-enable t)
+ '(proof-three-window-mode-policy 'hybrid)
  '(safe-local-variable-values
    '((org-latex-caption-above)
      (eval ansible 1)
