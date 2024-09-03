@@ -2,8 +2,8 @@
 
 SERVER_NAME="temp-vpn"
 IMAGE_NAME="rocky-9"
-SERVER_TYPE="cx11" # Cheapest instance
-DATACENTER="nbg1-dc3" # Nuremberg, Germany
+SERVER_TYPE="cpx11" # Cheapest instance
+DATACENTER="ash-dc1" # us-east
 
 usage() {
     echo "Provision a temporary tailscale exit-node on Hetzner cloud"
