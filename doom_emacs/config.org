@@ -241,15 +241,12 @@ Keybindings
       :desc "Commit"            "c" #'magit-commit
       :desc "HEAD log"          "l" #'magit-log-head
       :desc "Magit status"      "g" #'magit-status
-      :desc "Revert hunk"       "u" #'git-gutter:revert-hunk
-      :desc "Stage hunk"        "s" #'git-gutter:stage-hunk
+      :desc "Revert hunk"       "u" #'+vc-gutter/revert-hunk
+      :desc "Stage hunk"        "s" #'+vc-gutter/stage-hunk
       :desc "Stage file"        "S" #'magit-stage-file
       :desc "Checkout"          "o" #'magit-checkout
       :desc "Git Timemachine"   "t" #'git-timemachine
       :desc "Smerge"            "m" #'+vc/smerge-hydra/body)
-
-(map! :desc "Previous Hunk"  :n "[g" 'git-gutter:previous-hunk
-      :desc "Next hunk"      :n "]g" 'git-gutter:next-hunk)
 
 (map! :mode git-timemachine
       :n "[["  #'git-timemachine-show-previous-revision
