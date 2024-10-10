@@ -39,7 +39,7 @@
     eval
     make
     (magit +forge)
-    lsp
+    (lsp +eglot)
     editorconfig
     pdf
     direnv
