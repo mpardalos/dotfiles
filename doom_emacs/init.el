@@ -19,7 +19,6 @@
     vc-gutter
     vi-tilde-fringe
     window-select
-    hydra
     zen
     svg
 
