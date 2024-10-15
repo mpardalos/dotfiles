@@ -18,6 +18,13 @@ This is the config that applies to all of emacs, regardless of mode.
 I like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
 #+begin_src elisp :tangle yes
 (add-to-list 'default-frame-alist '(alpha-background . 90))
+
+(defun my/toggle-frame-transparency ()
+  "Toggle transparency."
+  (interactive)
+  (pcase (frame-parameter nil 'alpha-background)
+    (90 (set-frame-parameter nil 'alpha-background 100))
+    (_ (set-frame-parameter nil 'alpha-background 90))))
 #+end_src
 
 Set both a monospace and a proportional font
@@ -163,7 +170,9 @@ Various toggles
       :desc "Frame fullscreen"             "F" #'toggle-frame-fullscreen
       :desc "Big mode"                     "b" #'doom-big-font-mode
       :desc "Evil goggles"                 "g" #'evil-goggles-mode
-      :desc "Whitespace visualisation"     "w" #'whitespace-mode)
+      :desc "Whitespace visualisation"     "w" #'whitespace-mode
+      :desc "Frame transparency"           "T" #'my/toggle-frame-transparency
+      )
 
 #+end_src
 
