@@ -704,6 +704,38 @@ Because every now and then you remember that evil mode was based on an actual pr
              '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 #+end_src
 
+** Verilog
+#+begin_src elisp :tangle yes
+(use-package verilog-ext
+  :hook ((verilog-mode . verilog-ext-mode))
+  :init
+  ;; Can also be set through `M-x RET customize-group RET verilog-ext':
+  ;; Comment out/remove the ones you do not need
+  (setq verilog-ext-feature-list
+        '(font-lock
+          xref
+          capf
+          hierarchy
+          eglot
+          ; lsp-bridge
+          ; lspce
+          ; flycheck ;; Needs a linter
+          beautify
+          navigation
+          template
+          formatter
+          compilation
+          imenu
+          which-func
+          hideshow
+          typedefs
+          time-stamp
+          block-end-comments
+          ports))
+  :config
+  (verilog-ext-mode-setup))
+  #+end_src
+
 ** Nagios
 Not quite programming, but it is a mode so eh
 
