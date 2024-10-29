@@ -41,3 +41,5 @@
     :pin "a9fc49e6a6b6ca640d4ed1e6dd7b7de91dcecb90")
 
 (package! verilog-ext)
+
+(package! apache-mode)

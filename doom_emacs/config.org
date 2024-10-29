@@ -743,3 +743,8 @@ Not quite programming, but it is a mode so eh
 (use-package! nagios-mode
   :commands 'nagios-mode)
 #+end_src
+** Apache
+#+begin_src elisp :tangle yes
+(use-package! apache-mode
+  :commands 'apache-mode)
+#+end_src
