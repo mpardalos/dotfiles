@@ -703,3 +703,11 @@ Because every now and then you remember that evil mode was based on an actual pr
 (add-to-list 'auto-mode-alist
              '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
 #+end_src
+
+** Nagios
+Not quite programming, but it is a mode so eh
+
+#+begin_src elisp :tangle yes
+(use-package! nagios-mode
+  :commands 'nagios-mode)
+#+end_src

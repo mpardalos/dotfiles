@@ -35,3 +35,7 @@
 
 (package! gc-geiger
     :recipe (:host github :repo "mpardalos/gc-geiger"))
+
+(package! nagios-mode
+    :recipe (:host nil :repo "https://gitweb.michael.orlitzky.com/nagios-mode.git")
+    :pin "a9fc49e6a6b6ca640d4ed1e6dd7b7de91dcecb90")
