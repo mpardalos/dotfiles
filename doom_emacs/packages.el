@@ -43,3 +43,5 @@
 (package! verilog-ext)
 
 (package! apache-mode)
+
+(package! powershell)
