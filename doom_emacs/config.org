@@ -583,7 +583,8 @@ I just don't find it useful, and it just uses too many colours which gets distra
        lsp-ui-doc-position 'top
        lsp-lens-auto-enable nil
        lsp-eldoc-enable-hover nil
-       lsp-auto-guess-root 't)
+       lsp-auto-guess-root 't
+       lsp-enable-suggest-server-download nil)
 #+end_src
 
 Keybindings
