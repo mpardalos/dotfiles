@@ -8,7 +8,6 @@
 (package! fill-column-indicator)
 (package! gmpl-mode
     :recipe (:host github :repo "cute-jumper/gmpl-mode"))
-(package! boogie-friends)
 
 (package! dired-single)
 

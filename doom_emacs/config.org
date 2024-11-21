@@ -749,3 +749,11 @@ Not quite programming, but it is a mode so eh
 (use-package! apache-mode
   :commands 'apache-mode)
 #+end_src
+** OCaml
+I don't use opam environments, and ~opam-switch-mode~ breaks under nix
+#+begin_src elisp :tangle yes
+(setq tuareg-mode-local-vars-hook
+      '(+ocaml-init-utop-h
+        ocp-setup-indent
+        lsp!))
+#+end_src
