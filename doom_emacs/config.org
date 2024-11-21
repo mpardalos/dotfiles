@@ -668,7 +668,7 @@ Keybindings
 #+end_src
 ** Dafny
 #+begin_src elisp :tangle yes
-(setq! flycheck-dafny-executable "~/.local/share/dafny/dafny"
+(setq! flycheck-dafny-executable "dafny"
        flycheck-boogie-executable "~/.local/share/dafny/dafny-server"
        flycheck-z3-smt2-executable "z3"
        flycheck-inferior-dafny-executable "~/.local/share/dafny/dafny-server")
