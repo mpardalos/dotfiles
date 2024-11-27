@@ -346,6 +346,10 @@ RSS in Emacs!
         '("https://xeiaso.net/blog.rss"
           )))
 #+end_src
+** TRAMP
+#+begin_src emacs-lisp :tangle yes
+(setq! tramp-default-remote-shell "/usr/bin/bash")
+#+end_src
 
 ** LLMs
 #+begin_src emacs-lisp :tangle yes
