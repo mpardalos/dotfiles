@@ -7,14 +7,31 @@
  '(bibtex-entry-format
    '(opts-or-alts required-fields numerical-fields whitespace sort-fields))
  '(connection-local-criteria-alist
-   '(((:application tramp :protocol "flatpak")
+   '(((:application tramp :protocol "adb")
+      tramp-adb-connection-local-default-shell-profile tramp-adb-connection-local-default-ps-profile)
+     ((:application tramp :protocol "flatpak")
       tramp-container-connection-local-default-flatpak-profile)
      ((:application tramp)
       tramp-connection-local-default-system-profile tramp-connection-local-default-shell-profile)
      ((:application eshell)
       eshell-connection-default-profile)))
  '(connection-local-profile-alist
-   '((tramp-container-connection-local-default-flatpak-profile
+   '((tramp-adb-connection-local-default-ps-profile
+      (tramp-process-attributes-ps-args)
+      (tramp-process-attributes-ps-format
+       (user . string)
+       (pid . number)
+       (ppid . number)
+       (vsize . number)
+       (rss . number)
+       (wchan . string)
+       (pc . string)
+       (state . string)
+       (args)))
+     (tramp-adb-connection-local-default-shell-profile
+      (shell-file-name . "/system/bin/sh")
+      (shell-command-switch . "-c"))
+     (tramp-container-connection-local-default-flatpak-profile
       (tramp-remote-path "/app/bin" tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin"))
      (tramp-connection-local-darwin-ps-profile
       (tramp-process-attributes-ps-args "-acxww" "-o" "pid,uid,user,gid,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" "-o" "state=abcde" "-o" "ppid,pgid,sess,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etime,pcpu,pmem,args")
@@ -105,7 +122,7 @@
    '("Cargo.toml" "package.json" "requirements.txt" "setup.py" "stack.yaml"))
  '(projectile-project-root-files-bottom-up '(".ccls-root" ".projectile" ".project" ".git"))
  '(projectile-project-root-files-top-down-recurring '("compile_commands.json" "Makefile" "CVS/"))
- '(proof-three-window-enable t)
+ '(proof-three-window-enable t t)
  '(proof-three-window-mode-policy 'hybrid)
  '(safe-local-variable-values
    '((org-latex-caption-above)
@@ -124,6 +141,7 @@
      (lsp-haskell-formatting-provider . "stylish-haskell")
      (eval require 'org-roam-dev)
      (eval outline-hide-sublevels 5)))
+ '(tramp-histfile-override nil)
  '(vc-handled-backends '(SVN Git Hg CVS))
  '(vterm-tramp-shells '(("docker" "/bin/sh") ("ssh" "/bin/bash")))
  '(warning-suppress-types

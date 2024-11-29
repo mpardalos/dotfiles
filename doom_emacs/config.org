@@ -353,13 +353,24 @@ RSS in Emacs!
 
 ** LLMs
 #+begin_src emacs-lisp :tangle yes
+(defun get-save-gptel-api-key ()
+  (let* ((name (gptel-backend-name gptel-backend))
+         (secret-item (format "gptel: %s" name)))
+    (or
+     (secrets-get-secret "default" secret-item)
+     (let ((api-key (read-passwd (format "%s API Key: " name))))
+       (secrets-create-item "default" secret-item api-key)
+       api-key))))
+
 (use-package! gptel
   :config
+  (setq gptel-api-key #'get-save-gptel-api-key)
   ;; Groq offers an OpenAI compatible API
   (gptel-make-openai "Groq"
     :host "api.groq.com"
     :endpoint "/openai/v1/chat/completions"
     :stream t
+    :key #'get-save-gptel-api-key
     :models '(llama-3.1-70b-versatile
               llama-3.1-8b-instant
               llama3-70b-8192
@@ -367,7 +378,8 @@ RSS in Emacs!
               mixtral-8x7b-32768
               gemma-7b-it))
 
-  (gptel-make-kagi "Kagi")
+  (gptel-make-kagi "Kagi"
+    :key #'get-save-gptel-api-key)
 
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
