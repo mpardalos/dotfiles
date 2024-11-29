@@ -347,6 +347,28 @@ RSS in Emacs!
           )))
 #+end_src
 
+** LLMs
+#+begin_src emacs-lisp :tangle yes
+(use-package! gptel
+  :config
+  ;; Groq offers an OpenAI compatible API
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :models '(llama-3.1-70b-versatile
+              llama-3.1-8b-instant
+              llama3-70b-8192
+              llama3-8b-8192
+              mixtral-8x7b-32768
+              gemma-7b-it))
+
+  (gptel-make-kagi "Kagi")
+
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
+
+(use-package! elysium)
+#+end_src
 * Prose
 ** Org mode
 #+begin_src elisp :tangle yes

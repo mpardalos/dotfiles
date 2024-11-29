@@ -44,3 +44,6 @@
 (package! apache-mode)
 
 (package! powershell)
+
+(package! gptel)
+(package! elysium)
