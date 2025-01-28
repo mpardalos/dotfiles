@@ -47,3 +47,6 @@
 
 (package! gptel)
 (package! elysium)
+
+(package! lsp-latex
+    :recipe (:host github :repo "ROCKTAKEY/lsp-latex"))
