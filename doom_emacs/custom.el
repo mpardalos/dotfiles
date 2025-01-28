@@ -115,6 +115,7 @@
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(orderless-component-separator 'orderless-escapable-split-on-space)
  '(org-export-with-broken-links nil)
+ '(password-cache-expiry 3600)
  '(pixel-scroll-mode t)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-mode t)
