@@ -38,7 +38,7 @@
     :tools
     eval
     make
-    (magit +forge)
+    magit
     lsp
     editorconfig
     pdf
