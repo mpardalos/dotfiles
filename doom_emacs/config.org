@@ -93,7 +93,8 @@ Open urls in eww by default
 
 *** GC notifications with gc-geiger
 #+begin_src emacs-lisp :tangle yes
-(use-package! gc-geiger)
+(use-package! gc-geiger
+  :after-call gc-geiger-mode)
 #+end_src
 
 *** Popups
