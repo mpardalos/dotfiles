@@ -678,9 +678,8 @@ Slightly speed up flycheck by only highlighting symbols, not individual characte
 ** Web
 I prefer using tabs for HTML and CSS
 #+begin_src elisp :tangle yes
-(add-hook! web-mode
-  (indent-tabs-mode)
-  (web-mode-use-tabs))
+(after! web-mode
+  (add-hook! web-mode '(indent-tabs-mode web-mode-use-tabs)))
 #+end_src
 ** Coq
 ~window-tool-bar-mode~ for Coq buffers
