@@ -1,5 +1,5 @@
 function imperial-vpn --description 'Manage Imperial College VPN' --argument command
-    set -l profile "profile-userlocked-mp5617@ic.ac.uk.ovpn"
+    set -l profile "/home/mpardalos/.config/profile-userlocked-mp5617@ic.ac.uk.ovpn"
 
     switch $command
         case "up"
