@@ -62,7 +62,9 @@ Make it so that entering and exiting insert state keeps the cursor in place
 
 Change up how dired displays items.
 #+begin_src elisp :tangle yes
-(setq! dired-listing-switches "-ABhl -X --group-directories-first")
+(after! dired
+  (setq! dired-listing-switches "-ABhl -X --group-directories-first")
+  (add-hook! dired-mode-hook #'dired-hide-details-mode))
 
 (defun dired-dotfiles-toggle ()
   "Show/hide dot-files"
