@@ -683,6 +683,12 @@ I prefer using tabs for HTML and CSS
   (web-mode-use-tabs))
 #+end_src
 ** Coq
+~window-tool-bar-mode~ for Coq buffers
+#+begin_src elisp :tangle yes
+(after! coq-mode
+  (add-hook! coq-mode #'window-tool-bar-mode))
+#+end_src
+
 Workaround for a bug
 #+begin_src elisp :tangle yes
 (after! proof-general
