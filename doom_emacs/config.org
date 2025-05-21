@@ -684,12 +684,14 @@ I prefer using tabs for HTML and CSS
 ** Coq
 Workaround for a bug
 #+begin_src elisp :tangle yes
-(setq! coq-show-proof-diffs-regexp "")
+(after! proof-general
+  (setq! coq-show-proof-diffs-regexp ""))
 #+end_src
 
 Disable response buffer
 #+begin_src elisp :tangle yes
-(setq! proof-three-window-enable nil)
+(after! proof-general
+  (setq! proof-three-window-enable nil))
 #+end_src
 
 Fix for slow startup
