@@ -7,8 +7,8 @@ This is the config that applies to all of emacs, regardless of mode.
 (use-package! auto-dark
   :defer t
   :init
-  (setq! auto-dark-dark-theme  'doom-solarized-dark
-         auto-dark-light-theme 'doom-solarized-light)
+  (setq! auto-dark-dark-theme  'doom-acario-dark
+         auto-dark-light-theme 'doom-acario-light)
   ;; Inspired by doom-ui.el.
   ;; Note that server-after-make-frame-hook also avoids the issues with an early
   ;; start of the emacs daemon using systemd, which causes problems with the
