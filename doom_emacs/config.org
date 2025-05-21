@@ -701,9 +701,10 @@ Fix for slow startup
 Keybindings
 #+begin_src elisp :tangle yes
 (map! :mode coq-mode
-      :desc "Proof go to point" "C-c C-c" #'company-coq-proof-goto-point
+      :desc "Proof go to point" "C-c C-c" #'proof-goto-point
       :desc "Interrupt proof" "C-c C-k" #'proof-interrupt-process)
 #+end_src
+
 ** Haskell
 #+begin_src elisp :tangle yes
 (setq! lsp-haskell-process-path-hie "haskell-language-server-wrapper"
