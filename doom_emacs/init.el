@@ -67,7 +67,7 @@
     (cc +lsp)
     (web +html +css)
     (latex +latexmk +viewers)
-    (python +lsp)
+    (python +lsp +pyright)
     (javascript +lsp)
     rest
     data ;; csv + XML
