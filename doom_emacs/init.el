@@ -5,7 +5,7 @@
     literate
 
     :completion
-    (vertico +icons)
+    (vertico +icons +childframe)
     (company +childframe)
 
     :ui

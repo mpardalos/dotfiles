@@ -213,6 +213,9 @@
      (eval require 'org-roam-dev) (eval outline-hide-sublevels 5)))
  '(tramp-histfile-override nil)
  '(vc-handled-backends '(SVN Git Hg CVS))
+ '(vertico-posframe-border-width 10)
+ '(vertico-posframe-poshandler 'posframe-poshandler-window-bottom-center)
+ '(vertico-posframe-width 120)
  '(vterm-tramp-shells '(("docker" "/bin/sh") ("ssh" "/bin/bash")))
  '(warning-suppress-types
    '((org-element-cache) (org-element-cache) (org-element-cache) defvaralias)))
