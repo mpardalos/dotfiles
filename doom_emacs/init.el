@@ -89,3 +89,5 @@
     :app
     rss
     )
+;; This needs to be set before evil-mode is loaded
+(setq evil-respect-visual-line-mode t)
