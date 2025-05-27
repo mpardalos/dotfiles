@@ -39,13 +39,14 @@
     :recipe (:host nil :repo "https://gitweb.michael.orlitzky.com/nagios-mode.git")
     :pin "a9fc49e6a6b6ca640d4ed1e6dd7b7de91dcecb90")
 
-(package! verilog-ext)
+(package! verilog-ext :recipe (:nonrecursive t))
+(package! verilog-ts-mode :recipe (:nonrecursive t))
 
 (package! apache-mode)
 
 (package! powershell)
 
-(package! gptel)
+(package! gptel :recipe (:nonrecursive t))
 (package! elysium)
 
 (package! lsp-latex
