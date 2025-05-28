@@ -214,7 +214,7 @@
  '(tramp-histfile-override nil)
  '(vc-handled-backends '(SVN Git Hg CVS))
  '(vertico-posframe-border-width 10)
- '(vertico-posframe-poshandler 'posframe-poshandler-window-bottom-center)
+ '(vertico-posframe-poshandler 'posframe-poshandler-window-center)
  '(vertico-posframe-width 120)
  '(vterm-tramp-shells '(("docker" "/bin/sh") ("ssh" "/bin/bash")))
  '(warning-suppress-types
