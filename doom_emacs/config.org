@@ -800,6 +800,9 @@ Because every now and then you remember that evil mode was based on an actual pr
           ports))
   :config
   (verilog-ext-mode-setup))
+
+(use-package! verilog-repl
+    :commands (verilog-repl))
   #+end_src
 
 ** Nagios

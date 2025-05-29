@@ -51,3 +51,6 @@
 
 (package! lsp-latex
     :recipe (:host github :repo "ROCKTAKEY/lsp-latex"))
+
+(package! verilog-repl
+    :recipe (:host github :repo "mpardalos/verilog-repl"))
