@@ -166,3 +166,4 @@
 (put 'magit-clean 'disabled nil)
 (put 'customize-browse 'disabled nil)
 (put 'customize-face 'disabled nil)
+(put 'customize-set-variable 'disabled nil)
