@@ -20,7 +20,6 @@
     vi-tilde-fringe
     window-select
     zen
-    svg
 
     :editor
     (evil +everywhere +commands)
