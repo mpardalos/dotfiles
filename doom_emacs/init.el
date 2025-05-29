@@ -20,6 +20,7 @@
     vi-tilde-fringe
     window-select
     zen
+    smooth-scroll
 
     :editor
     (evil +everywhere +commands)
