@@ -372,6 +372,7 @@ RSS in Emacs!
        api-key))))
 
 (use-package! gptel
+  :commands (gptel)
   :config
   (setq
    gptel-model 'claude-3-sonnet-20240229 ;  "claude-3-opus-20240229" also available
@@ -399,7 +400,8 @@ RSS in Emacs!
 
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
-(use-package! elysium)
+(use-package! elysium
+  :commands (elysium-query elysium-toggle-window))
 #+end_src
 * Prose
 ** Org mode
