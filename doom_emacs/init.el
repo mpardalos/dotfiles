@@ -47,7 +47,6 @@
     biblio
     terraform
     ansible
-    (docker +lsp)
     tree-sitter
 
     :lang
@@ -69,14 +68,11 @@
     (latex +latexmk +viewers)
     (python +lsp +pyright)
     (javascript +lsp)
-    rest
     data ;; csv + XML
     (rust +lsp)
     coq
-    (go +lsp)
     nix
     yaml
-    dhall
     (ocaml +lsp)
 
     :checkers
