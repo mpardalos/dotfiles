@@ -682,6 +682,13 @@ I prefer using tabs for HTML and CSS
   (add-hook! web-mode '(indent-tabs-mode web-mode-use-tabs)))
 #+end_src
 ** Coq
+#+begin_src elisp :tangle yes
+(use-package! company-coq
+  :hook (coq-mode . company-coq-mode)
+  :config
+  (setq company-coq-disabled-features '(hello company company-defaults spinner)))
+#+end_src
+
 ~window-tool-bar-mode~ for Coq buffers
 #+begin_src elisp :tangle yes
 (after! coq-mode

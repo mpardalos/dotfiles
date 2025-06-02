@@ -6,7 +6,7 @@
 
     :completion
     (vertico +icons +childframe)
-    (company +childframe)
+    corfu
 
     :ui
     doom
