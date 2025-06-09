@@ -688,25 +688,12 @@ I prefer using tabs for HTML and CSS
 (use-package! company-coq
   :hook (coq-mode . company-coq-mode)
   :config
-  (setq company-coq-disabled-features '(hello company company-defaults spinner)))
-#+end_src
-
-~window-tool-bar-mode~ for Coq buffers
-#+begin_src elisp :tangle yes
-(after! coq-mode
-  (add-hook! coq-mode #'window-tool-bar-mode))
-#+end_src
-
-Workaround for a bug
-#+begin_src elisp :tangle yes
-(after! proof-general
+  (add-to-list 'company-coq-enabled-backends #'company-coq-math-symbols-backend)
+  (add-to-list 'company-coq-disabled-features 'company)
+  ;; ~window-tool-bar-mode~ for Coq buffers
+  (add-hook! coq-mode #'window-tool-bar-mode)
+  ;; Workaround for a bug
   (setq! coq-show-proof-diffs-regexp ""))
-#+end_src
-
-Disable response buffer
-#+begin_src elisp :tangle yes
-(after! proof-general
-  (setq! proof-three-window-enable nil))
 #+end_src
 
 Fix for slow startup
