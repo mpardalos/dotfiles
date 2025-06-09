@@ -276,11 +276,6 @@ Keybindings
       :n "gb"  #'git-timemachine-blame)
 #+end_src
 
-For ~magit-blame~, show the blame annotations on the left margin. I don't like how the other modes break up the flow of the code with the annotations.
-#+begin_src elisp :tangle yes
-(setq! magit-blame-echo-style 'margin)
-#+end_src
-
 Add some git forges I might use to ~forge~'s list
 #+begin_src elisp :tangle yes
 (after! forge

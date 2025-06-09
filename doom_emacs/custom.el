@@ -114,6 +114,7 @@
  '(flycheck-posframe-position 'window-bottom-right-corner)
  '(font-latex-fontify-sectioning 'color)
  '(lsp-ui-doc-position 'top t)
+ '(magit-blame-echo-style 'margin nil nil "-For ~magit-blame~, show the blame annotations on the left margin. I don't like how the other modes break up the flow of the code")
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(orderless-component-separator 'orderless-escapable-split-on-space)
  '(org-export-with-broken-links nil)
