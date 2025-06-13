@@ -296,6 +296,16 @@ Add the greek dictionary
 (add-hook! spell-fu-mode
   (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "el")))
 #+end_src
+
+Workaround for [[https://github.com/doomemacs/doomemacs/issues/6246][doomemacs#6246 +spell/add-word does not create a personal dictionary file anymore]], from [[https://github.com/doomemacs/doomemacs/issues/6246#issuecomment-2477808607][this comment]].
+#+begin_src elisp :tangle yes
+(after! spell-fu
+  (unless (file-exists-p ispell-personal-dictionary)
+    (make-directory (file-name-directory ispell-personal-dictionary) t)
+    (with-temp-file ispell-personal-dictionary
+      (insert (format "personal_ws-1.1 %s 0\n" ispell-dictionary)))))
+#+end_src
+
 ** Terminal
 I just use vterm. I used to use eshell occasionally, but I found a plain terminal is usually what I want.
 Also, I just use the plain "vterm" command, instead of doom emacs' ~+vterm/toggle~. I can use ~C-x 4 4~ and ~C-x 4 1~ to open vterm in another window or in this window
