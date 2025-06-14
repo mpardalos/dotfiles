@@ -18,6 +18,20 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # CLI tools
+    gum
+    fzf
+    fd
+    aspell
+    pandoc
+    # editorconfig (this package does not exist)
+    hcloud # Hetzner CLI
+    fish
+    neovim
+    difftastic
+    direnv
+    eza
+    zoxide
     # Programming
     ## Python
     basedpyright
