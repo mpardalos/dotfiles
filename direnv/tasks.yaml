@@ -1,5 +1,0 @@
-- name: Link direnv config
-  file:
-    state: link
-    src: "{{ dotfiles }}/direnv"
-    dest: "{{ home }}/.config/direnv"
