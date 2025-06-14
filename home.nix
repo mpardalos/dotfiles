@@ -18,38 +18,38 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-      # Programming
-      ## Python
-      basedpyright
-      ## Haskell
-      fourmolu
-      ormolu
-      ## C/C++
-      bear
-      ## Other
-      git-filter-repo
-      entr
-      gh
-      hugo
-      # prettier
-      ## EDA
-      fujprog
-      nextpnr
-      verilog-repl
-      yosys
-      ## Go
-      go
-      gopls
-      ## Rust
-      rustup
-      # Nix stuff
-      cachix
-      # home-manager-path # IDK what this was
-      nixfmt
-      # System tools
-      lact # GPU tuning
-      # LLMs
-      ollama
+    # Programming
+    ## Python
+    basedpyright
+    ## Haskell
+    fourmolu
+    ormolu
+    ## C/C++
+    bear
+    ## Other
+    git-filter-repo
+    entr
+    gh
+    hugo
+    # prettier
+    ## EDA
+    fujprog
+    nextpnr
+    verilog-repl
+    yosys
+    ## Go
+    go
+    gopls
+    ## Rust
+    rustup
+    # Nix stuff
+    cachix
+    # home-manager-path # IDK what this was
+    nixfmt
+    # System tools
+    lact # GPU tuning
+    # LLMs
+    ollama
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
