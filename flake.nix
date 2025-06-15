@@ -7,20 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    verilog-repl.url = "github:mpardalos/verilog-repl"; 
+    verilog-repl.url = "github:mpardalos/verilog-repl";
   };
 
-  outputs =
-    { nixpkgs, verilog-repl, home-manager, ... }:
+  outputs = { nixpkgs, verilog-repl, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."mpardalos" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit verilog-repl; };
-      };
+    in {
+      homeConfigurations."mpardalos" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+          extraSpecialArgs = { inherit verilog-repl; };
+        };
     };
 }
