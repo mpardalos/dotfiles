@@ -98,6 +98,18 @@
     # EDITOR = "emacs";
   };
 
+  programs.plasma = {
+    enable = true;
+    shortcuts = {
+      "services/Alacritty.desktop"."New" = "Meta+T";
+      "kwin"."Edit Tiles" = "Meta+W"; # Original was Meta+T, which is used above
+      "kwin"."Switch Window Down" = "Meta+J";
+      "kwin"."Switch Window Left" = "Meta+H";
+      "kwin"."Switch Window Right" = "Meta+L";
+      "kwin"."Switch Window Up" = "Meta+K";
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
