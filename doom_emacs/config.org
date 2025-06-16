@@ -601,8 +601,9 @@ The bibliography file is used a few times, so I set it here once and re-use it.
 
 (add-hook! LaTeX-mode (auto-fill-mode -1))
 
-(use-package! lsp-latex
-  :custom (lsp-latex-build-on-save t "Build documents on save"))
+;; (use-package! lsp-latex
+;;   :mode latex-mode
+;;   :custom (lsp-latex-build-on-save t "Build documents on save"))
 #+end_src
 
 ** PlantUML
