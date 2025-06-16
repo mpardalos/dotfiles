@@ -38,6 +38,7 @@
     pv
     nix-search-cli
     systemctl-tui
+    scc # Line of code counting
     # LaTeX
     # texlab
     # texliveFull
