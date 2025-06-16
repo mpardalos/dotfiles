@@ -32,7 +32,16 @@
     direnv
     eza
     zoxide
+    diff-pdf
+    k9s
+    kubectl
+    pv
+    # LaTeX
+    # texlab
+    # texliveFull
     # Programming
+    ## Dafny
+    dafny
     ## Python
     basedpyright
     ## Haskell
@@ -51,6 +60,7 @@
     nextpnr
     verilog-repl
     yosys
+    sv-lang
     ## Go
     go
     gopls
