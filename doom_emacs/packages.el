@@ -53,3 +53,5 @@
 
 (package! verilog-repl
     :recipe (:host github :repo "mpardalos/verilog-repl"))
+
+(package! casual-suite)

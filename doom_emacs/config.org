@@ -252,6 +252,14 @@ Run
 #+end_src
 
 * Tools
+** Casual (transients for various modes)
+#+begin_src elisp
+(use-package! casual-calc
+    :commands casual-calc-tmenu
+    :init (map! :mode calc
+                :desc "Casual-calc" "C-o" #'casual-calc-tmenu))
+#+end_src
+
 ** Git
 Keybindings
 #+begin_src elisp :tangle yes
