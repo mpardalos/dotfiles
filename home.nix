@@ -68,7 +68,6 @@
     rustup
     # Nix stuff
     cachix
-    # home-manager-path # IDK what this was
     nixfmt
     # System tools
     lact # GPU tuning
