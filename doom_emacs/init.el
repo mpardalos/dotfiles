@@ -48,6 +48,7 @@
     terraform
     ansible
     tree-sitter
+    llm
 
     :lang
     (sh +fish)

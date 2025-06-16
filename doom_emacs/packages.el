@@ -46,7 +46,6 @@
 
 (package! powershell)
 
-(package! gptel :recipe (:nonrecursive t))
 (package! elysium)
 
 (package! lsp-latex
