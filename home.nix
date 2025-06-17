@@ -37,6 +37,7 @@
     kubectl
     pv
     nix-search-cli
+    systemctl-tui
     # LaTeX
     # texlab
     # texliveFull
