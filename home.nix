@@ -36,6 +36,7 @@
     k9s
     kubectl
     pv
+    nix-search-cli
     # LaTeX
     # texlab
     # texliveFull
