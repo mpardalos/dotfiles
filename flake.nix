@@ -15,19 +15,21 @@
     verilog-repl.url = "github:mpardalos/verilog-repl";
   };
 
-  outputs = { nixpkgs, verilog-repl, home-manager, plasma-manager, ... }:
+  outputs = inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations."mpardalos" =
-        home-manager.lib.homeManagerConfiguration {
+        inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-              ./home.nix
-              plasma-manager.homeManagerModules.plasma-manager
+            ./home.nix
+            inputs.plasma-manager.homeManagerModules.plasma-manager
           ];
-          extraSpecialArgs = { inherit verilog-repl; };
+          extraSpecialArgs = {
+            verilog-repl = inputs.verilog-repl.packages.${system}.default;
+          };
         };
     };
 }
