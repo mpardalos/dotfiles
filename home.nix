@@ -1,4 +1,4 @@
-{ config, pkgs, verilog-repl, ... }:
+{ config, pkgs, verilog-repl, systranything, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -40,6 +40,8 @@
     # LaTeX
     # texlab
     # texliveFull
+    # Other tools
+    systranything # Put anything on the system tray
     # Programming
     ## Dafny
     dafny

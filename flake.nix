@@ -13,6 +13,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     verilog-repl.url = "github:mpardalos/verilog-repl";
+    systranything.url = "github:jecaro/systranything";
   };
 
   outputs = inputs:
@@ -29,6 +30,8 @@
           ];
           extraSpecialArgs = {
             verilog-repl = inputs.verilog-repl.packages.${system}.default;
+            systranything =
+              inputs.systranything.packages.${system}.systranything;
           };
         };
     };
