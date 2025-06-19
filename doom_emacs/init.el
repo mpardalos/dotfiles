@@ -78,6 +78,7 @@
 
     :checkers
     (spell +aspell)
+    (syntax +flymake)
 
     :term
     vterm

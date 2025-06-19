@@ -55,3 +55,6 @@
     :recipe (:host github :repo "mpardalos/verilog-repl"))
 
 (package! casual-suite)
+
+;; I don't like pop-ups
+(package! flymake-popon :disable t)
