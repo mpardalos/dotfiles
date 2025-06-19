@@ -678,15 +678,10 @@ Make sure that, when debugging a terminal program, it uses an emacs terminal
 #+begin_src elisp :tangle yes
 (setq! dap-auto-configure-mode 't)
 #+end_src
-** Flycheck
+** Flymake
 #+begin_src elisp :tangle yes
-;; (map! :desc "Previous Error"  :n "[e" #'+spell/previous-error
-;;       :desc "Next Error"      :n "]e" #'+spell/next-error)
-#+end_src
-
-Slightly speed up flycheck by only highlighting symbols, not individual characters.
-#+begin_src elisp :tangle yes
-(setq! flycheck-highlighting-mode 'symbols)
+(map! :desc "Previous Error"  :n "[e" #'flymake-goto-prev-error
+      :desc "Next Error"      :n "]e" #'flymake-goto-next-error)
 #+end_src
 ** Web
 I prefer using tabs for HTML and CSS
