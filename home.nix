@@ -44,6 +44,7 @@
     # texliveFull
     # Other tools
     systranything # Put anything on the system tray
+    nodePackages.live-server # live-reloading web server
     # Programming
     ## Dafny
     dafny
