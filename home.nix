@@ -75,10 +75,6 @@
     # Nix stuff
     cachix
     nixfmt
-    # System tools
-    lact # GPU tuning
-    # LLMs
-    ollama
   ];
 
   home.file = let
