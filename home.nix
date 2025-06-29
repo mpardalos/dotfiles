@@ -118,6 +118,9 @@
       "kwin"."Switch Window Left" = "Meta+H";
       "kwin"."Switch Window Right" = "Meta+L";
       "kwin"."Switch Window Up" = "Meta+K";
+      # Meta triggers krunner instead of launcher
+      "plasmashell"."activate application launcher" = "none";
+      "services/org.kde.krunner.desktop"."_launch" = "Meta";
     };
   };
 
