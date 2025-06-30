@@ -77,6 +77,7 @@
     # Nix stuff
     cachix
     nixfmt
+    nil # Nix language server
   ];
 
   xdg.configFile.krunner-ssh.text = "alacritty -e 'ssh {}'";
