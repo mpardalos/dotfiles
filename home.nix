@@ -79,6 +79,8 @@
     nixfmt
   ];
 
+  xdg.configFile.krunner-ssh.text = "alacritty -e 'ssh {}'";
+
   home.file = let
     inherit (config.lib.file) mkOutOfStoreSymlink;
     here = "${config.home.homeDirectory}/.config/dotfiles";
