@@ -108,6 +108,7 @@
      "08a27c4cde8fcbb2869d71fdc9fa47ab7e4d31c27d40d59bf05729c4640ce834" default))
  '(flycheck-posframe-position 'window-bottom-right-corner)
  '(font-latex-fontify-sectioning 'color)
+ '(lsp-auto-execute-action nil)
  '(lsp-haskell-formatting-provider "fourmolu")
  '(lsp-ui-doc-position 'top)
  '(magit-blame-echo-style 'margin nil nil "-For ~magit-blame~, show the blame annotations on the left margin. I don't like how the other modes break up the flow of the code")
