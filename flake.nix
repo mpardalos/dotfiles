@@ -14,6 +14,7 @@
     };
     verilog-repl.url = "github:mpardalos/verilog-repl";
     systranything.url = "github:jecaro/systranything";
+    krunner-ssh.url = "github:mpardalos/KRunner-SSH/nix";
   };
 
   outputs = inputs:
@@ -32,6 +33,8 @@
             verilog-repl = inputs.verilog-repl.packages.${system}.default;
             systranything =
               inputs.systranything.packages.${system}.systranything;
+            krunner-ssh =
+              inputs.krunner-ssh.defaultPackage.${system};
           };
         };
     };

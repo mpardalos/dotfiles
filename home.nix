@@ -1,4 +1,4 @@
-{ config, pkgs, verilog-repl, systranything, ... }:
+{ config, pkgs, verilog-repl, systranything, krunner-ssh, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -18,6 +18,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # KDE stuff
+    krunner-ssh
     # CLI tools
     gum
     fzf
