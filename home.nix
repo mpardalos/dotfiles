@@ -80,7 +80,7 @@
     nil # Nix language server
   ];
 
-  xdg.configFile.krunner-ssh.text = "alacritty -e 'ssh {}'";
+  xdg.configFile.krunner-ssh.text = "alacritty -e ssh {}";
 
   home.file = let
     inherit (config.lib.file) mkOutOfStoreSymlink;
