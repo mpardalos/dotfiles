@@ -57,6 +57,8 @@
     ormolu
     ## C/C++
     bear
+    ## Javascript
+    astro-language-server
     ## Other
     git-filter-repo
     entr
