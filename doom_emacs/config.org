@@ -679,6 +679,12 @@ Make sure that, when debugging a terminal program, it uses an emacs terminal
 (setq! dap-auto-configure-mode 't)
 #+end_src
 ** Flymake
+Give a long delay to the popon but add keybind to manually trigger it.
+#+begin_src elisp :tangle yes
+(setq! flymake-popon-delay 9999)
+(map! :leader :desc "Hover" "h" (cmd! (flymake-popon--show)))
+#+end_src
+
 #+begin_src elisp :tangle yes
 (map! :desc "Previous Error"  :n "[e" #'flymake-goto-prev-error
       :desc "Next Error"      :n "]e" #'flymake-goto-next-error)
