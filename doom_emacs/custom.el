@@ -10,6 +10,8 @@
  '(corfu-auto nil nil nil "Auto completion is annoying")
  '(custom-safe-themes
    '("d97ac0baa0b67be4f7523795621ea5096939a47e8b46378f79e78846e0e4ad3d"
+     "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
+     "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
      "7de64ff2bb2f94d7679a7e9019e23c3bf1a6a04ba54341c36e7cf2d2e56e2bcc"
      "166a2faa9dc5b5b3359f7a31a09127ebf7a7926562710367086fcc8fc72145da"
      "4e2e42e9306813763e2e62f115da71b485458a36e8b4c24e17a2168c45c9cf9d"
@@ -111,7 +113,7 @@
  '(font-latex-fontify-sectioning 'color)
  '(lsp-auto-execute-action nil)
  '(lsp-haskell-formatting-provider "fourmolu")
- '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-position 'top t)
  '(magit-blame-echo-style 'margin nil nil "-For ~magit-blame~, show the blame annotations on the left margin. I don't like how the other modes break up the flow of the code")
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(orderless-component-separator 'orderless-escapable-split-on-space)
