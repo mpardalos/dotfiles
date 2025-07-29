@@ -3,7 +3,8 @@
 * Base
 This is the config that applies to all of emacs, regardless of mode.
 ** Visuals
-#+begin_src elisp :tangle yes
+Disabled this (~:tangle no~), because it's broken, again.
+#+begin_src elisp :tangle no
 (use-package! auto-dark
   :defer t
   :init
