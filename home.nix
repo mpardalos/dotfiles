@@ -19,7 +19,7 @@
   # environment.
   home.packages = with pkgs; [
     # KDE stuff
-    krunner-ssh
+    #krunner-ssh
     # CLI tools
     gum
     fzf
