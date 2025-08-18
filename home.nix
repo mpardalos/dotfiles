@@ -26,6 +26,7 @@
     fd
     aspell
     pandoc
+    sshpass
     # editorconfig (this package does not exist)
     hcloud # Hetzner CLI
     fish
