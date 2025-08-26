@@ -22,6 +22,10 @@ Disabled this (~:tangle no~), because it's broken, again.
     (add-hook hook #'auto-dark-mode -95)))
 #+end_src
 
+#+begin_src elisp :tangle yes
+(setq! doom-theme 'modus-operandi-tinted)
+#+end_src
+
 I like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
 #+begin_src elisp :tangle yes
 (add-to-list 'default-frame-alist '(alpha-background . 95))
