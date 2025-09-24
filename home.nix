@@ -43,8 +43,8 @@
     systemctl-tui
     scc # Line of code counting
     # LaTeX
-    # texlab
-    # texliveFull
+    texlab
+    texliveFull
     # Other tools
     systranything # Put anything on the system tray
     nodePackages.live-server # live-reloading web server
