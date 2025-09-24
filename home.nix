@@ -15,6 +15,8 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -48,6 +50,7 @@
     # Other tools
     systranything # Put anything on the system tray
     nodePackages.live-server # live-reloading web server
+    claude-code # AI slopping it crazy style
     # Programming
     ## Dafny
     dafny
