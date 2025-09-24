@@ -86,6 +86,15 @@
     nil # Nix language server
   ];
 
+  programs.enp = {
+      enable = true;
+      settings = {
+          vault_path = "/home/mpardalos/Documents/Enpass/Teams/michalis.pardalos@itsynergy.gr/e1dc7ed5-86d2-4b1b-8846-b7b9e555b5cf/";
+          master_password_file = "/home/mpardalos/.config/enp/master_password.txt";
+          display.show_passwords_by_default = true;
+      };
+  };
+
   xdg.configFile.krunner-ssh.text = "alacritty -e ssh {}";
 
   home.file = let

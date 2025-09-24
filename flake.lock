@@ -1,5 +1,24 @@
 {
   "nodes": {
+    "enpass-cli": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1758634387,
+        "narHash": "sha256-d99b1yShBNdJpPFnYhYnTiwGUelmB933hXEQEwGHmuU=",
+        "ref": "refs/heads/master",
+        "rev": "1fe3a862f0fa0fba434596d674f464772ea487a1",
+        "revCount": 23,
+        "type": "git",
+        "url": "ssh://git@github.com/itsynergy-gr/enpass-cli"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/itsynergy-gr/enpass-cli"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -179,6 +198,7 @@
     },
     "root": {
       "inputs": {
+        "enpass-cli": "enpass-cli",
         "home-manager": "home-manager",
         "krunner-ssh": "krunner-ssh",
         "nixpkgs": "nixpkgs_3",
