@@ -657,7 +657,7 @@ I just don't find it useful, and it just uses too many colours which gets distra
 (setq! lsp-ui-sideline-enable nil
        lsp-ui-doc-position 'top
        lsp-lens-auto-enable nil
-       lsp-eldoc-enable-hover nil
+       lsp-eldoc-enable-hover t
        lsp-auto-guess-root 't
        lsp-enable-suggest-server-download nil)
 #+end_src
