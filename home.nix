@@ -44,6 +44,7 @@
     nix-search-cli
     systemctl-tui
     scc # Line of code counting
+    any-nix-shell # `nix shell` integration for fish
     # LaTeX
     texlab
     texliveFull
