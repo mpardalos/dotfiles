@@ -45,6 +45,7 @@
     systemctl-tui
     scc # Line of code counting
     any-nix-shell # `nix shell` integration for fish
+    expect
     # LaTeX
     texlab
     texliveFull
