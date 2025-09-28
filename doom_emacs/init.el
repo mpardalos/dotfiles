@@ -66,7 +66,7 @@
         +hugo)
     (cc +lsp)
     (web +html +css)
-    (latex +latexmk +viewers)
+    latex
     (python +lsp +pyright)
     (javascript +lsp)
     data ;; csv + XML
