@@ -3,8 +3,7 @@
 * Base
 This is the config that applies to all of emacs, regardless of mode.
 ** Visuals
-Disabled this (~:tangle no~), because it's broken, again.
-#+begin_src elisp :tangle no
+#+begin_src elisp :tangle yes
 (use-package! auto-dark
   :defer t
   :init
@@ -20,10 +19,6 @@ Disabled this (~:tangle no~), because it's broken, again.
     ;; Depth -95 puts this before doom-init-theme-h, which sounds like a good
     ;; idea, if only for performance reasons.
     (add-hook hook #'auto-dark-mode -95)))
-#+end_src
-
-#+begin_src elisp :tangle yes
-(setq! doom-theme 'modus-operandi-tinted)
 #+end_src
 
 I like having a transparent background. Unfortunately this only works with Emacs 30+ (currently only on HEAD)
