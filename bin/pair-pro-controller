@@ -1,0 +1,80 @@
+#!/usr/bin/env -S expect -f
+
+# Configuration
+set controller_mac "48:A5:E7:47:09:B9"
+set controller_name "Pro Controller"
+set timeout 30
+
+# Start bluetoothctl
+spawn /usr/bin/bluetoothctl
+
+# Wait for bluetoothctl prompt
+expect {\[bluetoothctl\]>}
+
+# Remove device if it exists (ignore errors)
+send "remove $controller_mac\r"
+expect {
+    "Device has been removed" { }
+    "Device does not exist" { }
+    {\[bluetoothctl\]>} { }
+}
+
+# Start scanning
+send "scan on\r"
+expect "Discovery started"
+
+# Wait for the Pro Controller to appear
+puts "Scanning for Pro Controller..."
+expect {
+    "*Pro Controller*" {
+        puts "Found Pro Controller!"
+    }
+    timeout {
+        puts "Timeout waiting for Pro Controller to appear"
+        exit 1
+    }
+}
+
+# Give it a moment to get a good signal
+sleep 2
+
+# Stop scanning
+send "scan off\r"
+expect {\[bluetoothctl\]>}
+
+# Pair with the controller
+puts "Pairing with Pro Controller..."
+send "pair $controller_mac\r"
+
+expect {
+    "Pairing successful" {
+        puts "Pairing successful!"
+    }
+    "Failed to pair" {
+        puts "Pairing failed!"
+        exit 1
+    }
+    timeout {
+        puts "Timeout during pairing"
+        exit 1
+    }
+}
+
+# Connect to the controller
+puts "Connecting to Pro Controller..."
+send "connect $controller_mac\r"
+
+expect {
+    "Connection successful" {
+        puts "Connection successful!"
+        exit 0
+    }
+    "Failed to connect" {
+        puts "Connection failed!"
+        exit 1
+    }
+    timeout {
+        puts "Timeout during connection"
+        exit 1
+    }
+}
