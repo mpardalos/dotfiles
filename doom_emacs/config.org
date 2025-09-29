@@ -373,6 +373,7 @@ RSS in Emacs!
 #+end_src
 
 ** LLMs
+*** GPTel
 #+begin_src emacs-lisp :tangle yes
 (defun get-save-gptel-api-key ()
   (let* ((name (gptel-backend-name gptel-backend))
@@ -413,6 +414,15 @@ RSS in Emacs!
 (use-package! elysium
   :commands (elysium-query elysium-toggle-window))
 #+end_src
+*** Claude code
+#+begin_src elisp :tangle yes
+(use-package! claudemacs)
+
+(map!
+ :mode prog-mode
+ :desc "Claude Code" :leader "l" #'claudemacs-transient-menu)
+#+end_src
+
 * Prose
 ** Org mode
 #+begin_src elisp :tangle yes
