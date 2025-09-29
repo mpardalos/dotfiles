@@ -109,6 +109,7 @@
     ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
     ".config/git".source = mkOutOfStoreSymlink "${here}/git";
     ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
+    ".config/home-manager".source = mkOutOfStoreSymlink "${here}";
   };
 
   # Home Manager can also manage your environment variables through
