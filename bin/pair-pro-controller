@@ -5,18 +5,38 @@ set controller_mac "48:A5:E7:47:09:B9"
 set controller_name "Pro Controller"
 set timeout 30
 
+# Notification handling
+set notification_id ""
+
+proc update_notification {message} {
+    global notification_id
+
+    puts $message
+    if {$notification_id == ""} {
+        set notification_id [exec notify-send -t 30000 --print-id --app-name=pair-pro-controller $message]
+    } else {
+        catch {
+            exec notify-send -t 30000 --replace-id=$notification_id --app-name=pair-pro-controller $message
+        } error
+        if {$error != ""} {
+            # Fallback to new notification
+            exec notify-send -t 30000 --app-name=--app-name=pair-pro-controller $message
+        }
+    }
+}
+
 # Start bluetoothctl
 spawn /usr/bin/bluetoothctl
 
 # Wait for bluetoothctl prompt
-expect {\[bluetoothctl\]>}
+expect {\]>}
 
 # Remove device if it exists (ignore errors)
 send "remove $controller_mac\r"
 expect {
     "Device has been removed" { }
     "Device does not exist" { }
-    {\[bluetoothctl\]>} { }
+    {\]>} { }
 }
 
 # Start scanning
@@ -24,38 +44,33 @@ send "scan on\r"
 expect "Discovery started"
 
 # Wait for the Pro Controller to appear
-puts "Scanning for Pro Controller..."
+update_notification "Scanning for Pro Controller..."
 expect {
     "*Pro Controller*" {
-        puts "Found Pro Controller!"
+        update_notification "Found Pro Controller! Pairing..."
     }
     timeout {
-        puts "Timeout waiting for Pro Controller to appear"
+        update_notification "Controller not found - scan timeout"
         exit 1
     }
 }
 
-# Give it a moment to get a good signal
-sleep 2
-
-# Stop scanning
-send "scan off\r"
-expect {\[bluetoothctl\]>}
-
 # Pair with the controller
-puts "Pairing with Pro Controller..."
 send "pair $controller_mac\r"
 
 expect {
     "Pairing successful" {
         puts "Pairing successful!"
+        update_notification "Paired successfully! Connecting..."
     }
     "Failed to pair" {
         puts "Pairing failed!"
+        update_notification "Pairing failed"
         exit 1
     }
     timeout {
         puts "Timeout during pairing"
+        update_notification "Pairing timeout"
         exit 1
     }
 }
@@ -64,17 +79,24 @@ expect {
 puts "Connecting to Pro Controller..."
 send "connect $controller_mac\r"
 
+# Stop scanning
+send "scan off\r"
+expect {\]>}
+
 expect {
     "Connection successful" {
         puts "Connection successful!"
+        update_notification "Pro Controller connected successfully!"
         exit 0
     }
     "Failed to connect" {
         puts "Connection failed!"
+        update_notification "Connection failed"
         exit 1
     }
     timeout {
         puts "Timeout during connection"
+        update_notification "Connection timeout"
         exit 1
     }
 }
