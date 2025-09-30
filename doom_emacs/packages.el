@@ -67,3 +67,7 @@
                    ("terminfo/65" "terminfo/65/*")
                    ("integration" "integration/*")
                    (:exclude ".dir-locals.el" "*-tests.el"))))
+
+;; (:emacs dired) loads this even without +dirvish, and it messes with
+;; hide-details mode. I don't use it, so just kill it.
+(package! dirvish :disable t)
