@@ -1,6 +1,16 @@
 ;; I want to eventually migrate to a vanilla emacs config rather than doom.
 ;; This config is my WIP attempt at that
 
+(defun my/data-path (name)
+  "Give a path relative to `user-emacs-directory`/etc/"
+  (file-name-concat user-emacs-directory "etc" name))
+
+(defun my/config-path (name)
+  "Give a path relative to `user-emacs-directory`"
+  (file-name-concat user-emacs-directory name))
+
+(setq straight-base-dir (my/data-path "straight"))
+
 ;; Straight bootstrap
 (defvar bootstrap-version)
 (let ((bootstrap-file
