@@ -90,12 +90,20 @@
   (if (eq system-type 'windows-nt)
       (setq tramp-inline-compress-commands '())))
 
+(use-package dired
+  :straight (:type built-in)
+  :general-config
+  (general-nmap dired-mode-map
+      "h" #'dired-up-directory
+      "l" #'dired-find-file))
+
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
   (doom-themes-enable-italic t)
   :config
   (load-theme 'doom-acario-dark t))
+
 (use-package which-key
   :config (which-key-mode 1))
 
