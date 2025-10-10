@@ -9,7 +9,8 @@
  '(comint-scroll-show-maximum-output nil)
  '(corfu-auto nil nil nil "Auto completion is annoying")
  '(custom-safe-themes
-   '("d97ac0baa0b67be4f7523795621ea5096939a47e8b46378f79e78846e0e4ad3d"
+   '("1f292969fc19ba45fbc6542ed54e58ab5ad3dbe41b70d8cb2d1f85c22d07e518"
+     "d97ac0baa0b67be4f7523795621ea5096939a47e8b46378f79e78846e0e4ad3d"
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
      "7de64ff2bb2f94d7679a7e9019e23c3bf1a6a04ba54341c36e7cf2d2e56e2bcc"
@@ -114,7 +115,7 @@
  '(lsp-auto-execute-action nil)
  '(lsp-haskell-formatting-provider "fourmolu")
  '(lsp-latex-texlab-executable-argument-list '("-v"))
- '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-position 'top t)
  '(magit-blame-echo-style 'margin nil nil "-For ~magit-blame~, show the blame annotations on the left margin. I don't like how the other modes break up the flow of the code")
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(orderless-component-separator 'orderless-escapable-split-on-space)
