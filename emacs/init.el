@@ -33,7 +33,7 @@
 (setq straight-use-package-by-default t)
 
 ;; Put custom in its own file
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(setq custom-file (my/config-path "custom.el"))
 (when (file-exists-p custom-file) (load custom-file))
 
 (use-package emacs
@@ -51,18 +51,35 @@
   ;; Do not allow the cursor in the minibuffer prompt
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt))
+  (backup-directory-alist '(("." . (my/data-path "backup"))) "Keep all backups in emacs directory")
   :config
   ;; Tool bar takes up too much space
   (tool-bar-mode -1)
   ;; Same with scrollbar
-  (scroll-bar-mode -1))
+  (scroll-bar-mode -1)
+  ;; Smooth scrolling
+  (pixel-scroll-precision-mode 1))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+(use-package general
+  :config (general-evil-setup))
+
+(use-package undo-tree
+  :custom
+  (undo-tree-history-directory-alist `(("." . ,(my/data-path "undo-tree"))) "Store undo-tree locally")
+  :config (global-undo-tree-mode))
 
 (use-package tramp
   :straight (:type built-in)
   :custom
-  (backup-directory-alist '(("." . "~/.emacs.d/backup")) "Keep all backups in emacs directory")  
   (tramp-backup-directory-alist backup-directory-alist "Make TRAMP backups local")
-  (tramp-auto-save-directory "~/.emacs.d/tramp-autosave" "Make TRAMP autosaves local")
+  (tramp-auto-save-directory (my/data-path "tramp-autosave") "Make TRAMP autosaves local")
   (remote-file-name-inhibit-cache 60)
   (remote-file-name-inhibit-locks t)
   (remote-file-name-inhibit-auto-save-visited t)
@@ -79,10 +96,6 @@
   (doom-themes-enable-italic t)
   :config
   (load-theme 'doom-acario-dark t))
-
-(use-package general
-  :config (general-evil-setup))
-
 (use-package which-key
   :config (which-key-mode 1))
 
@@ -94,23 +107,11 @@
     "c" #'magit-commit
     "l" #'magit-log))
 
-(use-package undo-tree
-  :custom
-  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")) "Store undo-tree locally")
-  :config (global-undo-tree-mode))
-
 ;; ;; We don't use vc, and it slows down TRAMP
 ;; (use-package vc
 ;;   :custom
 ;;   (vc-handled-backends '() "Disable vc")
 ;;   (vc-ignore-dir-regexp ".+" "Disable vc"))
-
-(use-package evil
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
 
 (use-package evil-collection
   :after evil
