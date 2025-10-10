@@ -169,6 +169,47 @@
   :init
   (savehist-mode))
 
+(use-package auctex)
+
+;; Copied from doom emacs, some things removed.
+(use-package pdf-tools
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  ;; Install epdfinfo after the first PDF file, if needed
+  (define-advice pdf-view-mode (:around (fn &rest args) install-epdfinfo) 
+    (if (and (require 'pdf-info nil t)
+             (or (pdf-info-running-p)
+                 (ignore-errors (pdf-info-check-epdfinfo) t)))
+        (apply fn args)
+      ;; If we remain in pdf-view-mode, it'll spit out cryptic errors. This
+      ;; graceful failure is better UX.
+      (fundamental-mode)
+      (message "Viewing PDFs in Emacs requires epdfinfo. Use `M-x pdf-tools-install' to build it")))
+
+  ;; Despite its namesake, this does not call `pdf-tools-install', it only sets
+  ;; up hooks, auto-mode-alist/magic-mode-alist entries, global modes, and
+  ;; refreshes pdf-view-mode buffers, if any.
+  ;;
+  ;; I avoid calling `pdf-tools-install' directly because `pdf-tools' is easy to
+  ;; prematurely load in the background (e.g. when exporting an org file or by
+  ;; packages like org-pdftools). And I don't want pdf-tools to suddenly block
+  ;; Emacs and spew out compiler output for a few minutes in those cases. It's
+  ;; abysmal UX. The `pdf-view-mode' advice above works around this with a less
+  ;; cryptic failure message, at least.
+  (pdf-tools-install-noverify)
+
+  (setq-default pdf-view-display-size 'fit-page)
+  ;; Enable hiDPI support, but at the cost of memory! See politza/pdf-tools#51
+  (setq pdf-view-use-scaling t
+        pdf-view-use-imagemagick nil)
+
+  ;; HACK Fix #1107: flickering pdfs when evil-mode is enabled
+  (add-hook 'pdf-view-mode-hook (lambda () (setq-local evil-normal-state-cursor (list nil)))))
+
+(use-package saveplace-pdf-view
+  :after pdf-view)
+
 (defmacro cmd! (&rest body)
   "Returns (lambda () (interactive) ,@body)
 A factory for quickly producing interaction commands, particularly for keybinds
