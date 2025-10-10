@@ -52,6 +52,8 @@
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt))
   (backup-directory-alist '(("." . (my/data-path "backup"))) "Keep all backups in emacs directory")
+  (recentf-save-file (my/data-path "recentf"))
+  (auto-save-list-file-prefix (my/data-path "auto-save-list/saves-"))
   :config
   ;; Tool bar takes up too much space
   (tool-bar-mode -1)
@@ -80,6 +82,7 @@
   :custom
   (tramp-backup-directory-alist backup-directory-alist "Make TRAMP backups local")
   (tramp-auto-save-directory (my/data-path "tramp-autosave") "Make TRAMP autosaves local")
+  (tramp-persistency-file-name (my/data-path "tramp") "Make TRAMP autosaves local")
   (remote-file-name-inhibit-cache 60)
   (remote-file-name-inhibit-locks t)
   (remote-file-name-inhibit-auto-save-visited t)
@@ -114,6 +117,12 @@
     "g" #'magit
     "c" #'magit-commit
     "l" #'magit-log))
+
+(use-package transient
+  :custom
+  (transient-levels-file (my/data-path "transient-levels"))
+  (transient-values-file (my/data-path "transient-values"))
+  (transient-history-file (my/data-path "transient-history")))
 
 ;; ;; We don't use vc, and it slows down TRAMP
 ;; (use-package vc
@@ -155,6 +164,8 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
+  :custom
+  (savehist-file (my/data-path "savehist"))
   :init
   (savehist-mode))
 
