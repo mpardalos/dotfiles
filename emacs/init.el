@@ -183,7 +183,9 @@
   (add-hook 'TeX-mode-hook
 	    (lambda ()
 	      (visual-line-mode 1)
-	      (TeX-source-correlate-mode 1))))
+	      (TeX-source-correlate-mode 1)))
+  ;; Update PDF buffers after successful LaTeX runs.
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
 ;; Copied from doom emacs, some things removed.
 (use-package pdf-tools
