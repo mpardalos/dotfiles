@@ -72,6 +72,10 @@
   :config
   (evil-mode 1))
 
+(use-package evil-commentary
+  :after evil
+  :config (evil-commentary-mode))
+
 (use-package general
   :config (general-evil-setup))
 
@@ -219,6 +223,7 @@
 
 (use-package saveplace-pdf-view
   :after pdf-view)
+
 (use-package nano-theme
   :straight (:type git :host github :repo "rougier/nano-theme"))
 
