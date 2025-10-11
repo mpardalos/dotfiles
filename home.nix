@@ -72,12 +72,6 @@
     gh
     hugo
     # prettier
-    ## EDA
-    fujprog
-    nextpnr
-    verilog-repl
-    yosys
-    sv-lang
     ## Go
     go
     gopls
