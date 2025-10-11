@@ -70,6 +70,8 @@
   ;; TODO Not sure what these two do, check if they should stay
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
+  :custom
+  (evil-undo-system 'undo-tree)
   :config
   (evil-mode 1))
 
