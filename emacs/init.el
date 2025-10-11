@@ -211,6 +211,12 @@
 
 (use-package saveplace-pdf-view
   :after pdf-view)
+(use-package nano-theme
+  :straight (:type git :host github :repo "rougier/nano-theme"))
+
+(use-package nano-splash
+  :straight (:type git :host github :repo "rougier/nano-splash")
+  :config (nano-splash))
 
 (defmacro cmd! (&rest body)
   "Returns (lambda () (interactive) ,@body)
