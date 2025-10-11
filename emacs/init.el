@@ -306,8 +306,7 @@ or aliases."
 
 ;; Commonly accessed directories
 (general-nmap
- :prefix "SPC d"
- "c" (cmd! (find-file "~/.config/dotfiles")))
+ "SPC d c" (cmd! (find-file "~/.config/dotfiles")))
 
 (general-nmap "SPC c" #'shell)
 
