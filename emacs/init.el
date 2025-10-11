@@ -296,11 +296,13 @@ or aliases."
   (declare (doc-string 1))
   `(lambda (&rest _) (interactive) ,@body))
 
+(use-package recentf
+  :config
+  (recentf-mode)
+  (general-nmap "SPC f r" #'recentf))
+
 ;; Files
-(general-nmap
- :prefix "SPC f"
- "r" #'recentf
- "f" #'find-file)
+(general-nmap "SPC f f" #'find-file)
 
 ;; Commonly accessed directories
 (general-nmap
