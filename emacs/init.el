@@ -66,9 +66,10 @@
 
 (use-package evil
   :init
+  (setq evil-respect-visual-line-mode t)
+  ;; TODO Not sure what these two do, check if they should stay
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
-  (setq evil-respect-visual-line-mode t)
   :config
   (evil-mode 1))
 
