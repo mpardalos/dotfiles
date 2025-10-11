@@ -98,6 +98,7 @@
     inherit (config.lib.file) mkOutOfStoreSymlink;
     here = "${config.home.homeDirectory}/.config/dotfiles";
   in {
+    ".config/emacs".source = mkOutOfStoreSymlink "${here}/emacs";
     ".config/fish".source = mkOutOfStoreSymlink "${here}/fish/fish_config";
     ".config/nvim".source = mkOutOfStoreSymlink "${here}/neovim";
     ".config/direnv".source = mkOutOfStoreSymlink "${here}/direnv";
