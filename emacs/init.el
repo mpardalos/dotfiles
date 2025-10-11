@@ -216,6 +216,10 @@
 
 (use-package nano-splash
   :straight (:type git :host github :repo "rougier/nano-splash")
+  :custom
+  (nano-splash-title "GNU Emacs")
+  (nano-splash-subtitle "")
+  (nano-splash-duration 5)
   :config (nano-splash))
 
 (defmacro cmd! (&rest body)
