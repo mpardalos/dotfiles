@@ -53,6 +53,7 @@
     systranything # Put anything on the system tray
     nodePackages.live-server # live-reloading web server
     claude-code # AI slopping it crazy style
+    cascadia-code # Font of choice (the one from windows terminal)
     # Programming
     ## Dafny
     dafny
