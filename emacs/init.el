@@ -68,6 +68,7 @@
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
+  (setq evil-respect-visual-line-mode t)
   :config
   (evil-mode 1))
 
@@ -171,7 +172,14 @@
   :init
   (savehist-mode))
 
-(use-package auctex)
+(use-package auctex
+  :custom
+  (TeX-source-correlate-start-server 'always)
+  :config
+  (add-hook 'TeX-mode-hook
+	    (lambda ()
+	      (visual-line-mode 1)
+	      (TeX-source-correlate-mode 1))))
 
 ;; Copied from doom emacs, some things removed.
 (use-package pdf-tools
