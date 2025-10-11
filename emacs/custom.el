@@ -43,6 +43,8 @@
      "https://nixos.org/blog/announcements-rss.xml"
      "https://coq.inria.fr/rss.xml"))
  '(nano-modeline-position 'nano-modeline-footer)
+ '(pixel-scroll-precision-interpolate-page t)
+ '(pixel-scroll-precision-use-momentum t)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
