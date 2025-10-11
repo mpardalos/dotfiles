@@ -222,6 +222,65 @@
   (nano-splash-duration 5)
   :config (nano-splash))
 
+(defun my/local-hide-cursor ()
+  "Hide the cursor in a way that works with evil-mode"
+  (setq-local evil-normal-state-cursor '(bar . 0))
+  (setq-local evil-emacs-state-cursor '(bar . 0))
+  (setq-local cursor-type nil))
+
+(use-package elfeed
+  :commands elfeed
+  :general-config
+  (:keymaps '(elfeed-search-mode-map elfeed-show-mode-map)
+   "j" #'next-line
+   "k" #'previous-line
+   "T" #'my/elfeed-add-tag)
+  (:keymaps 'elfeed-search-mode-map
+   "<double-mouse-1>" #'elfeed-search-show-entry)
+  (:keymaps 'elfeed-show-mode-map
+   "<mouse-8>" #'elfeed-kill-buffer)
+  :config
+  (evil-set-initial-state 'elfeed-search-mode 'emacs)
+  (evil-set-initial-state 'elfeed-show-mode 'emacs)
+  (add-hook 'elfeed-search-mode-hook
+            (lambda ()
+	      (my/local-hide-cursor)
+              (hl-line-mode 1)))
+  (defun my/elfeed-feed-at-point (&optional prompt)
+    "If in an elfeed buffer, get the feed of the entry at point. If in
+     an elfeed entry, the the feed of the current entry, If neither, prompt
+     for a feed name"
+    (cond ((eq major-mode 'elfeed-search-mode)
+	   (elfeed-entry-feed (elfeed-search-selected :ignore-region)))
+	  ((eq major-mode 'elfeed-show-mode)
+	   (elfeed-entry-feed elfeed-show-entry))
+	  (t
+	   (elfeed-db-get-feed (completing-read (or prompt "Feed: ") (elfeed-feed-list))))))
+
+  (defun my/elfeed-add-tag (feed-url tag)
+    (interactive
+     (list
+      (elfeed-feed-url (my/elfeed-feed-at-point "Add tag to feed: "))
+      (read-string "Tag: ")))
+    (if (equal tag "unread")
+	(user-error "\"unread\" is a special tag, you can't add it to a feed"))
+    (setq elfeed-feeds
+	  (mapcar
+	   (lambda (entry)
+	     (let ((entry-feed (if (stringp entry) entry (car entry)))
+		   (entry-tags (if (stringp entry) '() (cdr entry))))
+	       (if (equal entry-feed feed-url)
+		   (if (not (member (intern tag) entry-tags))
+		       (cons feed-url (cons (intern tag) entry-tags))
+		     (user-error "Tag \"%s\" already exists for feed" tag))
+		 entry)))
+	   elfeed-feeds))
+    (customize-save-variable 'elfeed-feeds elfeed-feeds)
+    (elfeed-apply-autotags-now)
+    (cond
+     ((eq major-mode 'elfeed-search-mode) (elfeed-update))
+     ((eq major-mode 'elfeed-show-mode) (elfeed-show-refresh)))))
+
 (defmacro cmd! (&rest body)
   "Returns (lambda () (interactive) ,@body)
 A factory for quickly producing interaction commands, particularly for keybinds
