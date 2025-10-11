@@ -235,6 +235,14 @@
   (nano-splash-duration 5)
   :config (nano-splash))
 
+(use-package spacious-padding
+  :after doom-themes
+  :custom
+  (spacious-padding-subtle-mode-line t)
+  ;; This border is always grey for me, regardless of theme, looks like a bug.
+  :config
+  (spacious-padding-mode))
+
 (defun my/local-hide-cursor ()
   "Hide the cursor in a way that works with evil-mode"
   (setq-local evil-normal-state-cursor '(bar . 0))
