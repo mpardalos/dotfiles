@@ -335,11 +335,31 @@
 	  (t
 	   (elfeed-db-get-feed (completing-read (or prompt "Feed: ") (elfeed-feed-list))))))
 
+  (defun my/elfeed-known-tags (&optional prompt)
+    "Get a list of tags known to elfeed"
+    (seq-uniq
+     (apply #'append
+	    (mapcar (lambda (entry)
+		      (if (listp entry) (cdr entry) '()))
+		    elfeed-feeds))))
+
+  (defun my/elfeed-read-tag (&optional prompt)
+    "Prompt for a tag from known elfeed tags"
+    (let ((tags (mapcar #'symbol-name (my/elfeed-known-tags))))
+      (completing-read (or prompt "Tag: ")
+                       ;; Use a completion table function to set a custom category.
+                       ;; This prevents Marginalia from adding unwanted annotations
+                       ;; (it only annotates categories it recognizes).
+                       (lambda (string pred action)
+                         (if (eq action 'metadata)
+                             '(metadata (category . elfeed-tag))
+                           (complete-with-action action tags string pred))))))
+
   (defun my/elfeed-add-tag (feed-url tag)
     (interactive
      (list
       (elfeed-feed-url (my/elfeed-feed-at-point "Add tag to feed: "))
-      (read-string "Tag: ")))
+      (my/elfeed-read-tag)))
     (if (equal tag "unread")
 	(user-error "\"unread\" is a special tag, you can't add it to a feed"))
     (setq elfeed-feeds
