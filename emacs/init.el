@@ -221,6 +221,9 @@
   :custom
   (project-list-file (my/data-path "projects")))
 
+(use-package disproject
+  :general (general-nmap "SPC p" #'disproject-dispatch))
+
 (use-package auctex
   :custom
   (TeX-source-correlate-start-server 'always)
