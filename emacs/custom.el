@@ -23,7 +23,7 @@
      ("https://taylor.town/feed.xml" blog)
      ("https://akselmo.dev/feed.xml" blog)
      "https://ncot.uk/blog-posts/index.xml"
-     "https://buttondown.com/hillelwayne/rss"
+     ("https://buttondown.com/hillelwayne/rss" tech)
      ("https://www.hillelwayne.com/index.xml" blog)
      "https://blog.poisson.chat/rss.xml"
      "https://bernsteinbear.com/feed.xml"
@@ -35,7 +35,7 @@
      "https://xeiaso.net/blog.rss" "https://yosefk.com/blog/feed"
      "https://jade.fyi/rss.xml" "https://okmij.org/ftp/atom.xml"
      "https://jyn.dev/atom.xml" ("https://xenodium.com/feed" emacs)
-     ("https://utcc.utoronto.ca/~cks/space/?atom" daily)
+     ("https://utcc.utoronto.ca/~cks/space/?atom" tech daily)
      "https://www.omnycontent.com/d/playlist/c4157e60-c7f8-470d-b13f-a7b30040df73/564f493f-af32-4c48-862f-a7b300e4df49/ac317852-8807-44b8-8eff-a7b300e4df52/podcast.rss"
      ("https://feeds.jupiterbroadcasting.com/lup" podcast)
      ("https://feeds.transistor.fm/oxide-and-friends" podcast)
