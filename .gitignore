@@ -26,3 +26,4 @@ bonclay
 /fish/functions/fish_prompt.fish
 /fish/fish_config/conf.d/secrets.fish
 /fish/fish_config/fish_variables
+/emacs/etc/

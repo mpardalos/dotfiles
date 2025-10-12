@@ -135,6 +135,11 @@
   (if (eq system-type 'windows-nt)
       (setq tramp-inline-compress-commands '())))
 
+(use-package url
+  :straight (:type built-in)
+  :custom
+  (url-configuration-directory (my/data-path "url")))
+
 (use-package dired
   :straight (:type built-in)
   :general-config
@@ -210,6 +215,11 @@
   (savehist-file (my/data-path "savehist"))
   :init
   (savehist-mode))
+
+(use-package project
+  :straight (:type built-in)
+  :custom
+  (project-list-file (my/data-path "projects")))
 
 (use-package auctex
   :custom
@@ -288,6 +298,9 @@
 
 (use-package elfeed
   :commands elfeed
+  :custom
+  (elfeed-db-directory (my/data-path "elfeed"))
+  (elfeed-enclosure-default-dir (my/data-path "elfeed"))
   :general-config
   (:keymaps '(elfeed-search-mode-map elfeed-show-mode-map)
    "j" #'next-line
@@ -342,6 +355,8 @@
 (use-package mcp-server
   :straight (:type git :host github :repo "rhblind/emacs-mcp-server"
              :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
+  :custom
+  (mcp-server-socket-directory (my/data-path ""))
   :config
   (add-hook 'emacs-startup-hook #'mcp-server-start-unix))
 
@@ -351,6 +366,11 @@ A factory for quickly producing interaction commands, particularly for keybinds
 or aliases."
   (declare (doc-string 1))
   `(lambda (&rest _) (interactive) ,@body))
+
+(use-package bookmark
+  :straight (:type built-in)
+  :custom
+  (bookmark-default-file (my/data-path "bookmarks")))
 
 (use-package recentf
   :config
@@ -363,6 +383,11 @@ or aliases."
 ;; Commonly accessed directories
 (general-nmap
  "SPC d c" (cmd! (find-file "~/.config/dotfiles")))
+
+(use-package eshell
+  :straight (:type built-in)
+  :custom
+  (eshell-directory-name (my/data-path "eshell")))
 
 (general-nmap "SPC c" #'shell)
 

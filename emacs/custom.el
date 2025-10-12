@@ -16,8 +16,6 @@
      "7de64ff2bb2f94d7679a7e9019e23c3bf1a6a04ba54341c36e7cf2d2e56e2bcc"
      "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0"
      default))
- '(elfeed-db-directory "~/.config/emacs/etc/elfeed")
- '(elfeed-enclosure-default-dir "/home/mpardalos/.config/etc/elfeed/")
  '(elfeed-feeds
    '("https://www.naiveweekly.com/feed"
      "https://practicalbetterments.com/feed.xml"
@@ -45,7 +43,6 @@
      ("https://kde.org/index.xml" changelog)
      "https://nixos.org/blog/announcements-rss.xml"
      "https://coq.inria.fr/rss.xml"))
- '(mcp-server-socket-directory "~/.config/emacs/etc/")
  '(nano-modeline-position 'nano-modeline-footer)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
