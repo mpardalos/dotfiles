@@ -42,3 +42,27 @@ Look in the main emacs/ directory for actual configuration files like `init.el` 
 
 ### Persistence Files
 When adding features that create persistence files (like save-place, savehist, recentf, bookmarks, etc.), **always use `(my/data-path "filename")`** to store them in `emacs/etc/` rather than cluttering the main config directory. This keeps the configuration organized and matches the existing pattern in the config.
+
+## Custom Macros
+
+### on-hook! macro
+This config defines an `on-hook!` macro for cleaner hook definitions:
+
+```elisp
+(on-hook! hook-name
+  body)
+```
+
+**Always use this macro** instead of `add-hook` with lambda when adding hook functions. It's more concise and consistent with the config style.
+
+Example:
+```elisp
+;; Good - uses on-hook!
+(on-hook! emacs-lisp-mode-hook
+  (setq-local some-var value))
+
+;; Bad - raw add-hook
+(add-hook 'emacs-lisp-mode-hook
+  (lambda ()
+    (setq-local some-var value)))
+```
