@@ -10,6 +10,13 @@ with:
   (declare (indent defun))
   `(add-hook ',hook (lambda () ,@body)))
 
+(defmacro cmd! (&rest body)
+  "Returns (lambda () (interactive) ,@body)
+A factory for quickly producing interaction commands, particularly for keybinds
+or aliases."
+  (declare (doc-string 1))
+  `(lambda (&rest _) (interactive) ,@body))
+
 (defun my/data-path (name)
   "Give a path relative to `user-emacs-directory`/etc/"
   (file-name-concat user-emacs-directory "etc" name))
@@ -403,13 +410,6 @@ with:
   (mcp-server-socket-directory (my/data-path ""))
   :config
   (add-hook 'emacs-startup-hook #'mcp-server-start-unix))
-
-(defmacro cmd! (&rest body)
-  "Returns (lambda () (interactive) ,@body)
-A factory for quickly producing interaction commands, particularly for keybinds
-or aliases."
-  (declare (doc-string 1))
-  `(lambda (&rest _) (interactive) ,@body))
 
 (use-package bookmark
   :straight (:type built-in)
