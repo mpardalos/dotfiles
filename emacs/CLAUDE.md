@@ -39,3 +39,6 @@ major-mode
 This directory contains Emacs internal files (package cache, state files, etc.). Generally avoid looking in here unless specifically debugging Emacs internals or package issues.
 
 Look in the main emacs/ directory for actual configuration files like `init.el` and `custom.el`.
+
+### Persistence Files
+When adding features that create persistence files (like save-place, savehist, recentf, bookmarks, etc.), **always use `(my/data-path "filename")`** to store them in `emacs/etc/` rather than cluttering the main config directory. This keeps the configuration organized and matches the existing pattern in the config.
