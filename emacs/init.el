@@ -1,6 +1,15 @@
 ;; I want to eventually migrate to a vanilla emacs config rather than doom.
 ;; This config is my WIP attempt at that
 
+(defmacro on-hook! (hook &rest body)
+  "Add a lambda function to HOOK that executes BODY.
+This is a convenience macro to replace the pattern:
+  (add-hook 'hook-name (lambda () body))
+with:
+  (on-hook! hook-name body)"
+  (declare (indent defun))
+  `(add-hook ',hook (lambda () ,@body)))
+
 (defun my/data-path (name)
   "Give a path relative to `user-emacs-directory`/etc/"
   (file-name-concat user-emacs-directory "etc" name))
@@ -72,29 +81,29 @@
 (use-package elisp-mode
   :straight (:type built-in)
   :config
-  (defun my/imenu-use-package ()
+  (on-hook! emacs-lisp-mode-hook
     (setq-local imenu-generic-expression
-          '(("Used Packages"
-             "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)
-            ("Transients"
-             "^\\s-*(\\(transient-define-\\(?:argument\\|\\(?:in\\|pre\\|suf\\)fix\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
-             2)
-            ("Functions"
-             "^\\s-*(\\(cl-def\\(?:generic\\|ine-compiler-macro\\|m\\(?:acro\\|ethod\\)\\|subst\\|un\\)\\|def\\(?:advice\\|generic\\|ine-\\(?:advice\\|compil\\(?:ation-mode\\|er-macro\\)\\|derived-mode\\|g\\(?:\\(?:eneric\\|lobal\\(?:\\(?:ized\\)?-minor\\)\\)-mode\\)\\|inline\\|m\\(?:ethod-combination\\|inor-mode\\|odify-macro\\)\\|s\\(?:etf-expander\\|keleton\\)\\)\\|m\\(?:acro\\|ethod\\)\\|s\\(?:etf\\|ubst\\)\\|un\\*?\\)\\|ert-deftest\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
-             2)
-            ("Functions"
-             "^\\s-*(\\(def\\(?:\\(?:ine-obsolete-function-\\)?alias\\)\\)\\s-+'\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
-             2)
-            ("Variables"
-             "^\\s-*(\\(def\\(?:c\\(?:onst\\(?:ant\\)?\\|ustom\\)\\|ine-symbol-macro\\|parameter\\|var-keymap\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
-             2)
-            ("Variables"
-             "^\\s-*(defvar\\(?:-local\\)?\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)[[:space:]\n]+[^)]"
-             1)
-            ("Types"
-             "^\\s-*(\\(cl-def\\(?:struct\\|type\\)\\|def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|error\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
-             2))))
-  (add-hook 'emacs-lisp-mode-hook #'my/imenu-use-package))
+		'(("Used Packages"
+		   "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)
+		  ("Transients"
+		   "^\\s-*(\\(transient-define-\\(?:argument\\|\\(?:in\\|pre\\|suf\\)fix\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+		   2)
+		  ("Functions"
+		   "^\\s-*(\\(cl-def\\(?:generic\\|ine-compiler-macro\\|m\\(?:acro\\|ethod\\)\\|subst\\|un\\)\\|def\\(?:advice\\|generic\\|ine-\\(?:advice\\|compil\\(?:ation-mode\\|er-macro\\)\\|derived-mode\\|g\\(?:\\(?:eneric\\|lobal\\(?:\\(?:ized\\)?-minor\\)\\)-mode\\)\\|inline\\|m\\(?:ethod-combination\\|inor-mode\\|odify-macro\\)\\|s\\(?:etf-expander\\|keleton\\)\\)\\|m\\(?:acro\\|ethod\\)\\|s\\(?:etf\\|ubst\\)\\|un\\*?\\)\\|ert-deftest\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+		   2)
+		  ("Functions"
+		   "^\\s-*(\\(def\\(?:\\(?:ine-obsolete-function-\\)?alias\\)\\)\\s-+'\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+		   2)
+		  ("Variables"
+		   "^\\s-*(\\(def\\(?:c\\(?:onst\\(?:ant\\)?\\|ustom\\)\\|ine-symbol-macro\\|parameter\\|var-keymap\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+		   2)
+		  ("Variables"
+		   "^\\s-*(defvar\\(?:-local\\)?\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)[[:space:]\n]+[^)]"
+		   1)
+		  ("Types"
+		   "^\\s-*(\\(cl-def\\(?:struct\\|type\\)\\|def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|error\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+		   2)))
+    ))
 
 (use-package evil
   :init
@@ -228,10 +237,9 @@
   :custom
   (TeX-source-correlate-start-server 'always)
   :config
-  (add-hook 'TeX-mode-hook
-	    (lambda ()
-	      (visual-line-mode 1)
-	      (TeX-source-correlate-mode 1)))
+  (on-hook! TeX-mode-hook
+    (visual-line-mode 1)
+    (TeX-source-correlate-mode 1))
   ;; Update PDF buffers after successful LaTeX runs.
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
@@ -269,7 +277,7 @@
         pdf-view-use-imagemagick nil)
 
   ;; HACK Fix #1107: flickering pdfs when evil-mode is enabled
-  (add-hook 'pdf-view-mode-hook (lambda () (setq-local evil-normal-state-cursor (list nil)))))
+  (on-hook! pdf-view-mode-hook (setq-local evil-normal-state-cursor (list nil))))
 
 (use-package saveplace-pdf-view
   :after pdf-view)
@@ -323,10 +331,9 @@
   :config
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
   (evil-set-initial-state 'elfeed-show-mode 'emacs)
-  (add-hook 'elfeed-search-mode-hook
-            (lambda ()
-	      (my/local-hide-cursor)
-              (hl-line-mode 1)))
+  (on-hook! elfeed-search-mode-hook
+    (my/local-hide-cursor)
+    (hl-line-mode 1))
   (defun my/elfeed-feed-at-point (&optional prompt)
     "If in an elfeed buffer, get the feed of the entry at point. If in
      an elfeed entry, the the feed of the current entry, If neither, prompt
