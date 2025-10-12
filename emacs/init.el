@@ -409,7 +409,11 @@ or aliases."
   :custom
   (mcp-server-socket-directory (my/data-path ""))
   :config
-  (add-hook 'emacs-startup-hook #'mcp-server-start-unix))
+  (add-hook 'emacs-startup-hook #'mcp-server-start-unix)
+  ;; Don't prompt to kill the mcp-server process when exiting Emacs
+  (on-hook! mcp-server-start-hook
+    (when-let ((proc (get-process "emacs-mcp-unix")))
+      (set-process-query-on-exit-flag proc nil))))
 
 (use-package bookmark
   :straight (:type built-in)
