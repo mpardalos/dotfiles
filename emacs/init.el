@@ -9,7 +9,7 @@
   "Give a path relative to `user-emacs-directory`"
   (file-name-concat user-emacs-directory name))
 
-(setq straight-base-dir (my/data-path "straight"))
+(setq straight-base-dir (file-name-concat user-emacs-directory "etc"))
 
 ;; Straight bootstrap
 (defvar bootstrap-version)
