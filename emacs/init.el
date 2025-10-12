@@ -339,6 +339,12 @@
      ((eq major-mode 'elfeed-search-mode) (elfeed-update))
      ((eq major-mode 'elfeed-show-mode) (elfeed-show-refresh)))))
 
+(use-package mcp-server
+  :straight (:type git :host github :repo "rhblind/emacs-mcp-server"
+             :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
+  :config
+  (add-hook 'emacs-startup-hook #'mcp-server-start-unix))
+
 (defmacro cmd! (&rest body)
   "Returns (lambda () (interactive) ,@body)
 A factory for quickly producing interaction commands, particularly for keybinds
