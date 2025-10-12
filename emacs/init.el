@@ -64,6 +64,38 @@
   ;; Smooth scrolling
   (pixel-scroll-precision-mode 1))
 
+(use-package imenu
+  :straight (:type built-in)
+  :custom
+  (imenu-flatten 'annotation))
+
+(use-package elisp-mode
+  :straight (:type built-in)
+  :config
+  (defun my/imenu-use-package ()
+    (setq-local imenu-generic-expression
+          '(("Used Packages"
+             "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)
+            ("Transients"
+             "^\\s-*(\\(transient-define-\\(?:argument\\|\\(?:in\\|pre\\|suf\\)fix\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+             2)
+            ("Functions"
+             "^\\s-*(\\(cl-def\\(?:generic\\|ine-compiler-macro\\|m\\(?:acro\\|ethod\\)\\|subst\\|un\\)\\|def\\(?:advice\\|generic\\|ine-\\(?:advice\\|compil\\(?:ation-mode\\|er-macro\\)\\|derived-mode\\|g\\(?:\\(?:eneric\\|lobal\\(?:\\(?:ized\\)?-minor\\)\\)-mode\\)\\|inline\\|m\\(?:ethod-combination\\|inor-mode\\|odify-macro\\)\\|s\\(?:etf-expander\\|keleton\\)\\)\\|m\\(?:acro\\|ethod\\)\\|s\\(?:etf\\|ubst\\)\\|un\\*?\\)\\|ert-deftest\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+             2)
+            ("Functions"
+             "^\\s-*(\\(def\\(?:\\(?:ine-obsolete-function-\\)?alias\\)\\)\\s-+'\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+             2)
+            ("Variables"
+             "^\\s-*(\\(def\\(?:c\\(?:onst\\(?:ant\\)?\\|ustom\\)\\|ine-symbol-macro\\|parameter\\|var-keymap\\)\\)\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+             2)
+            ("Variables"
+             "^\\s-*(defvar\\(?:-local\\)?\\s-+\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)[[:space:]\n]+[^)]"
+             1)
+            ("Types"
+             "^\\s-*(\\(cl-def\\(?:struct\\|type\\)\\|def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|error\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(?:\\w\\|\\s_\\|\\\\.\\)+\\)"
+             2))))
+  (add-hook 'emacs-lisp-mode-hook #'my/imenu-use-package))
+
 (use-package evil
   :init
   (setq evil-respect-visual-line-mode t)
