@@ -271,6 +271,13 @@
 (use-package saveplace-pdf-view
   :after pdf-view)
 
+(use-package saveplace
+  :straight (:type built-in)
+  :custom
+  (save-place-file (my/data-path "save-place"))
+  :config
+  (save-place-mode 1))
+
 (use-package nano-theme
   :straight (:type git :host github :repo "rougier/nano-theme"))
 
