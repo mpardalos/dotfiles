@@ -263,7 +263,7 @@ or aliases."
   :magic ("%PDF" . pdf-view-mode)
   :config
   ;; Install epdfinfo after the first PDF file, if needed
-  (define-advice pdf-view-mode (:around (fn &rest args) install-epdfinfo) 
+  (define-advice pdf-view-mode (:around (fn &rest args) install-epdfinfo)
     (if (and (require 'pdf-info nil t)
              (or (pdf-info-running-p)
                  (ignore-errors (pdf-info-check-epdfinfo) t)))
