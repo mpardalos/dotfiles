@@ -48,6 +48,9 @@ or aliases."
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+;; ;; Uncomment and run (use-package-report) to profile startup
+;; (setq use-package-compute-statistics t)
+
 ;; Put custom in its own file
 (setq custom-file (my/config-path "custom.el"))
 (when (file-exists-p custom-file) (load custom-file))
