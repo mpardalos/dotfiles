@@ -406,13 +406,12 @@ or aliases."
 (use-package mcp-server
   :straight (:type git :host github :repo "rhblind/emacs-mcp-server"
              :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
+  :defer t
   :custom
   (mcp-server-socket-directory (my/data-path ""))
   :config
-  (add-hook 'emacs-startup-hook #'mcp-server-start-unix)
-  ;; Don't prompt to kill the mcp-server process when exiting Emacs
-  (on-hook! mcp-server-start-hook
-    (when-let ((proc (get-process "emacs-mcp-unix")))
+  (define-advice mcp-server-start (:after (&rest args) exit-no-confirm)
+    (when-let ((proc (get-process "emacs-mcp-unix-server")))
       (set-process-query-on-exit-flag proc nil))))
 
 (use-package bookmark
