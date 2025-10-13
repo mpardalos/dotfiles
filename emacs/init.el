@@ -433,6 +433,7 @@ or aliases."
 
 (use-package eshell
   :straight (:type built-in)
+  :commands eshell
   :custom
   (eshell-directory-name (my/data-path "eshell")))
 
