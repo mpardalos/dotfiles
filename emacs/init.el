@@ -403,6 +403,21 @@ or aliases."
      ((eq major-mode 'elfeed-search-mode) (elfeed-update))
      ((eq major-mode 'elfeed-show-mode) (elfeed-show-refresh)))))
 
+(use-package acp
+  :defer t
+  :straight (:host github :repo "xenodium/acp.el"))
+
+(use-package shell-maker
+  :defer t)
+
+(use-package agent-shell
+  :straight (:host github :repo "xenodium/agent-shell")
+  :defer t
+  :commands agent-shell
+  :custom
+  (agent-shell-anthropic-integration
+   (agent-shell-anthropic-make-authentication :login t)))
+
 (use-package mcp-server
   :straight (:type git :host github :repo "rhblind/emacs-mcp-server"
              :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
