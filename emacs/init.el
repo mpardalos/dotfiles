@@ -83,7 +83,9 @@ or aliases."
   ;; Same with scrollbar
   (scroll-bar-mode -1)
   ;; Smooth scrolling
-  (pixel-scroll-precision-mode 1))
+  (pixel-scroll-precision-mode 1)
+  ;; Always delete trailing whitespace
+  (add-hook 'before-save-hook #'delete-trailing-whitespace))
 
 (use-package imenu
   :straight (:type built-in)
