@@ -73,6 +73,8 @@ or aliases."
   (backup-directory-alist '(("." . (my/data-path "backup"))) "Keep all backups in emacs directory")
   (recentf-save-file (my/data-path "recentf"))
   (auto-save-list-file-prefix (my/data-path "auto-save-list/saves-"))
+  ;; Faster yes-or-no-p prompts
+  (use-short-answers t)
   :config
   ;; Tool bar takes up too much space
   (tool-bar-mode -1)
