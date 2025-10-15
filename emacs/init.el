@@ -457,6 +457,11 @@ or aliases."
 
 (general-nmap "SPC c" #'shell)
 
+(use-package devdocs-browser
+  :commands (devdocs-browser-open devdocs-browser-open-in devdocs-browser-install-doc)
+  :custom
+  (devdocs-browser-cache-directory (my/data-path "devdocs-browser")))
+
 ;; Code
 (general-nmap
   "g O" #'imenu)
