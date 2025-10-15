@@ -464,6 +464,8 @@ or aliases."
   :custom
   (devdocs-browser-data-directory (my/data-path "devdocs-browser")))
 
+(use-package tidal)
+
 ;; Code
 (general-nmap
   "g O" #'imenu)
