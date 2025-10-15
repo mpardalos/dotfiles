@@ -19,7 +19,8 @@
      "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0"
      default))
  '(elfeed-feeds
-   '("https://www.naiveweekly.com/feed"
+   '("https://www.todepond.com/feed/index.xml"
+     "https://www.naiveweekly.com/feed"
      "https://practicalbetterments.com/feed.xml"
      "https://waitbutwhy.com/feed"
      ("https://taylor.town/feed.xml" blog)
