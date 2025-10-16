@@ -446,6 +446,12 @@ or aliases."
   (recentf-mode)
   (general-nmap "SPC f r" #'recentf))
 
+(use-package cc-mode
+  :straight (:type built-in)
+  :defer t
+  :custom
+  (c-syntactic-indentation nil))
+
 ;; Files
 (general-nmap "SPC f f" #'find-file)
 
