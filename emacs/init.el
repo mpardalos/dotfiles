@@ -465,14 +465,31 @@ or aliases."
   :custom
   (eshell-directory-name (my/data-path "eshell")))
 
-(general-nmap "SPC c" #'shell)
-
 (use-package devdocs-browser
   :commands (devdocs-browser-open devdocs-browser-open-in devdocs-browser-install-doc)
   :custom
   (devdocs-browser-data-directory (my/data-path "devdocs-browser")))
 
 (use-package tidal)
+
+(use-package eat
+  :straight (eat :type git
+		 :host codeberg
+		 :repo "akib/emacs-eat"
+		 :files ("*.el" ("term" "term/*.el") "*.texi"
+			 "*.ti" ("terminfo/e" "terminfo/e/*")
+			 ("terminfo/65" "terminfo/65/*")
+			 ("integration" "integration/*")
+			 (:exclude ".dir-locals.el" "*-tests.el")))
+  :general
+  (general-nmap "SPC c" #'eat)
+  :custom
+  (eat-kill-buffer-on-exit t)
+  (eat-shell
+   (cond
+    ((eq system-type 'windows-nt) "powershell")
+    ((executable-find "fish") "fish")
+    (t (or (getenv "SHELL") "/bin/sh")))))
 
 ;; Code
 (general-nmap
