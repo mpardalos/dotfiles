@@ -7,8 +7,8 @@ nix flake update --flake ~/.config/dotfiles
 home-manager switch --flake ~/.config/dotfiles/
 echo "─────────────────── flatpak ─────────────────────────────────────────────────"
 flatpak update --assumeyes
-echo "─────────────────── doom ────────────────────────────────────────────────────"
-doom upgrade
+echo "─────────────────── emacs ───────────────────────────────────────────────────"
+emacs --batch -l ~/.config/emacs/init.el --eval "(straight-pull-all)"
 echo "─────────────────── nvim ────────────────────────────────────────────────────"
 nvim +PlugUpgrade +PlugUpdate +qa
 echo "─────────────────── tldr ────────────────────────────────────────────────────"
