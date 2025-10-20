@@ -1,0 +1,2 @@
+- When setting emacs variables, check what they do using the MCP tool you have available
+- If we are going to work on emacs, check if the MCP for emacs is working and tell me to start it if not.
