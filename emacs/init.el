@@ -470,7 +470,51 @@ or aliases."
   :custom
   (devdocs-browser-data-directory (my/data-path "devdocs-browser")))
 
-(use-package tidal)
+(use-package tidal
+  :config
+  (transient-define-prefix tidal-transient ()
+    "TidalCycles commands"
+    [["Evaluate"
+      ("e" "eval line" tidal-run-line)
+      ("E" "eval multiple lines" tidal-run-multiple-lines)
+      ("r" "eval region" tidal-run-region)
+      ("b" "load buffer" tidal-load-buffer)]
+     ["Control"
+      ("h" "hush (stop all)" tidal-hush)
+      ("s" "start Tidal" tidal-start-haskell)
+      ("q" "quit Tidal" tidal-quit-haskell)
+      ("o" "see output" tidal-see-output)
+      ("i" "interrupt" tidal-interrupt-haskell)]
+     ["Run on Channel"
+      ("1" "d1" tidal-run-d1)
+      ("2" "d2" tidal-run-d2)
+      ("3" "d3" tidal-run-d3)
+      ("4" "d4" tidal-run-d4)
+      ("5" "d5" tidal-run-d5)]
+     [""
+      ("6" "d6" tidal-run-d6)
+      ("7" "d7" tidal-run-d7)
+      ("8" "d8" tidal-run-d8)
+      ("9" "d9" tidal-run-d9)
+      ("0" "d10" tidal-run-d10)]
+     ["Stop Channel"
+      ("C-1" "stop d1" tidal-stop-d1)
+      ("C-2" "stop d2" tidal-stop-d2)
+      ("C-3" "stop d3" tidal-stop-d3)
+      ("C-4" "stop d4" tidal-stop-d4)
+      ("C-5" "stop d5" tidal-stop-d5)]
+     [""
+      ("C-6" "stop d6" tidal-stop-d6)
+      ("C-7" "stop d7" tidal-stop-d7)
+      ("C-8" "stop d8" tidal-stop-d8)
+      ("C-9" "stop d9" tidal-stop-d9)
+      ("C-0" "stop d10" tidal-stop-d10)]]
+    [["Toggle"
+      ("SPC" "keep open" transient-resume :transient t)]])
+  :general
+  (general-nmap
+    :keymaps 'tidal-mode-map
+    "SPC m" #'tidal-transient))
 
 (use-package eat
   :straight (eat :type git
