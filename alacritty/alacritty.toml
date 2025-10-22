@@ -12,7 +12,7 @@ TERM = "xterm-256color"
 size = 14.0
 
 [font.bold]
-family = "Fira Code"
+family = "Cascadia Code"
 style = "Bold"
 
 [font.glyph_offset]
@@ -20,10 +20,10 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Fira Code"
+family = "Cascadia Code"
 
 [font.normal]
-family = "Fira Code"
+family = "Cascadia Code"
 style = "Semibold"
 
 [font.offset]
