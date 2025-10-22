@@ -70,7 +70,7 @@ or aliases."
   ;; Do not allow the cursor in the minibuffer prompt
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt))
-  (backup-directory-alist '(("." . (my/data-path "backup"))) "Keep all backups in emacs directory")
+  (backup-directory-alist `(("." . ,(my/data-path "backup"))) "Keep all backups in emacs directory")
   (recentf-save-file (my/data-path "recentf"))
   (auto-save-list-file-prefix (my/data-path "auto-save-list/saves-"))
   ;; Faster yes-or-no-p prompts
