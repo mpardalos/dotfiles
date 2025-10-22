@@ -57,6 +57,7 @@
  '(nano-modeline-position 'nano-modeline-footer)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
+ '(ring-bell-function 'ignore)
  '(spacious-padding-subtle-frame-lines t nil nil "Customized with use-package spacious-padding")
  '(spacious-padding-widths
    '(:internal-border-width 0 :header-line-width 0 :mode-line-width 6
