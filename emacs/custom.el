@@ -53,6 +53,7 @@
      ("https://kde.org/index.xml" changelog)
      "https://nixos.org/blog/announcements-rss.xml"
      "https://coq.inria.fr/rss.xml"))
+ '(menu-bar-mode nil)
  '(nano-modeline-position 'nano-modeline-footer)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
