@@ -163,7 +163,11 @@ or aliases."
   (tramp-completion-reread-directory-timeout 60)
   :config
   (if (eq system-type 'windows-nt)
-      (setq tramp-inline-compress-commands '())))
+      (setq tramp-inline-compress-commands '()))
+
+  ;; Don't search for files in git-submodules if we are on TRAMP. Takes forever.
+  (define-advice project--git-submodules  (:around (fn &rest args) tramp-no-submodules)
+    (if (tramp-tramp-file-p default-directory) nil (apply fn args))))
 
 (use-package url
   :straight (:type built-in)
