@@ -58,6 +58,7 @@
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
  '(ring-bell-function 'ignore)
+ '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server")))
  '(spacious-padding-subtle-frame-lines t nil nil "Customized with use-package spacious-padding")
  '(spacious-padding-widths
    '(:internal-border-width 0 :header-line-width 0 :mode-line-width 6
@@ -70,4 +71,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Cascadia Code" :foundry "outline" :slant normal :weight regular :height 100 :width normal)))))
-
