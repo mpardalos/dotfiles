@@ -25,6 +25,7 @@
      "7de64ff2bb2f94d7679a7e9019e23c3bf1a6a04ba54341c36e7cf2d2e56e2bcc"
      "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0"
      default))
+ '(dired-dwim-target 'dired-dwim-target-next)
  '(elfeed-feeds
    '("https://www.todepond.com/feed/index.xml"
      "https://www.naiveweekly.com/feed"
@@ -70,4 +71,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Cascadia Code" :foundry "outline" :slant normal :weight regular :height 100 :width normal)))))
+ '(default ((t (:family "Cascadia Code" :foundry "SAJA" :slant normal :weight regular :height 120 :width normal)))))
