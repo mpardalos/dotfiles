@@ -453,6 +453,15 @@ or aliases."
   (recentf-mode)
   (general-nmap "SPC f r" #'recentf))
 
+(use-package xref
+  :straight (:type built-in)
+  :defer t
+  :custom
+  (xref-show-definitions-function #'xref-show-definitions-completing-read))
+
+(use-package dumb-jump
+  :hook (xref-backend-functions . dumb-jump-xref-activate))
+
 (use-package cc-mode
   :straight (:type built-in)
   :defer t
