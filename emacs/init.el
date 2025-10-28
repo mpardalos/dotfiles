@@ -261,6 +261,9 @@ or aliases."
 (use-package disproject
   :general (general-nmap "SPC p" #'disproject-dispatch))
 
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
+
 (use-package auctex
   :custom
   (TeX-source-correlate-start-server 'always)
