@@ -471,6 +471,23 @@ or aliases."
   :custom
   (c-syntactic-indentation nil))
 
+(use-package rocq-mode
+  :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
+  :mode "\\.v\\'"
+  :hook
+  (rocq-mode . rocq-follow-viewport-mode)
+  (rocq-mode . rocq-auto-goals-at-point-mode))
+
+(use-package neocaml
+  :straight (:type git :host github :repo "bbatsov/neocaml")
+  :config
+  (add-to-list 'eglot-server-programs
+	       '((neocaml-mode :language-id "ocaml") . ("ocamllsp"))))
+
+(use-package ocaml-eglot
+  :after neocaml
+  :hook neocaml-mode)
+
 ;; Files
 (general-nmap "SPC f f" #'find-file)
 
