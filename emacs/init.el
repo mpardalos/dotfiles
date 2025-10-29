@@ -471,6 +471,8 @@ or aliases."
   :custom
   (c-syntactic-indentation nil))
 
+(use-package eglot)
+
 (use-package rocq-mode
   :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
   :mode "\\.v\\'"
