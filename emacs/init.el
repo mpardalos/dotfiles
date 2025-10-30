@@ -471,7 +471,8 @@ or aliases."
   :custom
   (c-syntactic-indentation nil))
 
-(use-package eglot)
+(use-package eglot
+  :straight (:type built-in))
 
 (use-package rocq-mode
   :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
@@ -480,15 +481,14 @@ or aliases."
   (rocq-mode . rocq-follow-viewport-mode)
   (rocq-mode . rocq-auto-goals-at-point-mode))
 
-(use-package neocaml
-  :straight (:type git :host github :repo "bbatsov/neocaml")
+(use-package tuareg
   :config
   (add-to-list 'eglot-server-programs
 	       '((neocaml-mode :language-id "ocaml") . ("ocamllsp"))))
 
 (use-package ocaml-eglot
   :after neocaml
-  :hook neocaml-mode)
+  :hook tuareg-mode)
 
 ;; Files
 (general-nmap "SPC f f" #'find-file)
@@ -572,6 +572,10 @@ or aliases."
     ((eq system-type 'windows-nt) "powershell")
     ((executable-find "fish") "fish")
     (t (or (getenv "SHELL") "/bin/sh")))))
+
+
+;; TODO: Haskell
+;; Try out consult-hoogle
 
 ;; Code
 (general-nmap
