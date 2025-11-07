@@ -11,6 +11,7 @@
      (output-html "xdg-open")))
  '(custom-safe-themes
    '("f253a920e076213277eb4cbbdf3ef2062e018016018a941df6931b995c6ff6f6"
+     "dbe27ea6d8ce383a84d19cfce97c3b10ed47a127e660ed588afe5d72d0674503"
      "7a3ba1a9dd6486f8da0bd486fe7069997c8d5cbc81297106db8d3f5ecf16a60c"
      "ce529fd404dfec7b04fb5178ae65185dd8ff7c26adbaac0261fbbc7e6b8fc61d"
      "42a6583a45e0f413e3197907aa5acca3293ef33b4d3b388f54fa44435a494739"
