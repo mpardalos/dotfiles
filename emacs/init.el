@@ -191,9 +191,12 @@ or aliases."
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t)
-  :config
-  (load-theme 'doom-acario-dark t))
+  (doom-themes-enable-italic t))
+
+(use-package auto-dark
+  :init (auto-dark-mode)
+  :custom
+  (auto-dark-themes '((doom-acario-dark) (doom-one-light))))
 
 (use-package which-key
   :config (which-key-mode 1))
