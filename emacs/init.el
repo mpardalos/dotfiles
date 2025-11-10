@@ -203,6 +203,12 @@ or aliases."
 (use-package which-key
   :config (which-key-mode 1))
 
+(use-package ace-window
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :general
+  (general-nmap "C-w C-w" #'ace-window))
+
 (use-package magit
   :general
   (general-nmap
