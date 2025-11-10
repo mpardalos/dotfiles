@@ -353,14 +353,6 @@ or aliases."
 (use-package nano-theme
   :straight (:type git :host github :repo "rougier/nano-theme"))
 
-(use-package nano-splash
-  :straight (:type git :host github :repo "rougier/nano-splash")
-  :custom
-  (nano-splash-title "GNU Emacs")
-  (nano-splash-subtitle "")
-  (nano-splash-duration 5)
-  :config (nano-splash))
-
 (use-package spacious-padding
   :after doom-themes
   :custom
