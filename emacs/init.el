@@ -86,7 +86,10 @@ or aliases."
   ;; Smooth scrolling
   (pixel-scroll-precision-mode 1)
   ;; Always delete trailing whitespace
-  (add-hook 'before-save-hook #'delete-trailing-whitespace))
+  (add-hook 'before-save-hook #'delete-trailing-whitespace)
+  ;; Enable visual-line-mode (visual line editing), but truncate lines in prog-mdoe
+  (global-visual-line-mode 1)
+  (on-hook! prog-mode-hook (toggle-truncate-lines 1)))
 
 (use-package imenu
   :straight (:type built-in)
