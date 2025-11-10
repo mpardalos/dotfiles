@@ -79,12 +79,6 @@ or aliases."
   ;; Make tab autocomplete instead of indent
   (tab-always-indent 'complete)
   :config
-  ;; Tool bar takes up too much space
-  (tool-bar-mode -1)
-  ;; Same with menubar
-  (menu-bar-mode -1)
-  ;; Same with scrollbar
-  (scroll-bar-mode -1)
   ;; Smooth scrolling
   (pixel-scroll-precision-mode 1)
   ;; Always delete trailing whitespace
