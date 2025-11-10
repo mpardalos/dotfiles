@@ -503,7 +503,9 @@ or aliases."
   :mode "\\.v\\'"
   :hook
   (rocq-mode . rocq-follow-viewport-mode)
-  (rocq-mode . rocq-auto-goals-at-point-mode))
+  (rocq-mode . rocq-auto-goals-at-point-mode)
+  :config
+  (add-to-list 'rocq-vernac-commands "Equations"))
 
 (use-package tuareg
   :config
