@@ -497,7 +497,9 @@ or aliases."
   :straight (:type built-in))
 
 (use-package rocq-mode
-  :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
+  ;; :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
+  ;; PR fixing errors on Qed. Use until it is accepted, then switch back to primary
+  :straight (:type git :host codeberg :repo "yiyunliu/rocq-mode.el" :branch "pretty-print")
   :mode "\\.v\\'"
   :hook
   (rocq-mode . rocq-follow-viewport-mode)
