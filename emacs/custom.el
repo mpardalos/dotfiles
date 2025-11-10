@@ -10,7 +10,8 @@
      ((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi")
      (output-html "xdg-open")))
  '(custom-safe-themes
-   '("7a3ba1a9dd6486f8da0bd486fe7069997c8d5cbc81297106db8d3f5ecf16a60c"
+   '("f253a920e076213277eb4cbbdf3ef2062e018016018a941df6931b995c6ff6f6"
+     "7a3ba1a9dd6486f8da0bd486fe7069997c8d5cbc81297106db8d3f5ecf16a60c"
      "ce529fd404dfec7b04fb5178ae65185dd8ff7c26adbaac0261fbbc7e6b8fc61d"
      "42a6583a45e0f413e3197907aa5acca3293ef33b4d3b388f54fa44435a494739"
      "2672cbaed4e6a6c61df4cbf665ff7ceb49cabf2f534f857f3927bab59e87ac61"
