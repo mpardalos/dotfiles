@@ -76,6 +76,8 @@ or aliases."
   (auto-save-file-name-transforms `((".*" ,(my/data-path "autosaves") t)))
   ;; Faster yes-or-no-p prompts
   (use-short-answers t)
+  ;; Make tab autocomplete instead of indent
+  (tab-always-indent 'complete)
   :config
   ;; Tool bar takes up too much space
   (tool-bar-mode -1)
