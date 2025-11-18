@@ -480,6 +480,14 @@ or aliases."
   (recentf-mode)
   (general-nmap "SPC f r" #'recentf))
 
+(use-package dashboard
+  :custom
+  (dashboard-items '((recents . 5)
+		     (bookmarks . 5)
+		     (projects . 5)))
+  :config
+  (dashboard-setup-startup-hook))
+
 (use-package xref
   :straight (:type built-in)
   :defer t
