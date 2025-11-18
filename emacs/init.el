@@ -506,6 +506,28 @@ or aliases."
 (use-package eglot
   :straight (:type built-in))
 
+(defun my/rocq-prettify ()
+  (setq-local prettify-symbols-alist
+  		'(("forall" . ?∀)
+  		  ("exists" . ?∃)
+  		  ("fun" . ?𝝺)
+  		  ("=>" . ?⇒)
+  		  ("->" . ?→)
+		  ("/\\" . ?∧)
+		  ("\\/" . ?∨)
+		  ("nat" . ?𝓝)
+		  ("Z  " . ?ℤ)
+		  ("N  " . ?ℕ)
+		  ("Q  " . ?ℚ)
+		  ("Real" . ?ℝ)
+		  ("bool" . ?𝔹)
+		  ("Prop" . ?𝓟)
+		  ("Proof." . ?∵)
+		  ("Qed." . ?■)
+		  ("Defined." . ?□)
+		  ("Admitted" . ?😱)))
+  (prettify-symbols-mode 1))
+
 (use-package rocq-mode
   ;; :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
   ;; PR fixing errors on Qed. Use until it is accepted, then switch back to primary
@@ -514,6 +536,8 @@ or aliases."
   :hook
   (rocq-mode . rocq-follow-viewport-mode)
   (rocq-mode . rocq-auto-goals-at-point-mode)
+  (rocq-mode . my/rocq-prettify)
+  (rocq-goals-mode . my/rocq-prettify)
   :config
   (add-to-list 'rocq-vernac-commands "Equations"))
 

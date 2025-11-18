@@ -60,6 +60,7 @@
  '(nano-modeline-position 'nano-modeline-footer)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
+ '(prettify-symbols-unprettify-at-point t)
  '(ring-bell-function 'ignore)
  '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server")))
  '(spacious-padding-subtle-frame-lines t nil nil "Customized with use-package spacious-padding")
