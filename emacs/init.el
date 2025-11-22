@@ -523,7 +523,9 @@ or aliases."
 
 (use-package eglot
   :straight (:type built-in)
-  :commands (eglot))
+  :commands (eglot)
+  :config
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nil"))))
 
 (defun my/rocq-prettify ()
   (setq-local prettify-symbols-alist
