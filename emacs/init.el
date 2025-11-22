@@ -154,6 +154,7 @@ or aliases."
 
 (use-package tramp
   :straight (:type built-in)
+  :defer t
   :custom
   (tramp-backup-directory-alist backup-directory-alist "Make TRAMP backups local")
   (tramp-auto-save-directory (my/data-path "tramp-autosave") "Make TRAMP autosaves local")
@@ -174,6 +175,7 @@ or aliases."
 
 (use-package url
   :straight (:type built-in)
+  :defer t
   :custom
   (url-configuration-directory (my/data-path "url")))
 
@@ -190,9 +192,10 @@ or aliases."
   (doom-themes-enable-italic t))
 
 (use-package auto-dark
-  :init (auto-dark-mode)
   :custom
-  (auto-dark-themes '((doom-acario-dark) (doom-one-light))))
+  (auto-dark-themes '((doom-acario-dark) (doom-one-light)))
+  :config
+  (auto-dark-mode))
 
 (use-package which-key
   :config (which-key-mode 1))
@@ -296,6 +299,7 @@ or aliases."
   :hook prog-mode
 
   :init
+  :config
   ;; Recommended: Enable Corfu globally.  Recommended since many modes provide
   ;; Capfs and Dabbrev can be used globally (M-/).  See also the customization
   ;; variable `global-corfu-modes' to exclude certain modes.
@@ -366,7 +370,6 @@ or aliases."
   :straight (:type git :host github :repo "rougier/nano-theme"))
 
 (use-package spacious-padding
-  :after doom-themes
   :custom
   (spacious-padding-subtle-mode-line t)
   (spacious-padding-subtle-frame-lines t)
@@ -490,6 +493,7 @@ or aliases."
   (bookmark-default-file (my/data-path "bookmarks")))
 
 (use-package recentf
+  :commands (recentf recentf-open-files)
   :config
   (recentf-mode)
   (general-nmap "SPC f r" #'recentf))
@@ -518,7 +522,8 @@ or aliases."
   (c-syntactic-indentation nil))
 
 (use-package eglot
-  :straight (:type built-in))
+  :straight (:type built-in)
+  :commands (eglot))
 
 (defun my/rocq-prettify ()
   (setq-local prettify-symbols-alist
@@ -566,6 +571,7 @@ or aliases."
       (((background light)) :background "DarkSeaGreen1")))))
 
 (use-package tuareg
+  :mode "\\.ml[iylp]?\\'"
   :config
   (add-to-list 'eglot-server-programs
 	       '((neocaml-mode :language-id "ocaml") . ("ocamllsp"))))
