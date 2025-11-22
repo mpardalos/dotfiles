@@ -547,7 +547,17 @@ or aliases."
   (rocq-mode . my/rocq-prettify)
   (rocq-goals-mode . my/rocq-prettify)
   :config
-  (add-to-list 'rocq-vernac-commands "Equations"))
+  (add-to-list 'rocq-vernac-commands "Equations")
+  ;; Make rocq-mode faces readable in both dark and light modes
+  ;; rocq-mode-processing-face defaults to light gray (unreadable on dark)
+  ;; rocq-mode-last-goal-request defaults to DarkSeaGreen1 (light green, hard to read on dark)
+  (custom-set-faces
+   '(rocq-mode-processing-face
+     ((((background dark)) :background "gray30")
+      (((background light)) :background "light gray")))
+   '(rocq-mode-last-goal-request
+     ((((background dark)) :background "DarkGreen")
+      (((background light)) :background "DarkSeaGreen1")))))
 
 (use-package tuareg
   :config
