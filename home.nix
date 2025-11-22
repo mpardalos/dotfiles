@@ -80,6 +80,7 @@
     cachix
     nixfmt
     nil # Nix language server
+    nixd # Different nix language server
   ];
 
   programs.enp = {
