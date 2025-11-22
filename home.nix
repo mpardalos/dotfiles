@@ -76,6 +76,8 @@
     gopls
     ## Rust
     rustup
+    ## Hardware
+    verilog-repl
     # Nix stuff
     cachix
     nixfmt
