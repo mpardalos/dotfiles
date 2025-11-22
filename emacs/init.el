@@ -83,7 +83,9 @@ or aliases."
   (pixel-scroll-precision-mode 1)
   ;; Enable visual-line-mode (visual line editing), but truncate lines in prog-mdoe
   (global-visual-line-mode 1)
-  (on-hook! prog-mode-hook (toggle-truncate-lines 1)))
+  (on-hook! prog-mode-hook (toggle-truncate-lines 1))
+  (add-to-list 'default-frame-alist
+	       '(font . "Cascadia Code")))
 
 (use-package imenu
   :straight (:type built-in)
@@ -367,6 +369,10 @@ or aliases."
   :after doom-themes
   :custom
   (spacious-padding-subtle-mode-line t)
+  (spacious-padding-subtle-frame-lines t)
+  (spacious-padding-widths '( :internal-border-width 0 :header-line-width 0 :mode-line-width 6
+			      :tab-width 4 :right-divider-width 20
+			      :scroll-bar-width 8 :fringe-width 20 ))
   ;; This border is always grey for me, regardless of theme, looks like a bug.
   :config
   (spacious-padding-mode))

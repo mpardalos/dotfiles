@@ -63,16 +63,4 @@
  '(pixel-scroll-precision-use-momentum t)
  '(prettify-symbols-unprettify-at-point t)
  '(ring-bell-function 'ignore)
- '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server")))
- '(spacious-padding-subtle-frame-lines t nil nil "Customized with use-package spacious-padding")
- '(spacious-padding-widths
-   '(:internal-border-width 0 :header-line-width 0 :mode-line-width 6
-			    :tab-width 4 :right-divider-width 20
-			    :scroll-bar-width 8 :fringe-width 20))
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Cascadia Code" :foundry "SAJA" :slant normal :weight regular :height 120 :width normal)))))
+ '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server"))))
