@@ -668,3 +668,5 @@ or aliases."
 ;; Code
 (general-nmap
   "g O" #'imenu)
+
+(setq gc-cons-threshold (* 2 1024 1024))
