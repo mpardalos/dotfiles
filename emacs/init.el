@@ -575,6 +575,9 @@ or aliases."
   :bind (:map markdown-mode-map
          ("C-c C-e" . markdown-do)))
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 ;; Files
 (general-nmap "SPC f f" #'find-file)
 
