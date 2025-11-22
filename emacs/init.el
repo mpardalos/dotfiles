@@ -675,4 +675,12 @@ or aliases."
 (general-nmap
   "g O" #'imenu)
 
-(setq gc-cons-threshold (* 2 1024 1024))
+(on-hook! emacs-startup-hook
+  ;; Report startup time
+  (message "Emacs started in %.2f seconds with %d garbage collections."
+	   (float-time (time-subtract after-init-time before-init-time))
+	   gcs-done)
+  ;; 2MB GC limit
+  (setq gc-cons-threshold (* 2 1024 1024)))
+
+
