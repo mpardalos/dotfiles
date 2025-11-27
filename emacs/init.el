@@ -140,6 +140,13 @@ or aliases."
   :after evil
   :config (evil-commentary-mode))
 
+(use-package evil-easymotion
+  :config
+  (evilem-default-keybindings "g s")
+  (general-define-key
+   :keymaps 'evilem-map
+   "s" #'evil-avy-goto-char-2))
+
 (use-package smartparens
   :hook (prog-mode)
   :config (require 'smartparens-config))
