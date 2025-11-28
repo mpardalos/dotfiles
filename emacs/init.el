@@ -551,7 +551,7 @@ or aliases."
 		  ("bool" . ?𝔹)
 		  ("Prop" . ?𝓟)
 		  ("Proof." . ?∵)
-		  ("Qed." . ?■)
+		  ("Qed." . ?👍)
 		  ("Defined." . ?□)
 		  ("Admitted" . ?😱)))
   (prettify-symbols-mode 1))
