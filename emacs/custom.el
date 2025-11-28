@@ -59,6 +59,7 @@
      "https://coq.inria.fr/rss.xml"))
  '(menu-bar-mode nil)
  '(nano-modeline-position 'nano-modeline-footer)
+ '(native-comp-async-report-warnings-errors 'silent)
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
  '(prettify-symbols-unprettify-at-point t)
