@@ -130,6 +130,9 @@ or aliases."
   :config
   (evil-mode 1))
 
+(use-package general
+  :config (general-evil-setup))
+
 (use-package evil-surround
   :config (global-evil-surround-mode 1))
 
@@ -150,9 +153,6 @@ or aliases."
 (use-package smartparens
   :hook (prog-mode)
   :config (require 'smartparens-config))
-
-(use-package general
-  :config (general-evil-setup))
 
 (use-package undo-tree
   :custom
