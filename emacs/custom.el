@@ -10,7 +10,8 @@
      ((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi")
      (output-html "xdg-open")))
  '(custom-safe-themes
-   '("f253a920e076213277eb4cbbdf3ef2062e018016018a941df6931b995c6ff6f6"
+   '("8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098"
+     "f253a920e076213277eb4cbbdf3ef2062e018016018a941df6931b995c6ff6f6"
      "dbe27ea6d8ce383a84d19cfce97c3b10ed47a127e660ed588afe5d72d0674503"
      "7a3ba1a9dd6486f8da0bd486fe7069997c8d5cbc81297106db8d3f5ecf16a60c"
      "ce529fd404dfec7b04fb5178ae65185dd8ff7c26adbaac0261fbbc7e6b8fc61d"
@@ -64,4 +65,12 @@
  '(pixel-scroll-precision-use-momentum t)
  '(prettify-symbols-unprettify-at-point t)
  '(ring-bell-function 'ignore)
+ '(rocq-mode-display-style 'hyps-on-top)
  '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(rocq-mode-last-goal-request ((((background dark)) :background "DarkGreen") (((background light)) :background "DarkSeaGreen1")))
+ '(rocq-mode-processing-face ((((background dark)) :background "gray30") (((background light)) :background "light gray"))))
