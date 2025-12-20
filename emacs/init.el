@@ -718,3 +718,4 @@ or aliases."
   (setq gc-cons-threshold (* 2 1024 1024)))
 
 
+(put 'narrow-to-region 'disabled nil)
