@@ -701,6 +701,8 @@ or aliases."
     ((executable-find "fish") "fish")
     (t (or (getenv "SHELL") "/bin/sh")))))
 
+(use-package csv-mode)
+
 
 ;; TODO: Haskell
 ;; Try out consult-hoogle
