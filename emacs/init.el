@@ -578,7 +578,7 @@ or aliases."
 (use-package rocq-mode
   ;; :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
   ;; PR fixing errors on Qed. Use until it is accepted, then switch back to primary
-  :straight (:type git :host codeberg :repo "mpardalos/rocq-mode.el")
+  :straight (:type git :protocol ssh :host codeberg :repo "mpardalos/rocq-mode.el")
   :mode "\\.v\\'"
   :hook
   (rocq-mode . rocq-follow-viewport-mode)
