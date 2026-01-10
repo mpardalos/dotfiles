@@ -2,9 +2,6 @@
 
 echo "─────────────────── DNF ─────────────────────────────────────────────────────"
 sudo dnf5 update --assumeyes
-echo "─────────────────── Home Manager ────────────────────────────────────────────"
-nix flake update --flake ~/.config/dotfiles
-home-manager switch --flake ~/.config/dotfiles/
 echo "─────────────────── flatpak ─────────────────────────────────────────────────"
 flatpak update --assumeyes
 echo "─────────────────── emacs ───────────────────────────────────────────────────"
