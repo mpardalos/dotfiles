@@ -732,6 +732,7 @@ or aliases."
 
 (use-package csv-mode)
 
+(use-package rust-mode)
 
 ;; TODO: Haskell
 ;; Try out consult-hoogle
