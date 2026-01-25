@@ -66,7 +66,9 @@
  '(prettify-symbols-unprettify-at-point t)
  '(ring-bell-function 'ignore)
  '(rocq-mode-display-style 'hyps-on-top)
- '(safe-local-variable-values '((lsp-haskell-server-path . "haskell-language-server"))))
+ '(safe-local-variable-values
+   '((eval toggle-truncate-lines 1)
+     (lsp-haskell-server-path . "haskell-language-server"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
