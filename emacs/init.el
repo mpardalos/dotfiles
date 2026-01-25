@@ -618,6 +618,35 @@ or aliases."
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package org-roam
+  :custom
+  (org-roam-directory (file-truename "~/Documents/org-roam"))
+  :general
+  (general-nmap
+    "SPC n l" #'org-roam-buffer-toggle
+    "SPC n n" #'org-roam-node-find
+    "SPC n t" #'org-roam-dailies-capture-today)
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+(use-package org-roam-ui
+  :straight
+  (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+	org-roam-ui-follow t
+	org-roam-ui-update-on-save t
+	org-roam-ui-open-on-start t))
+
 ;; Files
 (general-nmap "SPC f f" #'find-file)
 
