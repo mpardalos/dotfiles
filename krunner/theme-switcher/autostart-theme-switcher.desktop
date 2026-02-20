@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=KRunner Theme Switcher
+Exec=/home/mpardalos/.config/dotfiles/krunner/theme-switcher/theme-switcher.py
+X-KDE-autostart-phase=2

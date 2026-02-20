@@ -17,6 +17,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  imports = [
+    ./krunner/theme-switcher
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [

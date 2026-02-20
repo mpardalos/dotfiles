@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Theme Switcher
+Comment=Switch between light and dark Plasma themes
+X-Plasma-API=DBus
+X-Plasma-DBusRunner-Service=com.mpardalos.themeswitcher
+X-Plasma-DBusRunner-Path=/runner
+X-Plasma-Runner-Syntaxes=theme :q:
+X-Plasma-Runner-Syntax-Descriptions=Switch between light and dark themes
