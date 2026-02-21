@@ -51,6 +51,7 @@
     scc # Line of code counting
     any-nix-shell # `nix shell` integration for fish
     expect
+    glow
     # LaTeX
     texlab
     texliveFull
