@@ -30,6 +30,7 @@
      "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0"
      default))
  '(dired-dwim-target 'dired-dwim-target-next)
+ '(dired-listing-switches "-alh")
  '(elfeed-feeds
    '("https://www.todepond.com/feed/index.xml"
      "https://www.naiveweekly.com/feed"
