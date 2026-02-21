@@ -618,6 +618,11 @@ or aliases."
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package org
+  :straight (:type built-in)
+  :config
+  (require 'org-tempo))
+
 (use-package org-roam
   :custom
   (org-roam-directory (file-truename "~/Documents/org-roam"))
