@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Emacs Projects
+Comment=Open Emacs projects quickly
+X-Plasma-API=DBus
+X-Plasma-DBusRunner-Service=com.mpardalos.emacsprojects
+X-Plasma-DBusRunner-Path=/runner
+X-Plasma-Runner-Syntaxes=:q:
+X-Plasma-Runner-Syntax-Descriptions=Type a project name to open in Emacs

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=KRunner Emacs Projects
+Exec=/home/mpardalos/.config/dotfiles/krunner/emacs-projects/emacs-projects.py
+X-KDE-autostart-phase=2

@@ -19,6 +19,7 @@
 
   imports = [
     ./krunner/theme-switcher
+    ./krunner/emacs-projects
   ];
 
   # The home.packages option allows you to install Nix packages into your
