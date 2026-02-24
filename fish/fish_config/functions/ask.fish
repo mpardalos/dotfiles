@@ -1,3 +1,3 @@
 function ask
-    claude -p "$argv" | glow
+    claude --model haiku -p "$argv" | glow
 end
