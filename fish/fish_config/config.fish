@@ -68,3 +68,6 @@ source $__fish_config_dir/plugins/fzf/conf.d/fzf.fish;
 
 # Plugin: bass
 set -p fish_function_path $__fish_config_dir/plugins/bass/functions/
+
+# Set theme
+fish_config theme choose 'fish default'
