@@ -97,16 +97,14 @@ class ThemeSwitcherRunner(dbus.service.Object):
         except subprocess.CalledProcessError as e:
             print(f"Error applying theme: {e}")
 
-        # Apply Alacritty theme if the switcher is available
-        if shutil.which("alacritty-theme-swap"):
-            try:
-                subprocess.run(
-                    ["alacritty-theme-swap", mode],
-                    check=True,
-                    capture_output=True
-                )
-            except subprocess.CalledProcessError as e:
-                print(f"Error switching Alacritty theme: {e}")
+        # Apply Alacritty theme
+        try:
+            subprocess.run(
+                ["alacritty-theme-swap", mode],
+                check=True
+            )
+        except subprocess.CalledProcessError as e:
+            print(f"Error switching Alacritty theme: {e}")
 
     @dbus.service.method("org.kde.krunner1", out_signature='a(sss)')
     def Actions(self):
