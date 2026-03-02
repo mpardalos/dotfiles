@@ -754,5 +754,16 @@ or aliases."
   ;; 2MB GC limit
   (setq gc-cons-threshold (* 2 1024 1024)))
 
+(define-minor-mode save-on-normal-mode
+  "Save buffer when entering evil normal state."
+  :lighter " SoN"
+  (if save-on-normal-mode
+      (add-hook 'evil-normal-state-entry-hook #'save-on-normal--maybe-save nil t)
+    (remove-hook 'evil-normal-state-entry-hook #'save-on-normal--maybe-save t)))
+
+(defun save-on-normal--maybe-save ()
+  "Save the current buffer if it has a file and unsaved changes."
+  (when (and buffer-file-name (buffer-modified-p))
+    (save-buffer)))
 
 (put 'narrow-to-region 'disabled nil)
