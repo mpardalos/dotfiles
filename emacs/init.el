@@ -211,6 +211,7 @@ or aliases."
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :general
+  (general-define-key "C-x o" #'ace-window)
   (general-nmap "C-w C-w" #'ace-window))
 
 (use-package magit
