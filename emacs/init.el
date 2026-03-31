@@ -601,6 +601,7 @@ or aliases."
 
 (use-package tuareg
   :mode "\\.ml[iylp]?\\'"
+  :after eglot
   :config
   (add-to-list 'eglot-server-programs
 	       '((neocaml-mode :language-id "ocaml") . ("ocamllsp"))))
