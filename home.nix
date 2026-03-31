@@ -60,6 +60,7 @@
     systranything # Put anything on the system tray
     claude-code # AI slopping it crazy style
     cascadia-code # Font of choice (the one from windows terminal)
+    mysql-workbench
     # Programming
     ## Dafny
     dafny
