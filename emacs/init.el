@@ -741,6 +741,17 @@ or aliases."
 
 (use-package rust-mode)
 
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :custom
+  (claude-code-ide-terminal-backend 'eat)
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (claude-code-ide-emacs-tools-setup) ; Optionally enable Emacs MCP tools
+  ;; Put claude-code buffers in emacs state for evil-mode
+  (define-advice claude-code-ide--setup-terminal-keybindings (:after (&rest _args) enter-emacs-state)
+    (evil-emacs-state)))
+
 ;; TODO: Haskell
 ;; Try out consult-hoogle
 
