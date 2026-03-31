@@ -52,6 +52,7 @@
     any-nix-shell # `nix shell` integration for fish
     expect
     glow
+    just
     # LaTeX
     texlab
     texliveFull
