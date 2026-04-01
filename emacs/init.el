@@ -570,9 +570,9 @@ or aliases."
 		  ("Real" . ?ℝ)
 		  ("bool" . ?𝔹)
 		  ("Prop" . ?𝓟)
-		  ("Proof." . ?∵)
-		  ("Qed." . ?👍)
-		  ("Defined." . ?□)
+		  ("Proof" . ?∵)
+		  ("Qed" . ?👍)
+		  ("Defined" . ?□)
 		  ("Admitted" . ?😱)))
   (prettify-symbols-mode 1))
 
