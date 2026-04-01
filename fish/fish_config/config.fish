@@ -32,8 +32,6 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 eval (direnv hook fish)
 
-any-nix-shell fish --info-right | source
-
 function tmux-set-pane-title 
     if test -n $TMUX
         printf "\033]2;%s\033\ \n" "$argv" 
