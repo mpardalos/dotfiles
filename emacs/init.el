@@ -81,8 +81,7 @@ or aliases."
   :config
   ;; Smooth scrolling
   (pixel-scroll-precision-mode 1)
-  ;; Enable visual-line-mode (visual line editing), but truncate lines in prog-mdoe
-  (global-visual-line-mode 1)
+  ;; Truncate lines in prog-mdoe
   (on-hook! prog-mode-hook (toggle-truncate-lines 1))
   (add-to-list 'default-frame-alist
 	       '(font . "Cascadia Code")))
