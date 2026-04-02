@@ -758,6 +758,25 @@ or aliases."
   (define-advice claude-code-ide--setup-terminal-keybindings (:after (&rest _args) enter-emacs-state)
     (evil-emacs-state)))
 
+;; Transparency
+
+(defun my/set-transparency (value)
+  (interactive "nValue between 0 and 100 ")
+  (if (<= 0 value 100)
+      (progn
+	(set-frame-parameter (selected-frame) 'alpha-background value)
+	(message "Frame transparency %d" value))
+    (error "Value must be between 0 and 100, but it is %s" value)))
+
+(defun my/modify-transparency (value)
+  (let* ((current (or (frame-parameter (selected-frame) 'alpha-background) 100))
+	 (updated (max 0 (min 100 (+ current value)))))
+    (my/set-transparency updated)))
+
+(general-define-key
+ "M-<wheel-up>" (cmd! (my/modify-transparency 1))
+ "M-<wheel-down>" (cmd! (my/modify-transparency -1)))
+
 ;; TODO: Haskell
 ;; Try out consult-hoogle
 
