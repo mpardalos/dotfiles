@@ -342,6 +342,8 @@ or aliases."
   :config
   (on-hook! TeX-mode-hook
     (visual-line-mode 1)
+    (setq-local adaptive-fill-regexp "\\([ ]*\\\\item[ ]*\\)\\|[-–!|#%;>*·•‣⁃◦ 	]*")
+    (visual-wrap-prefix-mode 1)
     (TeX-source-correlate-mode 1))
   ;; Update PDF buffers after successful LaTeX runs.
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
