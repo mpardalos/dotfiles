@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Theme Switcher
 Comment=Switch between light and dark Plasma themes
+Icon=weather-clear
 X-Plasma-API=DBus
 X-Plasma-DBusRunner-Service=com.mpardalos.themeswitcher
 X-Plasma-DBusRunner-Path=/runner

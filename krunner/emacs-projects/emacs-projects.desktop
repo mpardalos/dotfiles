@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Emacs Projects
 Comment=Open Emacs projects quickly
+Icon=emacs
 X-Plasma-API=DBus
 X-Plasma-DBusRunner-Service=com.mpardalos.emacsprojects
 X-Plasma-DBusRunner-Path=/runner
