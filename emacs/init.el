@@ -397,17 +397,6 @@ or aliases."
 (use-package nano-theme
   :straight (:type git :host github :repo "rougier/nano-theme"))
 
-(use-package spacious-padding
-  :custom
-  (spacious-padding-subtle-mode-line t)
-  (spacious-padding-subtle-frame-lines t)
-  (spacious-padding-widths '( :internal-border-width 0 :header-line-width 0 :mode-line-width 6
-			      :tab-width 4 :right-divider-width 20
-			      :scroll-bar-width 8 :fringe-width 20 ))
-  ;; This border is always grey for me, regardless of theme, looks like a bug.
-  :config
-  (spacious-padding-mode))
-
 (defun my/local-hide-cursor ()
   "Hide the cursor in a way that works with evil-mode"
   (setq-local evil-normal-state-cursor '(bar . 0))
