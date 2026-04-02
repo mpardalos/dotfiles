@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Reboot into Windows Boot Manager
+sudo grub2-reboot "Windows Boot Manager (on /dev/nvme0n1p1)"
+echo "Next boot: Windows"
+read -p "Reboot now? [y/N] " -n 1 -r
+echo
+[[ $REPLY =~ ^[Yy]$ ]] && sudo reboot
