@@ -622,7 +622,9 @@ or aliases."
 (use-package org
   :straight (:type built-in)
   :config
-  (require 'org-tempo))
+  (require 'org-tempo)
+  (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'org-mode-hook #'visual-wrap-prefix-mode))
 
 (use-package org-roam
   :custom
