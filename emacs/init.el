@@ -729,7 +729,12 @@ or aliases."
 			 ("integration" "integration/*")
 			 (:exclude ".dir-locals.el" "*-tests.el")))
   :general
-  (general-nmap "SPC c" #'eat)
+  ;; (general-nmap "SPC c" #'eat)
+  (general-define-key
+   :states '(normal emacs)
+   :keymaps 'override
+   "SPC c" #'eat)
+
   :custom
   (eat-kill-buffer-on-exit t)
   (eat-shell
