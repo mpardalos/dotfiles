@@ -100,7 +100,7 @@ class ThemeSwitcherRunner(dbus.service.Object):
         # Apply Alacritty theme
         try:
             subprocess.run(
-                ["alacritty-theme-swap", mode],
+                ["/home/mpardalos/.config/dotfiles/bin/alacritty-theme-swap", mode],
                 check=True
             )
         except subprocess.CalledProcessError as e:
