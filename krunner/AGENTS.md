@@ -10,8 +10,8 @@ krunner/
 └── theme-switcher/          # One directory per plugin
     ├── default.nix          # Home-manager module
     ├── theme-switcher.py    # Python DBus service
-    ├── theme-switcher.desktop        # KRunner registration
-    └── autostart-theme-switcher.desktop  # Autostart entry
+    ├── theme-switcher.desktop                    # KRunner registration
+    └── com.mpardalos.themeswitcher.service        # DBus activation service
 ```
 
 ## Creating a New Plugin
@@ -21,9 +21,9 @@ krunner/
 2. **Rename files** to match your plugin name:
    - `my-plugin.py`
    - `my-plugin.desktop`
-   - `autostart-my-plugin.desktop`
+   - `com.mpardalos.myplugin.service` (DBus activation service)
 
-3. **Update `default.nix`** - change only the `plugin-name` variable:
+3. **Update `default.nix`** - change `plugin-name` and the DBus service name:
    ```nix
    plugin-name = "my-plugin";
    ```
@@ -107,15 +107,15 @@ X-Plasma-Runner-Syntax-Descriptions=Description of what the command does
 
 **Important:** Use `X-Plasma-API=DBus` (not `DBus2`) for Plasma 6.
 
-### 3. Autostart Entry (`autostart-<plugin-name>.desktop`)
+### 3. DBus Activation Service (`com.mpardalos.myplugin.service`)
 
 ```ini
-[Desktop Entry]
-Type=Application
-Name=KRunner My Plugin
+[D-BUS Service]
+Name=com.mpardalos.myplugin
 Exec=/home/mpardalos/.config/dotfiles/krunner/my-plugin/my-plugin.py
-X-KDE-autostart-phase=2
 ```
+
+The session bus uses this file to start the plugin on demand when KRunner first queries it. The `Name` must match `SERVICE_NAME` in the Python file and `X-Plasma-DBusRunner-Service` in the `.desktop` file.
 
 ### 4. Home-Manager Module (`default.nix`)
 
@@ -124,7 +124,7 @@ X-KDE-autostart-phase=2
 
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
-  plugin-name = "my-plugin";  # <- Change only this
+  plugin-name = "my-plugin";  # <- Change this
   here = "${config.home.homeDirectory}/.config/dotfiles/krunner/${plugin-name}";
 in {
   home.packages = [
@@ -134,11 +134,22 @@ in {
     ]))
   ];
 
-  xdg.configFile."autostart/krunner-${plugin-name}.desktop".source =
-    mkOutOfStoreSymlink "${here}/autostart-${plugin-name}.desktop";
+  xdg.dataFile = {
+    # DBus activation
+    "dbus-1/services/com.mpardalos.myplugin.service".source =  # <- Change this
+      mkOutOfStoreSymlink "${here}/com.mpardalos.myplugin.service";  # <- Change this
 
-  xdg.dataFile."krunner/dbusplugins/${plugin-name}.desktop".source =
-    mkOutOfStoreSymlink "${here}/${plugin-name}.desktop";
+    # Plugin registration
+    "krunner/dbusplugins/${plugin-name}.desktop".source =
+      mkOutOfStoreSymlink "${here}/${plugin-name}.desktop";
+  };
+
+  # Reload DBus after activation so new service files are picked up
+  home.activation.reloadDbus = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    ${pkgs.dbus}/bin/dbus-send --session --type=method_call \
+      --dest=org.freedesktop.DBus /org/freedesktop/DBus \
+      org.freedesktop.DBus.ReloadConfig || true
+  '';
 
   programs.plasma.configFile.krunnerrc.Plugins."${plugin-name}Enabled" = true;
 }
@@ -147,22 +158,32 @@ in {
 ## Debugging
 
 ```bash
-# Check if service is registered
+# Check if service is activatable (DBus knows about it)
+dbus-send --session --print-reply \
+    --dest=org.freedesktop.DBus /org/freedesktop/DBus \
+    org.freedesktop.DBus.ListActivatableNames | grep myplugin
+
+# Check if service is currently running
 dbus-send --session --print-reply \
     --dest=org.freedesktop.DBus /org/freedesktop/DBus \
     org.freedesktop.DBus.ListNames | grep myplugin
 
-# Test Match method directly
+# Test Match method directly (will auto-start the service)
 dbus-send --session --print-reply \
     --dest=com.mpardalos.myplugin /runner \
     org.kde.krunner1.Match string:"test"
+
+# Reload DBus service files after changes
+dbus-send --session --type=method_call \
+    --dest=org.freedesktop.DBus /org/freedesktop/DBus \
+    org.freedesktop.DBus.ReloadConfig
 
 # Restart KRunner to pick up changes
 kquitapp6 krunner && kstart krunner
 
 # Manually restart plugin during development
 pkill -f "my-plugin.py"
-/path/to/my-plugin.py &
+# It will auto-start on next KRunner query via DBus activation
 ```
 
 ## Common Icons

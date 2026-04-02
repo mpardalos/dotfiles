@@ -14,14 +14,12 @@ in {
     ]))
   ];
 
-  # Autostart entries
-  xdg.configFile = {
-    "autostart/krunner-${plugin-name}.desktop".source =
-      mkOutOfStoreSymlink "${here}/autostart-${plugin-name}.desktop";
-  };
-
-  # Plugin registration
   xdg.dataFile = {
+    # DBus activation
+    "dbus-1/services/com.mpardalos.emacsprojects.service".source =
+      mkOutOfStoreSymlink "${here}/com.mpardalos.emacsprojects.service";
+
+    # Plugin registration
     "krunner/dbusplugins/${plugin-name}.desktop".source =
       mkOutOfStoreSymlink "${here}/${plugin-name}.desktop";
   };

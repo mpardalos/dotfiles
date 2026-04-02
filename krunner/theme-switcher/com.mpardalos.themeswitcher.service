@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.mpardalos.themeswitcher
+Exec=/home/mpardalos/.config/dotfiles/krunner/theme-switcher/theme-switcher.py

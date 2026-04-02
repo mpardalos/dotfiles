@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.mpardalos.emacsprojects
+Exec=/home/mpardalos/.config/dotfiles/krunner/emacs-projects/emacs-projects.py
