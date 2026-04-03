@@ -16,12 +16,19 @@
     systranything.url = "github:jecaro/systranything";
     krunner-ssh.url = "github:mpardalos/KRunner-SSH/nix";
     enpass-cli.url = "git+ssh://git@github.com/itsynergy-gr/enpass-cli";
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
     let
       system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        overlays = [ inputs.nixgl.overlay ];
+      };
     in {
       homeConfigurations."mpardalos" =
         inputs.home-manager.lib.homeManagerConfiguration {
