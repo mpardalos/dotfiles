@@ -9,6 +9,19 @@
      ((output-dvi has-no-display-manager) "dvi2tty")
      ((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi")
      (output-html "xdg-open")))
+ '(claude-code-ide-cli-extra-flags "")
+ '(claude-code-ide-cli-path "claude")
+ '(claude-code-ide-focus-claude-after-ediff t)
+ '(claude-code-ide-focus-on-open t)
+ '(claude-code-ide-show-claude-window-in-ediff t)
+ '(claude-code-ide-switch-tab-on-ediff t)
+ '(claude-code-ide-system-prompt nil)
+ '(claude-code-ide-use-ide-diff t)
+ '(claude-code-ide-use-side-window t)
+ '(claude-code-ide-window-height 20)
+ '(claude-code-ide-window-side 'left)
+ '(claude-code-ide-window-width 100)
+ '(compilation-scroll-output t)
  '(custom-safe-themes
    '("8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098"
      "f253a920e076213277eb4cbbdf3ef2062e018016018a941df6931b995c6ff6f6"
