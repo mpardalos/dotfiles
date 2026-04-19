@@ -95,6 +95,8 @@
     nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
   ];
 
+  programs.gemini-cli.enable = true;
+
   programs.enp = {
       enable = true;
       settings = {
