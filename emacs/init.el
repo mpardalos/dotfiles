@@ -674,7 +674,12 @@ or aliases."
   :straight (:type built-in)
   :commands eshell
   :custom
-  (eshell-directory-name (my/data-path "eshell")))
+  (eshell-directory-name (my/data-path "eshell"))
+  :general
+  (general-define-key
+   :states '(normal insert visual emacs)
+   :keymaps 'eshell-mode-map
+   "C-l" (cmd! (eshell/clear-scrollback))))
 
 (use-package devdocs-browser
   :commands (devdocs-browser-open devdocs-browser-open-in devdocs-browser-install-doc)
