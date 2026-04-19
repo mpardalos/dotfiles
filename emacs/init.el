@@ -336,6 +336,11 @@ or aliases."
   ;; (corfu-popupinfo-mode)
   )
 
+(use-package visual-fill-column
+  :custom
+  (visual-fill-column-center-text 't)
+  (visual-fill-column-enable-sensible-window-split 't))
+
 (use-package auctex
   :custom
   (TeX-source-correlate-start-server 'always)
@@ -350,6 +355,8 @@ or aliases."
     (visual-line-mode 1)
     (setq-local adaptive-fill-regexp "\\([ ]*\\\\item[ ]*\\)\\|[-–!|#%;>*·•‣⁃◦ 	]*")
     (visual-wrap-prefix-mode 1)
+    (visual-fill-column-mode 1)
+    (setq-local fill-column 120)
     (TeX-source-correlate-mode 1)
     (LaTeX-math-mode 1))
   ;; Update PDF buffers after successful LaTeX runs.
