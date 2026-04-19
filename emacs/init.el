@@ -601,7 +601,10 @@ or aliases."
       (((background light)) :background "light gray")))
    '(rocq-mode-last-goal-request
      ((((background dark)) :background "DarkGreen")
-      (((background light)) :background "DarkSeaGreen1")))))
+      (((background light)) :background "DarkSeaGreen1"))))
+  (general-define-key
+    :keymaps 'rocq-mode-map
+    "C-c C-c" #'rocq-goals))
 
 (use-package tuareg
   :mode "\\.ml[iylp]?\\'"
