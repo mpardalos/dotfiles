@@ -366,6 +366,11 @@ or aliases."
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :magic ("%PDF" . pdf-view-mode)
+  :custom
+  (pdf-view-display-size 'fit-page)
+  ;; Enable hiDPI support, but at the cost of memory! See politza/pdf-tools#51
+  (pdf-view-use-scaling t)
+  (pdf-view-use-imagemagick nil)
   :config
   ;; Install epdfinfo after the first PDF file, if needed
   (define-advice pdf-view-mode (:around (fn &rest args) install-epdfinfo)
@@ -389,11 +394,6 @@ or aliases."
   ;; abysmal UX. The `pdf-view-mode' advice above works around this with a less
   ;; cryptic failure message, at least.
   (pdf-tools-install-noverify)
-
-  (setq-default pdf-view-display-size 'fit-page)
-  ;; Enable hiDPI support, but at the cost of memory! See politza/pdf-tools#51
-  (setq pdf-view-use-scaling t
-        pdf-view-use-imagemagick nil)
 
   ;; HACK Fix #1107: flickering pdfs when evil-mode is enabled
   (on-hook! pdf-view-mode-hook (setq-local evil-normal-state-cursor (list nil))))
