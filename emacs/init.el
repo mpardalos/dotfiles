@@ -339,12 +339,19 @@ or aliases."
 (use-package auctex
   :custom
   (TeX-source-correlate-start-server 'always)
+  ;; Enable parsing of the document to find bib files and packages automatically
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+
+  ;; Make AUCTeX ask for the master file if you use \include or \input
+  (TeX-master nil)
   :config
   (on-hook! TeX-mode-hook
     (visual-line-mode 1)
     (setq-local adaptive-fill-regexp "\\([ ]*\\\\item[ ]*\\)\\|[-–!|#%;>*·•‣⁃◦ 	]*")
     (visual-wrap-prefix-mode 1)
-    (TeX-source-correlate-mode 1))
+    (TeX-source-correlate-mode 1)
+    (LaTeX-math-mode 1))
   ;; Update PDF buffers after successful LaTeX runs.
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
