@@ -752,6 +752,9 @@ or aliases."
     ((executable-find "fish") "fish")
     (t (or (getenv "SHELL") "/bin/sh")))))
 
+(use-package web-mode
+  :mode "\\.php\\'")
+
 (use-package csv-mode)
 
 (use-package rust-mode)
