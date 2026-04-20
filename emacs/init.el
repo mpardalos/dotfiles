@@ -172,6 +172,7 @@ or aliases."
   (tramp-use-scp-direct-remote-copying t)
   (tramp-completion-reread-directory-timeout 60)
   :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   (if (eq system-type 'windows-nt)
       (setq tramp-inline-compress-commands '()))
 
