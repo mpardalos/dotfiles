@@ -755,6 +755,9 @@ or aliases."
 (use-package web-mode
   :mode "\\.php\\'")
 
+(use-package smart-tabs-mode
+  :hook (web-mode . smart-tabs-mode))
+
 (use-package csv-mode)
 
 (use-package rust-mode)
