@@ -58,7 +58,6 @@
     texliveFull
     # Other tools
     systranything # Put anything on the system tray
-    claude-code # AI slopping it crazy style
     cascadia-code # Font of choice (the one from windows terminal)
     mysql-workbench
     # Programming
@@ -95,6 +94,10 @@
     nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
   ];
 
+  programs.mcp.servers = {
+    hudu.url = "http://127.0.0.1:8080/mcp";
+  };
+  programs.claude-code.enable = true;
   programs.gemini-cli.enable = true;
 
   programs.enp = {
