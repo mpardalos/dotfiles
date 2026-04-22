@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VAULT="$HOME/Documents/Enpass/Teams/michalis.pardalos@itsynergy.gr/e1dc7ed5-86d2-4b1b-8846-b7b9e555b5cf/"
+PW=$(secret-tool lookup service enpass-cli 2>/dev/null)
+
+if [ -z "$PW" ]; then
+    printf "Enpass vault password: "
+    stty -echo
+    read PW
+    stty echo
+    printf "\n"
+    printf "%s" "$PW" | secret-tool store --label "Enpass vault password" service enpass-cli
+fi
+
+MASTERPW="$PW" enpass-cli -vault "$VAULT" "$@"

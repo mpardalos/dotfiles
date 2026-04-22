@@ -15,7 +15,6 @@
     verilog-repl.url = "github:mpardalos/verilog-repl";
     systranything.url = "github:jecaro/systranything";
     krunner-ssh.url = "github:mpardalos/KRunner-SSH/nix";
-    enpass-cli.url = "git+ssh://git@github.com/itsynergy-gr/enpass-cli";
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +35,6 @@
           modules = [
             ./home.nix
             inputs.plasma-manager.homeModules.plasma-manager
-            inputs.enpass-cli.homeManagerModules.default
           ];
           extraSpecialArgs = {
             verilog-repl = inputs.verilog-repl.packages.${system}.default;

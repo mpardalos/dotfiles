@@ -92,6 +92,17 @@
     nil # Nix language server
     nixd # Different nix language server
     nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
+    ## 
+    (enpass-cli.overrideAttrs (old: rec {
+      version = "1.9.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "HazCod";
+        repo = "enpass-cli";
+        tag = "v${version}";
+        hash = "sha256-DBpEI3rOoQTnliPES+M4ZtlBk53WkW2bxk05VnpkQ1o=";
+      };
+      vendorHash = "sha256-tgOo756kNKGvY87ioX81WngeNlRBVdAEL7PXbIdNS3Y=";
+    }))
   ];
 
   programs.mcp.servers = {
@@ -99,15 +110,6 @@
   };
   programs.claude-code.enable = true;
   programs.gemini-cli.enable = true;
-
-  programs.enp = {
-      enable = true;
-      settings = {
-          vault_path = "/home/mpardalos/Documents/Enpass/Teams/michalis.pardalos@itsynergy.gr/e1dc7ed5-86d2-4b1b-8846-b7b9e555b5cf/";
-          master_password_file = "/home/mpardalos/.config/enp/master_password.txt";
-          display.show_passwords_by_default = true;
-      };
-  };
 
   xdg.configFile.krunner-ssh.text = "alacritty -e ssh {}";
 
