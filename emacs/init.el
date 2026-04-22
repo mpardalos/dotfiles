@@ -754,10 +754,12 @@ or aliases."
     (t (or (getenv "SHELL") "/bin/sh")))))
 
 (use-package web-mode
-  :mode "\\.php\\'")
+  :mode "\\.php\\'"
+  :config
+  (on-hook! web-mode-hook
+    (indent-tabs-mode -1)))
 
-(use-package smart-tabs-mode
-  :hook (web-mode . smart-tabs-mode))
+(use-package smart-tabs-mode)
 
 (use-package csv-mode)
 
