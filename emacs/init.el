@@ -623,7 +623,9 @@ or aliases."
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "pandoc")
   :bind (:map markdown-mode-map
-         ("C-c C-e" . markdown-do)))
+         ("C-c C-e" . markdown-do))
+  :config
+  (add-hook 'markdown-mode-hook #'visual-wrap-prefix-mode))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
