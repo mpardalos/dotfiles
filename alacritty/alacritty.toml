@@ -535,6 +535,16 @@ hide_when_typing = true
 action = "PasteSelection"
 mouse = "Middle"
 
+[[mouse.bindings]]
+mods = "Alt"
+mouse = "WheelUp"
+command = { program = "alacritty-opacity", args = [ "+.01" ] }
+
+[[mouse.bindings]]
+mods = "Alt"
+mouse = "WheelDown"
+command = { program = "alacritty-opacity", args = [ "-.01" ] }
+
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
