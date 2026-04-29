@@ -72,6 +72,7 @@
      ("https://kde.org/index.xml" changelog)
      "https://nixos.org/blog/announcements-rss.xml"
      "https://coq.inria.fr/rss.xml"))
+ '(magit-diff-refine-hunk t)
  '(menu-bar-mode nil)
  '(nano-modeline-position 'nano-modeline-footer)
  '(native-comp-async-report-warnings-errors 'silent)
