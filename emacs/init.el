@@ -557,7 +557,10 @@ or aliases."
   :straight (:type built-in)
   :commands (eglot)
   :config
-  (add-to-list 'eglot-server-programs '(nix-mode . ("nil"))))
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  (setq-default eglot-workspace-configuration
+		'(:haskell (:formattingProvider "fourmolu"
+			    :plugin (:fourmolu (:config (:external t)))))))
 
 (defun my/rocq-prettify ()
   (setq-local prettify-symbols-alist
