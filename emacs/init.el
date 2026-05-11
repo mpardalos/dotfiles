@@ -747,9 +747,7 @@ or aliases."
 			 ("terminfo/65" "terminfo/65/*")
 			 ("integration" "integration/*")
 			 (:exclude ".dir-locals.el" "*-tests.el")))
-  :general
-  (general-nmap "SPC c" #'eat)
-
+  :commands eat
   :custom
   (eat-kill-buffer-on-exit t)
   (eat-shell
@@ -805,7 +803,8 @@ or aliases."
 
 ;; Code
 (general-nmap
-  "g O" #'imenu)
+  "g O" #'imenu
+  "SPC c" #'eshell)
 
 (on-hook! emacs-startup-hook
   ;; Report startup time
