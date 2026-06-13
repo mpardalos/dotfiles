@@ -584,8 +584,13 @@ or aliases."
 		  ("Admitted" . ?😱)))
   (prettify-symbols-mode 1))
 
+(defface my/rocq-admit-face
+  '((((background dark)) :background "#CC0000" :foreground "white" :weight bold)
+    (((background light)) :background "#FF4444" :foreground "white" :weight bold))
+  "Face for Rocq admit and Admitted keywords.")
+
 (use-package rocq-mode
-  ;; :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
+  ; :straight (:type git :host codeberg :repo "jpoiret/rocq-mode.el")
   ;; PR fixing errors on Qed. Use until it is accepted, then switch back to primary
   :straight (:type git :protocol ssh :host codeberg :repo "mpardalos/rocq-mode.el")
   :mode "\\.v\\'"
@@ -606,6 +611,9 @@ or aliases."
    '(rocq-mode-last-goal-request
      ((((background dark)) :background "DarkGreen")
       (((background light)) :background "DarkSeaGreen1"))))
+  (on-hook! rocq-mode-hook
+    (font-lock-add-keywords nil
+      '(("\\<\\(admit\\|Admitted\\)\\>" 0 'my/rocq-admit-face t))))
   (general-define-key
     :keymaps 'rocq-mode-map
     "C-c C-c" #'rocq-goals))
