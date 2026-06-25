@@ -78,6 +78,8 @@ or aliases."
   (use-short-answers t)
   ;; Make tab autocomplete instead of indent
   (tab-always-indent 'complete)
+  ;; This makes it easy to mark non-git dirs as projects
+  (project-vc-extra-root-markers '(".dir-locals.el"))
   :config
   ;; Smooth scrolling
   (pixel-scroll-precision-mode 1)

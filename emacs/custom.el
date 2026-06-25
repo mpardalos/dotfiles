@@ -79,6 +79,7 @@
  '(pixel-scroll-precision-interpolate-page t)
  '(pixel-scroll-precision-use-momentum t)
  '(prettify-symbols-unprettify-at-point t)
+ '(project-vc-extra-root-markers '(".dir-locals.el"))
  '(ring-bell-function 'ignore)
  '(rocq-mode-display-style 'hyps-on-top)
  '(safe-local-variable-values
