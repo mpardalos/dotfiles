@@ -215,6 +215,9 @@ or aliases."
   (general-nmap "C-w C-w" #'ace-window))
 
 (use-package magit
+  :custom
+  ;; generally re-use current window for magit
+  (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
   :general
   (general-nmap
     :prefix "SPC g"
