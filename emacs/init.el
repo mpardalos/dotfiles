@@ -787,6 +787,9 @@ or aliases."
   (define-advice claude-code-ide--setup-terminal-keybindings (:after (&rest _args) enter-emacs-state)
     (evil-emacs-state)))
 
+(use-package halo
+  :straight (:type git :host github :repo "kn66/halo.el"))
+
 ;; Transparency
 
 (defun my/set-transparency (value)
