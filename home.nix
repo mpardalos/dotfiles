@@ -107,7 +107,7 @@
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
   programs.claude-code.enable = true;
-  programs.gemini-cli.enable = true;
+  programs.antigravity-cli.enable = true;
 
   xdg.configFile.krunner-ssh.text = "alacritty -e ssh {}";
 
