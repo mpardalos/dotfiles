@@ -618,7 +618,8 @@ or aliases."
       (((background light)) :background "DarkSeaGreen1"))))
   (on-hook! rocq-mode-hook
     (font-lock-add-keywords nil
-      '(("\\<\\(admit\\|Admitted\\)\\>" 0 'my/rocq-admit-face t))))
+      '(("\\<\\(admit\\|Admitted\\)\\>" 0 'my/rocq-admit-face t)))
+    (indent-tabs-mode -1))
   (general-define-key
     :keymaps 'rocq-mode-map
     "C-c C-c" #'rocq-goals))
