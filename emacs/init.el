@@ -195,6 +195,9 @@ or aliases."
       "h" #'dired-up-directory
       "l" #'dired-find-file))
 
+(use-package dirvish
+  :commands (dirvish dirvish-dwim dirvish-dispatch))
+
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
