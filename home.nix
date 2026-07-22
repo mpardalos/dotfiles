@@ -1,4 +1,4 @@
-{ config, pkgs, verilog-repl, systranything, krunner-ssh, ... }:
+{ config, pkgs, verilog-repl, krunner-ssh, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -57,7 +57,6 @@
     texlab
     texliveFull
     # Other tools
-    systranything # Put anything on the system tray
     cascadia-code # Font of choice (the one from windows terminal)
     mysql-workbench
     # Programming

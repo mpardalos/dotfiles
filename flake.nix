@@ -13,7 +13,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     verilog-repl.url = "github:mpardalos/verilog-repl";
-    systranything.url = "github:jecaro/systranything";
     krunner-ssh.url = "github:mpardalos/KRunner-SSH/nix";
     nixgl = {
       url = "github:nix-community/nixGL";
@@ -38,8 +37,6 @@
           ];
           extraSpecialArgs = {
             verilog-repl = inputs.verilog-repl.packages.${system}.default;
-            systranything =
-              inputs.systranything.packages.${system}.systranything;
             krunner-ssh =
               inputs.krunner-ssh.defaultPackage.${system};
           };
