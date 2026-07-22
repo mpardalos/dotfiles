@@ -506,8 +506,6 @@ or aliases."
   :defer t)
 
 (use-package agent-shell
-  :straight (:host github :repo "xenodium/agent-shell")
-  :defer t
   :commands agent-shell
   :custom
   (agent-shell-anthropic-integration
