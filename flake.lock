@@ -36,22 +36,6 @@
         "type": "github"
       }
     },
-    "haskell-ci-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1782299874,
-        "narHash": "sha256-sQNh/Zd1S0fNe/ietbCvyqg+0/tglRyCmFPb3AD/5wc=",
-        "owner": "haskell-CI",
-        "repo": "haskell-ci",
-        "rev": "42a102e53821381a5f47bdeeadd775cf649c76df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "haskell-CI",
-        "repo": "haskell-ci",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -59,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782358560,
-        "narHash": "sha256-vCcLh9pw3XO/+Lxk8r6xv6QnoCrTfGqiACcI7O637Wg=",
+        "lastModified": 1784725727,
+        "narHash": "sha256-J5+C9wsO0lhDyUalQzfplDbRjyHDYeEH5+9sdyXtwa8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3a70e333f2950c302e875c44cfcfaff3f80f36bc",
+        "rev": "041a999e8c1c5b731913855909e68d30ca69b8e0",
         "type": "github"
       },
       "original": {
@@ -129,11 +113,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1781577229,
-        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
+        "lastModified": 1784497964,
+        "narHash": "sha256-vlHUuqAcbcH2RKmHbPiuQzbv1pnzzavXnI62RD0bqCU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+        "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
         "type": "github"
       },
       "original": {
@@ -144,22 +128,6 @@
       }
     },
     "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1782233679,
-        "narHash": "sha256-QyuGP5+QOtmXpy4i2X4DhBVBaySBdDKQEhqKcphcp34=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "667d5cf1c59585031d743c78b394b0a647537c35",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-26.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
       "locked": {
         "lastModified": 1748037224,
         "narHash": "sha256-92vihpZr6dwEMV6g98M5kHZIttrWahb9iRPBm1atcPk=",
@@ -185,11 +153,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775856943,
-        "narHash": "sha256-b7Mp7P+q2Md5AGt4rjHfMcBykzMumFTen10ST++AuTU=",
+        "lastModified": 1783574839,
+        "narHash": "sha256-ICof1tV4/9XheBLBGf7dhMhfMq4dOs1zwTHrr7zGFlA=",
         "owner": "nix-community",
         "repo": "plasma-manager",
-        "rev": "a524a6160e6df89f7673ba293cf7d78b559eb1a5",
+        "rev": "c551f0687658e4bb699cfff6015436ad7ee57a0d",
         "type": "github"
       },
       "original": {
@@ -205,7 +173,6 @@
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
         "plasma-manager": "plasma-manager",
-        "systranything": "systranything",
         "verilog-repl": "verilog-repl"
       }
     },
@@ -239,29 +206,10 @@
         "type": "github"
       }
     },
-    "systranything": {
-      "inputs": {
-        "haskell-ci-src": "haskell-ci-src",
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1782383413,
-        "narHash": "sha256-DJMP+8TPbUuq/6fcD3NANOEjuHp9LsP5EPJiWYf26nQ=",
-        "owner": "jecaro",
-        "repo": "systranything",
-        "rev": "12fdd403b6bfc8d9d2675436cc98a853f23739b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jecaro",
-        "repo": "systranything",
-        "type": "github"
-      }
-    },
     "verilog-repl": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1748535678,

@@ -91,12 +91,12 @@
     nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
     ## 
     (enpass-cli.overrideAttrs (old: rec {
-      version = "1.9.0";
+      version = "1.12.0";
       src = pkgs.fetchFromGitHub {
         owner = "HazCod";
         repo = "enpass-cli";
         tag = "v${version}";
-        hash = "sha256-DBpEI3rOoQTnliPES+M4ZtlBk53WkW2bxk05VnpkQ1o=";
+        hash = "sha256-UwoJmANh2Gvz7FMydeP2uiflciAeQrUMGmXdOMpRFvw=";
       };
       vendorHash = "sha256-tgOo756kNKGvY87ioX81WngeNlRBVdAEL7PXbIdNS3Y=";
     }))
