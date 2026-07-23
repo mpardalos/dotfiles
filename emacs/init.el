@@ -845,3 +845,4 @@ or aliases."
     (save-buffer)))
 
 (put 'narrow-to-region 'disabled nil)
+(put 'magit-clean 'disabled nil)
