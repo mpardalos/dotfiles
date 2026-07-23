@@ -64,10 +64,6 @@
     dafny
     ## Python
     basedpyright
-    ## Haskell
-    fourmolu
-    ormolu
-    haskellPackages.profiteur
     ## C/C++
     bear
     ## Javascript
