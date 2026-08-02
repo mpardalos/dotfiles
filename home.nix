@@ -119,6 +119,8 @@
     ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
     ".config/git".source = mkOutOfStoreSymlink "${here}/git";
     ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
+    ".config/niri".source = mkOutOfStoreSymlink "${here}/niri";
+    ".config/noctalia".source = mkOutOfStoreSymlink "${here}/noctalia";
     ".config/home-manager".source = mkOutOfStoreSymlink "${here}";
   };
 
