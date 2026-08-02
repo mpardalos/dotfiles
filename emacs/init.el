@@ -751,6 +751,9 @@ or aliases."
 (use-package halo
   :straight (:type git :host github :repo "kn66/halo.el"))
 
+(use-package kdl-mode
+  :mode "\\.kdl\\'")
+
 ;; Transparency
 
 (defun my/set-transparency (value)
