@@ -754,6 +754,9 @@ or aliases."
 (use-package kdl-mode
   :mode "\\.kdl\\'")
 
+(use-package haskell-mode
+  :mode "\\.hs\\'")
+
 ;; Transparency
 
 (defun my/set-transparency (value)
