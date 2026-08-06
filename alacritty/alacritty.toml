@@ -566,4 +566,4 @@ live_config_reload = true
 import = ["~/.config/alacritty/theme-light.toml"]
 
 [terminal]
-shell = "/usr/bin/fish"
+shell = "fish"
