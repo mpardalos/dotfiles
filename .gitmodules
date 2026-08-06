@@ -3,10 +3,10 @@
 	url = https://github.com/vivien/i3blocks-contrib
 [submodule "fish/fish_config/plugins/pure"]
 	path = fish/fish_config/plugins/pure
-	url = git@github.com:pure-fish/pure.git
+	url = https://github.com/pure-fish/pure.git
 [submodule "fish/fish_config/plugins/fzf"]
 	path = fish/fish_config/plugins/fzf
-	url = git@github.com:PatrickF1/fzf.fish.git
+	url = https://github.com/PatrickF1/fzf.fish.git
 [submodule "fish/fish_config/plugins/bass"]
 	path = fish/fish_config/plugins/bass
-	url = git@github.com:edc/bass.git
+	url = https://github.com/edc/bass.git
