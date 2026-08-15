@@ -29,6 +29,7 @@
     firefox
     fish
     tmux
+    emacs31-pgtk
     # KDE stuff
     #krunner-ssh
     # CLI tools
