@@ -30,6 +30,7 @@
     fish
     tmux
     emacs31-pgtk
+    libnotify
     # KDE stuff
     #krunner-ssh
     # CLI tools
