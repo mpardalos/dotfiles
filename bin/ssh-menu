@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+IGNORE=(
+    github
+    codeberg
+    localhost
+)
+
+case $1 in
+    list)
+	awk '{ print $1 }' ~/.ssh/known_hosts \
+	    | uniq \
+	    | grep -v -E $(IFS="|"; echo "${IGNORE[*]}")
+	;;
+    run)
+	exec alacritty -e ssh $2
+	;;
+esac
