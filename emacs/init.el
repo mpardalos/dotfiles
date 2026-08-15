@@ -750,7 +750,9 @@ or aliases."
   :straight (:type git :host github :repo "kn66/halo.el"))
 
 (use-package kdl-mode
-  :mode "\\.kdl\\'")
+  :mode "\\.kdl\\'"
+  :custom
+  (kdl-indent-level 4))
 
 (use-package haskell-mode
   :mode "\\.hs\\'")
