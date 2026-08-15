@@ -1,5 +1,4 @@
-;; I want to eventually migrate to a vanilla emacs config rather than doom.
-;; This config is my WIP attempt at that
+;; -*- lexical-binding: t; -*-
 
 (defmacro on-hook! (hook &rest body)
   "Add a lambda function to HOOK that executes BODY.
