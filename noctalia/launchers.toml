@@ -1,0 +1,7 @@
+[shell.launcher.dmenu.entry.ssh]
+command = "~/.config/dotfiles/bin/ssh-menu list"
+label = "SSH"
+prefix = "ssh"
+glyph = "terminal"
+global = false
+exec = "~/.config/dotfiles/bin/ssh-menu run {selection}"
