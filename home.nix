@@ -102,6 +102,13 @@
     gtk.enable = true;
   };
 
+  xdg.systemDirs.data = [
+    # For flatpak
+    "/usr/share"
+    "/var/lib/flatpak/exports/share"
+    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
+  ];
+
   programs.mcp.servers = {
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
