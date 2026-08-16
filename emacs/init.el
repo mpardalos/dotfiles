@@ -87,6 +87,18 @@ or aliases."
   (add-to-list 'default-frame-alist
 	       '(font . "Cascadia Code")))
 
+;; Noctalia theme integration
+(setq custom-theme-directory "~/.config/emacs/themes/")
+(setq noctalia-theme-path (file-name-concat custom-theme-directory "noctalia-theme.el"))
+(when (file-exists-p noctalia-theme-path)
+  (require 'filenotify)
+  (file-notify-add-watch
+   "~/.config/emacs/themes/noctalia-theme.el" '(change)
+   (lambda (e)
+     (message "Theme change!")
+     (load-theme 'noctalia t)))
+  (load-theme 'noctalia t))
+
 (use-package imenu
   :straight (:type built-in)
   :custom
@@ -196,17 +208,6 @@ or aliases."
 
 (use-package dirvish
   :commands (dirvish dirvish-dwim dirvish-dispatch))
-
-(use-package doom-themes
-  :custom
-  (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t))
-
-(use-package auto-dark
-  :custom
-  (auto-dark-themes '((doom-acario-dark) (doom-one-light)))
-  :config
-  (auto-dark-mode))
 
 (use-package which-key
   :config (which-key-mode 1))
