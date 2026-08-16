@@ -66,6 +66,8 @@
     nixd # Different nix language server
     nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
     ## 
+    # ITSynergy
+    enpass
     (enpass-cli.overrideAttrs (old: rec {
       version = "1.12.0";
       src = pkgs.fetchFromGitHub {
