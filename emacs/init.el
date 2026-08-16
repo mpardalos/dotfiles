@@ -777,6 +777,8 @@ or aliases."
  "M-<wheel-up>" (cmd! (my/modify-transparency 1))
  "M-<wheel-down>" (cmd! (my/modify-transparency -1)))
 
+(my/set-transparency 90) ;; Initial transparency
+
 ;; TODO: Haskell
 ;; Try out consult-hoogle
 
