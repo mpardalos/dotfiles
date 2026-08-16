@@ -31,10 +31,7 @@
     tmux
     emacs31-pgtk
     libnotify
-    # KDE stuff
-    #krunner-ssh
     # CLI tools
-    gum
     fzf
     fd
     aspell
@@ -53,36 +50,18 @@
     kubectl
     pv
     nix-search-cli
-    systemctl-tui
     scc # Line of code counting
-    any-nix-shell # `nix shell` integration for fish
-    expect
-    glow
-    just
     # LaTeX
     texlab
     texliveFull
     # Other tools
     cascadia-code # Font of choice (the one from windows terminal)
-    mysql-workbench
     # Programming
-    ## Dafny
-    dafny
-    ## Python
-    basedpyright
-    ## C/C++
-    bear
-    ## Javascript
-    astro-language-server
     ## Other
     git-filter-repo
     entr
     gh
     hugo
-    # prettier
-    ## Go
-    go
-    gopls
     ## Hardware
     verilog-repl
     # Nix stuff
