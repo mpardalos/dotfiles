@@ -22,6 +22,7 @@
   home.packages = with pkgs; [
     alacritty
     firefox
+    chromium
     fish
     tmux
     emacs31-pgtk
