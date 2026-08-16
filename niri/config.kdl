@@ -350,6 +350,12 @@ debug {
   honor-xdg-activation-with-invalid-serial
 }
 
+// Blurred overview wallpaper
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}
+
 include "noctalia.kdl"
 
 /*******************************************/
