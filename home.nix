@@ -26,6 +26,7 @@
     tmux
     emacs31-pgtk
     libnotify
+    xdg-utils # xdg-open: how most programs ask for a URL to be opened
     # CLI tools
     fzf
     fd
@@ -80,6 +81,18 @@
     }))
   ];
 
+  # Make "open a URL" work for programs that shell out to xdg-open / $BROWSER
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+    };
+  };
+
   home.pointerCursor = {
     enable = true;
     package = pkgs.bibata-cursors;
@@ -130,6 +143,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    BROWSER = "firefox";
   };
 
   # Let Home Manager install and manage itself.
