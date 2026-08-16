@@ -7,13 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     verilog-repl.url = "github:mpardalos/verilog-repl";
-    krunner-ssh.url = "github:mpardalos/KRunner-SSH/nix";
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,12 +27,9 @@
           inherit pkgs;
           modules = [
             ./home.nix
-            inputs.plasma-manager.homeModules.plasma-manager
           ];
           extraSpecialArgs = {
             verilog-repl = inputs.verilog-repl.packages.${system}.default;
-            krunner-ssh =
-              inputs.krunner-ssh.defaultPackage.${system};
           };
         };
     };

@@ -17,11 +17,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  imports = [
-    ./krunner/theme-switcher
-    ./krunner/emacs-projects
-  ];
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -99,8 +94,6 @@
   programs.pi-coding-agent.enable = true;
   programs.opencode.enable = true;
 
-  xdg.configFile.krunner-ssh.text = "alacritty -e ssh {}";
-
   home.file = let
     inherit (config.lib.file) mkOutOfStoreSymlink;
     here = "${config.home.homeDirectory}/.config/dotfiles";
@@ -135,21 +128,6 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-  };
-
-  programs.plasma = {
-    enable = true;
-    shortcuts = {
-      "services/Alacritty.desktop"."New" = "Meta+T";
-      "kwin"."Edit Tiles" = "Meta+W"; # Original was Meta+T, which is used above
-      "kwin"."Switch Window Down" = "Meta+J";
-      "kwin"."Switch Window Left" = "Meta+H";
-      "kwin"."Switch Window Right" = "Meta+L";
-      "kwin"."Switch Window Up" = "Meta+K";
-      # Meta triggers krunner instead of launcher
-      "plasmashell"."activate application launcher" = "none";
-      "services/org.kde.krunner.desktop"."_launch" = "Meta";
-    };
   };
 
   # Let Home Manager install and manage itself.

@@ -56,25 +56,6 @@
         "type": "github"
       }
     },
-    "krunner-ssh": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1751362840,
-        "narHash": "sha256-WCPZ/QWKPsaX5EwaLBZS9KajpDUCphRojb2ypxXezPA=",
-        "owner": "mpardalos",
-        "repo": "KRunner-SSH",
-        "rev": "0bce1638eb0f019e641907a388a99bbf01623b57",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mpardalos",
-        "ref": "nix",
-        "repo": "KRunner-SSH",
-        "type": "github"
-      }
-    },
     "nixgl": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -98,21 +79,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1751011381,
-        "narHash": "sha256-krGXKxvkBhnrSC/kGBmg5MyupUUT5R6IBCLEzx9jhMM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1785692966,
         "narHash": "sha256-vUfIeBEfpbAfZ5zjgIkYk7eHBeVfCYVjLbWnMkseYnk=",
         "owner": "nixos",
@@ -127,7 +93,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1748037224,
         "narHash": "sha256-92vihpZr6dwEMV6g98M5kHZIttrWahb9iRPBm1atcPk=",
@@ -143,36 +109,11 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785762349,
-        "narHash": "sha256-jZhZkzAwc7f3exzcTDJWP2WCAchCv0iNC3UF/QsahdQ=",
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "rev": "a19a2a029fa180911bd89c554dca1616e10f4c1d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "krunner-ssh": "krunner-ssh",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs_2",
-        "plasma-manager": "plasma-manager",
+        "nixpkgs": "nixpkgs",
         "verilog-repl": "verilog-repl"
       }
     },
@@ -209,7 +150,7 @@
     "verilog-repl": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1748535678,
