@@ -318,10 +318,6 @@ binds {
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 }
 
-cursor {
-    xcursor-theme "breeze_cursors"
-}
-
 /************ Noctalia settings ************/
 
 spawn-at-startup "noctalia"

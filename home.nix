@@ -83,6 +83,14 @@
     }))
   ];
 
+  home.pointerCursor = {
+    enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+    gtk.enable = true;
+  };
+
   programs.mcp.servers = {
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
