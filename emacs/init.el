@@ -626,14 +626,13 @@ or aliases."
     "C-c C-c" #'rocq-goals))
 
 (use-package tuareg
-  :mode "\\.ml[iylp]?\\'"
-  :after eglot
-  :config
-  (add-to-list 'eglot-server-programs
-	       '((neocaml-mode :language-id "ocaml") . ("ocamllsp"))))
+  :mode ("\\.ml[iylp]?\\'" . tuareg-mode)
+  :init
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+		 '((tuareg-mode :language-id "ocaml") . ("ocamllsp")))))
 
 (use-package ocaml-eglot
-  :after neocaml
   :hook tuareg-mode)
 
 (use-package markdown-mode
