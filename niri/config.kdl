@@ -318,9 +318,6 @@ binds {
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 }
 
-// Allows "Auto resize VM with window" when running as QEMU guest
-spawn-at-startup "spice-vdagent"
-
 cursor {
     xcursor-theme "breeze_cursors"
 }
