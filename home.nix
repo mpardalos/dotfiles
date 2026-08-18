@@ -28,6 +28,7 @@
     emacs31-pgtk
     libnotify
     xdg-utils # xdg-open: how most programs ask for a URL to be opened
+    python3
     # CLI tools
     fzf
     fd
