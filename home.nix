@@ -144,6 +144,14 @@
     "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
   ];
 
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+    # Let me manage it from the web ui
+    overrideFolders = false;
+    overrideDevices = false;
+  };
+
   programs.mcp.servers = {
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
