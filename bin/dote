@@ -1,0 +1,5 @@
+#!/bin/sh
+# cd so that the paths shown are relative, not absolute
+pushd ~/.config/dotfiles
+fzf-dir .
+popd

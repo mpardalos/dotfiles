@@ -719,10 +719,9 @@ or aliases."
   :custom
   (eat-kill-buffer-on-exit t)
   (eat-shell
-   (cond
-    ((eq system-type 'windows-nt) "powershell")
-    ((executable-find "fish") "fish")
-    (t (or (getenv "SHELL") "/bin/sh")))))
+   (if (eq system-type 'windows-nt)
+       "powershell"
+     (or (getenv "SHELL") "/bin/sh"))))
 
 (use-package web-mode
   :mode "\\.php\\'"

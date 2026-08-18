@@ -17,13 +17,55 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  home.sessionPath = [
+    "$HOME/.config/dotfiles/bin"
+  ];
+
+  programs.fish = {
+    enable = true;
+    plugins = [
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+      {
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf.src;
+      }
+    ];
+    shellAbbrs = {
+      v = "nvim";
+      g = "git";
+    };
+    shellAliases = {
+      tree = "ll --tree";
+      ls = "eza";
+      ll = "eza -lg --group-directories-first --git";
+      cd = "z";
+      cdi = "zi";
+    };
+    shellInit = ''
+      set fish_greeting
+      fish_config theme choose 'fish default'
+    '';
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      add_newline = false;
+    };
+  };
+
+  programs.zoxide.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
     alacritty
     firefox
     chromium
-    fish
     tmux
     emacs31-pgtk
     libnotify
@@ -37,7 +79,6 @@
     sshpass
     # editorconfig (this package does not exist)
     hcloud # Hetzner CLI
-    fish
     neovim
     difftastic
     direnv
@@ -172,7 +213,6 @@
     here = "${config.home.homeDirectory}/.config/dotfiles";
   in {
     ".config/emacs".source = mkOutOfStoreSymlink "${here}/emacs";
-    ".config/fish".source = mkOutOfStoreSymlink "${here}/fish/fish_config";
     ".config/nvim".source = mkOutOfStoreSymlink "${here}/neovim";
     ".config/direnv".source = mkOutOfStoreSymlink "${here}/direnv";
     ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";

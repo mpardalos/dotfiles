@@ -564,6 +564,3 @@ y = 0
 [general]
 import = ["~/.config/alacritty/themes/noctalia.toml"]
 live_config_reload = true
-
-[terminal]
-shell = "fish"
