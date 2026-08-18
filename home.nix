@@ -76,6 +76,7 @@
     libnotify
     xdg-utils # xdg-open: how most programs ask for a URL to be opened
     python3
+    nh
     # CLI tools
     fzf
     fd
