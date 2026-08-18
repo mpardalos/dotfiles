@@ -152,6 +152,12 @@
     overrideDevices = false;
   };
 
+  services.remmina = {
+    enable = true;
+    systemdService.enable = false;
+    addRdpMimeTypeAssoc = true;
+  };
+
   programs.mcp.servers = {
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
