@@ -111,6 +111,8 @@ binds {
     XF86AudioNext { spawn "noctalia" "msg" "media" "next"; }
     XF86AudioPlay { spawn "noctalia" "msg" "media" "toggle";  }
 
+    Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+
     // // Example brightness key mappings for brightnessctl.
     // // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // // but you need to manually put each argument in separate "" quotes.
