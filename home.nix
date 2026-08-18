@@ -21,6 +21,11 @@
     "$HOME/.config/dotfiles/bin"
   ];
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   programs.fish = {
     enable = true;
     plugins = [
