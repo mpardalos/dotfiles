@@ -75,6 +75,7 @@
     emacs31-pgtk
     libnotify
     xdg-utils # xdg-open: how most programs ask for a URL to be opened
+    pywalfox-native
     python3
     nh
     # CLI tools
