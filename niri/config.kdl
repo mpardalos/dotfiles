@@ -75,7 +75,12 @@ window-rule {
 // Only does anything if the application is actually transparent, but
 // emacs and alacritty both do this, so this should actually cover a lot
 // of my windows
-window-rule { background-effect { blur true; }; }
+window-rule {
+    background-effect {
+        blur true
+        xray false
+    };
+}
 blur {
     passes 2
     noise 0
