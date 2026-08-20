@@ -20,7 +20,7 @@ input {
     focus-follows-mouse max-scroll-amount="20%"
 }
 
-output "DP-2" {
+output "HP Inc. OMEN 34c CNC3270S8R" {
     mode "3440x1440@165"
 }
 
