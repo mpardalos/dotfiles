@@ -562,6 +562,10 @@ or aliases."
 (use-package eglot
   :straight (:type built-in)
   :commands (eglot)
+  :bind
+  (:map eglot-mode-map
+	("C-c C-a" . #'eglot-code-actions)
+	("C-c C-f" . #'eglot-format))
   :config
   (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
   (setq-default eglot-workspace-configuration
