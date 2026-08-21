@@ -1,4 +1,4 @@
-{ config, pkgs, verilog-repl, krunner-ssh, ... }:
+{ config, pkgs, verilog-repl, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
