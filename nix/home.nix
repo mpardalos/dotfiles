@@ -186,6 +186,7 @@
     name = "Bibata-Modern-Ice";
     size = 24;
     gtk.enable = true;
+    dotIcons.enable = false; # Disable ~/.icons - clutter, unused
   };
 
   xdg.systemDirs.data = [
