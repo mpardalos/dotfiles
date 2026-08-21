@@ -32,6 +32,11 @@
       limine = {
         enable = true;
         extraConfig = "quiet: yes";
+        extraEntries = ''
+        /Windows
+          protocol: efi
+          path: uuid(3e3419cc-9b3e-11ec-bed9-d7d9aa499652):/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
       };
       efi.canTouchEfiVariables = true;
       # Go through bootloader instantly
