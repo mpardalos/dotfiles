@@ -34,5 +34,8 @@
       nixosConfigurations.odin = inputs.nixpkgs.lib.nixosSystem {
         modules = [ nix/odin ];
       };
+      nixosConfigurations.magni = inputs.nixpkgs.lib.nixosSystem {
+        modules = [ nix/magni ];
+      };
     };
 }
