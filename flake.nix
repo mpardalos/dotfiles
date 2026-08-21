@@ -20,16 +20,18 @@
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ inputs.nixgl.overlay ];
+        overlays = [
+          inputs.nixgl.overlay
+          (final: prev: {
+            verilog-repl = inputs.verilog-repl.packages.${system}.default;
+          })
+        ];
       };
     in
     {
       homeConfigurations."mpardalos" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ nix/home.nix ];
-        extraSpecialArgs = {
-          verilog-repl = inputs.verilog-repl.packages.${system}.default;
-        };
       };
       nixosConfigurations.odin = inputs.nixpkgs.lib.nixosSystem {
         modules = [ nix/odin ];
