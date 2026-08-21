@@ -759,7 +759,17 @@ or aliases."
   (kdl-indent-level 4))
 
 (use-package haskell-mode
-  :mode "\\.hs\\'")
+    :mode "\\.hs\\'"
+    :config
+    ;; haskell-indentation-mode rebinds RET to its own guessing indenter. Turn it
+    ;; off and use plain electric-indent + indent-relative-first-indent-point,
+    ;; which just lines up with the previous line's indentation. It is enabled
+    ;; both from haskell-mode-hook and from the haskell-mode body, so both need
+    ;; undoing.
+    (remove-hook 'haskell-mode-hook #'haskell-indentation-mode)
+    (on-hook! haskell-mode-hook
+      (haskell-indentation-mode -1)
+      (setq-local indent-line-function #'indent-relative-first-indent-point)))
 
 ;; Transparency
 
