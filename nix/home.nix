@@ -213,7 +213,10 @@
   programs.mcp.servers = {
     hudu.url = "http://127.0.0.1:8080/mcp";
   };
-  programs.claude-code.enable = true;
+  programs.claude-code = {
+    enable = true;
+    configDir = "${config.xdg.dataHome}/claude";
+  };
   programs.antigravity-cli.enable = true;
   programs.pi-coding-agent.enable = true;
   programs.opencode.enable = true;
