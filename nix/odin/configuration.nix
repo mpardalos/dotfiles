@@ -59,6 +59,7 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "mpardalos" ];
+    use-xdg-base-directories = true;
   };
 
   nixpkgs.config.allowUnfree = true;
