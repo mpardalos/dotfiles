@@ -25,6 +25,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     BROWSER = "firefox";
+    LESSHISTFILE = "-"; # Disable ~/.lesshst
   };
 
   programs.fish = {
