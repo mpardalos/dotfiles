@@ -19,7 +19,7 @@
 [pull]
 	rebase = true
 [credential]
-	helper = store
+	helper = libsecret
 [github]
 	user = mpardalos
 [gitlab]
