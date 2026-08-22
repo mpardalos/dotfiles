@@ -1,7 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    (import ../modules/nixos-desktop.nix).nixos
+    ../base.nix
   ];
 
   my.boot.windows-partuuid = "3e3419cc-9b3e-11ec-bed9-d7d9aa499652";

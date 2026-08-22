@@ -17,27 +17,40 @@
   outputs =
     inputs:
     let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = [
+      overlays-config = {
+        nixpkgs.overlays = [
           inputs.nixgl.overlay
           (final: prev: {
-            verilog-repl = inputs.verilog-repl.packages.${system}.default;
+            verilog-repl = inputs.verilog-repl.packages.${prev.stdenv.hostPlatform.system}.default;
           })
+        ];
+      };
+      home-manager-config = {
+        imports = [
+          inputs.home-manager.nixosModules.default
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+            };
+          }
         ];
       };
     in
     {
-      homeConfigurations."mpardalos" = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ nix/home.nix ];
-      };
       nixosConfigurations.odin = inputs.nixpkgs.lib.nixosSystem {
-        modules = [ nix/odin ];
+        modules = [
+          home-manager-config
+          overlays-config
+          nix/hosts/odin
+        ];
       };
       nixosConfigurations.magni = inputs.nixpkgs.lib.nixosSystem {
-        modules = [ nix/magni ];
+        modules = [
+          home-manager-config
+          overlays-config
+          nix/hosts/magni
+        ];
       };
     };
 }
