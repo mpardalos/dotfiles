@@ -5,7 +5,7 @@
     nix.settings.use-xdg-base-directories = true;
   };
 
-  home-manager = {config, ...}: {
+  home-manager = { config, ... }: {
     # ~/.lesshst
     home.sessionVariables.LESSHISTFILE = "-";
     # ~/.claude/, ~/.claude.json

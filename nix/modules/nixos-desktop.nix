@@ -16,8 +16,8 @@ let
   ];
 in
 {
-  nixos = {pkgs, ...}: {
-    imports = map (m: (import m).nixos or {} ) modules;
+  nixos = { pkgs, ... }: {
+    imports = map (m: (import m).nixos or { }) modules;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -48,8 +48,8 @@ in
     services.fwupd.enable = true;
   };
 
-  home-manager = {pkgs, config, ...}: {
-    imports = map (m: (import m).home-manager or {}) modules;
+  home-manager = { pkgs, config, ... }: {
+    imports = map (m: (import m).home-manager or { }) modules;
 
     # Not sure if this is actually needed, given that we already have it in hte nixos config above
     nixpkgs.config.allowUnfree = true;
@@ -97,14 +97,16 @@ in
       nix-direnv.enable = true;
     };
 
-    home.file = let
-      inherit (config.lib.file) mkOutOfStoreSymlink;
-      here = "${config.home.homeDirectory}/.config/dotfiles";
-    in {
-      ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
-      ".config/git".source = mkOutOfStoreSymlink "${here}/git";
-      ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
-    };
+    home.file =
+      let
+        inherit (config.lib.file) mkOutOfStoreSymlink;
+        here = "${config.home.homeDirectory}/.config/dotfiles";
+      in
+      {
+        ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
+        ".config/git".source = mkOutOfStoreSymlink "${here}/git";
+        ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
+      };
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;

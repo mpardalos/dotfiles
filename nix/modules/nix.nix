@@ -1,13 +1,16 @@
 {
   nixos = {
     nix.settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       trusted-users = [ "mpardalos" ];
     };
     nixpkgs.config.allowUnfree = true;
   };
 
-  home-manager = {config, pkgs, ...}: {
+  home-manager = { config, pkgs, ... }: {
     programs.nh = {
       enable = true;
       flake = "${config.home.homeDirectory}/.config/dotfiles";

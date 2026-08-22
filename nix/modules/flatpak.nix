@@ -1,9 +1,9 @@
 {
-  nixos = {config, pkgs, ...}: {
+  nixos = { config, pkgs, ... }: {
     services.flatpak.enable = true;
   };
 
-  home-manager = {config, pkgs, ...}: {
+  home-manager = { config, pkgs, ... }: {
     xdg.mimeApps.defaultApplications = {
       "application/vnd.flatpak.ref" = "flatpakref.desktop";
       "application/vnd.flatpak.repo" = "flatpakref.desktop";
@@ -15,8 +15,7 @@
     # so the wrapper strips it back to a plain https:// URL.
     xdg.desktopEntries.flatpakref = {
       name = "Install Flatpak";
-      exec = "alacritty -e ${
-        pkgs.writeShellScript "flatpakref-open" ''
+      exec = "alacritty -e ${pkgs.writeShellScript "flatpakref-open" ''
         set -u
         target=''${1#flatpak+}
         case "$target" in
@@ -30,8 +29,7 @@
         # Keep the window up so errors are readable rather than flashing past.
         echo
         read -rsn1 -p "Press any key to close..."
-      ''
-      } %u";
+      ''} %u";
       terminal = false; # alacritty *is* the terminal
       noDisplay = true;
       mimeType = [

@@ -1,5 +1,5 @@
 {
-  nixos = {config, pkgs, ...}: {
+  nixos = { config, pkgs, ... }: {
     environment.sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

@@ -30,9 +30,9 @@
         cdi = "zi";
       };
       shellInit = ''
-      set fish_greeting
-      fish_config theme choose 'fish default'
-    '';
+        set fish_greeting
+        fish_config theme choose 'fish default'
+      '';
     };
 
     programs.starship = {

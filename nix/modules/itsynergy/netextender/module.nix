@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.services.netextender;
@@ -14,9 +19,12 @@ let
   # Getting this wrong fails loudly: with resolved in charge, NixOS installs an
   # /etc/resolvconf.conf stub that makes any openresolv invocation exit 1.
   resolvconfProvider =
-    if config.services.resolved.enable then config.systemd.package
-    else if config.networking.resolvconf.enable then config.networking.resolvconf.package
-    else null;
+    if config.services.resolved.enable then
+      config.systemd.package
+    else if config.networking.resolvconf.enable then
+      config.networking.resolvconf.package
+    else
+      null;
 in
 {
   options.services.netextender = {
@@ -48,7 +56,10 @@ in
       wantedBy = [ "multi-user.target" ];
       # The tmpfiles ordering is what puts /usr/local/netextender in place before
       # the daemon looks for its helpers there.
-      after = [ "network.target" "systemd-tmpfiles-setup.service" ];
+      after = [
+        "network.target"
+        "systemd-tmpfiles-setup.service"
+      ];
       path = lib.optional (resolvconfProvider != null) resolvconfProvider;
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/NEService";

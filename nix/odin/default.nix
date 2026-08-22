@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,19 +14,24 @@
     /Windows
       protocol: efi
       path: uuid(3e3419cc-9b3e-11ec-bed9-d7d9aa499652):/EFI/Microsoft/Boot/bootmgfw.efi
-    '';
+  '';
 
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/swap".options = [ "noatime" ];
   };
 
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 33*1024; # Enough for hibernation
-  }];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 33 * 1024; # Enough for hibernation
+    }
+  ];
 
   services.btrfs.autoScrub = {
     enable = true;
@@ -41,4 +51,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-

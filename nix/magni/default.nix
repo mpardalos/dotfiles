@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -8,14 +13,19 @@
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/swap".options = [ "noatime" ];
   };
 
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 17*1024; # Enough for hibernation
-  }];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 17 * 1024; # Enough for hibernation
+    }
+  ];
 
   services.btrfs.autoScrub = {
     enable = true;
@@ -35,4 +45,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-

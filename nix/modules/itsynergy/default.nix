@@ -1,5 +1,5 @@
 {
-  home-manager = {pkgs, ...}: {
+  home-manager = { pkgs, ... }: {
     services.remmina = {
       enable = true;
       systemdService.enable = false;
@@ -27,11 +27,11 @@
     ];
   };
 
-  nixos = {pkgs, ...}: {
+  nixos = { pkgs, ... }: {
     imports = [ ./netextender/module.nix ];
     services.netextender = {
       enable = true;
-      package = pkgs.callPackage ./netextender/package.nix {};
+      package = pkgs.callPackage ./netextender/package.nix { };
     };
 
     programs.openvpn3.enable = true;

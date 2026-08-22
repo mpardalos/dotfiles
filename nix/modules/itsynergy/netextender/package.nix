@@ -1,25 +1,26 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, autoPatchelfHook
-, makeWrapper
-, wrapGAppsHook3
-, gtk3
-, webkitgtk_4_1
-, iproute2
-, iptables
-, nftables
-, procps
-, util-linux
-, nettools
-, which
-, bash
+{
+  lib,
+  stdenv,
+  fetchurl,
+  dpkg,
+  autoPatchelfHook,
+  makeWrapper,
+  wrapGAppsHook3,
+  gtk3,
+  webkitgtk_4_1,
+  iproute2,
+  iptables,
+  nftables,
+  procps,
+  util-linux,
+  nettools,
+  which,
+  bash,
 
-, coreutils
-, gnugrep
-, gnused
-, gawk
+  coreutils,
+  gnugrep,
+  gnused,
+  gawk,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -31,7 +32,12 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-xoUcrBiIAX5NIyGlaSq2xcL1TTcUzUo42xSMX0u4Hi0=";
   };
 
-  nativeBuildInputs = [ dpkg autoPatchelfHook makeWrapper wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    dpkg
+    autoPatchelfHook
+    makeWrapper
+    wrapGAppsHook3
+  ];
 
   buildInputs = [
     gtk3
