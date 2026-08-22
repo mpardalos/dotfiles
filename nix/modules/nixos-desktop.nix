@@ -1,6 +1,7 @@
 let
   modules = [
     ./ai.nix
+    ./boot.nix
     ./desktop.nix
     ./emacs.nix
     ./fancy-startup.nix
@@ -20,11 +21,6 @@ in
     imports = map (m: (import m).nixos or { }) modules;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    boot.loader = {
-      limine.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
 
     networking = {
       networkmanager.enable = true;

@@ -4,11 +4,7 @@
     (import ../modules/nixos-desktop.nix).nixos
   ];
 
-  boot.loader.limine.extraEntries = ''
-    /Windows
-      protocol: efi
-      path: uuid(3e3419cc-9b3e-11ec-bed9-d7d9aa499652):/EFI/Microsoft/Boot/bootmgfw.efi
-  '';
+  my.boot.windows-partuuid = "3e3419cc-9b3e-11ec-bed9-d7d9aa499652";
 
   fileSystems = {
     "/".options = [ "compress=zstd" ];
