@@ -16,14 +16,6 @@ or aliases."
   (declare (doc-string 1))
   `(lambda (&rest _) (interactive) ,@body))
 
-(defun my/data-path (name)
-  "Give a path relative to `user-emacs-directory`/etc/"
-  (file-name-concat user-emacs-directory "etc" name))
-
-(defun my/config-path (name)
-  "Give a path relative to `user-emacs-directory`"
-  (file-name-concat user-emacs-directory name))
-
 (setq straight-base-dir (file-name-concat user-emacs-directory "etc"))
 
 ;; Straight bootstrap
@@ -51,7 +43,7 @@ or aliases."
 ;; (setq use-package-compute-statistics t)
 
 ;; Put custom in its own file
-(setq custom-file (my/config-path "custom.el"))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file) (load custom-file))
 
 (use-package emacs
@@ -69,10 +61,6 @@ or aliases."
   ;; Do not allow the cursor in the minibuffer prompt
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt))
-  (backup-directory-alist `(("." . ,(my/data-path "backup"))) "Keep all backups in emacs directory")
-  (recentf-save-file (my/data-path "recentf"))
-  (auto-save-list-file-prefix (my/data-path "auto-save-list/saves-"))
-  (auto-save-file-name-transforms `((".*" ,(my/data-path "autosaves") t)))
   ;; Faster yes-or-no-p prompts
   (use-short-answers t)
   ;; Make tab autocomplete instead of indent
@@ -86,6 +74,10 @@ or aliases."
   (on-hook! prog-mode-hook (toggle-truncate-lines 1))
   (add-to-list 'default-frame-alist
 	       '(font . "Cascadia Code")))
+
+(use-package no-littering
+  :config
+  (no-littering-theme-backups))
 
 ;; Noctalia theme integration
 (setq custom-theme-directory "~/.config/emacs/themes/")
@@ -167,17 +159,12 @@ or aliases."
   :config (require 'smartparens-config))
 
 (use-package undo-tree
-  :custom
-  (undo-tree-history-directory-alist `(("." . ,(my/data-path "undo-tree"))) "Store undo-tree locally")
   :config (global-undo-tree-mode))
 
 (use-package tramp
   :straight (:type built-in)
   :defer t
   :custom
-  (tramp-backup-directory-alist backup-directory-alist "Make TRAMP backups local")
-  (tramp-auto-save-directory (my/data-path "tramp-autosave") "Make TRAMP autosaves local")
-  (tramp-persistency-file-name (my/data-path "tramp") "Make TRAMP autosaves local")
   (remote-file-name-inhibit-cache 60)
   (remote-file-name-inhibit-locks t)
   (remote-file-name-inhibit-auto-save-visited t)
@@ -192,12 +179,6 @@ or aliases."
   ;; Don't search for files in git-submodules if we are on TRAMP. Takes forever.
   (define-advice project--git-submodules  (:around (fn &rest args) tramp-no-submodules)
     (if (tramp-tramp-file-p default-directory) nil (apply fn args))))
-
-(use-package url
-  :straight (:type built-in)
-  :defer t
-  :custom
-  (url-configuration-directory (my/data-path "url")))
 
 (use-package dired
   :straight (:type built-in)
@@ -229,12 +210,6 @@ or aliases."
     "g" #'magit
     "c" #'magit-commit
     "l" #'magit-log))
-
-(use-package transient
-  :custom
-  (transient-levels-file (my/data-path "transient-levels"))
-  (transient-values-file (my/data-path "transient-values"))
-  (transient-history-file (my/data-path "transient-history")))
 
 ;; ;; We don't use vc, and it slows down TRAMP
 ;; (use-package vc
@@ -305,15 +280,8 @@ or aliases."
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
-  :custom
-  (savehist-file (my/data-path "savehist"))
   :init
   (savehist-mode))
-
-(use-package project
-  :straight (:type built-in)
-  :custom
-  (project-list-file (my/data-path "projects")))
 
 (use-package disproject
   :general (general-nmap "SPC p" #'disproject-dispatch))
@@ -412,8 +380,6 @@ or aliases."
 
 (use-package saveplace
   :straight (:type built-in)
-  :custom
-  (save-place-file (my/data-path "save-place"))
   :config
   (save-place-mode 1))
 
@@ -428,9 +394,6 @@ or aliases."
 
 (use-package elfeed
   :commands elfeed
-  :custom
-  (elfeed-db-directory (my/data-path "elfeed"))
-  (elfeed-enclosure-default-dir (my/data-path "elfeed"))
   :general-config
   (:keymaps '(elfeed-search-mode-map elfeed-show-mode-map)
    "j" #'next-line
@@ -519,16 +482,11 @@ or aliases."
              :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
   :defer t
   :custom
-  (mcp-server-socket-directory (my/data-path ""))
+  (mcp-server-socket-directory no-littering-var-directory)
   :config
   (define-advice mcp-server-start (:after (&rest args) exit-no-confirm)
     (when-let ((proc (get-process "emacs-mcp-unix-server")))
       (set-process-query-on-exit-flag proc nil))))
-
-(use-package bookmark
-  :straight (:type built-in)
-  :custom
-  (bookmark-default-file (my/data-path "bookmarks")))
 
 (use-package recentf
   :commands (recentf recentf-open-files)
@@ -697,18 +655,11 @@ or aliases."
 (use-package eshell
   :straight (:type built-in)
   :commands eshell
-  :custom
-  (eshell-directory-name (my/data-path "eshell"))
   :general
   (general-define-key
    :states '(normal insert visual emacs)
    :keymaps 'eshell-mode-map
    "C-l" (cmd! (eshell/clear-scrollback))))
-
-(use-package devdocs-browser
-  :commands (devdocs-browser-open devdocs-browser-open-in devdocs-browser-install-doc)
-  :custom
-  (devdocs-browser-data-directory (my/data-path "devdocs-browser")))
 
 (use-package eat
   :straight (eat :type git

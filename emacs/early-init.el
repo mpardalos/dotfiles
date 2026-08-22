@@ -3,8 +3,12 @@
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; Set eln-cache dir
-(when (boundp 'native-comp-eln-load-path)
-  (startup-redirect-eln-cache (file-name-concat user-emacs-directory "etc" "eln-cache")))
+(when (and (fboundp 'startup-redirect-eln-cache)
+           (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+    (expand-file-name  "var/eln-cache/" user-emacs-directory))))
 
 ;; Disabling these because the take too much space.
 ;; Do it early to avoid flicker on startup
