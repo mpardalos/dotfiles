@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if ! which ansible-playbook 2>&1 > /dev/null; then
-    sudo dnf install ansible
-fi
-
-ansible-galaxy install -r requirements.yaml
-echo "Enter sudo password"
-ansible-playbook deploy.yaml --diff
