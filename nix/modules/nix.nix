@@ -14,6 +14,11 @@
     programs.nh = {
       enable = true;
       flake = "${config.home.homeDirectory}/.config/dotfiles";
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 7d";
+        dates = "daily";
+      };
     };
 
     home.packages = with pkgs; [
