@@ -7,7 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    (import ../modules/nixos-desktop).nixos
+    (import ../modules/nixos-desktop.nix).nixos
   ];
 
   fileSystems = {
