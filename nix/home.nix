@@ -80,6 +80,7 @@
     pywalfox-native
     python3
     nh
+    webex
     # CLI tools
     fzf
     fd
@@ -188,13 +189,6 @@
     gtk.enable = true;
     dotIcons.enable = false; # Disable ~/.icons - clutter, unused
   };
-
-  xdg.systemDirs.data = [
-    # For flatpak
-    "/usr/share"
-    "/var/lib/flatpak/exports/share"
-    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
-  ];
 
   services.syncthing = {
     enable = true;
