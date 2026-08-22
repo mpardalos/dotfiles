@@ -7,7 +7,12 @@
     nixpkgs.config.allowUnfree = true;
   };
 
-  home-manager = {pkgs, ...}: {
+  home-manager = {config, pkgs, ...}: {
+    programs.nh = {
+      enable = true;
+      flake = "${config.home.homeDirectory}/.config/dotfiles";
+    };
+
     home.packages = with pkgs; [
       nix-search-cli
       cachix

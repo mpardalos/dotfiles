@@ -65,7 +65,6 @@ in
       tmux
 
       # CLI tools
-      nh
       git-filter-repo
       entr
       gh
@@ -105,8 +104,6 @@ in
       ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
       ".config/git".source = mkOutOfStoreSymlink "${here}/git";
       ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
-      # FIXME: Might be deletable
-      ".config/home-manager".source = mkOutOfStoreSymlink "${here}";
     };
 
     # Let Home Manager install and manage itself.
