@@ -63,8 +63,6 @@ or aliases."
    '(read-only t cursor-intangible t face minibuffer-prompt))
   ;; Faster yes-or-no-p prompts
   (use-short-answers t)
-  ;; Make tab autocomplete instead of indent
-  (tab-always-indent 'complete)
   ;; This makes it easy to mark non-git dirs as projects
   (project-vc-extra-root-markers '(".dir-locals.el"))
   :config
