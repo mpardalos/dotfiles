@@ -1,10 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
   imports = [
     ./hardware-configuration.nix
     (import ../modules/nixos-desktop.nix).nixos
