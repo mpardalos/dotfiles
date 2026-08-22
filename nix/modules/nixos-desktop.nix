@@ -74,7 +74,6 @@ in
       pandoc
       sshpass
       difftastic
-      direnv
       diff-pdf
       pv
       scc # Line of code counting
@@ -94,11 +93,15 @@ in
       cascadia-code # Font of choice (the one from windows terminal)
     ];
 
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     home.file = let
       inherit (config.lib.file) mkOutOfStoreSymlink;
       here = "${config.home.homeDirectory}/.config/dotfiles";
     in {
-      ".config/direnv".source = mkOutOfStoreSymlink "${here}/direnv";
       ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
       ".config/git".source = mkOutOfStoreSymlink "${here}/git";
       ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
