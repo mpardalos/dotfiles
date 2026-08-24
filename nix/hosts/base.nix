@@ -82,6 +82,7 @@ in
       alacritty
       chromium
       tmux
+      mission-center
 
       # CLI tools
       git-filter-repo
