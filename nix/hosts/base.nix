@@ -21,6 +21,9 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Enable zswap, requires at least one swap device
+  boot.zswap.enable = true;
+
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
