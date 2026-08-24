@@ -1,4 +1,5 @@
-#!/usr/bin/env -S expect -f
+#! /usr/bin/env nix-shell
+#! nix-shell -i expect -p expect
 
 # Configuration
 set controller_mac "48:A5:E7:47:09:B9"
@@ -26,7 +27,7 @@ proc update_notification {message} {
 }
 
 # Start bluetoothctl
-spawn /usr/bin/bluetoothctl
+spawn bluetoothctl
 
 # Wait for bluetoothctl prompt
 expect {\]>}
@@ -71,6 +72,24 @@ expect {
     timeout {
         puts "Timeout during pairing"
         update_notification "Pairing timeout"
+        exit 1
+    }
+}
+
+# Trust the controller so it can reconnect on its own
+send "trust $controller_mac\r"
+expect {
+    "trust succeeded" {
+        puts "Controller trusted"
+    }
+    "Failed to trust" {
+        puts "Failed to trust controller"
+        update_notification "Failed to trust controller"
+        exit 1
+    }
+    timeout {
+        puts "Timeout while trusting"
+        update_notification "Trust timeout"
         exit 1
     }
 }
