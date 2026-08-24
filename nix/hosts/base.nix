@@ -95,6 +95,7 @@ in
       diff-pdf
       pv
       scc # Line of code counting
+      wl-clipboard-rs
 
       # LaTeX
       texlab
