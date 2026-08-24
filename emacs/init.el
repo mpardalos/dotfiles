@@ -747,7 +747,7 @@ or aliases."
 ;; Code
 (general-nmap
   "g O" #'imenu
-  "SPC c" #'eshell)
+  "SPC c" #'eat)
 
 (on-hook! emacs-startup-hook
   ;; Report startup time
