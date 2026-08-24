@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-# Reboot into Windows Boot Manager
-sudo grub2-reboot "Windows Boot Manager (on /dev/nvme0n1p1)"
-echo "Next boot: Windows"
+entry_id=$(efibootmgr | grep 'Windows Boot Manager' | grep --only-matching -oP '(?<=^Boot)([0-9]+)')
+sudo efibootmgr --bootnext $entry_id
+echo "Next boot will be to Windows"
 read -p "Reboot now? [y/N] " -n 1 -r
-echo
 [[ $REPLY =~ ^[Yy]$ ]] && sudo reboot
