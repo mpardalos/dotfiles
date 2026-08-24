@@ -38,6 +38,7 @@
     programs.starship = {
       enable = true;
       enableFishIntegration = true;
+      presets = [ "pure-preset" ];
       settings = {
         add_newline = false;
       };
