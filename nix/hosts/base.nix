@@ -39,6 +39,7 @@ in
     zip
     unzip
     file
+    gcc
   ];
 
   services.openssh.enable = true;
