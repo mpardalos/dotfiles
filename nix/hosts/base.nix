@@ -24,6 +24,13 @@ in
   # Enable zswap, requires at least one swap device
   boot.zswap.enable = true;
 
+  # Out-of-memory protection
+  systemd.oomd = {
+    enable = true;
+    enableRootSlice = true;
+    enableUserSlices = true;
+  };
+
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
