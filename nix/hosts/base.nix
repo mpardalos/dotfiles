@@ -36,6 +36,9 @@ in
   environment.systemPackages = with pkgs; [
     git
     curl
+    zip
+    unzip
+    file
   ];
 
   services.openssh.enable = true;
