@@ -19,7 +19,7 @@ in
 { pkgs, ... }: {
   imports = map (m: (import m).nixos or { }) modules;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-bore;
 
   # Enable zswap, requires at least one swap device
   boot.zswap.enable = true;

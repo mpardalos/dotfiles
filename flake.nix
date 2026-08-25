@@ -12,45 +12,40 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
     inputs:
     let
-      overlays-config = {
-        nixpkgs.overlays = [
-          inputs.nixgl.overlay
-          (final: prev: {
-            verilog-repl = inputs.verilog-repl.packages.${prev.stdenv.hostPlatform.system}.default;
-          })
-        ];
-      };
-      home-manager-config = {
-        imports = [
-          inputs.home-manager.nixosModules.default
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-          }
-        ];
-      };
+      common-modules = [
+        # Overlays
+        {
+          nixpkgs.overlays = [
+            inputs.nixgl.overlay
+            (final: prev: {
+              verilog-repl = inputs.verilog-repl.packages.${prev.stdenv.hostPlatform.system}.default;
+            })
+          ];
+        }
+        # Home-manager
+        inputs.home-manager.nixosModules.default
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
+        }
+        # Chaotic Nyx
+        inputs.chaotic.nixosModules.default
+      ];
     in
     {
       nixosConfigurations.odin = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          home-manager-config
-          overlays-config
-          nix/hosts/odin
-        ];
+        modules = common-modules ++ [ nix/hosts/odin ];
       };
       nixosConfigurations.magni = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          home-manager-config
-          overlays-config
-          nix/hosts/magni
-        ];
+        modules = common-modules ++ [ nix/hosts/magni ];
       };
     };
 }
