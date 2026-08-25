@@ -564,3 +564,8 @@ y = 0
 [general]
 import = ["~/.config/alacritty/themes/noctalia.toml"]
 live_config_reload = true
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
