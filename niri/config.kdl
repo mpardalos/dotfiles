@@ -22,6 +22,14 @@ output "HP Inc. OMEN 34c CNC3270S8R" {
     mode "3440x1440@165"
 }
 
+output "Philips Consumer Electronics Company PHL 346E2C UK02426024023" {
+   mode "3440x1440@100"
+}
+
+output "eDP-1" {
+    scale 1
+}
+
 layout {
     gaps 16
     center-focused-column "never"
