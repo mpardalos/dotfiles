@@ -73,6 +73,11 @@ or aliases."
   (add-to-list 'default-frame-alist
 	       '(font . "Cascadia Code")))
 
+(use-package indent-bars
+  :custom
+  (indent-bars-starting-column 0)
+  :hook (prog-mode . indent-bars-mode))
+
 (use-package no-littering
   :config
   (no-littering-theme-backups))
@@ -580,6 +585,9 @@ or aliases."
   (on-hook! rocq-mode-hook
     (font-lock-add-keywords nil
       '(("\\<\\(admit\\|Admitted\\)\\>" 0 'my/rocq-admit-face t)))
+    (setq-local indent-bars-no-descend-lists nil
+                indent-bars-spacing-override 2)
+    (indent-bars-reset)
     (indent-tabs-mode -1))
   (general-define-key
     :keymaps 'rocq-mode-map
