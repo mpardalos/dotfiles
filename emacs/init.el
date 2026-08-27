@@ -487,7 +487,7 @@ or aliases."
 
 (use-package mcp-server
   :straight (:type git :host github :repo "rhblind/emacs-mcp-server"
-             :files ("*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
+              :files ("*.el" "tools/*.el" "mcp-wrapper.py" "mcp-wrapper.sh"))
   :defer t
   :custom
   (mcp-server-socket-directory no-littering-var-directory)
