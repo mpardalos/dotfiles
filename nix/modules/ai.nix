@@ -10,11 +10,25 @@
       tui.theme = "system";
       settings.permission = {
         "*" = "ask";
+        read = "allow";
+        glob = "allow";
+        grep = "allow";
+        list = "allow";
         webfetch = "allow";
         websearch = "allow";
+        todowrite = "allow";
+        skill = "allow";
+        question = "allow";
+        lsp = "allow";
+        task = "allow"; # Sub-agents
         bash = {
           "grep *" = "allow";
-          "git log *" = "allow";
+          "rg *" = "allow";
+
+          "git diff*" = "allow";
+          "git log*" = "allow";
+          "git show*" = "allow";
+          "git status*" = "allow";
         };
       };
     };
