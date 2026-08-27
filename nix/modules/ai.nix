@@ -8,6 +8,7 @@
     programs.opencode = {
       enable = true;
       tui.theme = "system";
+      settings.plugin = [ "@mohak34/opencode-notifier@0.2.8" ];
       settings.permission = {
         "*" = "ask";
         read = "allow";
