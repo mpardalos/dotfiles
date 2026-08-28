@@ -8,6 +8,7 @@ let
     ../modules/firefox.nix
     ../modules/fish.nix
     ../modules/flatpak.nix
+    ../modules/git.nix
     ../modules/home-dir-cleanup.nix
     ../modules/itsynergy
     ../modules/nix.nix
@@ -44,7 +45,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    git
     curl
     zip
     unzip
@@ -85,7 +85,6 @@ in
       mission-center
 
       # CLI tools
-      git-filter-repo
       entr
       gh
       fzf
@@ -125,7 +124,6 @@ in
       in
       {
         ".config/alacritty".source = mkOutOfStoreSymlink "${here}/alacritty";
-        ".config/git".source = mkOutOfStoreSymlink "${here}/git";
         ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
       };
 
