@@ -82,6 +82,11 @@ or aliases."
   :config
   (no-littering-theme-backups))
 
+;; Nice UI managing straight.el
+(use-package straight-overview
+  :straight (:host github :repo "alberti42/straight-overview")
+  :commands (straight-overview))
+
 ;; Noctalia theme integration
 (setq custom-theme-directory "~/.config/emacs/themes/")
 (setq noctalia-theme-path (file-name-concat custom-theme-directory "noctalia-theme.el"))
