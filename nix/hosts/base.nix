@@ -96,6 +96,7 @@ in
       pv
       scc # Line of code counting
       wl-clipboard-rs
+      ripgrep
 
       # LaTeX
       texlab
