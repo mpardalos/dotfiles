@@ -70,6 +70,14 @@ window-rule {
     open-floating true
 }
 
+// Floating thunderbird reminders
+window-rule {
+    match app-id="thunderbird" title="Reminder"
+    open-floating true
+    default-column-width {}
+    default-window-height {}
+}
+
 // Blur background of all windows
 // Only does anything if the application is actually transparent, but
 // emacs and alacritty both do this, so this should actually cover a lot
