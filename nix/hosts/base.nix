@@ -59,6 +59,9 @@ in
 
   services.fwupd.enable = true;
 
+  # Enabled by default but not needed, takes up a bunch of space
+  services.speechd.enable = false;
+
   home-manager.users.mpardalos = { pkgs, config, ... }: {
     imports = map (m: (import m).home-manager or { }) modules;
 
