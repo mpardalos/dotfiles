@@ -22,6 +22,9 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-bore;
 
+  # Use CachyOS' fancy scheduler. Requires the cachyOS kernel
+  hardware.block.scheduler."nvme?*" = "adios";
+
   # Enable zswap, requires at least one swap device
   boot.zswap.enable = true;
 
