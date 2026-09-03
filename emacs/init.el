@@ -627,6 +627,10 @@ or aliases."
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'visual-wrap-prefix-mode))
 
+(use-package org-modern
+  :after org
+  :config (global-org-modern-mode))
+
 (use-package org-roam
   :custom
   (org-roam-directory (file-truename "~/Documents/org-roam"))
