@@ -1,3 +1,5 @@
 themes/
 etc/
 var/
+# Can't be moved into etc/ at the moment
+tree-sitter/
