@@ -15,7 +15,7 @@ input {
 
     mouse { }
 
-    focus-follows-mouse max-scroll-amount="20%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 output "HP Inc. OMEN 34c CNC3270S8R" {
