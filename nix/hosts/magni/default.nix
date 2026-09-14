@@ -27,7 +27,9 @@
   };
 
   networking.hostName = "magni";
-  time.timeZone = "Europe/London";
+  # It's a laptop, we will be moving around.
+  # TZ can be set imperatively with timedatectl
+  time.timeZone = null;
   i18n.defaultLocale = "en_GB.UTF-8";
 
   hardware.graphics.enable = true;
