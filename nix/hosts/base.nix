@@ -53,6 +53,7 @@ in
     unzip
     file
     gcc
+    pavucontrol
   ];
 
   services.openssh.enable = true;
