@@ -1,11 +1,31 @@
 {
   home-manager = { pkgs, ... }: {
-    programs.claude-code.enable = true;
-    programs.antigravity-cli.enable = true;
+    programs.claude-code = {
+      enable = true;
+      enableMcpIntegration = true;
+    };
+    programs.antigravity-cli = {
+      enable = true;
+      enableMcpIntegration = true;
+    };
     programs.pi-coding-agent.enable = true;
+
+    programs.mcp = {
+      enable = true;
+      servers = {
+        emacs = {
+          command = "python3";
+          args = [
+            "/home/mpardalos/.config/emacs/etc/straight/repos/emacs-mcp-server/mcp-wrapper.py"
+            "/home/mpardalos/.config/emacs/var/emacs-mcp-server.sock"
+          ];
+        };
+      };
+    };
 
     programs.opencode = {
       enable = true;
+      enableMcpIntegration = true;
       tui.theme = "system";
       settings.plugin = [ "@mohak34/opencode-notifier@0.2.8" ];
       settings.permission = {
