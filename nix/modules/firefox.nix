@@ -1,7 +1,7 @@
 {
+  nixos.programs.firefox.enable = true;
   home-manager = { config, pkgs, ... }: {
     home.sessionVariables.BROWSER = "firefox";
-    home.packages = [ pkgs.firefox ];
     xdg.mimeApps.defaultApplications = {
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
