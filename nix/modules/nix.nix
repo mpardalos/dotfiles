@@ -16,7 +16,8 @@
       flake = "${config.home.homeDirectory}/.config/dotfiles";
       clean = {
         enable = true;
-        extraArgs = "--keep 5 --keep-since 7d";
+        # --keep-one keeps direnv roots
+        extraArgs = "--keep 5 --keep-since 7d --keep-one";
         dates = "daily";
       };
     };
