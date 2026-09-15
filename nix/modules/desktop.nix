@@ -4,12 +4,21 @@
     hardware.i2c.enable = true; # For monitor brightness control
 
     environment.systemPackages = with pkgs; [
-      noctalia # Desktop shell
       xwayland-satellite
       ddcutil
     ];
 
     programs.niri.enable = true;
+    programs.noctalia = {
+      enable = true;
+      recommendedServices.enable = true;
+    };
+
+    # Noctalia cache
+    nix.settings = {
+      extra-substituters = [ "https://noctalia.cachix.org" ];
+      extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+    };
 
     # Audio
     services.pipewire = {
@@ -20,11 +29,6 @@
     };
     # Allows Pipewire to use the realtime scheduler for increased performance.
     security.rtkit.enable = true;
-
-    # Required by noctalia
-    hardware.bluetooth.enable = true;
-    services.upower.enable = true;
-    services.tuned.enable = true;
   };
 
   home-manager = { config, pkgs, ... }: {

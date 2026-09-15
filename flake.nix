@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   outputs =
@@ -38,6 +39,8 @@
         }
         # Chaotic Nyx
         inputs.chaotic.nixosModules.default
+        # Noctalia
+        inputs.noctalia.nixosModules.default
       ];
     in
     {
