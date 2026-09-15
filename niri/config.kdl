@@ -321,6 +321,7 @@ binds {
     XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
     XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
     Mod+Ctrl+M { spawn "noctalia" "msg" "mic-mute"; }
+    XF86AudioMicMute { spawn "noctalia" "msg" "mic-mute"; }
     XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 }
