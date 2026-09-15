@@ -25,6 +25,25 @@
 
     programs.opencode = {
       enable = true;
+      ### 1.18.30, currently on nixpkgs, is broken. Reverting to 1.18.29 ###
+      package = pkgs.opencode.overrideAttrs (
+        finalAttrs: prevAttrs: {
+          version = "1.18.29";
+          src = pkgs.fetchFromGitHub {
+            owner = "anomalyco";
+            repo = "opencode";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-lCXlxTOhcX70jxJAbpolyGlIxQK2nst+6bFhq3Xzdmc=";
+          };
+          passthru = prevAttrs.passthru // {
+            node_modules = prevAttrs.passthru.node_modules.overrideAttrs (nodeAttrs: {
+              buildPhase = builtins.replaceStrings [ ''--cpu="*"'' ''--os="*"'' ] [ "" "" ] nodeAttrs.buildPhase;
+              outputHash = "sha256-aw08inD+QGFqMecLayOnwSyYnWT9FJWBeJMpwh62+Ks=";
+            });
+          };
+        }
+      );
+      ###############################################
       enableMcpIntegration = true;
       tui.theme = "system";
       settings.plugin = [ "@mohak34/opencode-notifier@0.2.8" ];
