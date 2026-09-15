@@ -23,6 +23,13 @@
       };
     };
 
+    # Using simple package, not module, just for codex.
+    # The module makes the config read-only, but codex stores the safe
+    # projects list in its config, so the module requires you to list
+    # out all your projects in the nix config. This doesn't use the
+    # shared MCP config, but that's fine
+    home.packages = [ pkgs.codex ];
+
     programs.opencode = {
       enable = true;
       ### 1.18.30, currently on nixpkgs, is broken. Reverting to 1.18.29 ###
