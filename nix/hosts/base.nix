@@ -105,10 +105,6 @@ in
       wl-clipboard-rs
       ripgrep
 
-      # LaTeX
-      texlab
-      texliveFull
-
       # Programming
       python3
       hugo
