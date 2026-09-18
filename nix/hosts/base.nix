@@ -93,6 +93,10 @@ in
       tmux
       mission-center
 
+      # Desktop
+      libreoffice
+      kdePackages.dolphin
+
       # CLI tools
       entr
       gh
