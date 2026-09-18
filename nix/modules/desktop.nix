@@ -41,6 +41,14 @@
     # Make "open a URL" work for programs that shell out to xdg-open / $BROWSER
     xdg.mimeApps.enable = true;
 
+    gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
+      };
+    };
+
     home.pointerCursor = {
       enable = true;
       package = pkgs.bibata-cursors;
