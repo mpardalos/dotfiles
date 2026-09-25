@@ -14,6 +14,7 @@
     home.packages = with pkgs; [
       webex
       enpass
+      libsecret # enp script requires secret-tool
       (enpass-cli.overrideAttrs (old: rec {
         version = "1.12.0";
         src = pkgs.fetchFromGitHub {
