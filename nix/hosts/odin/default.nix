@@ -30,6 +30,10 @@
   };
 
   networking.hostName = "odin";
+  networking.interfaces.enp5s0.wakeOnLan = {
+    enable = true;
+    policy = [ "magic" ];
+  };
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
 
