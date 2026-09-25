@@ -56,6 +56,8 @@ in
     pavucontrol
   ];
 
+  services.printing.enable = true;
+
   services.openssh.enable = true;
 
   services.fwupd.enable = true;
