@@ -737,6 +737,8 @@ or aliases."
       (haskell-indentation-mode -1)
       (setq-local indent-line-function #'indent-relative-first-indent-point)))
 
+(use-package wgrep)
+
 ;; Transparency
 
 (defun my/set-transparency (value)
