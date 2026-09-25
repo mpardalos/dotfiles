@@ -264,9 +264,9 @@ or aliases."
   :bind
   (("C-."   . embark-act)         ;; Begin the embark process
    ("C-;"   . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-  :config
-  (use-package embark-consult))
+   ("C-h B" . embark-bindings)))  ;; alternative for `describe-bindings'
+
+(use-package embark-consult)
 
 (use-package marginalia
   :init (marginalia-mode))
