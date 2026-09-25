@@ -3,10 +3,12 @@
     home.packages = [ pkgs.git-filter-repo ];
     programs.git = {
       enable = true;
-      package = pkgs.git.override {
-        withLibsecret = true;
-        doInstallCheck = false; # Slow
-      };
+
+      # gitFull needed for libsecret support. It has a bunch of other
+      # stuff we don't need, but better than overriding the git
+      # package and having to compile
+      package = pkgs.gitFull;
+
       settings = {
         user = {
           name = "Michalis Pardalos";
