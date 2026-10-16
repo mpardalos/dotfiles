@@ -137,6 +137,10 @@ in
         ".config/tmux".source = mkOutOfStoreSymlink "${here}/tmux";
       };
 
+    programs.vscode = {
+      enable = true;
+    };
+
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
   };
