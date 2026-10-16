@@ -23,12 +23,17 @@
       };
     };
 
-    # Using simple package, not module, just for codex.
-    # The module makes the config read-only, but codex stores the safe
-    # projects list in its config, so the module requires you to list
-    # out all your projects in the nix config. This doesn't use the
-    # shared MCP config, but that's fine
-    home.packages = [ pkgs.codex ];
+    home.packages = [ 
+      # Using simple package, not module, just for codex.
+      # The module makes the config read-only, but codex stores the safe
+      # projects list in its config, so the module requires you to list
+      # out all your projects in the nix config. This doesn't use the
+      # shared MCP config, but that's fine
+      pkgs.codex 
+
+      # Codex expects to find bubblewrap in PATH
+      pkgs.bubblewrap
+    ];
 
     programs.opencode = {
       enable = true;
