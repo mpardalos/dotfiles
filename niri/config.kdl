@@ -294,7 +294,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { spawn "noctalia" "msg" "screenshot-annotate"; }
+    Print { spawn "noctalia" "msg" "screenshot-region"; }
+    Shift+Print { spawn "noctalia" "msg" "screenshot-fullscreen"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
