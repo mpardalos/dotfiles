@@ -44,6 +44,10 @@
       ];
     in
     {
+      packages.x86_64-linux.quadro-control =
+        inputs.nixpkgs.legacyPackages.x86_64-linux.callPackage ./nix/packages/quadro-control.nix
+          { };
+
       nixosConfigurations.odin = inputs.nixpkgs.lib.nixosSystem {
         modules = common-modules ++ [ nix/hosts/odin ];
       };

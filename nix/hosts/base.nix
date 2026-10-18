@@ -112,7 +112,6 @@ in
       ripgrep
 
       # Programming
-      python3
       hugo
 
       ## Hardware

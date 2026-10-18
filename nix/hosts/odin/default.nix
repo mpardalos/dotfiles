@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -38,6 +39,24 @@
   i18n.defaultLocale = "en_GB.UTF-8";
 
   hardware.graphics.enable = true;
+
+  environment.systemPackages = [
+    (pkgs.python3.withPackages (ps: [
+      (pkgs.callPackage ../../packages/quadro-control.nix { python3Packages = ps; })
+    ]))
+  ];
+
+  # Grant the active local user access to the QUADRO's USB device.
+  # Run before 73-seat-late.rules applies the uaccess ACL.
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "quadro-udev-rules";
+      destination = "/lib/udev/rules.d/70-quadro.rules";
+      text = ''
+        SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0c70", ATTR{idProduct}=="f00d", TAG+="uaccess"
+      '';
+    })
+  ];
 
   # Most users should NEVER change this value after the initial install, for any reason,
   # even if you've upgraded your system to a new NixOS release.
