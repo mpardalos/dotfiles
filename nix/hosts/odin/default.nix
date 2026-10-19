@@ -58,6 +58,10 @@
     })
   ];
 
+  # Enable GPU overclocking
+  hardware.amdgpu.overdrive.enable = true;
+  services.lact.enable = true;
+
   # Most users should NEVER change this value after the initial install, for any reason,
   # even if you've upgraded your system to a new NixOS release.
   #
