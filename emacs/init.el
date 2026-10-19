@@ -223,6 +223,15 @@ or aliases."
         '(vc-state all-the-icons collapse file-size))
   ;; open large directory (over 20000 files) asynchronously with `fd' command
   (setq dirvish-large-directory-threshold 20000)
+  ;; Evil's state maps take precedence over ordinary Dirvish bindings.
+  (with-eval-after-load 'evil
+    (evil-define-key '(normal visual) dirvish-mode-map
+      (kbd "h") #'dired-up-directory
+      (kbd "j") #'dired-next-line
+      (kbd "k") #'dired-previous-line
+      (kbd "l") #'dired-find-file
+      (kbd "TAB") #'dirvish-subtree-toggle
+      (kbd "<tab>") #'dirvish-subtree-toggle))
   :bind ; Bind `dirvish-fd|dirvish-side|dirvish-dwim' as you see fit
   (("C-c f" . dirvish)
    :map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
@@ -233,13 +242,14 @@ or aliases."
    ("o"   . dirvish-quick-access)      ; [o]pen `dirvish-quick-access-entries'
    ("s"   . dirvish-quicksort)         ; [s]ort flie list
    ("r"   . dirvish-history-jump)      ; [r]ecent visited
-   ("l"   . dirvish-ls-switches-menu)  ; [l]s command flags
+   ("L"   . dirvish-ls-switches-menu)  ; [L]s command flags
    ("v"   . dirvish-vc-menu)           ; [v]ersion control commands
    ("*"   . dirvish-mark-menu)
    ("y"   . dirvish-yank-menu)
    ("N"   . dirvish-narrow)
    ("^"   . dirvish-history-last)
    ("TAB" . dirvish-subtree-toggle)
+   ("<tab>" . dirvish-subtree-toggle)
    ("M-f" . dirvish-history-go-forward)
    ("M-b" . dirvish-history-go-backward)
    ("M-e" . dirvish-emerge-menu)))
