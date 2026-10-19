@@ -73,6 +73,7 @@
      "https://nixos.org/blog/announcements-rss.xml"
      "https://coq.inria.fr/rss.xml"))
  '(magit-diff-refine-hunk t)
+ '(mcp-server-security-prompt-for-permissions t)
  '(menu-bar-mode nil)
  '(nano-modeline-position 'nano-modeline-footer)
  '(native-comp-async-report-warnings-errors 'silent)
