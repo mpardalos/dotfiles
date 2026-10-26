@@ -28,16 +28,15 @@
       loader.limine.extraConfig = "quiet: yes";
     };
 
-    services.displayManager.ly = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
-      x11Support = false;
       settings = {
-        animation = "matrix";
-        cmatrix_fg = "0x00505050";
-        cmatrix_head_col = "0x00A0A0A0";
-        shell = false;
-        brightness_down_key = "null";
-        brightness_up_key = "null";
+        cursor.size = 24;
+        keyboard.layout = "us";
+      };
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
       };
     };
   };
