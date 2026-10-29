@@ -261,8 +261,7 @@ or aliases."
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :general
-  (general-define-key "C-x o" #'ace-window)
-  (general-nmap "C-w C-w" #'ace-window))
+  (general-define-key "C-x o" #'ace-window))
 
 (use-package magit
   :custom
@@ -818,6 +817,14 @@ or aliases."
 
 ;; TODO: Haskell
 ;; Try out consult-hoogle
+
+;; Window movement
+(general-define-key
+   "C-x w <left>" #'windmove-left
+   "C-x w <up>" #'windmove-up
+   "C-x w <right>" #'windmove-right
+   "C-x w <down>" #'windmove-down
+   "C-x w w" #'ace-window)
 
 ;; Code
 (general-nmap
