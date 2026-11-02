@@ -679,6 +679,13 @@ or aliases."
   :straight (:type built-in)
   :config
   (require 'org-tempo)
+  (defun my/org-preview-dropped-attachment (original &rest args)
+    "Preview links inserted by ORIGINAL when attaching dropped files."
+    (let ((beg (point)))
+      (prog1 (apply original args)
+        (org-link-preview-region t t beg (point)))))
+  (advice-add 'org--dnd-attach-file :around
+              #'my/org-preview-dropped-attachment)
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'visual-wrap-prefix-mode))
 
