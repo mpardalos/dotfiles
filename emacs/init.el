@@ -589,6 +589,13 @@ or aliases."
 	("C-c C-f" . #'eglot-format))
   :config
   (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  ;; Resolve the project's npm dependency without downloading a server.
+  (add-to-list 'eglot-server-programs
+               '(((js-mode :language-id "javascript")
+                  (js-ts-mode :language-id "javascript")
+                  (typescript-ts-mode :language-id "typescript")
+                  (tsx-ts-mode :language-id "typescriptreact"))
+                 . ("npx" "--no-install" "typescript-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration
 		'(:haskell (:formattingProvider "fourmolu"
 			    :plugin (:fourmolu (:config (:external t)))))))
@@ -762,6 +769,23 @@ or aliases."
     (indent-tabs-mode -1)))
 
 (use-package smart-tabs-mode)
+
+(use-package typescript-ts-mode
+  :straight (:type built-in)
+  :mode (("\\.\\([mc]?ts\\)\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode))
+  :init
+  (with-eval-after-load 'treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                              "v0.23.2" "typescript/src"))
+    (add-to-list 'treesit-language-source-alist
+                 '(tsx "https://github.com/tree-sitter/tree-sitter-typescript"
+                       "v0.23.2" "tsx/src"))))
+
+(use-package js
+  :straight (:type built-in)
+  :mode ("\\.[mc]js\\'" . js-mode))
 
 (use-package csv-mode)
 
