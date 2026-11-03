@@ -28,7 +28,8 @@
       nixfmt
       nil # Nix language server
       nixd # Different nix language server
-      nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
+      # Broken, calls pcregrep, which was removed from nixpkgs
+      # nixgl.nixGLMesa # For running nix-packaged opengl/vulkan applications
     ];
   };
 }

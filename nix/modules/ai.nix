@@ -38,8 +38,10 @@
     programs.opencode = {
       enable = true;
       enableMcpIntegration = true;
-      tui.theme = "system";
-      settings.plugin = [ "@mohak34/opencode-notifier@0.2.8" ];
+      cli.theme = {
+        name = "system";
+        mode = "system";
+      };
       settings.permission = {
         "*" = "ask";
         read = "allow";
