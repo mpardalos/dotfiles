@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    claude-desktop-nix = {
+      url = "github:tomsch/claude-desktop-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +29,7 @@
           nixpkgs.overlays = [
             inputs.nixgl.overlay
             (final: prev: {
+              claude-desktop = inputs.claude-desktop-nix.packages.${prev.stdenv.hostPlatform.system}.default;
               verilog-repl = inputs.verilog-repl.packages.${prev.stdenv.hostPlatform.system}.default;
             })
           ];

@@ -23,7 +23,9 @@
       };
     };
 
-    home.packages = [ 
+    home.packages = [
+      pkgs.claude-desktop
+
       # Using simple package, not module, just for codex.
       # The module makes the config read-only, but codex stores the safe
       # projects list in its config, so the module requires you to list
