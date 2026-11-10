@@ -1,5 +1,9 @@
 {
   home-manager = { pkgs, ... }: {
+    imports = [
+      (import ./onedrive.nix).home-manager
+    ];
+
     services.remmina = {
       enable = true;
       systemdService.enable = false;
@@ -29,7 +33,11 @@
   };
 
   nixos = { pkgs, ... }: {
-    imports = [ ./netextender/module.nix ];
+    imports = [
+      (import ./onedrive.nix).nixos
+      ./netextender/module.nix
+    ];
+
     services.netextender = {
       enable = true;
       package = pkgs.callPackage ./netextender/package.nix { };
