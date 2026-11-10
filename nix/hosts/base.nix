@@ -15,6 +15,7 @@ let
     ../modules/nvim.nix
     ../modules/steam.nix
     ../modules/syncthing.nix
+    ../modules/virtualization.nix
   ];
 in
 { pkgs, ... }: {
